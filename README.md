@@ -5,7 +5,7 @@ React Native Mobile Application
 ### 1. Prerequisites
 
 - [NodeJs](https://nodejs.org/en/) -JavaScript runtime built on Chrome's V8 JavaScript engine.
-- [NPM](https://npmjs.org/) - Node package manager
+- [NPM](https://npmjs.org/) - Node Package Manager
 - [OpenJDK](http://openjdk.java.net/) - Java Development Kit
 - [Android Studio](https://developer.android.com/studio) - Android Developer Tools
 
@@ -26,11 +26,15 @@ On the command prompt run the following commands:
 ```
 
 ### 3. Useful Link
-- A JavaScript library for building UI - [React](https://reactjs.org/)
-- A framework for building native apps - [React Native](https://reactnative.dev/)
+- A JavaScript Library For Building UI - [React](https://reactjs.org/)
+- A framework For Building Native Apps - [React Native](https://reactnative.dev/)
 - UI Components - [NativeBase](https://nativebase.io/)
 - Routing and Navigation - [React Navigation](https://reactnavigation.org/)
+- Predictable State Container - [Redux](http://redux.js.org/)
+- React Bindings For Redux - [React Redux](https://react-redux.js.org/)
 - Redux Toolkit - [Redux Toolkit](https://redux-toolkit.js.org/)
+- Redux Middleware For [Flipper](https://fbflipper.com/) - [Redux Flipper](https://github.com/jk-gan/redux-flipper)
+- Persist And Rehydrate Redux Store - [Redux Persist](https://github.com/rt2zz/redux-persist)
 - Form Library - [Formik](https://formik.org/)
 - Object Schema Validation  - [Joi](https://www.npmjs.com/package/joi)
 - Code Linting Tool - [ESLint](http://eslint.org/)
