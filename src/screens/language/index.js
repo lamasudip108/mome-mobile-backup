@@ -8,7 +8,7 @@ const LanguageScreen = ({navigation}) => {
             <Text>AR!</Text>
             <Button
                 title="Go to Details"
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('SignIn')}
             />
         </View>
     );
