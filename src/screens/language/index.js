@@ -7,8 +7,12 @@ const LanguageScreen = ({navigation}) => {
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <Text>AR!</Text>
             <Button
-                title="Go to Details"
+                title="Sign In"
                 onPress={() => navigation.navigate('SignIn')}
+            />
+            <Button
+                title="Profile"
+                onPress={() => navigation.navigate('Profile')}
             />
         </View>
     );

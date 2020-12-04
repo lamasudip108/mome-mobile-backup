@@ -12,13 +12,17 @@ import {
 } from 'redux-persist';
 import {configureStore} from '@reduxjs/toolkit';
 
+import profileReducer from '@/screens/profile/duck';
+
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
     whitelist: [],
 };
 
-const reducers = combineReducers({});
+const reducers = combineReducers({
+    profile: profileReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 

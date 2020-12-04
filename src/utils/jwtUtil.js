@@ -1,6 +1,6 @@
 import jwt_decode from 'jwt-decode';
 
-import {getAsyncStorage} from '@/storageUtil';
+import {getAsyncStorage} from './storageUtil';
 import {JWT_TOKEN} from '@/constants';
 
 export const isTokenExpired = (token) => {

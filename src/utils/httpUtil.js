@@ -1,4 +1,4 @@
-import {httpBase} from '@/httpBaseUtil';
+import {httpBase} from './httpBaseUtil';
 
 export function fetch(endpoint, params) {
     return httpBase().get(`/${endpoint}`, {params});

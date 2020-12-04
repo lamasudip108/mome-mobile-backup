@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {API_URL, JWT_TOKEN, LANGUAGE_KEY} from '@/constants';
-import {getAsyncStorage, setAsyncStorage, clearAsyncStorage} from '@/storageUtil';
+import {getAsyncStorage, setAsyncStorage, clearAsyncStorage} from './storageUtil';
 
 export const httpBase = () => {
     const headers = {

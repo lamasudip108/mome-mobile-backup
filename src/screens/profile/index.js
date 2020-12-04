@@ -1,12 +1,25 @@
-import * as React from 'react';
-import {Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
-const ProfileScreen = () => {
+import ProfileForm from './components';
+import {profileServices} from './duck';
+
+const ProfileScreen = (props) => {
+
+    const dispatch = useDispatch();
+
+    const {profile, loading, errors} = useSelector(state => state.profile);
+
+    useEffect(() => {
+        dispatch(profileServices.fetchProfileInfo());
+    }, [dispatch]);
+
     return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Profile!</Text>
-        </View>
+        <ProfileForm
+            {...props}
+        />
     );
+
 };
 
 export default ProfileScreen;
