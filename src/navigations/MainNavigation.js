@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import LanguageScreen from '@/screens/language';
 import SignInScreen from '@/screens/auth';
+import SignUpScreen from '@/screens/auth';
 import HomeScreen from '@/screens/home';
 import ProfileScreen from '@/screens/profile';
 
@@ -15,7 +16,7 @@ const MainNavigation = () => {
             <Stack.Screen name="Language" component={LanguageScreen} options={{title: 'Select Language'}}/>
             <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Home'}}/>
             <Stack.Screen name="SignIn" component={SignInScreen}/>
-            <Stack.Screen name="SignUp" component={SignInScreen}/>
+            <Stack.Screen name="SignUp" component={SignUpScreen}/>
             <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Navigator>
     );

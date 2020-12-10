@@ -11,6 +11,10 @@ const LanguageScreen = ({navigation}) => {
                 onPress={() => navigation.navigate('SignIn')}
             />
             <Button
+                title="Sign Up"
+                onPress={() => navigation.navigate('SignUp')}
+            />
+            <Button
                 title="Profile"
                 onPress={() => navigation.navigate('Profile')}
             />
