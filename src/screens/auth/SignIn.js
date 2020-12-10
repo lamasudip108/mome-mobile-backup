@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        //marginBottom: 40,
         marginBottom: 30,
     },
 
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 50,
-        //marginTop: 29,
         marginBottom: 45,
     },
 
