@@ -2,8 +2,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import LanguageScreen from '@/screens/language';
-import SignInScreen from '@/screens/auth';
-import SignUpScreen from '@/screens/auth';
+import SignInScreen from '@/screens/auth/SignIn';
+import SignUpScreen from '@/screens/auth/SignUp';
 import HomeScreen from '@/screens/home';
 import ProfileScreen from '@/screens/profile';
 

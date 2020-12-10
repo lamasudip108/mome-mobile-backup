@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TextInput, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, StatusBar, TextInput, TouchableOpacity, Button} from 'react-native';
 
-const SignInScreen = () => {
+const SignInScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={require('@/assets/img/profile.png')}/>
@@ -35,13 +35,13 @@ const SignInScreen = () => {
             </TouchableOpacity>
 
             <TouchableOpacity>
-                <Text style={styles.forgot_button}>Forgot Password?</Text>
+                <Text style={styles.forgot_button} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
             </TouchableOpacity>
 
             <View style={styles.viewSignupLink}>
                 <Text style={styles.textSignup}>Don’t have account?</Text>
                 <TouchableOpacity>
-                    <Text style={styles.signup_button}>SIGNUP HERE</Text>
+                    <Text style={styles.signup_button} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     },
 
     viewHeading: {
-        justifyContent: 'center', 
-        alignItems: 'center', 
+        justifyContent: 'center',
+        alignItems: 'center',
         height: 50,
         //marginTop: 29,
         marginBottom: 45,
