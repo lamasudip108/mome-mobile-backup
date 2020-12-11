@@ -1,49 +1,86 @@
-import * as React from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TextInput, TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
+import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TextInput, TouchableOpacity} from 'react-native';
+import { FloatingLabelInput, setGlobalStyles } from 'react-native-floating-label-input';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
+    const [fullName, setFullName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={require('@/assets/img/profile.png')}/>
 
             <StatusBar style="auto"/>
 
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Welcome to MOME</Text>
-                <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
-            </View>
+            <ScrollView
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={{
+                flex: 1,
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+                <View style={styles.viewHeading}>
+                    <Text style={styles.textHeading1}>Create new account</Text>
+                </View>
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="USERNAME"
-                    placeholderTextColor="#BEBEBE"
+                <FloatingLabelInput
+                    label="FULLNAME"
+                    value={fullName}
+                    onChangeText={(value) => {
+                      setFullName(value);
+                    }}
                 />
-            </View>
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="PASSWORD"
-                    placeholderTextColor="#BEBEBE"
-                    secureTextEntry={true}
+                <FloatingLabelInput
+                    label="PHONE NUMBER"
+                    value={phone}
+                    keyboardType="numeric"
+                    onChangeText={(value) => {
+                      setPhone(value);
+                    }}
                 />
-            </View>
 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText}>LOGIN</Text>
-            </TouchableOpacity>
+                <FloatingLabelInput
+                    label="EMAIL"
+                    value={email}
+                    onChangeText={(value) => {
+                      setEmail(value);
+                    }}
+                />
 
-            <TouchableOpacity>
-                <Text style={styles.forgot_button}>Forgot Password?</Text>
-            </TouchableOpacity>
+                <FloatingLabelInput
+                    label="PASSWORD"
+                    value={password}
+                    isPassword={true}
+                    onChangeText={(value) => {
+                      setPassword(value);
+                    }}
+                />
 
-            <View style={styles.viewSignupLink}>
-                <Text style={styles.textSignup}>Don’t have account?</Text>
-                <TouchableOpacity>
-                    <Text style={styles.signup_button}>SIGNUP HERE</Text>
+                <FloatingLabelInput
+                    label="CONFIRM PASSWORD"
+                    value={confirmPassword}
+                    isPassword={true}
+                    onChangeText={(value) => {
+                      setConfirmPassword(value);
+                    }}
+                />
+
+                <TouchableOpacity style={styles.signupBtn}>
+                    <Text style={styles.signupText}>SIGNUP</Text>
                 </TouchableOpacity>
-            </View>
+
+                <View style={styles.viewLoginLink}>
+                    <Text style={styles.textLogin}>Already have login?</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.login_button} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
+                       
         </View>
     );
 };
@@ -56,84 +93,79 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    image: {
-        //marginBottom: 40,
-        marginBottom: 30,
-    },
-
     viewHeading: {
-        justifyContent: 'center',
-        alignItems: 'center',
         height: 50,
-        //marginTop: 29,
-        marginBottom: 45,
+        marginBottom: 10,
+        width: '70%',
     },
 
     textHeading1: {
         fontSize: 24,
-        fontWeight: 'bold',
+        fontWeight: '700',
         color: '#212121',
         marginBottom: 2,
     },
 
-    textHeading2: {
-        fontSize: 14,
-        color: '#2B2D42',
-        width: 210,
-        textAlign: 'center',
-        lineHeight: 22,
-    },
-
-    inputView: {
-        backgroundColor: '#FFFFFF',
-        borderRadius: 30,
-        width: '70%',
-        height: 45,
-        marginBottom: 20,
-    },
-
-    TextInput: {
-        height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
-    },
-
-    loginBtn: {
-        width: '70%',
+    signupBtn: {
+        //width: '70%',
         borderRadius: 25,
-        height: 50,
+        height: 56,
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 20,
         backgroundColor: '#0000FF',
     },
 
-    loginText: {
+    signupText: {
         color: '#FFFFFF',
         fontSize: 14,
         fontWeight: 'bold',
     },
 
-    forgot_button: {
-        height: 30,
-        marginBottom: 30,
-    },
-
-    viewSignupLink: {
+    viewLoginLink: {
         flexDirection: 'row',
         fontSize: 14,
+        marginTop: 108,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
-    textSignup: {
+    textLogin: {
         color: '#212121',
     },
 
-    signup_button: {
+    login_button: {
         color: '#0000FF',
         fontWeight: '600',
         paddingLeft: 8,
     }
 });
+
+setGlobalStyles.containerStyles = {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#F2F2F2',
+    borderRadius: 30,
+    width: '70%',
+    height: 56,
+    marginBottom: 20,
+};
+setGlobalStyles.labelStyles = {
+    paddingHorizontal: 5,
+};
+setGlobalStyles.inputStyles = {
+    fontSize: 14,
+    color: '#212121',
+    paddingHorizontal: 10,
+    marginLeft: 5,
+    fontSize: 14,
+    fontWeight: '500',
+};
+setGlobalStyles.customLabelStyles = {
+    colorFocused: '#BEBEBE',
+    colorBlurred: '#BEBEBE',
+    fontSizeFocused: 12,
+    marginTop: 10,
+};
+
 
 export default SignUpScreen;

@@ -6076,6 +6076,11 @@
   "resolved" "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.67.0.tgz"
   "version" "0.67.0"
 
+"react-native-floating-label-input@^1.2.15":
+  "integrity" "sha512-wjpPfQtxhfT9Ttby/2aA/wvygyDix1zVmUkD/W3VloDONZsohxFW134ySxKOlrlmp3fhsZ3WlrRzVGT1jQnyDg=="
+  "resolved" "https://registry.npmjs.org/react-native-floating-label-input/-/react-native-floating-label-input-1.2.15.tgz"
+  "version" "1.2.15"
+
 "react-native-gesture-handler@^1.9.0":
   "integrity" "sha512-fkkNeWDBzDdwDxDcxtYbrb9T1g0PLgT1AxBs2iO/p7uEbDbC6mIoL/NzuOnKNEBHcd0lpLoJuNmIfdmucEON5g=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-1.9.0.tgz"
@@ -6123,7 +6128,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^15.0.2"
 
-"react-native@0.63.4":
+"react-native@*", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.4.tgz"
   "version" "0.63.4"
@@ -6190,7 +6195,7 @@
     "raf" "^3.1.0"
     "tween-functions" "^1.0.1"
 
-"react@16.13.1":
+"react@*", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"

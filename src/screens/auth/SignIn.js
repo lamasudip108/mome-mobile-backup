@@ -1,7 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TextInput, TouchableOpacity, Button} from 'react-native';
+import { FloatingLabelInput, setGlobalStyles } from 'react-native-floating-label-input';
 
 const SignInScreen = ({navigation}) => {
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={require('@/assets/img/profile.png')}/>
@@ -13,22 +17,22 @@ const SignInScreen = ({navigation}) => {
                 <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
             </View>
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="USERNAME"
-                    placeholderTextColor="#BEBEBE"
-                />
-            </View>
+            <FloatingLabelInput
+                label="USERNAME"
+                value={userName}
+                onChangeText={(value) => {
+                  setUserName(value);
+                }}
+            />
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="PASSWORD"
-                    placeholderTextColor="#BEBEBE"
-                    secureTextEntry={true}
-                />
-            </View>
+            <FloatingLabelInput
+                label="PASSWORD"
+                value={password}
+                isPassword={true}
+                onChangeText={(value) => {
+                  setPassword(value);
+                }}
+            />
 
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.loginText}>LOGIN</Text>
@@ -133,5 +137,31 @@ const styles = StyleSheet.create({
         paddingLeft: 8,
     }
 });
+
+setGlobalStyles.containerStyles = {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#F2F2F2',
+    borderRadius: 30,
+    width: '70%',
+    height: 56,
+    marginBottom: 20,
+};
+setGlobalStyles.labelStyles = {
+    paddingHorizontal: 5,
+};
+setGlobalStyles.inputStyles = {
+    fontSize: 14,
+    color: '#212121',
+    paddingHorizontal: 10,
+    marginLeft: 5,
+    fontSize: 14,
+    fontWeight: '500',
+};
+setGlobalStyles.customLabelStyles = {
+    colorFocused: '#BEBEBE',
+    colorBlurred: '#BEBEBE',
+    fontSizeFocused: 12,
+    marginTop: 10,
+};
 
 export default SignInScreen;
