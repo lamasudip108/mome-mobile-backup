@@ -76,7 +76,7 @@ const SignUpScreen = ({navigation}) => {
                 <View style={styles.viewLoginLink}>
                     <Text style={styles.textLogin}>Already have login?</Text>
                     <TouchableOpacity>
-                        <Text style={styles.login_button} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                        <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     },
 
     signupBtn: {
-        //width: '70%',
         borderRadius: 25,
         height: 56,
         alignItems: 'center',
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
         color: '#212121',
     },
 
-    login_button: {
+    loginButton: {
         color: '#0000FF',
         fontWeight: '600',
         paddingLeft: 8,

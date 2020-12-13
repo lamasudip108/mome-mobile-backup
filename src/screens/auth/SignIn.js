@@ -39,13 +39,13 @@ const SignInScreen = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity>
-                <Text style={styles.forgot_button} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
+                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
             </TouchableOpacity>
 
             <View style={styles.viewSignupLink}>
                 <Text style={styles.textSignup}>Don’t have account?</Text>
                 <TouchableOpacity>
-                    <Text style={styles.signup_button} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
+                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#212121',
         marginBottom: 2,
+        //fontFamily: 'Sofia Pro Bold',
     },
 
     textHeading2: {
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    forgot_button: {
+    forgotButton: {
         height: 30,
         marginBottom: 30,
     },
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
         color: '#212121',
     },
 
-    signup_button: {
+    signupButton: {
         color: '#0000FF',
         fontWeight: '600',
         paddingLeft: 8,
