@@ -10,16 +10,32 @@
 		00E356F31AD99517003FC87E /* momeMobileAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* momeMobileAppTests.m */; };
 		0712B01201F8690BF124EFD9 /* libPods-momeMobileApp-momeMobileAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B92363F721D1A1B17F6857 /* libPods-momeMobileApp-momeMobileAppTests.a */; };
 		083F01AF8DB78D5CAF06D544 /* libPods-momeMobileApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F7A9E966D16A21202F471E /* libPods-momeMobileApp-tvOSTests.a */; };
+		0A887AB6F92B48FCAFC8582E /* Sofia Pro Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A39763D835924F0588FBC142 /* Sofia Pro Light.otf */; };
+		107A46DEF6DC48808FD54EB4 /* Sofia Pro Semi Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC9E4D9EB5CC43E48FDAB28D /* Sofia Pro Semi Bold.otf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1AC8E69528884C738F9B69A5 /* Sofia Pro Regular Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CBE5F996400D8B78C744 /* Sofia Pro Regular Italic.otf */; };
+		2080B19FCA7343D5A3E2FD1A /* Sofia Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F3D7DE759D8449CA89598023 /* Sofia Pro Bold.otf */; };
+		2C100BB05DAB47ABBD5416C4 /* Sofia Pro Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7C03DC488EC34B42B3447693 /* Sofia Pro Light Italic.otf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DAF1FE105DC440C8C107A47 /* Sofia Pro Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8AB4A182ECE4493DBFAF8C5B /* Sofia Pro Bold Italic.otf */; };
 		2DCD954D1E0B4F2C00145EB5 /* momeMobileAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* momeMobileAppTests.m */; };
+		4F9D9CD23D034F67BE6A2203 /* Sofia Pro Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F1A3A16CD37241F193AFDD66 /* Sofia Pro Black Italic.otf */; };
+		5B5219F49218483E80D5C753 /* Sofia Pro ExtraLight Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E6C9AD89A2F84E4884DFFEAF /* Sofia Pro ExtraLight Italic.otf */; };
+		5EE4E36D268E41E0938FB977 /* Sofia Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33C51E4BA80043CE85AAF878 /* Sofia Pro Black.otf */; };
+		63ED1C8652954D09AEEF86BA /* Sofia Pro Semi Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4C1CE36F1DB40FCAA2542BE /* Sofia Pro Semi Bold Italic.otf */; };
+		6FB0B78E6B594AFD9A67E141 /* Sofia Pro Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A0CBE5C3E64D5581D9A16A /* Sofia Pro Medium.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		91C4652B98D04709BA89B2DF /* Sofia Pro UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 803E3688975A40EFA6414602 /* Sofia Pro UltraLight.otf */; };
 		9FABF696BFCB3074C359F5E2 /* libPods-momeMobileApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 264A425C4F5383AEC95C44B6 /* libPods-momeMobileApp-tvOS.a */; };
+		B5D835AC467E40E09F228C40 /* Sofia Pro Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16CFEBC27163487AA3360365 /* Sofia Pro Medium Italic.otf */; };
+		BF5C11EA598C4B2AA1152774 /* Sofia Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 16F37461EFA948DE8E965B34 /* Sofia Pro Regular.otf */; };
+		CA4E592436974F23840E459A /* Sofia Pro ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E94A4AC43E49427D956 /* Sofia Pro ExtraLight.otf */; };
 		CB797BD2783CB713FB4CAEE4 /* libPods-momeMobileApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC971BD42C990ACBBFC02CC9 /* libPods-momeMobileApp.a */; };
+		E27A5B52ACC54CF790C21300 /* Sofia Pro UltraLight Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 560763FF68A44FFF9BBB9CA0 /* Sofia Pro UltraLight Italic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +60,9 @@
 		00E356EE1AD99517003FC87E /* momeMobileAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = momeMobileAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* momeMobileAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = momeMobileAppTests.m; sourceTree = "<group>"; };
+		0198834451A94B06A1EB1975 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		044B59F6AEA3A7B0D30042F4 /* Pods-momeMobileApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp.release.xcconfig"; path = "Target Support Files/Pods-momeMobileApp/Pods-momeMobileApp.release.xcconfig"; sourceTree = "<group>"; };
+		0E4AAB41B323415C90C18BAB /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		10F7A9E966D16A21202F471E /* libPods-momeMobileApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momeMobileApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* momeMobileApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = momeMobileApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = momeMobileApp/AppDelegate.h; sourceTree = "<group>"; };
@@ -52,21 +70,54 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = momeMobileApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = momeMobileApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = momeMobileApp/main.m; sourceTree = "<group>"; };
+		16CFEBC27163487AA3360365 /* Sofia Pro Medium Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Medium Italic.otf"; path = "../src/assets/fonts/Sofia Pro Medium Italic.otf"; sourceTree = "<group>"; };
+		16F37461EFA948DE8E965B34 /* Sofia Pro Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Regular.otf"; path = "../src/assets/fonts/Sofia Pro Regular.otf"; sourceTree = "<group>"; };
+		19C93A1D6A444DCC88CFFE3C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		1A289BF037B343D9ACF4D143 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		1FED8C5879FC456799FFAF0F /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		264A425C4F5383AEC95C44B6 /* libPods-momeMobileApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momeMobileApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* momeMobileApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "momeMobileApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* momeMobileApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "momeMobileApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		306A7B2106FCC2F3169F17DF /* Pods-momeMobileApp-momeMobileAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-momeMobileAppTests.release.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-momeMobileAppTests/Pods-momeMobileApp-momeMobileAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		30914951CA1E4866A6364DA5 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		33C51E4BA80043CE85AAF878 /* Sofia Pro Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Black.otf"; path = "../src/assets/fonts/Sofia Pro Black.otf"; sourceTree = "<group>"; };
 		451B7B6E82E2D794E27C07A9 /* Pods-momeMobileApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-tvOS/Pods-momeMobileApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		50B92363F721D1A1B17F6857 /* libPods-momeMobileApp-momeMobileAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momeMobileApp-momeMobileAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		560763FF68A44FFF9BBB9CA0 /* Sofia Pro UltraLight Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro UltraLight Italic.otf"; path = "../src/assets/fonts/Sofia Pro UltraLight Italic.otf"; sourceTree = "<group>"; };
+		592B421B9FC741768B2423F5 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		5ED716BBE93E4EEDA1FF13AA /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
+		61F2CBE5F996400D8B78C744 /* Sofia Pro Regular Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Regular Italic.otf"; path = "../src/assets/fonts/Sofia Pro Regular Italic.otf"; sourceTree = "<group>"; };
+		68BB102E26BC4F929634A0A7 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
+		6C1243BFE924439A9C5A3D2A /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		747C8D014F920CD7DBC1EE2F /* Pods-momeMobileApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-tvOS/Pods-momeMobileApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7C03DC488EC34B42B3447693 /* Sofia Pro Light Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Light Italic.otf"; path = "../src/assets/fonts/Sofia Pro Light Italic.otf"; sourceTree = "<group>"; };
+		803E3688975A40EFA6414602 /* Sofia Pro UltraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro UltraLight.otf"; path = "../src/assets/fonts/Sofia Pro UltraLight.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = momeMobileApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82B904AEE250B922F5460534 /* Pods-momeMobileApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp.debug.xcconfig"; path = "Target Support Files/Pods-momeMobileApp/Pods-momeMobileApp.debug.xcconfig"; sourceTree = "<group>"; };
+		840B0E94A4AC43E49427D956 /* Sofia Pro ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro ExtraLight.otf"; path = "../src/assets/fonts/Sofia Pro ExtraLight.otf"; sourceTree = "<group>"; };
+		8AB4A182ECE4493DBFAF8C5B /* Sofia Pro Bold Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Bold Italic.otf"; path = "../src/assets/fonts/Sofia Pro Bold Italic.otf"; sourceTree = "<group>"; };
+		965EA62A2B4848409F28A74E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		97BB3477ABEB41A1893FDB4C /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		9B808BD81DCC48A2790FC4EB /* Pods-momeMobileApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-tvOSTests/Pods-momeMobileApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		A351394FC0204232B55C6F39 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
+		A39763D835924F0588FBC142 /* Sofia Pro Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Light.otf"; path = "../src/assets/fonts/Sofia Pro Light.otf"; sourceTree = "<group>"; };
+		AB9AEA0E1EF14CE1BF634DB7 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		AC9E4D9EB5CC43E48FDAB28D /* Sofia Pro Semi Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Semi Bold.otf"; path = "../src/assets/fonts/Sofia Pro Semi Bold.otf"; sourceTree = "<group>"; };
+		B4D9C2B116DB479DB9241FF8 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		B6A0CBE5C3E64D5581D9A16A /* Sofia Pro Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Medium.otf"; path = "../src/assets/fonts/Sofia Pro Medium.otf"; sourceTree = "<group>"; };
+		C73656F2925E48C4ABC4541A /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		C8ACE749D42D4BCDB4966F25 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		CC971BD42C990ACBBFC02CC9 /* libPods-momeMobileApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-momeMobileApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9C4E572B706367F5284C0B /* Pods-momeMobileApp-momeMobileAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-momeMobileAppTests.debug.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-momeMobileAppTests/Pods-momeMobileApp-momeMobileAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D74161FAE02D3B22D97F8E21 /* Pods-momeMobileApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-momeMobileApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-momeMobileApp-tvOSTests/Pods-momeMobileApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6C9AD89A2F84E4884DFFEAF /* Sofia Pro ExtraLight Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro ExtraLight Italic.otf"; path = "../src/assets/fonts/Sofia Pro ExtraLight Italic.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F1A3A16CD37241F193AFDD66 /* Sofia Pro Black Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Black Italic.otf"; path = "../src/assets/fonts/Sofia Pro Black Italic.otf"; sourceTree = "<group>"; };
+		F1A6A83B69D64999A0AD35B9 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		F3D7DE759D8449CA89598023 /* Sofia Pro Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Bold.otf"; path = "../src/assets/fonts/Sofia Pro Bold.otf"; sourceTree = "<group>"; };
+		F4C068FF86AD4EF5A7BE6B47 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		F4C1CE36F1DB40FCAA2542BE /* Sofia Pro Semi Bold Italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Sofia Pro Semi Bold Italic.otf"; path = "../src/assets/fonts/Sofia Pro Semi Bold Italic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +199,6 @@
 				D74161FAE02D3B22D97F8E21 /* Pods-momeMobileApp-tvOSTests.debug.xcconfig */,
 				9B808BD81DCC48A2790FC4EB /* Pods-momeMobileApp-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +231,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				23C19A491C2536310B022190 /* Pods */,
+				8894895E13184CBE805C47BE /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -196,6 +247,48 @@
 				2D02E4901E0B4A5D006451C7 /* momeMobileApp-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8894895E13184CBE805C47BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB9AEA0E1EF14CE1BF634DB7 /* AntDesign.ttf */,
+				19C93A1D6A444DCC88CFFE3C /* Entypo.ttf */,
+				30914951CA1E4866A6364DA5 /* EvilIcons.ttf */,
+				592B421B9FC741768B2423F5 /* Feather.ttf */,
+				0198834451A94B06A1EB1975 /* FontAwesome.ttf */,
+				97BB3477ABEB41A1893FDB4C /* FontAwesome5_Brands.ttf */,
+				1FED8C5879FC456799FFAF0F /* FontAwesome5_Regular.ttf */,
+				C73656F2925E48C4ABC4541A /* FontAwesome5_Solid.ttf */,
+				6C1243BFE924439A9C5A3D2A /* Fontisto.ttf */,
+				0E4AAB41B323415C90C18BAB /* Foundation.ttf */,
+				B4D9C2B116DB479DB9241FF8 /* Ionicons.ttf */,
+				F1A6A83B69D64999A0AD35B9 /* MaterialCommunityIcons.ttf */,
+				C8ACE749D42D4BCDB4966F25 /* MaterialIcons.ttf */,
+				F4C068FF86AD4EF5A7BE6B47 /* Octicons.ttf */,
+				A351394FC0204232B55C6F39 /* Roboto_medium.ttf */,
+				68BB102E26BC4F929634A0A7 /* Roboto.ttf */,
+				5ED716BBE93E4EEDA1FF13AA /* rubicon-icon-font.ttf */,
+				1A289BF037B343D9ACF4D143 /* SimpleLineIcons.ttf */,
+				965EA62A2B4848409F28A74E /* Zocial.ttf */,
+				F1A3A16CD37241F193AFDD66 /* Sofia Pro Black Italic.otf */,
+				33C51E4BA80043CE85AAF878 /* Sofia Pro Black.otf */,
+				8AB4A182ECE4493DBFAF8C5B /* Sofia Pro Bold Italic.otf */,
+				F3D7DE759D8449CA89598023 /* Sofia Pro Bold.otf */,
+				E6C9AD89A2F84E4884DFFEAF /* Sofia Pro ExtraLight Italic.otf */,
+				840B0E94A4AC43E49427D956 /* Sofia Pro ExtraLight.otf */,
+				7C03DC488EC34B42B3447693 /* Sofia Pro Light Italic.otf */,
+				A39763D835924F0588FBC142 /* Sofia Pro Light.otf */,
+				16CFEBC27163487AA3360365 /* Sofia Pro Medium Italic.otf */,
+				B6A0CBE5C3E64D5581D9A16A /* Sofia Pro Medium.otf */,
+				61F2CBE5F996400D8B78C744 /* Sofia Pro Regular Italic.otf */,
+				16F37461EFA948DE8E965B34 /* Sofia Pro Regular.otf */,
+				F4C1CE36F1DB40FCAA2542BE /* Sofia Pro Semi Bold Italic.otf */,
+				AC9E4D9EB5CC43E48FDAB28D /* Sofia Pro Semi Bold.otf */,
+				560763FF68A44FFF9BBB9CA0 /* Sofia Pro UltraLight Italic.otf */,
+				803E3688975A40EFA6414602 /* Sofia Pro UltraLight.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +435,22 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				4F9D9CD23D034F67BE6A2203 /* Sofia Pro Black Italic.otf in Resources */,
+				5EE4E36D268E41E0938FB977 /* Sofia Pro Black.otf in Resources */,
+				2DAF1FE105DC440C8C107A47 /* Sofia Pro Bold Italic.otf in Resources */,
+				2080B19FCA7343D5A3E2FD1A /* Sofia Pro Bold.otf in Resources */,
+				5B5219F49218483E80D5C753 /* Sofia Pro ExtraLight Italic.otf in Resources */,
+				CA4E592436974F23840E459A /* Sofia Pro ExtraLight.otf in Resources */,
+				2C100BB05DAB47ABBD5416C4 /* Sofia Pro Light Italic.otf in Resources */,
+				0A887AB6F92B48FCAFC8582E /* Sofia Pro Light.otf in Resources */,
+				B5D835AC467E40E09F228C40 /* Sofia Pro Medium Italic.otf in Resources */,
+				6FB0B78E6B594AFD9A67E141 /* Sofia Pro Medium.otf in Resources */,
+				1AC8E69528884C738F9B69A5 /* Sofia Pro Regular Italic.otf in Resources */,
+				BF5C11EA598C4B2AA1152774 /* Sofia Pro Regular.otf in Resources */,
+				63ED1C8652954D09AEEF86BA /* Sofia Pro Semi Bold Italic.otf in Resources */,
+				107A46DEF6DC48808FD54EB4 /* Sofia Pro Semi Bold.otf in Resources */,
+				E27A5B52ACC54CF790C21300 /* Sofia Pro UltraLight Italic.otf in Resources */,
+				91C4652B98D04709BA89B2DF /* Sofia Pro UltraLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
