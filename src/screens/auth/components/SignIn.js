@@ -16,7 +16,7 @@ const signinSchema = Yup.object().shape({
 
 const SignInForm = (props) => {
 
-    const {navigation} = props;
+    const {navigation, customerSignin} = props;
 
     const {
         handleChange,
@@ -29,8 +29,10 @@ const SignInForm = (props) => {
     } = useFormik({
         validationSchema: signinSchema,
         initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
-        onSubmit: values =>
-            console.log(values),
+        onSubmit: values => {
+            console.log(values);
+            customerSignin(values);
+        }
     });
 
     return (

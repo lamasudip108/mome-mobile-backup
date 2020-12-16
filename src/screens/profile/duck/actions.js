@@ -1,33 +1,33 @@
 import {
-    PROFILE_FETCH_REQUEST,
-    PROFILE_FETCH_REQUEST_SUCCESS,
-    PROFILE_FETCH_REQUEST_FAILURE,
-    PROFILE_CLEAN_REQUEST,
+    CUSTOMER_PROFILE_FETCH_REQUEST,
+    CUSTOMER_PROFILE_FETCH_REQUEST_SUCCESS,
+    CUSTOMER_PROFILE_FETCH_REQUEST_FAILURE,
+    CUSTOMER_PROFILE_CLEAN_REQUEST,
 } from './types';
 
-export const profileFetchRequest = () => {
+export const customerProfileFetchRequest = () => {
     return {
-        type: PROFILE_FETCH_REQUEST,
+        type: CUSTOMER_PROFILE_FETCH_REQUEST,
     };
 };
 
-export const profileFetchRequestSuccess = (data) => {
+export const customerProfileFetchRequestSuccess = (data) => {
     return {
-        type: PROFILE_FETCH_REQUEST_SUCCESS,
+        type: CUSTOMER_PROFILE_FETCH_REQUEST_SUCCESS,
         data,
     };
 };
 
-export const profileFetchRequestFailure = (error) => {
+export const customerProfileFetchRequestFailure = (error) => {
     return {
-        type: PROFILE_FETCH_REQUEST_FAILURE,
+        type: CUSTOMER_PROFILE_FETCH_REQUEST_FAILURE,
         error,
     };
 };
 
-export const profileCleanRequest = () => {
+export const customerProfileCleanRequest = () => {
     return {
-        type: PROFILE_CLEAN_REQUEST,
+        type: CUSTOMER_PROFILE_CLEAN_REQUEST,
     };
 };
 
