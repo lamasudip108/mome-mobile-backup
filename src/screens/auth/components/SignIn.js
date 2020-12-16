@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, Button} from 'react-native';
 import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
-import {Formik, useFormik} from 'formik';
+import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 const signinSchema = Yup.object().shape({
