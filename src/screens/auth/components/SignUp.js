@@ -33,6 +33,7 @@ const SignUpForm = (props) => {
         values,
         errors,
         touched,
+        isValid,
     } = useFormik({
         validationSchema: signupSchema,
         initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
@@ -65,6 +66,9 @@ const SignUpForm = (props) => {
                     error={errors.fullName}
                     touched={touched.fullName}
                 />
+                {errors.fullName &&
+                <Text style={styles.errorText}>{errors.fullName}</Text>
+                }
 
                 <FloatingLabelInput
                     label="PHONE NUMBER"
@@ -75,6 +79,9 @@ const SignUpForm = (props) => {
                     error={errors.phone}
                     touched={touched.phone}
                 />
+                {errors.phone &&
+                <Text style={styles.errorText}>{errors.phone}</Text>
+                }
 
                 <FloatingLabelInput
                     label="EMAIL"
@@ -84,6 +91,9 @@ const SignUpForm = (props) => {
                     error={errors.email}
                     touched={touched.email}
                 />
+                {errors.email &&
+                <Text style={styles.errorText}>{errors.email}</Text>
+                }
 
                 <FloatingLabelInput
                     label="PASSWORD"
@@ -94,6 +104,9 @@ const SignUpForm = (props) => {
                     error={errors.password}
                     touched={touched.password}
                 />
+                {errors.password &&
+                <Text style={styles.errorText}>{errors.password}</Text>
+                }
 
                 <FloatingLabelInput
                     label="CONFIRM PASSWORD"
@@ -102,8 +115,11 @@ const SignUpForm = (props) => {
                     onChangeText={handleChange('confirmPassword')}
                     onBlur={handleBlur('confirmPassword')}
                 />
+                {errors.confirmPassword &&
+                <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+                }
 
-                <Button style={styles.signupBtn} title="SIGNUP" onPress={handleSubmit}/>
+                <Button style={styles.signupBtn} title="SIGNUP" onPress={handleSubmit} disabled={!isValid}/>
 
                 <View style={styles.viewLoginLink}>
                     <Text style={styles.textLogin}>Already have login?</Text>
@@ -169,6 +185,10 @@ const styles = StyleSheet.create({
         color: '#0000FF',
         fontWeight: '600',
         paddingLeft: 8,
+    },
+    errorText: {
+        fontSize: 10,
+        color: 'red',
     },
 });
 

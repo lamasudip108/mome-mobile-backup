@@ -1,21 +1,36 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, Button} from 'react-native';
 import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
-import {Formik} from 'formik';
+import {Formik, useFormik} from 'formik';
 import * as Yup from 'yup';
+
+const signinSchema = Yup.object().shape({
+    username: Yup
+        .string()
+        .required('Username is required.'),
+    password: Yup
+        .string()
+        .min(8, ({min}) => `Password must be at least ${min} characters.`)
+        .required('Password is required.'),
+});
 
 const SignInForm = (props) => {
 
     const {navigation} = props;
 
-    const validationSchema = Yup.object().shape({
-        username: Yup
-            .string()
-            .required('Username is required.'),
-        password: Yup
-            .string()
-            .min(8, ({min}) => `Password must be at least ${min} characters.`)
-            .required('Password is required.'),
+    const {
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        touched,
+        isValid,
+    } = useFormik({
+        validationSchema: signinSchema,
+        initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
+        onSubmit: values =>
+            console.log(values),
     });
 
     return (
@@ -28,54 +43,46 @@ const SignInForm = (props) => {
                 <Text style={styles.textHeading1}>Welcome to MOME</Text>
                 <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
             </View>
-            <Formik
-                validationSchema={validationSchema}
-                initialValues={{username: '', password: ''}}
-                onSubmit={values => console.log(values)}
-            >
-                {({
-                      handleChange, handleBlur, handleSubmit, values, errors,
-                      isValid,
-                  }) => (
-                    <>
-                        <FloatingLabelInput
-                            label="USERNAME"
-                            value={values.username}
-                            onChangeText={handleChange('username')}
-                            onBlur={handleBlur('username')}
-                        />
 
-                        {errors.username &&
-                        <Text style={styles.errorText}>{errors.username}</Text>
-                        }
+            <FloatingLabelInput
+                label="USERNAME"
+                value={values.username}
+                onChangeText={handleChange('username')}
+                onBlur={handleBlur('username')}
+                error={errors.username}
+                touched={touched.username}
+            />
 
-                        <FloatingLabelInput
-                            label="PASSWORD"
-                            value={values.password}
-                            isPassword={true}
-                            onChangeText={handleChange('password')}
-                            onBlur={handleBlur('password')}
-                        />
+            {errors.username &&
+            <Text style={styles.errorText}>{errors.username}</Text>
+            }
 
-                        {errors.password &&
-                        <Text style={styles.errorText}>{errors.password}</Text>
-                        }
+            <FloatingLabelInput
+                label="PASSWORD"
+                value={values.password}
+                isPassword={true}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                error={errors.password}
+                touched={touched.password}
+            />
 
-                        <Button style={styles.loginBtn} title="LOGIN" onPress={handleSubmit} disabled={!isValid}/>
+            {errors.password &&
+            <Text style={styles.errorText}>{errors.password}</Text>
+            }
 
-                        <TouchableOpacity>
-                            <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
-                        </TouchableOpacity>
+            <Button style={styles.loginBtn} title="LOGIN" onPress={handleSubmit} disabled={!isValid}/>
 
-                        <View style={styles.viewSignupLink}>
-                            <Text style={styles.textSignup}>Don’t have account?</Text>
-                            <TouchableOpacity>
-                                <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </>
-                )}
-            </Formik>
+            <TouchableOpacity>
+                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
+            </TouchableOpacity>
+
+            <View style={styles.viewSignupLink}>
+                <Text style={styles.textSignup}>Don’t have account?</Text>
+                <TouchableOpacity>
+                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -104,7 +111,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#212121',
         marginBottom: 2,
-        //fontFamily: 'Sofia Pro Bold',
     },
 
     textHeading2: {
