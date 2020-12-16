@@ -12,11 +12,11 @@ const Stack = createStackNavigator();
 const MainNavigation = () => {
 
     return (
-        <Stack.Navigator initialRouteName="Language" headerMode={'none'}>
-            <Stack.Screen name="Language" component={LanguageScreen} options={{title: 'Select Language'}}/>
+        <Stack.Navigator initialRouteName="Language">
+            <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Home'}}/>
-            <Stack.Screen name="SignIn" component={SignInScreen}/>
-            <Stack.Screen name="SignUp" component={SignUpScreen}/>
+            <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
+            <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="Profile" component={ProfileScreen}/>
         </Stack.Navigator>
     );
