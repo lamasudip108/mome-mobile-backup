@@ -1,14 +1,29 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 
+import RNBootSplash from 'react-native-bootsplash';
+
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
+import SplashScreen from '@/screens/splash';
 
-const App = () => (
-    <Provider store={store}>
+const App = () => {
+
+    useEffect(() => {
+        const init = async () => {
+            // …do multiple sync or async tasks
+        };
+
+        init().finally(async () => {
+            await RNBootSplash.hide({fade: true});
+            console.log('Bootsplash has been hidden successfully');
+        });
+    }, []);
+
+    return (<Provider store={store}>
         {/**
          * PersistGate delays the rendering of the app's UI until the persisted state has been retrieved
          * and saved to redux.
@@ -21,7 +36,8 @@ const App = () => (
                 <MainNavigation/>
             </NavigationContainer>
         </PersistGate>
-    </Provider>
-);
+    </Provider>);
+};
+
 
 export default App;
