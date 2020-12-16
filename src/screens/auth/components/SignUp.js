@@ -17,9 +17,7 @@ const signupSchema = Yup.object().shape({
         .max(10, 'Too Long!')
         .required('Password is required.'),
     confirmPassword: Yup.string()
-        .min(2, 'Too Short!')
-        .max(10, 'Too Long!')
-        .required('Confirm password is required.'),
+        .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.'),
 });
 
 const SignUpForm = (props) => {
