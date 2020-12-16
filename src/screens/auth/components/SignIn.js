@@ -1,0 +1,202 @@
+import React from 'react';
+import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, Button} from 'react-native';
+import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+
+const SignInForm = (props) => {
+
+    const {navigation} = props;
+
+    const validationSchema = Yup.object().shape({
+        username: Yup
+            .string()
+            .required('Username is required.'),
+        password: Yup
+            .string()
+            .min(8, ({min}) => `Password must be at least ${min} characters.`)
+            .required('Password is required.'),
+    });
+
+    return (
+        <View style={styles.container}>
+            <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
+
+            <StatusBar style="auto"/>
+
+            <View style={styles.viewHeading}>
+                <Text style={styles.textHeading1}>Welcome to MOME</Text>
+                <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
+            </View>
+            <Formik
+                validationSchema={validationSchema}
+                initialValues={{username: '', password: ''}}
+                onSubmit={values => console.log(values)}
+            >
+                {({
+                      handleChange, handleBlur, handleSubmit, values, errors,
+                      isValid,
+                  }) => (
+                    <>
+                        <FloatingLabelInput
+                            label="USERNAME"
+                            value={values.username}
+                            onChangeText={handleChange('username')}
+                            onBlur={handleBlur('username')}
+                        />
+
+                        {errors.username &&
+                        <Text style={styles.errorText}>{errors.username}</Text>
+                        }
+
+                        <FloatingLabelInput
+                            label="PASSWORD"
+                            value={values.password}
+                            isPassword={true}
+                            onChangeText={handleChange('password')}
+                            onBlur={handleBlur('password')}
+                        />
+
+                        {errors.password &&
+                        <Text style={styles.errorText}>{errors.password}</Text>
+                        }
+
+                        <Button style={styles.loginBtn} title="LOGIN" onPress={handleSubmit} disabled={!isValid}/>
+
+                        <TouchableOpacity>
+                            <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
+                        </TouchableOpacity>
+
+                        <View style={styles.viewSignupLink}>
+                            <Text style={styles.textSignup}>Don’t have account?</Text>
+                            <TouchableOpacity>
+                                <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </>
+                )}
+            </Formik>
+        </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#F7F9FB',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    profileImage: {
+        marginBottom: 30,
+    },
+
+    viewHeading: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        marginBottom: 45,
+    },
+
+    textHeading1: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#212121',
+        marginBottom: 2,
+        //fontFamily: 'Sofia Pro Bold',
+    },
+
+    textHeading2: {
+        fontSize: 14,
+        color: '#2B2D42',
+        width: 210,
+        textAlign: 'center',
+        lineHeight: 22,
+    },
+
+    inputView: {
+        backgroundColor: '#FFFFFF',
+        borderRadius: 30,
+        width: '70%',
+        height: 45,
+        marginBottom: 20,
+    },
+
+    TextInput: {
+        height: 50,
+        flex: 1,
+        padding: 10,
+        marginLeft: 20,
+    },
+
+    loginBtn: {
+        width: '70%',
+        borderRadius: 25,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 20,
+        backgroundColor: '#0000FF',
+    },
+
+    loginText: {
+        color: '#FFFFFF',
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+
+    forgotButton: {
+        height: 30,
+        marginBottom: 30,
+    },
+
+    viewSignupLink: {
+        flexDirection: 'row',
+        fontSize: 14,
+    },
+
+    textSignup: {
+        color: '#212121',
+    },
+
+    signupButton: {
+        color: '#0000FF',
+        fontWeight: '600',
+        paddingLeft: 8,
+    },
+    errorText: {
+        fontSize: 10,
+        color: 'red',
+    },
+});
+
+setGlobalStyles.containerStyles = {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#F2F2F2',
+    borderRadius: 30,
+    width: '70%',
+    height: 56,
+    marginBottom: 20,
+};
+
+setGlobalStyles.labelStyles = {
+    paddingHorizontal: 5,
+};
+
+setGlobalStyles.inputStyles = {
+    fontSize: 14,
+    color: '#212121',
+    paddingHorizontal: 10,
+    marginLeft: 5,
+    fontWeight: '500',
+};
+
+setGlobalStyles.customLabelStyles = {
+    colorFocused: '#BEBEBE',
+    colorBlurred: '#BEBEBE',
+    fontSizeFocused: 12,
+    marginTop: 10,
+};
+
+export default SignInForm;
