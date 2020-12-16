@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
+import {navigationRef} from '@/utils/navigationUtil';
 
 const App = () => (
     <Provider store={store}>
@@ -17,7 +18,7 @@ const App = () => (
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
         <PersistGate loading={null} persistor={persistor}>
-            <NavigationContainer>
+            <NavigationContainer ref={navigationRef}>
                 <MainNavigation/>
             </NavigationContainer>
         </PersistGate>

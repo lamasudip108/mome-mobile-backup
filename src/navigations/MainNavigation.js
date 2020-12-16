@@ -14,7 +14,7 @@ const MainNavigation = () => {
     return (
         <Stack.Navigator initialRouteName="Language">
             <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="Home" component={HomeScreen} options={{title: 'Home'}}/>
+            <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
             <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="Profile" component={ProfileScreen}/>

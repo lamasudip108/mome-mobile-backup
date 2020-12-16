@@ -5,18 +5,16 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 const signinSchema = Yup.object().shape({
-    username: Yup
-        .string()
-        .required('Username is required.'),
+    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
     password: Yup
         .string()
-        .min(8, ({min}) => `Password must be at least ${min} characters.`)
+        .min(6, ({min}) => `Password must be at least ${min} characters.`)
         .required('Password is required.'),
 });
 
 const SignInForm = (props) => {
 
-    const {navigation, customerSignin} = props;
+    const {navigation, customerSignin, auths, authLoading,  authErrors} = props;
 
     const {
         handleChange,
@@ -28,9 +26,8 @@ const SignInForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signinSchema,
-        initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
+        initialValues: {email: 'test@gmail.com', password: '123456'},
         onSubmit: values => {
-            console.log(values);
             customerSignin(values);
         }
     });
@@ -46,17 +43,21 @@ const SignInForm = (props) => {
                 <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
             </View>
 
+            {authErrors &&
+            <Text style={styles.errorText}>{authErrors.message}</Text>
+            }
+
             <FloatingLabelInput
                 label="USERNAME"
-                value={values.username}
-                onChangeText={handleChange('username')}
-                onBlur={handleBlur('username')}
-                error={errors.username}
-                touched={touched.username}
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                error={errors.email}
+                touched={touched.email}
             />
 
-            {errors.username &&
-            <Text style={styles.errorText}>{errors.username}</Text>
+            {errors.email &&
+            <Text style={styles.errorText}>{errors.email}</Text>
             }
 
             <FloatingLabelInput

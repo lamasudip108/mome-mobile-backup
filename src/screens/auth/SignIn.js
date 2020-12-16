@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import SignInForm from './components/SignIn';
@@ -8,10 +8,10 @@ const SignInScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {auth, loading, errors} = useSelector(state => state.auth);
+    const {payload, loading, errors} = useSelector(state => state.auth);
 
     /**
-     * Add branch record.
+     * Customer sign in.
      * @param {object} formData
      *
      */
@@ -22,7 +22,10 @@ const SignInScreen = (props) => {
     return (
         <SignInForm
             {...props}
-            customerSignin={this.customerSignin}
+            auths={payload}
+            authLoading={loading}
+            authErrors={errors}
+            customerSignin={customerSignin}
         />
     );
 };
