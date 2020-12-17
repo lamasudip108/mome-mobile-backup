@@ -35,8 +35,13 @@ const SignUpForm = (props) => {
     } = useFormik({
         validationSchema: signupSchema,
         initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
-        onSubmit: values =>
-            console.log(values),
+        onSubmit: values =>{
+            console.log(values);
+            navigation.navigate('Model', {
+                screen: 'Agreement',
+                params: { customer: values },
+            });
+        }
     });
 
     return (
