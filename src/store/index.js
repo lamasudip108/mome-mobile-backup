@@ -13,6 +13,7 @@ import {
 import {configureStore} from '@reduxjs/toolkit';
 
 import profileReducer from '@/screens/profile/duck';
+import authReducer from '@/screens/auth/duck';
 
 const persistConfig = {
     key: 'root',
@@ -22,6 +23,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
     profile: profileReducer,
+    auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
