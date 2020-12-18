@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {Button} from 'native-base';
 import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -43,9 +44,11 @@ const SignInForm = (props) => {
                 <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
             </View>
 
-            {authErrors &&
-            <Text style={styles.errorText}>{authErrors.message}</Text>
-            }
+            <View style={styles.errorView}>
+                {authErrors &&
+                <Text style={styles.errorText}>{authErrors.message}</Text>
+                }
+            </View>
 
             <FloatingLabelInput
                 label="USERNAME"
@@ -56,9 +59,11 @@ const SignInForm = (props) => {
                 touched={touched.email}
             />
 
-            {errors.email &&
-            <Text style={styles.errorText}>{errors.email}</Text>
-            }
+            <View style={styles.errorView}>
+                {errors.email &&
+                <Text style={styles.errorText}>{errors.email}</Text>
+                }
+            </View>
 
             <FloatingLabelInput
                 label="PASSWORD"
@@ -70,12 +75,18 @@ const SignInForm = (props) => {
                 touched={touched.password}
             />
 
-            {errors.password &&
-            <Text style={styles.errorText}>{errors.password}</Text>
-            }
+            <View style={styles.errorView}>
+                {errors.password &&
+                <Text style={styles.errorText}>{errors.password}</Text>
+                }
+            </View>
 
-            <Button style={styles.loginBtn} title="LOGIN" onPress={handleSubmit} disabled={!isValid}/>
-
+            <View style={styles.viewBtn}>
+                <Button style={styles.loginBtn} onPress={handleSubmit} disabled={!isValid}>
+                    <Text style={styles.loginText}>LOGIN</Text>
+                </Button>
+            </View>
+            
             <TouchableOpacity>
                 <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
             </TouchableOpacity>
@@ -106,7 +117,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: 50,
-        marginBottom: 45,
+        marginBottom: 40,
     },
 
     textHeading1: {
@@ -139,8 +150,14 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
 
-    loginBtn: {
+    viewBtn: {
         width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    loginBtn: {
+        width: '100%',
         borderRadius: 25,
         height: 50,
         alignItems: 'center',
@@ -174,9 +191,16 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         paddingLeft: 8,
     },
+
+    errorView: {
+        width: '70%',
+    },
+
     errorText: {
-        fontSize: 10,
+        fontSize: 14,
         color: 'red',
+        marginLeft: 15,
+        marginBottom: 15,
     },
 });
 
@@ -186,7 +210,7 @@ setGlobalStyles.containerStyles = {
     borderRadius: 30,
     width: '70%',
     height: 56,
-    marginBottom: 20,
+    marginBottom: 15,
 };
 
 setGlobalStyles.labelStyles = {
