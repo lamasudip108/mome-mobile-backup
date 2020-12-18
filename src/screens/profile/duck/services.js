@@ -1,22 +1,22 @@
 import {
-    profileFetchRequest,
-    profileFetchRequestSuccess,
-    profileFetchRequestFailure,
+    customerProfileFetchRequest,
+    customerProfileFetchRequestSuccess,
+    customerProfileFetchRequestFailure,
 } from './actions';
 
 import {fetch} from '@/utils/httpUtil';
 
 export const fetchProfileInfo = () => {
     return (dispatch) => {
-        dispatch(profileFetchRequest());
+        dispatch(customerProfileFetchRequest());
         return fetch(`client/v1/registrations/profile`)
             .then((response) => {
                 if (response.data.message === 'SUCCESS') {
-                    dispatch(profileFetchRequestSuccess(response.data.data));
+                    dispatch(customerProfileFetchRequestSuccess(response.data.data));
                 }
             })
             .catch((error) =>
-                dispatch(profileFetchRequestFailure(error.response.data)),
+                dispatch(customerProfileFetchRequestFailure(error.response.data)),
             );
     };
 };

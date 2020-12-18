@@ -8,17 +8,20 @@ import RNBootSplash from 'react-native-bootsplash';
 
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
-import SplashScreen from '@/screens/splash';
+import {navigationRef} from '@/utils/navigationUtil';
+
+let fakeApiCallWithoutBadNetwork = (ms) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
 const App = () => {
 
     useEffect(() => {
         const init = async () => {
-            // …do multiple sync or async tasks
+            await fakeApiCallWithoutBadNetwork(2000);
         };
 
         init().finally(async () => {
-            await RNBootSplash.hide({fade: true});
+            await RNBootSplash.hide();
             console.log('Bootsplash has been hidden successfully');
         });
     }, []);
@@ -32,7 +35,7 @@ const App = () => {
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
         <PersistGate loading={null} persistor={persistor}>
-            <NavigationContainer>
+            <NavigationContainer ref={navigationRef}>
                 <MainNavigation/>
             </NavigationContainer>
         </PersistGate>
