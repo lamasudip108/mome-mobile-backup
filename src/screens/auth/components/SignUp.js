@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {Button} from 'native-base';
 import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -55,6 +56,7 @@ const SignUpForm = (props) => {
                     flex: 1,
                     justifyContent: 'center',
                     width: '100%',
+                    marginTop: 20,
                 }}
             >
                 <View style={styles.viewHeading}>
@@ -69,9 +71,11 @@ const SignUpForm = (props) => {
                     error={errors.fullName}
                     touched={touched.fullName}
                 />
-                {errors.fullName &&
-                <Text style={styles.errorText}>{errors.fullName}</Text>
-                }
+                <View style={styles.errorView}>
+                    {errors.fullName &&
+                    <Text style={styles.errorText}>{errors.fullName}</Text>
+                    }
+                </View>
 
                 <FloatingLabelInput
                     label="PHONE NUMBER"
@@ -82,9 +86,11 @@ const SignUpForm = (props) => {
                     error={errors.phone}
                     touched={touched.phone}
                 />
-                {errors.phone &&
-                <Text style={styles.errorText}>{errors.phone}</Text>
-                }
+                <View style={styles.errorView}>
+                    {errors.phone &&
+                    <Text style={styles.errorText}>{errors.phone}</Text>
+                    }
+                </View>
 
                 <FloatingLabelInput
                     label="EMAIL"
@@ -94,9 +100,11 @@ const SignUpForm = (props) => {
                     error={errors.email}
                     touched={touched.email}
                 />
-                {errors.email &&
-                <Text style={styles.errorText}>{errors.email}</Text>
-                }
+                <View style={styles.errorView}>
+                    {errors.email &&
+                    <Text style={styles.errorText}>{errors.email}</Text>
+                    }
+                </View>
 
                 <FloatingLabelInput
                     label="PASSWORD"
@@ -107,9 +115,11 @@ const SignUpForm = (props) => {
                     error={errors.password}
                     touched={touched.password}
                 />
-                {errors.password &&
-                <Text style={styles.errorText}>{errors.password}</Text>
-                }
+                <View style={styles.errorView}>
+                    {errors.password &&
+                    <Text style={styles.errorText}>{errors.password}</Text>
+                    }
+                </View>
 
                 <FloatingLabelInput
                     label="CONFIRM PASSWORD"
@@ -118,11 +128,17 @@ const SignUpForm = (props) => {
                     onChangeText={handleChange('confirmPassword')}
                     onBlur={handleBlur('confirmPassword')}
                 />
-                {errors.confirmPassword &&
-                <Text style={styles.errorText}>{errors.confirmPassword}</Text>
-                }
+                <View style={styles.errorView}>
+                    {errors.confirmPassword &&
+                    <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+                    }
+                </View>
 
-                <Button style={styles.signupBtn} title="SIGNUP" onPress={handleSubmit} disabled={!isValid}/>
+                <View>
+                    <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.signupText}>SIGNUP</Text>
+                    </Button>
+                </View>
 
                 <View style={styles.viewLoginLink}>
                     <Text style={styles.textLogin}>Already have login?</Text>
@@ -158,6 +174,7 @@ const styles = StyleSheet.create({
     },
 
     signupBtn: {
+        width: '100%',
         borderRadius: 25,
         height: 56,
         alignItems: 'center',
@@ -189,9 +206,16 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         paddingLeft: 8,
     },
+    
+    errorView: {
+        width: '70%',
+    },
+
     errorText: {
-        fontSize: 10,
+        fontSize: 14,
         color: 'red',
+        marginLeft: 15,
+        marginBottom: 15,
     },
 });
 
@@ -201,7 +225,7 @@ setGlobalStyles.containerStyles = {
     borderRadius: 30,
     width: '70%',
     height: 56,
-    marginBottom: 20,
+    marginBottom: 15,
 };
 setGlobalStyles.labelStyles = {
     paddingHorizontal: 5,
