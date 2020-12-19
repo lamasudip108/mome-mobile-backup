@@ -55,7 +55,7 @@ const SignUpForm = (props) => {
                     flex: 1,
                     justifyContent: 'center',
                     width: '100%',
-                    marginTop: 20,
+                    marginTop: 40,
                 }}
             >
                 <View style={styles.viewHeading}>

@@ -17,21 +17,20 @@ const AgreementForm = (props) => {
     return (
         <View style={styles.container}>
 
+            <View style={styles.meta}>
+                <Text style={styles.title}>TERMS OF SERVICE</Text>
+                <TouchableOpacity>
+                    <Text style={styles.closeBtn} onPress={() => navigation.goBack()}>
+                        <AntIcon name="close" size={25} color="#212121"/>
+                    </Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
+
             <ScrollView
                 style={styles.scrollView}
                 contentContainerStyle={styles.contentContainer}
             >
-                <View style={styles.meta}>
-                    <Text style={styles.title}>TERMS OF SERVICE</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.closeBtn} onPress={() => navigation.goBack()}>
-                            <AntIcon name="close" size={25} color="#212121"/>
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-                <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
-
                 <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
                 <Text style={styles.paragraph}>
                     This Agreement governs your use of Apple’s services (“Services”),
@@ -87,13 +86,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     scrollView: {
         height: '20%',
         width: '85%',
-        marginTop: 60,
         marginLeft: 32,
         marginRight: 32,
         marginBottom: 0,
@@ -113,6 +109,10 @@ const styles = StyleSheet.create({
     meta: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        width: '85%',
+        marginTop: 60,
+        marginLeft: 32,
+        marginRight: 32,
     },
     name: {
         fontWeight: 'bold',
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: '#747E8F',
         marginBottom: 10,
+        marginLeft: 32,
     },
     paragraph: {
         fontSize: 14,
@@ -233,11 +234,15 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         marginVertical: 8,
     },
+    errorView: {
+        width: '70%',
+    },
     errorText: {
         fontSize: 14,
         color: 'red',
-        marginLeft: 15,
+        marginLeft: 32,
         marginBottom: 15,
+        lineHeight: 18,
     },
 });
 export default AgreementForm;
