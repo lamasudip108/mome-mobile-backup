@@ -1,21 +1,22 @@
 import * as React from 'react';
 import {Text, View, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
-import AntIcon from "react-native-vector-icons/AntDesign";
+import AntIcon from 'react-native-vector-icons/AntDesign';
 
-import {useTheme} from '@react-navigation/native';
+const AgreementForm = (props) => {
 
-const AgreementScreen = (props) => {
+    const {navigation, route, customerSignup, auths, authLoading,  authErrors} = props;
 
-    const {navigation, route} = props;
+    const handleSubmit = () => {
+        const customerData = route?.params?.customer;
+        customerSignup(customerData);
+    };
 
-    console.log("I am here", route?.params?.customer);
-
-    const {colors} = useTheme();
+    console.log("YYYYY:::", auths);
 
     return (
         <View style={styles.container}>
-            
+
             <ScrollView
                 style={styles.scrollView}
                 contentContainerStyle={styles.contentContainer}
@@ -24,7 +25,7 @@ const AgreementScreen = (props) => {
                     <Text style={styles.title}>TERMS OF SERVICE</Text>
                     <TouchableOpacity>
                         <Text style={styles.closeBtn} onPress={() => navigation.goBack()}>
-                          <AntIcon name="close" size={25} color="#212121" />
+                            <AntIcon name="close" size={25} color="#212121"/>
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -33,27 +34,37 @@ const AgreementScreen = (props) => {
 
                 <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
                 <Text style={styles.paragraph}>
-                    This Agreement governs your use of Apple’s services (“Services”), 
-                    through which you can buy, get, license, rent or subscribe to content, 
-                    Apps (as defined below), and other in-app services (collectively, “Content”). 
-                    ontent may be offered through the Services by Apple or a third party. 
-                    Our Services are available for your use in your country or territory of residence (“Home Country”). 
-                    By creating an account for use of the Services in a particular country or territory you are specifying it as your Home Country. 
-                    To use our Services, you need compatible hardware, software (latest version recommended and sometimes required) and Internet access (fees may apply).
+                    This Agreement governs your use of Apple’s services (“Services”),
+                    through which you can buy, get, license, rent or subscribe to content,
+                    Apps (as defined below), and other in-app services (collectively, “Content”).
+                    ontent may be offered through the Services by Apple or a third party.
+                    Our Services are available for your use in your country or territory of residence (“Home Country”).
+                    By creating an account for use of the Services in a particular country or territory you are
+                    specifying it as your Home Country.
+                    To use our Services, you need compatible hardware, software (latest version recommended and
+                    sometimes required) and Internet access (fees may apply).
                 </Text>
                 <Text style={styles.headingTitle}>B. USING OUR SERVICES </Text>
                 <Text style={styles.headingSubTitle}>PAYMENTS, TAXES, AND REFUNDS </Text>
                 <Text style={styles.paragraph}>
-                    This Agreement governs your use of Apple’s services (“Services”), 
-                    through which you can buy, get, license, rent or subscribe to content, 
-                    Apps (as defined below), and other in-app services (collectively, “Content”). 
-                    ontent may be offered through the Services by Apple or a third party. 
-                    Our Services are available for your use in your country or territory of residence (“Home Country”). 
-                    By creating an account for use of the Services in a particular country or territory you are specifying it as your Home Country. 
-                    To use our Services, you need compatible hardware, software (latest version recommended and sometimes required) and Internet access (fees may apply).
+                    This Agreement governs your use of Apple’s services (“Services”),
+                    through which you can buy, get, license, rent or subscribe to content,
+                    Apps (as defined below), and other in-app services (collectively, “Content”).
+                    ontent may be offered through the Services by Apple or a third party.
+                    Our Services are available for your use in your country or territory of residence (“Home Country”).
+                    By creating an account for use of the Services in a particular country or territory you are
+                    specifying it as your Home Country.
+                    To use our Services, you need compatible hardware, software (latest version recommended and
+                    sometimes required) and Internet access (fees may apply).
                 </Text>
-                
+
             </ScrollView>
+            <View style={styles.errorView}>
+                {authErrors &&
+                <Text style={styles.errorText}>{authErrors.message}</Text>
+                }
+            </View>
+
             <View style={styles.termsBottom}>
                 <View style={styles.checkBtn}>
                     <CheckBox style={styles.checkBox} checked={true}/>
@@ -63,7 +74,7 @@ const AgreementScreen = (props) => {
                     <Button style={styles.cancelBtn} onPress={() => navigation.goBack()}>
                         <Text style={styles.cancelText}>CANCEL</Text>
                     </Button>
-                    <Button style={styles.acceptBtn} onPress={() => navigation.goBack()}>
+                    <Button style={styles.acceptBtn} onPress={() => handleSubmit()}>
                         <Text style={styles.acceptText}>ACCEPT</Text>
                     </Button>
                 </View>
@@ -117,20 +128,20 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 18,
         marginVertical: 8,
-        color: "#212121",
+        color: '#212121',
     },
     headingTitle: {
         fontWeight: '600',
         fontSize: 14,
         marginVertical: 10,
-        color: "#0000FF",
+        color: '#0000FF',
     },
     headingSubTitle: {
         fontSize: 12,
         color: '#2B2D42',
     },
     colors: {
-        color: "#212121",
+        color: '#212121',
     },
     timestamp: {
         fontSize: 12,
@@ -152,13 +163,13 @@ const styles = StyleSheet.create({
         paddingRight: 22,
         paddingBottom: 30,
         shadowColor: '#00000029',
-        shadowOffset: { width: 0, height: 1 },
+        shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.8,
-        shadowRadius: 10,  
+        shadowRadius: 10,
         elevation: 5,
     },
     checkBtn: {
-       flexDirection: 'row',
+        flexDirection: 'row',
     },
     checkBox: {
         borderRadius: 5,
@@ -189,8 +200,8 @@ const styles = StyleSheet.create({
     cancelBtn: {
         width: '50%',
         borderRadius: 25,
-        borderColor:'#0000FF',
-        borderWidth: 2, 
+        borderColor: '#0000FF',
+        borderWidth: 2,
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
@@ -222,5 +233,11 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         marginVertical: 8,
     },
+    errorText: {
+        fontSize: 14,
+        color: 'red',
+        marginLeft: 15,
+        marginBottom: 15,
+    },
 });
-export default AgreementScreen;
+export default AgreementForm;

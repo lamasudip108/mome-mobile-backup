@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import AgreementScreen from '@/screens/agreement';
+import AgreementScreen from '@/screens/auth/Agreement';
 
 const Stack = createStackNavigator();
 

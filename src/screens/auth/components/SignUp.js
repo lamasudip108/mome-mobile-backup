@@ -35,9 +35,8 @@ const SignUpForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signupSchema,
-        initialValues: {fullName: '', phone: '', email: '', password: '', confirmPassword: ''},
+        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: '', status: 'invited'},
         onSubmit: values =>{
-            console.log(values);
             navigation.navigate('Model', {
                 screen: 'Agreement',
                 params: { customer: values },
@@ -64,16 +63,30 @@ const SignUpForm = (props) => {
                 </View>
 
                 <FloatingLabelInput
-                    label="FULLNAME"
-                    value={values.fullName}
-                    onChangeText={handleChange('fullName')}
-                    onBlur={handleBlur('fullName')}
-                    error={errors.fullName}
-                    touched={touched.fullName}
+                    label="FIRST NAME"
+                    value={values.first_name}
+                    onChangeText={handleChange('first_name')}
+                    onBlur={handleBlur('first_name')}
+                    error={errors.first_name}
+                    touched={touched.first_name}
                 />
                 <View style={styles.errorView}>
-                    {errors.fullName &&
-                    <Text style={styles.errorText}>{errors.fullName}</Text>
+                    {errors.first_name &&
+                    <Text style={styles.errorText}>{errors.first_name}</Text>
+                    }
+                </View>
+
+                <FloatingLabelInput
+                    label="LAST NAME"
+                    value={values.last_name}
+                    onChangeText={handleChange('last_name')}
+                    onBlur={handleBlur('last_name')}
+                    error={errors.last_name}
+                    touched={touched.last_name}
+                />
+                <View style={styles.errorView}>
+                    {errors.last_name &&
+                    <Text style={styles.errorText}>{errors.last_name}</Text>
                     }
                 </View>
 
@@ -206,7 +219,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         paddingLeft: 8,
     },
-    
+
     errorView: {
         width: '70%',
     },

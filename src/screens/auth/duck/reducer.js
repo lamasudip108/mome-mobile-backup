@@ -3,6 +3,10 @@ import {
     CUSTOMER_SIGNIN_REQUEST_SUCCESS,
     CUSTOMER_SIGNIN_REQUEST_FAILURE,
     CUSTOMER_SIGNIN_CLEAN_REQUEST,
+    CUSTOMER_SIGNUP_REQUEST,
+    CUSTOMER_SIGNUP_REQUEST_SUCCESS,
+    CUSTOMER_SIGNUP_REQUEST_FAILURE,
+    CUSTOMER_SIGNUP_CLEAN_REQUEST,
 } from './types';
 
 const INITIAL_STATE = {
@@ -19,11 +23,13 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case CUSTOMER_SIGNIN_REQUEST:
+        case CUSTOMER_SIGNUP_REQUEST:
             return Object.assign({}, state, {
                 loading: true,
             });
 
         case CUSTOMER_SIGNIN_REQUEST_SUCCESS:
+        case CUSTOMER_SIGNUP_REQUEST_SUCCESS:
             return Object.assign({}, state, {
                 loading: false,
                 payload: action.data,
@@ -31,12 +37,14 @@ const reducer = (state, action) => {
             });
 
         case CUSTOMER_SIGNIN_REQUEST_FAILURE:
+        case CUSTOMER_SIGNUP_REQUEST_FAILURE:
             return Object.assign({}, state, {
                 loading: false,
                 errors: action.error,
             });
 
         case CUSTOMER_SIGNIN_CLEAN_REQUEST:
+        case CUSTOMER_SIGNUP_CLEAN_REQUEST:
             return Object.assign({}, state, {
                 loading: false,
                 payload: [],
