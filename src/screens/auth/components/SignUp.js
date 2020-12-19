@@ -6,9 +6,12 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 const signupSchema = Yup.object().shape({
-    fullName: Yup
+    first_name: Yup
         .string()
-        .required('Name is required.'),
+        .required('First name is required.'),
+    last_name: Yup
+        .string()
+        .required('Last name is required.'),
     phone: Yup
         .string()
         .required('Phone is required.'),
