@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
-import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+
+import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const signupSchema = Yup.object().shape({
     first_name: Yup
@@ -17,11 +18,12 @@ const signupSchema = Yup.object().shape({
         .required('Phone is required.'),
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
     password: Yup.string()
-        .min(2, 'Too Short!')
+        .min(6, 'Too Short!')
         .max(10, 'Too Long!')
         .required('Password is required.'),
     confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.'),
+        .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
+        .required('Confirm Password is required.'),
 });
 
 const SignUpForm = (props) => {
@@ -52,20 +54,21 @@ const SignUpForm = (props) => {
 
             <StatusBar style="auto"/>
 
+            <View style={styles.viewHeading}>
+                <Text style={styles.textHeading1}>Create new account</Text>
+            </View>
+
             <ScrollView
                 keyboardShouldPersistTaps="handled"
                 contentContainerStyle={{
                     flex: 1,
-                    justifyContent: 'center',
                     width: '100%',
-                    marginTop: 40,
+                    height: '20%',
+                    paddingBottom: 50,
                 }}
             >
-                <View style={styles.viewHeading}>
-                    <Text style={styles.textHeading1}>Create new account</Text>
-                </View>
 
-                <FloatingLabelInput
+                <FloatingLabelInput 
                     label="FIRST NAME"
                     value={values.first_name}
                     onChangeText={handleChange('first_name')}
@@ -73,11 +76,6 @@ const SignUpForm = (props) => {
                     error={errors.first_name}
                     touched={touched.first_name}
                 />
-                <View style={styles.errorView}>
-                    {errors.first_name &&
-                    <Text style={styles.errorText}>{errors.first_name}</Text>
-                    }
-                </View>
 
                 <FloatingLabelInput
                     label="LAST NAME"
@@ -87,11 +85,6 @@ const SignUpForm = (props) => {
                     error={errors.last_name}
                     touched={touched.last_name}
                 />
-                <View style={styles.errorView}>
-                    {errors.last_name &&
-                    <Text style={styles.errorText}>{errors.last_name}</Text>
-                    }
-                </View>
 
                 <FloatingLabelInput
                     label="PHONE NUMBER"
@@ -102,11 +95,6 @@ const SignUpForm = (props) => {
                     error={errors.phone}
                     touched={touched.phone}
                 />
-                <View style={styles.errorView}>
-                    {errors.phone &&
-                    <Text style={styles.errorText}>{errors.phone}</Text>
-                    }
-                </View>
 
                 <FloatingLabelInput
                     label="EMAIL"
@@ -116,11 +104,6 @@ const SignUpForm = (props) => {
                     error={errors.email}
                     touched={touched.email}
                 />
-                <View style={styles.errorView}>
-                    {errors.email &&
-                    <Text style={styles.errorText}>{errors.email}</Text>
-                    }
-                </View>
 
                 <FloatingLabelInput
                     label="PASSWORD"
@@ -131,11 +114,6 @@ const SignUpForm = (props) => {
                     error={errors.password}
                     touched={touched.password}
                 />
-                <View style={styles.errorView}>
-                    {errors.password &&
-                    <Text style={styles.errorText}>{errors.password}</Text>
-                    }
-                </View>
 
                 <FloatingLabelInput
                     label="CONFIRM PASSWORD"
@@ -143,26 +121,21 @@ const SignUpForm = (props) => {
                     isPassword={true}
                     onChangeText={handleChange('confirmPassword')}
                     onBlur={handleBlur('confirmPassword')}
+                    error={errors.confirmPassword}
                 />
-                <View style={styles.errorView}>
-                    {errors.confirmPassword &&
-                    <Text style={styles.errorText}>{errors.confirmPassword}</Text>
-                    }
-                </View>
 
                 <View>
                     <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
                         <Text style={styles.signupText}>SIGNUP</Text>
                     </Button>
                 </View>
-
-                <View style={styles.viewLoginLink}>
-                    <Text style={styles.textLogin}>Already have login?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
-                    </TouchableOpacity>
-                </View>
             </ScrollView>
+            <View style={styles.viewLoginLink}>
+                <Text style={styles.textLogin}>Already have login?</Text>
+                <TouchableOpacity>
+                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     );
@@ -177,8 +150,8 @@ const styles = StyleSheet.create({
     },
 
     viewHeading: {
+        marginTop: 120,
         height: 50,
-        marginBottom: 10,
         width: '70%',
     },
 
@@ -195,7 +168,6 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
         backgroundColor: '#0000FF',
     },
 
@@ -209,6 +181,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         fontSize: 14,
         marginTop: 108,
+        marginBottom: 108,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -234,33 +207,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
 });
-
-setGlobalStyles.containerStyles = {
-    backgroundColor: '#FFFFFF',
-    borderColor: '#F2F2F2',
-    borderRadius: 30,
-    width: '70%',
-    height: 56,
-    marginBottom: 15,
-};
-setGlobalStyles.labelStyles = {
-    paddingHorizontal: 5,
-};
-
-setGlobalStyles.inputStyles = {
-    fontSize: 14,
-    color: '#212121',
-    paddingHorizontal: 10,
-    marginLeft: 5,
-    fontWeight: '500',
-};
-
-setGlobalStyles.customLabelStyles = {
-    colorFocused: '#BEBEBE',
-    colorBlurred: '#BEBEBE',
-    fontSizeFocused: 12,
-    marginTop: 10,
-};
 
 
 export default SignUpForm;

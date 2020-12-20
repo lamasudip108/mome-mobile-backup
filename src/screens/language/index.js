@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7F9FB',
         alignItems: 'center',
-        paddingTop: 200,
+        paddingTop: 150,
     },
 
     viewHeading: {
         height: 50,
         marginBottom: 10,
-        width: '70%',
+        width: '80%',
     },
 
     textHeading1: {
@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
 
     language: {
         flexDirection: 'row',
-        width: '70%',
+        width: '80%',
+        paddingRight: 10,
     },
 
     langBtnPassive: {
