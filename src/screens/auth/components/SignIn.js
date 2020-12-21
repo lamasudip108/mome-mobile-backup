@@ -1,9 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
-import {FloatingLabelInput, setGlobalStyles} from 'react-native-floating-label-input';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+
+import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const signinSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
@@ -59,12 +61,6 @@ const SignInForm = (props) => {
                 touched={touched.email}
             />
 
-            <View style={styles.errorView}>
-                {errors.email &&
-                <Text style={styles.errorText}>{errors.email}</Text>
-                }
-            </View>
-
             <FloatingLabelInput
                 label="PASSWORD"
                 value={values.password}
@@ -73,13 +69,9 @@ const SignInForm = (props) => {
                 onBlur={handleBlur('password')}
                 error={errors.password}
                 touched={touched.password}
+                customShowPasswordComponent={<Ionicons style={{ paddingRight: 15}} name="eye-off-outline" size={25} color="#212121" />}
+                customHidePasswordComponent={<Ionicons style={{ paddingRight: 15}} name="eye-outline" size={25} color="#212121" />}
             />
-
-            <View style={styles.errorView}>
-                {errors.password &&
-                <Text style={styles.errorText}>{errors.password}</Text>
-                }
-            </View>
 
             <View style={styles.viewBtn}>
                 <Button style={styles.loginBtn} onPress={handleSubmit} disabled={!isValid}>
@@ -204,32 +196,5 @@ const styles = StyleSheet.create({
     },
 });
 
-setGlobalStyles.containerStyles = {
-    backgroundColor: '#FFFFFF',
-    borderColor: '#F2F2F2',
-    borderRadius: 30,
-    width: '70%',
-    height: 56,
-    marginBottom: 15,
-};
-
-setGlobalStyles.labelStyles = {
-    paddingHorizontal: 5,
-};
-
-setGlobalStyles.inputStyles = {
-    fontSize: 14,
-    color: '#212121',
-    paddingHorizontal: 10,
-    marginLeft: 5,
-    fontWeight: '500',
-};
-
-setGlobalStyles.customLabelStyles = {
-    colorFocused: '#BEBEBE',
-    colorBlurred: '#BEBEBE',
-    fontSizeFocused: 12,
-    marginTop: 10,
-};
 
 export default SignInForm;
