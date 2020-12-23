@@ -10,9 +10,9 @@ const ProfileScreen = (props) => {
 
     const {profile, loading, errors} = useSelector(state => state.profile);
 
-    useEffect(() => {
-        dispatch(profileServices.fetchProfileInfo());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(profileServices.fetchProfileInfo());
+    // }, [dispatch]);
 
     return (
         <ProfileForm

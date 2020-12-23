@@ -17,7 +17,7 @@ const App = () => {
 
     useEffect(() => {
         const init = async () => {
-            await fakeApiCallWithoutBadNetwork(2000);
+           // await fakeApiCallWithoutBadNetwork(2000);
         };
 
         init().finally(async () => {
