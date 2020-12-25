@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, StatusBar, TouchableOpacity} from 'react-native';
 import AntIcon from "react-native-vector-icons/AntDesign";
 
 const LanguageScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            
+            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Select Language</Text>
             </View>
@@ -18,11 +18,11 @@ const LanguageScreen = ({navigation}) => {
 
                 <View style={{marginLeft:10}}></View>
 
-                <TouchableOpacity style={styles.langBtnActive}>
+                <TouchableOpacity style={styles.langBtnActive} onPress={() => navigation.navigate('SignIn')}>
                     <Text style={styles.checkCircle}>
                       <AntIcon name="checkcircle" size={25} color="#0000FF" />
                     </Text>
-                    <Text style={styles.langText} onPress={() => navigation.navigate('SignIn')}>EN</Text>
+                    <Text style={styles.langText}>EN</Text>
                 </TouchableOpacity>
             </View>
             
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7F9FB',
         alignItems: 'center',
-        paddingTop: 150,
+        paddingTop: Platform.OS === 'ios' ? 120 : 60,
     },
 
     viewHeading: {

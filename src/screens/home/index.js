@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
 const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-
+        	<StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
             <View style={styles.topContent}>
             	<View style={styles.topContentLeft}>
             		<View style={styles.topContentLeftCol}>
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         //width: '85%',
-        marginTop: 90,
+        marginTop: Platform.OS === 'ios' ? 90 : 50,
         marginLeft: 32,
         marginRight: 32,
     },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     	
     },
     topContentLeftCol: {
-    	marginBottom: 30,
+    	marginBottom: Platform.OS === 'ios' ? 30 : 20,
     },
     name: {
         fontWeight: 'bold',
@@ -133,8 +133,9 @@ const styles = StyleSheet.create({
     	borderColor: '#F7F9FB', 
     	borderWidth: 1,
     	padding: 32,
+    	paddingTop: 20, 
     	height: '100%',
-    	marginTop: 10,
+    	marginTop: Platform.OS === 'ios' ? 10 : 0,
     },
     middleContentText: {
     	fontSize: 10, 
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
         paddingBottom: 25,
     },
     referEarn: {
-    	paddingTop: 30,
+    	paddingTop: Platform.OS === 'ios' ? 30 : 20,
     	paddingBottom: 15,
     },
     referEarnImage: {

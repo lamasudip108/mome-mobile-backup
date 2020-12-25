@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -53,21 +53,12 @@ const SignUpForm = (props) => {
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
-
+            
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Create new account</Text>
             </View>
 
-            <ScrollView
-                keyboardShouldPersistTaps="handled"
-                contentContainerStyle={{
-                    flex: 1,
-                    width: '100%',
-                    height: '20%',
-                    paddingBottom: 50,
-                }}
-            >
-
+            
                 <FloatingLabelInput 
                     label="FIRST NAME"
                     value={values.first_name}
@@ -124,18 +115,19 @@ const SignUpForm = (props) => {
                     error={errors.confirmPassword}
                 />
 
-                <View>
+                <View style={styles.viewBtn}>
                     <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
                         <Text style={styles.signupText}>SIGNUP</Text>
                     </Button>
                 </View>
-            </ScrollView>
-            <View style={styles.viewLoginLink}>
-                <Text style={styles.textLogin}>Already have login?</Text>
-                <TouchableOpacity>
-                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
-                </TouchableOpacity>
-            </View>
+
+                <View style={styles.viewLoginLink}>
+                    <Text style={styles.textLogin}>Already have login?</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                    </TouchableOpacity>
+                </View>
+            
 
         </View>
     );
@@ -150,9 +142,9 @@ const styles = StyleSheet.create({
     },
 
     viewHeading: {
-        marginTop: 120,
-        height: 50,
+        marginTop: Platform.OS === 'ios' ? 22 : 62,
         width: '70%',
+        paddingBottom: 10,
     },
 
     textHeading1: {
@@ -160,6 +152,13 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: '#212121',
         marginBottom: 2,
+        lineHeight: 36,
+    },
+
+    viewBtn: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     signupBtn: {
@@ -180,8 +179,8 @@ const styles = StyleSheet.create({
     viewLoginLink: {
         flexDirection: 'row',
         fontSize: 14,
-        marginTop: 108,
-        marginBottom: 108,
+        paddingTop: 50,
+        paddingBottom: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },

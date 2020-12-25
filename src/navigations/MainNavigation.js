@@ -51,7 +51,7 @@ const MainNavigation = () => {
 
 
     return (
-        <Stack.Navigator initialRouteName="Language">
+        <Stack.Navigator initialRouteName="Language" screenOptions={{headerTitleAlign: 'center'}}>
             <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
             <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
