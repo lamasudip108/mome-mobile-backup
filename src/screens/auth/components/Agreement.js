@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
@@ -16,7 +16,7 @@ const AgreementForm = (props) => {
 
     return (
         <View style={styles.container}>
-
+            <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF"/>
             <View style={styles.meta}>
                 <Text style={styles.title}>TERMS OF SERVICE</Text>
                 <TouchableOpacity>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '85%',
-        marginTop: 60,
+        marginTop: Platform.OS === 'ios' ? 50 : 10,
         marginLeft: 32,
         marginRight: 32,
     },
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         paddingLeft: 22,
         paddingRight: 22,
-        paddingBottom: 30,
+        paddingBottom: 20,
         shadowColor: '#00000029',
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.8,
@@ -175,9 +175,9 @@ const styles = StyleSheet.create({
     checkBox: {
         borderRadius: 5,
         borderColor: '#0000FF',
-        height: 30,
-        padding: 5,
-        width: 30,
+        height: Platform.OS === 'ios' ? 30 : 24,
+        padding: Platform.OS === 'ios' ? 5 : 2,
+        width: Platform.OS === 'ios' ? 30 : 24,
         backgroundColor: '#0000FF',
         color: '#FFFFFF',
         marginRight: 15,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft: 12,
         marginRight: 20,
-        marginBottom: 30,
+        marginBottom: 5,
         flexDirection: 'row',
         paddingTop: 5,
         paddingBottom: 5,
@@ -206,7 +206,6 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
         backgroundColor: '#FFFFFF',
         marginRight: 5,
     },
@@ -216,7 +215,6 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
         backgroundColor: '#0000FF',
         marginLeft: 5,
     },

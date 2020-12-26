@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -68,7 +68,7 @@ const MyTransactionForm = ({navigation}) => {
 	            <View style={{ paddingTop:5 }}>
 					<Text style={styles.middleContentText}>YESTERDAY</Text>
 					<View style={styles.transactionsList}>
-						<ScrollView style={{ height: 200 }}>
+						<ScrollView style={{ height: Platform.OS === 'ios' ? 200 : 150 }}>
 		            		<View style={styles.transactionsItem}>
 		            			<View style={styles.circleTransactionsItem}>
 		            				<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
@@ -110,14 +110,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         //width: '85%',
-        marginTop: 90,
+        marginTop: Platform.OS === 'ios' ? 90 : 40,
         marginLeft: 32,
         marginRight: 32,
     },
     transactionsSummary: {
         flexDirection: 'row',
         paddingTop: 44,
-        paddingBottom: 23,
+        paddingBottom: 0,
         marginRight: 10,
         paddingRight: 32,
     },
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         height: 152,
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 20,
+        marginBottom: 15,
         backgroundColor: '#FFFFFF',
         borderColor: '#FFFFFF',
         borderWidth: 1,
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     	borderColor: '#F7F9FB', 
     	borderWidth: 1,
     	padding: 32,
+        paddingTop: 20,
     	height: '100%',
     	marginTop: 10,
     },

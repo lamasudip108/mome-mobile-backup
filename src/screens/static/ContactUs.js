@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -30,7 +30,7 @@ const ContactUsScreen = ({navigation}) => {
 
                 <View style={styles.middleContentAbout}>
             	   <Text style={styles.aboutTitle}>About Us</Text>
-                   <ScrollView style={{ height: 260 }}>
+                   <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
                        <Text style={styles.aboutContent}>
                         is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, 
@@ -71,11 +71,11 @@ const styles = StyleSheet.create({
     topContent: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 90,
+        marginTop: Platform.OS === 'ios' ? 90 : 50,
         marginLeft: 32,
         marginRight: 32,
         paddingTop: 40,
-        paddingBottom: 100,
+        paddingBottom: Platform.OS === 'ios' ? 100 : 80,
     },
     momeLogo: {
         width: 100,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     middleContentAbout: {
-        paddingTop: 50,
+        paddingTop:  50,
         paddingBottom: 15,
     },
     aboutTitle: {
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     bottomContent: {
         height: '100%',
         backgroundColor: '#F7F9FB',
-        paddingTop: 20,
+        paddingTop: Platform.OS === 'ios' ? 20 : 10,
         paddingBottom: 0,
         paddingLeft: 32,
         paddingRight: 32,
