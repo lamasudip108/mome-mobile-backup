@@ -41,9 +41,9 @@ const MainNavigation = () => {
             case 'Home':
                 return '';
             case 'Profile':
-                return 'My Profile';
+                return 'Profile';
             case 'Setting':
-                return 'My Settings';
+                return '';
             default:
                 return '';
         }
