@@ -76,10 +76,34 @@ const MainNavigation = () => {
 
 
     return (
-        <Stack.Navigator initialRouteName="Language" screenOptions={({route})=>({headerTitleAlign: 'center', headerTintColor: headerTintColor(route),})}>
-            <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
-            <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
+        <Stack.Navigator initialRouteName="Language" screenOptions={({route}) => ({
+            headerTitleAlign: 'center',
+            headerTintColor: headerTintColor(route),
+        })}>
+            <Stack.Screen name="Language" component={LanguageScreen} options={{
+                headerShown: false,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
+            <Stack.Screen name="SignIn" component={SignInScreen} options={({route, navigation}) => ({
+                headerTitle: '',
+                headerTransparent: true,
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        onPress={() => {
+                            navigation.replace('Language');
+                        }}
+                    />),
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            })}/>
+            <Stack.Screen name="SignUp" component={SignUpScreen} options={{
+                headerTitle: '',
+                headerTransparent: true,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
             <Stack.Screen name="Model" component={ModelNavigation} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={BottomTabNavigation} options={({route, navigation}) => ({
                 headerShown: isHeaderShown(route),
@@ -97,8 +121,16 @@ const MainNavigation = () => {
                 ...TransitionPresets.SlideFromRightIOS,
                 gestureDirection: 'horizontal-inverted',
             })}/>
-            <Stack.Screen name="EditProfile" component={EditProfileScreen} options={{headerTitle: '', headerTransparent: true}} />
-            <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{headerTitle: '', headerTransparent: true}} />
+            <Stack.Screen name="EditProfile" component={EditProfileScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
+            <Stack.Screen name="ChangePassword" component={ChangePasswordScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
             <Stack.Screen name="MyBanks" component={MyBanksScreen}
                           options={{
                               title: 'My Banks',
@@ -110,7 +142,8 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="AddBank" component={AddBankScreen} options={{headerTitle: '', headerTransparent: true}} />
+            <Stack.Screen name="AddBank" component={AddBankScreen}
+                          options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="MyTransaction" component={MyTransactionScreen}
                           options={{
                               title: 'All Transactions',
@@ -133,9 +166,13 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="HowItWorks" component={HowItWorksScreen} options={{headerTitle: '', headerTransparent: true}} />
-            <Stack.Screen name="TermsConditions" component={TermsConditionsScreen} options={{headerShown: false}} />
-                          
+            <Stack.Screen name="HowItWorks" component={HowItWorksScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
+            <Stack.Screen name="TermsConditions" component={TermsConditionsScreen} options={{headerShown: false}}/>
+
         </Stack.Navigator>
     );
 };

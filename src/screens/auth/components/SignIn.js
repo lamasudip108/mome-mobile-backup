@@ -4,6 +4,7 @@ import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
@@ -17,7 +18,7 @@ const signinSchema = Yup.object().shape({
 
 const SignInForm = (props) => {
 
-    const {navigation, customerSignin, auths, authLoading,  authErrors} = props;
+    const {navigation, customerSignin, auths, authLoading, authErrors} = props;
 
     const {
         handleChange,
@@ -32,7 +33,7 @@ const SignInForm = (props) => {
         initialValues: {email: 'customer@gmail.com', password: '123456'},
         onSubmit: values => {
             customerSignin(values);
-        }
+        },
     });
 
     return (
@@ -42,8 +43,8 @@ const SignInForm = (props) => {
             <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
             <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Welcome to MOME</Text>
-                <Text style={styles.textHeading2}>Hassle free payment for your shopping.</Text>
+                <Text style={styles.textHeading1}>{i18n.t('welcome')}</Text>
+                <Text style={styles.textHeading2}>{i18n.t('message')}</Text>
             </View>
 
             <View style={styles.errorView}>
@@ -69,8 +70,10 @@ const SignInForm = (props) => {
                 onBlur={handleBlur('password')}
                 error={errors.password}
                 touched={touched.password}
-                customShowPasswordComponent={<Ionicons style={{ paddingRight: 15}} name="eye-off-outline" size={25} color="#212121" />}
-                customHidePasswordComponent={<Ionicons style={{ paddingRight: 15}} name="eye-outline" size={25} color="#212121" />}
+                customShowPasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-off-outline" size={25}
+                                                       color="#212121"/>}
+                customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
+                                                       color="#212121"/>}
             />
 
             <View style={styles.viewBtn}>
@@ -78,7 +81,7 @@ const SignInForm = (props) => {
                     <Text style={styles.loginText}>LOGIN</Text>
                 </Button>
             </View>
-            
+
             <TouchableOpacity>
                 <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
             </TouchableOpacity>

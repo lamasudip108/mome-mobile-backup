@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 
-import com.zoontek.rnbootsplash.RNBootSplash;
+import com.facebook.react.modules.i18nmanager.I18nUtil;
 
 public class MainActivity extends ReactActivity {
 
@@ -20,6 +20,8 @@ public class MainActivity extends ReactActivity {
   @Override
     protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      RNBootSplash.init(R.drawable.bootsplash, MainActivity.this);
+
+       I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+       sharedI18nUtilInstance.allowRTL(getApplicationContext(), true);
     }
 }
