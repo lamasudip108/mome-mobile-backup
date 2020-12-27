@@ -46,7 +46,7 @@ const BottomTabNavigation = () => {
                             backgroundColor: '#0000FF',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            bottom: Platform.OS === 'ios' ? 10 : 20,
+                            bottom: Platform.OS === 'ios' ? 10 : 18,
                         }}>
                         <MaterialCommunityIcons name="qrcode-scan" color={'#FFFFFF'} size={focused ? 50 : size} />
                         </View>
