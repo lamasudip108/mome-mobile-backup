@@ -2,6 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Platform, View} from 'react-native';
 
 import HomeScreen from '@/screens/home';
 import SettingScreen from '@/screens/setting';
@@ -38,13 +39,17 @@ const BottomTabNavigation = () => {
                 options={({route}) => ({
                     tabBarLabel: 'QRCode',
                     tabBarIcon: ({color, size, focused}) => (
-                        <MaterialCommunityIcons name="qrcode-scan" color={'#FFFFFF'} size={focused ? 50 : size} style={{
-                            borderRadius: 60,
+                        <View style={{
+                            borderColor: '#0000FF',
+                            borderWidth: 5,
+                            borderRadius: 30,
                             backgroundColor: '#0000FF',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            bottom: 20,
-                        }}/>
+                            bottom: Platform.OS === 'ios' ? 10 : 18,
+                        }}>
+                        <MaterialCommunityIcons name="qrcode-scan" color={'#FFFFFF'} size={focused ? 50 : size} />
+                        </View>
                     ),
                     tabBarVisible: true,
                 })}/>

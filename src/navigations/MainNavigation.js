@@ -12,8 +12,14 @@ import ModelNavigation from '@/navigations/ModelNavigation';
 import LanguageScreen from '@/screens/language';
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
+import EditProfileScreen from '@/screens/profile/EditProfile';
+import MyBanksScreen from '@/screens/profile/MyBanks';
+import AddBankScreen from '@/screens/profile/AddBank';
 import MyTransactionScreen from '@/screens/profile/MyTransaction';
 import ContactUsScreen from '@/screens/static/ContactUs';
+import HowItWorksScreen from '@/screens/static/HowItWorks';
+import TermsConditionsScreen from '@/screens/static/TermsConditions';
+import ChangePasswordScreen from '@/screens/setting/ChangePassword';
 
 const Stack = createStackNavigator();
 
@@ -41,16 +47,44 @@ const MainNavigation = () => {
             case 'Home':
                 return '';
             case 'Profile':
-                return 'My Profile';
+                return 'Profile';
             case 'Setting':
-                return 'My Settings';
+                return '';
             default:
                 return '';
         }
     };
 
+    const headerTintColor = (route) => {
+        // If the focused route is not found, we need to assume it's the initial screen
+        // This can happen during if there hasn't been any navigation inside the screen
+        // In our case, it's "Home" as that's the first screen inside the navigator
+        const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+        switch (routeName) {
+            case 'Home':
+                return '';
+            case 'Profile':
+                return '#fff';
+            case 'Setting':
+                return '';
+            case 'MyBanks':
+                return '#000';
+            default:
+                return '';
+        }
+    };
+
+
     return (
-        <Stack.Navigator initialRouteName="Language">
+        <Stack.Navigator initialRouteName="Language" screenOptions={({route}) => ({
+            headerTitleAlign: 'center',
+            headerTintColor: headerTintColor(route),
+        })}>
+            <Stack.Screen name="Language" component={LanguageScreen} options={{
+                headerShown: false,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
             <Stack.Screen name="SignIn" component={SignInScreen} options={({route, navigation}) => ({
                 headerTitle: '',
                 headerTransparent: true,
@@ -64,12 +98,6 @@ const MainNavigation = () => {
                 ...TransitionPresets.SlideFromRightIOS,
                 gestureDirection: 'horizontal-inverted',
             })}/>
-
-            <Stack.Screen name="Language" component={LanguageScreen} options={{
-                headerShown: false,
-                ...TransitionPresets.SlideFromRightIOS,
-                gestureDirection: 'horizontal-inverted',
-            }}/>
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{
                 headerTitle: '',
                 headerTransparent: true,
@@ -93,6 +121,29 @@ const MainNavigation = () => {
                 ...TransitionPresets.SlideFromRightIOS,
                 gestureDirection: 'horizontal-inverted',
             })}/>
+            <Stack.Screen name="EditProfile" component={EditProfileScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
+            <Stack.Screen name="ChangePassword" component={ChangePasswordScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
+            <Stack.Screen name="MyBanks" component={MyBanksScreen}
+                          options={{
+                              title: 'My Banks',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="AddBank" component={AddBankScreen}
+                          options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="MyTransaction" component={MyTransactionScreen}
                           options={{
                               title: 'All Transactions',
@@ -115,6 +166,13 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
+            <Stack.Screen name="HowItWorks" component={HowItWorksScreen}
+                          options={{
+                              headerTitle: '',
+                              headerTransparent: true,
+                          }}/>
+            <Stack.Screen name="TermsConditions" component={TermsConditionsScreen} options={{headerShown: false}}/>
+
         </Stack.Navigator>
     );
 };

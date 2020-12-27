@@ -6,8 +6,8 @@ import * as Yup from 'yup';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
-const signupSchema = Yup.object().shape({
-    first_name: Yup
+const updateSchema = Yup.object().shape({
+    /*first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -16,17 +16,10 @@ const signupSchema = Yup.object().shape({
     phone: Yup
         .string()
         .required('Phone is required.'),
-    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
-    password: Yup.string()
-        .min(6, 'Too Short!')
-        .max(10, 'Too Long!')
-        .required('Password is required.'),
-    confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),
+    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),*/
 });
 
-const SignUpForm = (props) => {
+const EditProfileForm = (props) => {
 
     const {navigation} = props;
 
@@ -39,11 +32,11 @@ const SignUpForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: signupSchema,
-        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: '', status: 'invited'},
+        validationSchema: updateSchema,
+        initialValues: {first_name: 'Fatima', last_name: 'Abdullah', phone: '+97142328900', email: 'customer@gmail.com'},
         onSubmit: values =>{
-            navigation.navigate('Model', {
-                screen: 'Agreement',
+            navigation.navigate('Profile', {
+                screen: 'Profile',
                 params: { customer: values },
             });
         }
@@ -52,10 +45,10 @@ const SignUpForm = (props) => {
     return (
         <View style={styles.container}>
 
-            <StatusBar style="auto"/>
-            
+            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <View style={styles.content}>
             <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Create new account</Text>
+                <Text style={styles.textHeading1}>Edit Profile</Text>
             </View>
 
             
@@ -96,37 +89,15 @@ const SignUpForm = (props) => {
                     touched={touched.email}
                 />
 
-                <FloatingLabelInput
-                    label="PASSWORD"
-                    value={values.password}
-                    isPassword={true}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    error={errors.password}
-                    touched={touched.password}
-                />
-
-                <FloatingLabelInput
-                    label="CONFIRM PASSWORD"
-                    value={values.confirmPassword}
-                    isPassword={true}
-                    onChangeText={handleChange('confirmPassword')}
-                    onBlur={handleBlur('confirmPassword')}
-                    error={errors.confirmPassword}
-                />
+        
 
                 <View style={styles.viewBtn}>
-                    <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.signupText}>SIGNUP</Text>
+                    <Button style={styles.updateBtn} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.updateText}>UPDATE</Text>
                     </Button>
                 </View>
 
-                <View style={styles.viewLoginLink}>
-                    <Text style={styles.textLogin}>Already have login?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
-                    </TouchableOpacity>
-                </View>
+              </View>  
             
 
         </View>
@@ -137,12 +108,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F7F9FB',
-        alignItems: 'center',
+    },
+
+    content: {
         justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
 
     viewHeading: {
-        marginTop: Platform.OS === 'ios' ? 22 : 62,
+        marginTop: Platform.OS === 'ios' ? 22 : 42,
         width: '70%',
         paddingBottom: 10,
     },
@@ -161,7 +136,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    signupBtn: {
+    updateBtn: {
         width: '100%',
         borderRadius: 25,
         height: 56,
@@ -170,7 +145,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#0000FF',
     },
 
-    signupText: {
+    updateText: {
         color: '#FFFFFF',
         fontSize: 14,
         fontWeight: 'bold',
@@ -208,4 +183,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default SignUpForm;
+export default EditProfileForm;

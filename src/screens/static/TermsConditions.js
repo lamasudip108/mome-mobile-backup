@@ -3,16 +3,7 @@ import {Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacit
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
-const AgreementForm = (props) => {
-
-    const {navigation, route, customerSignup, auths, authLoading,  authErrors} = props;
-
-    const handleSubmit = () => {
-        const customerData = route?.params?.customer;
-        customerSignup(customerData);
-    };
-
-    console.log("YYYYY:::", auths);
+const TermsConditionsScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -58,26 +49,6 @@ const AgreementForm = (props) => {
                 </Text>
 
             </ScrollView>
-            <View style={styles.errorView}>
-                {authErrors &&
-                <Text style={styles.errorText}>{authErrors.message}</Text>
-                }
-            </View>
-
-            <View style={styles.termsBottom}>
-                <View style={styles.checkBtn}>
-                    <CheckBox style={styles.checkBox} checked={true}/>
-                    <Text style={styles.textCheck}>I Accept the terms of service</Text>
-                </View>
-                <View style={styles.termsBottmBtn}>
-                    <Button style={styles.cancelBtn} onPress={() => navigation.goBack()}>
-                        <Text style={styles.cancelText}>CANCEL</Text>
-                    </Button>
-                    <Button style={styles.acceptBtn} onPress={() => handleSubmit()}>
-                        <Text style={styles.acceptText}>ACCEPT</Text>
-                    </Button>
-                </View>
-            </View>
         </View>
     );
 };
@@ -110,7 +81,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '85%',
-        marginTop: Platform.OS === 'ios' ? 50 : 10,
+        marginTop: Platform.OS === 'ios' ? 60 : 10,
         marginLeft: 32,
         marginRight: 32,
     },
@@ -243,4 +214,4 @@ const styles = StyleSheet.create({
         lineHeight: 18,
     },
 });
-export default AgreementForm;
+export default TermsConditionsScreen;

@@ -38,9 +38,9 @@ const SignInForm = (props) => {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
-
             <StatusBar style="auto"/>
+            
+            <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>{i18n.t('welcome')}</Text>
@@ -92,6 +92,7 @@ const SignInForm = (props) => {
                     <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
                 </TouchableOpacity>
             </View>
+            
         </View>
     );
 };
