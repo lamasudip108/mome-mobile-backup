@@ -17,7 +17,7 @@ const ProfileForm = ({navigation}) => {
 
 	                	<Image style={styles.circleImage} source={require('@/assets/img/profile-cropped.png')}/>
 	                	
-		                <TouchableOpacity style={styles.circleEdit} onPress={() => navigation.navigate('ContactUs')}>
+		                <TouchableOpacity style={styles.circleEdit} onPress={() => navigation.navigate('EditProfile')}>
 		                	<Icon name="edit" size={18} color="#0000FF" />
 		                </TouchableOpacity>
 	    
@@ -76,7 +76,7 @@ const ProfileForm = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('MyBanks')}>
+	            		<TouchableOpacity onPress={() => navigation.navigate('HowItWorks')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedListItem} backgroundColor='#E9F7EF'>
