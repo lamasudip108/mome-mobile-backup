@@ -1,31 +1,47 @@
 import React from 'react';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
-import AntIcon from "react-native-vector-icons/AntDesign";
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+
+import {useDirection} from '@/context/language';
+
+import CircleIcon from '@/shared/circle';
 
 const LanguageScreen = ({navigation}) => {
 
+    const {toggleDirection, direction} = useDirection();
+
     return (
         <View style={styles.container}>
-            
+
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Select Language</Text>
             </View>
 
             <View style={styles.language}>
-                <TouchableOpacity style={styles.langBtnPassive}>
+                <TouchableOpacity
+                    style={[styles.languageBtn, direction === 'rtl' ? styles.active : styles.passive]}
+                    onPress={() => {
+                        direction == 'ltr' ? toggleDirection('rtl') :   navigation.navigate('SignIn');
+                    }}>
+                    {direction === 'rtl' &&
+                    <CircleIcon/>
+                    }
                     <Text style={styles.langText}>AR</Text>
                 </TouchableOpacity>
 
-                <View style={{marginLeft:10}}></View>
+                <View style={{marginLeft: 10}}></View>
 
-                <TouchableOpacity style={styles.langBtnActive}>
-                    <Text style={styles.checkCircle}>
-                      <AntIcon name="checkcircle" size={25} color="#0000FF" />
-                    </Text>
-                    <Text style={styles.langText} onPress={() => navigation.navigate('SignIn')}>EN</Text>
+                <TouchableOpacity
+                    style={[styles.languageBtn, direction === 'ltr' ? styles.active : styles.passive]}
+                    onPress={() => {
+                        direction === 'rtl' ? toggleDirection('ltr') :   navigation.navigate('SignIn');
+                    }}>
+                    {direction === 'ltr' &&
+                    <CircleIcon/>
+                    }
+                    <Text style={styles.langText}>EN</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </View>
     );
 };
@@ -57,26 +73,22 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
 
-    langBtnPassive: {
+    languageBtn: {
         width: '50%',
         borderRadius: 6,
         height: 110,
-        alignItems: 'center',
-        justifyContent: 'center',
         marginBottom: 20,
-        backgroundColor: '#FFFFFF',
         borderColor: '#0000FF5C',
         borderWidth: 2,
     },
+    passive: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FFFFFF',
+    },
 
-    langBtnActive: {
-        width: '50%',
-        borderRadius: 6,
-        height: 110,
-        marginBottom: 20,
+    active: {
         backgroundColor: '#D2D4FC',
-        borderColor: '#0000FF5C',
-        borderWidth: 2,
     },
 
     langText: {
@@ -87,13 +99,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
     },
-
-    checkCircle: {
-        textAlign: 'right',
-        marginTop: 10,
-        marginRight: 10,
-        marginBottom: 10,
-    }
 
 });
 

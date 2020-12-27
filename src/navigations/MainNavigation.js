@@ -49,12 +49,33 @@ const MainNavigation = () => {
         }
     };
 
-
     return (
         <Stack.Navigator initialRouteName="Language">
-            <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
-            <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
+            <Stack.Screen name="SignIn" component={SignInScreen} options={({route, navigation}) => ({
+                headerTitle: '',
+                headerTransparent: true,
+                headerLeft: (props) => (
+                    <HeaderBackButton
+                        {...props}
+                        onPress={() => {
+                            navigation.replace('Language');
+                        }}
+                    />),
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            })}/>
+
+            <Stack.Screen name="Language" component={LanguageScreen} options={{
+                headerShown: false,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
+            <Stack.Screen name="SignUp" component={SignUpScreen} options={{
+                headerTitle: '',
+                headerTransparent: true,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
             <Stack.Screen name="Model" component={ModelNavigation} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={BottomTabNavigation} options={({route, navigation}) => ({
                 headerShown: isHeaderShown(route),
