@@ -55,9 +55,28 @@ const MainNavigation = () => {
         }
     };
 
+    const headerTintColor = (route) => {
+        // If the focused route is not found, we need to assume it's the initial screen
+        // This can happen during if there hasn't been any navigation inside the screen
+        // In our case, it's "Home" as that's the first screen inside the navigator
+        const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+        switch (routeName) {
+            case 'Home':
+                return '';
+            case 'Profile':
+                return '#fff';
+            case 'Setting':
+                return '';
+            case 'MyBanks':
+                return '#000';
+            default:
+                return '';
+        }
+    };
+
 
     return (
-        <Stack.Navigator initialRouteName="Language" screenOptions={{headerTitleAlign: 'center'}}>
+        <Stack.Navigator initialRouteName="Language" screenOptions={({route})=>({headerTitleAlign: 'center', headerTintColor: headerTintColor(route),})}>
             <Stack.Screen name="Language" component={LanguageScreen} options={{headerShown: false}}/>
             <Stack.Screen name="SignIn" component={SignInScreen} options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerTitle: '', headerTransparent: true}}/>
