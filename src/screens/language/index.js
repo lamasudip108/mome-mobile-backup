@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
 
 import {useDirection} from '@/context/language';
 
@@ -11,6 +11,8 @@ const LanguageScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
+
+            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
 
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Select Language</Text>
