@@ -21,7 +21,7 @@ const signUpSchema = Yup.object().shape({
         .min(6, 'Too Short!')
         .max(10, 'Too Long!')
         .required('Password is required.'),
-    confirmPassword: Yup.string()
+    confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
         .required('Confirm Password is required.'),
 });
@@ -40,7 +40,7 @@ const SignUpForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signUpSchema,
-        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: ''},
+        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirm_password: ''},
         onSubmit: values =>{
             navigation.navigate('Model', {
                 screen: 'Agreement',
@@ -62,7 +62,7 @@ const SignUpForm = (props) => {
                     label="FIRST NAME"
                     value={values.first_name}
                     onChangeText={handleChange('first_name')}
-                    onBlur={handleBlur('first_name')}
+                    onFocus={handleBlur('first_name')}
                     error={errors.first_name}
                     touched={touched.first_name}
                 />
@@ -71,7 +71,7 @@ const SignUpForm = (props) => {
                     label="LAST NAME"
                     value={values.last_name}
                     onChangeText={handleChange('last_name')}
-                    onBlur={handleBlur('last_name')}
+                    onFocus={handleBlur('last_name')}
                     error={errors.last_name}
                     touched={touched.last_name}
                 />
@@ -81,7 +81,7 @@ const SignUpForm = (props) => {
                     value={values.phone}
                     keyboardType="numeric"
                     onChangeText={handleChange('phone')}
-                    onBlur={handleBlur('phone')}
+                    onFocus={handleBlur('phone')}
                     error={errors.phone}
                     touched={touched.phone}
                 />
@@ -90,7 +90,7 @@ const SignUpForm = (props) => {
                     label="EMAIL"
                     value={values.email}
                     onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
+                    onFocus={handleBlur('email')}
                     error={errors.email}
                     touched={touched.email}
                 />
@@ -100,18 +100,18 @@ const SignUpForm = (props) => {
                     value={values.password}
                     isPassword={true}
                     onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
+                    onFocus={handleBlur('password')}
                     error={errors.password}
                     touched={touched.password}
                 />
 
                 <FloatingLabelInput
                     label="CONFIRM PASSWORD"
-                    value={values.confirmPassword}
+                    value={values.confirm_password}
                     isPassword={true}
-                    onChangeText={handleChange('confirmPassword')}
-                    onBlur={handleBlur('confirmPassword')}
-                    error={errors.confirmPassword}
+                    onChangeText={handleChange('confirm_password')}
+                    onFocus={handleBlur('confirm_password')}
+                    error={errors.confirm_password}
                 />
 
                 <View style={styles.viewBtn}>
