@@ -9,6 +9,7 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import BottomTabNavigation from '@/navigations/BottomTabNavigation';
 import ModelNavigation from '@/navigations/ModelNavigation';
 
+import LanguageSplashScreen from '@/screens/language/LanguageSplash';
 import LanguageScreen from '@/screens/language';
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
@@ -21,9 +22,13 @@ import HowItWorksScreen from '@/screens/static/HowItWorks';
 import TermsConditionsScreen from '@/screens/static/TermsConditions';
 import ChangePasswordScreen from '@/screens/setting/ChangePassword';
 
+import {useDirection} from '@/context/language';
+
 const Stack = createStackNavigator();
 
 const MainNavigation = () => {
+
+    const {state: {isLanguageChanged}} = useDirection();
 
     const isHeaderShown = (route) => {
         // If the focused route is not found, we need to assume it's the initial screen
@@ -76,15 +81,32 @@ const MainNavigation = () => {
 
 
     return (
-        <Stack.Navigator initialRouteName="Language" screenOptions={({route}) => ({
+        <Stack.Navigator screenOptions={({route}) => ({
             headerTitleAlign: 'center',
             headerTintColor: headerTintColor(route),
         })}>
-            <Stack.Screen name="Language" component={LanguageScreen} options={{
-                headerShown: false,
-                ...TransitionPresets.SlideFromRightIOS,
-                gestureDirection: 'horizontal-inverted',
-            }}/>
+            {isLanguageChanged === null ? (
+                <Stack.Screen name="Language" component={LanguageScreen} options={{
+                    headerShown: false,
+                    ...TransitionPresets.SlideFromRightIOS,
+                    gestureDirection: 'horizontal-inverted',
+                }}/>
+
+            ) : (
+                <>
+                    <Stack.Screen name="LanguageSplashScreen" component={LanguageSplashScreen} options={{
+                        headerShown: false,
+                        ...TransitionPresets.SlideFromRightIOS,
+                        gestureDirection: 'horizontal-inverted',
+                    }}/>
+                    <Stack.Screen name="Language" component={LanguageScreen} options={{
+                        headerShown: false,
+                        ...TransitionPresets.SlideFromRightIOS,
+                        gestureDirection: 'horizontal-inverted',
+                    }}/>
+                </>
+            )
+            }
             <Stack.Screen name="SignIn" component={SignInScreen} options={({route, navigation}) => ({
                 headerTitle: '',
                 headerTransparent: true,

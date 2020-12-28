@@ -5,8 +5,8 @@ import memoize from 'lodash.memoize';
 import i18n from 'i18n-js';
 import * as RNLocalize from 'react-native-localize';
 
-import {getAsyncStorage, setAsyncStorage, clearAsyncStorage} from '@/utils/storageUtil';
-import {IS_LANGUAGE_CHANGED} from '@/constants';
+import {setAsyncStorage, getAsyncStorage} from '@/utils/storageUtil';
+import {LANGUAGE_CHANGED} from '@/constants';
 
 import en from '@/translations/en.json';
 import ar from '@/translations/ar.json';
@@ -39,28 +39,27 @@ export const LanguageDirectionProvider = ({children}) => {
 
     const [direction, setDirection] = useState(I18nManager.isRTL ? 'rtl' : 'ltr');
 
-    // const [state, dispatch] = useReducer(
-    //     (prevState, action) => {
-    //         switch (action.type) {
-    //             case 'LANGUAGE_CHANGED':
-    //                 return {
-    //                     ...prevState,
-    //                     isLanguageChanged: action.isLanguageChanged,
-    //                 };
-    //         }
-    //     },
-    //     {isLanguageChanged:false},
-    // );
+    const [state, dispatch] = useReducer(
+        (prevState, action) => {
+            switch (action.type) {
+                case 'LANGUAGE_CHANGED':
+                    return {
+                        ...prevState,
+                        isLanguageChanged: action.isLanguageChanged,
+                    };
+            }
+        },
+        {isLanguageChanged:false},
+    );
 
     const toggleDirection = (ld) => {
         setDirection(ld);
         I18nManager.forceRTL(ld === 'rtl');
 
-        //dispatch({ type: 'LANGUAGE_CHANGED', isLanguageChanged: 'true' });
-        const isLanguageChanged = async () => {
-            await setAsyncStorage(IS_LANGUAGE_CHANGED, 'true');
+        const setInitialScreen = async () => {
+            await setAsyncStorage(LANGUAGE_CHANGED, 'true');
         };
-        isLanguageChanged();
+        setInitialScreen();
 
         RNRestart.Restart();
     };
@@ -79,22 +78,21 @@ export const LanguageDirectionProvider = ({children}) => {
 
     }, []);
 
-    // useEffect(() => {
-    //     const bootstrapAsync = async () => {
-    //         let langKey =  await getAsyncStorage(IS_LANGUAGE_CHANGED);
-    //         dispatch({ type: 'LANGUAGE_CHANGED', isLanguageChanged: langKey  });
-    //         await clearAsyncStorage(IS_LANGUAGE_CHANGED);
-    //     };
-    //
-    //     bootstrapAsync();
-    //
-    // }, []);
+    useEffect(() => {
+        const bootstrapAsync = async () => {
+            let langKey =  await getAsyncStorage(LANGUAGE_CHANGED);
+            dispatch({ type: 'LANGUAGE_CHANGED', isLanguageChanged: langKey  });
+        };
+
+        bootstrapAsync();
+
+    }, []);
 
     return (
         <LanguageDirectionContext.Provider value={{
             direction,
             toggleDirection,
-           // state
+            state
         }}>
             {children}
         </LanguageDirectionContext.Provider>

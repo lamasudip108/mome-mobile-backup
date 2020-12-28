@@ -40,7 +40,7 @@ const SignUpForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signupSchema,
-        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: '', status: 'invited'},
+        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: ''},
         onSubmit: values =>{
             navigation.navigate('Model', {
                 screen: 'Agreement',
@@ -53,13 +53,13 @@ const SignUpForm = (props) => {
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
-            
+
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Create new account</Text>
             </View>
 
-            
-                <FloatingLabelInput 
+
+                <FloatingLabelInput
                     label="FIRST NAME"
                     value={values.first_name}
                     onChangeText={handleChange('first_name')}
@@ -127,7 +127,7 @@ const SignUpForm = (props) => {
                         <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
                     </TouchableOpacity>
                 </View>
-            
+
 
         </View>
     );

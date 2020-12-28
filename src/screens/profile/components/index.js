@@ -11,16 +11,16 @@ const ProfileForm = ({navigation}) => {
             <View style={styles.topContent}>
 
             	<View style={styles.profile}>
-	                
-	                
+
+
 	                <View style={styles.circleProfile}>
 
 	                	<Image style={styles.circleImage} source={require('@/assets/img/profile-cropped.png')}/>
-	                	
+
 		                <TouchableOpacity style={styles.circleEdit} onPress={() => navigation.navigate('EditProfile')}>
 		                	<Icon name="edit" size={18} color="#0000FF" />
 		                </TouchableOpacity>
-	    
+
 	                </View>
 	                <Text style={styles.name}>Fatima Abdullah</Text>
 	                <Text style={styles.amount}>$ 2500.00</Text>
@@ -30,11 +30,11 @@ const ProfileForm = ({navigation}) => {
 	                </Button>
 	                </View>
 	            </View>
-  
+
             </View>
 
             <View style={styles.middleContent}>
-            	
+
             	<View style={styles.List}>
 	            	<ScrollView style={{ height: Platform.OS === 'ios' ? 520 : 400 }}>
 	            		<TouchableOpacity onPress={() => navigation.navigate('MyTransaction')}>
@@ -115,7 +115,7 @@ const ProfileForm = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('SignOut')}>
+	            		<TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedListItem} backgroundColor='#E4F0F8'>
@@ -130,11 +130,11 @@ const ProfileForm = ({navigation}) => {
 	            		</TouchableOpacity>
 	            	</ScrollView>
             	</View>
-	            
-				            
+
+
             </View>
-            
-            
+
+
         </View>
     );
 
@@ -160,11 +160,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     circleEdit: {
-    	backgroundColor:'#F4F5F7', 
-    	height:31, 
+    	backgroundColor:'#F4F5F7',
+    	height:31,
     	width: 31,
     	borderRadius: 15,
-    	borderColor: '#F4F5F7', 
+    	borderColor: '#F4F5F7',
     	borderWidth: 1,
     	alignItems: 'center',
     	justifyContent: 'center',
@@ -173,11 +173,11 @@ const styles = StyleSheet.create({
     	right: 0,
     },
     circleProfile: {
-    	backgroundColor:'#CCCCCC', 
-    	height:101, 
+    	backgroundColor:'#CCCCCC',
+    	height:101,
     	width: 101,
     	borderRadius: 50,
-    	borderColor: '#CCCCCC', 
+    	borderColor: '#CCCCCC',
     	borderWidth: 2,
     	marginBottom: 5,
     	alignItems: 'center',
@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
         lineHeight: 24,
     },
     circleImage: {
-    	height:101, 
+    	height:101,
     	width: 101,
     	borderRadius: 50,
-    	borderColor: '#CCCCCC', 
+    	borderColor: '#CCCCCC',
     	borderWidth: 2,
     	alignItems: 'center',
     	justifyContent: 'center',
@@ -245,11 +245,11 @@ const styles = StyleSheet.create({
     	marginBottom: 10,
     },
     listItemInner: {
-    	flexDirection: 'row', 
+    	flexDirection: 'row',
     	alignItems: 'center',
     },
     roundedListItem: {
-    	height:35, 
+    	height:35,
     	width: 35,
     	borderRadius: 8,
     	borderWidth: 0,
