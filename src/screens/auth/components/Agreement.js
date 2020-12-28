@@ -101,11 +101,6 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         padding: 15,
     },
-    author: {
-        flexDirection: 'row',
-        marginVertical: 8,
-        marginHorizontal: 16,
-    },
     meta: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -114,29 +109,22 @@ const styles = StyleSheet.create({
         marginLeft: 32,
         marginRight: 32,
     },
-    name: {
-        fontWeight: 'bold',
-        fontSize: 16,
-        lineHeight: 24,
-    },
-    avatar: {
-        height: 48,
-        width: 48,
-        borderRadius: 24,
-    },
     title: {
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Semibold',
         fontSize: 18,
         marginVertical: 8,
         color: '#212121',
     },
     headingTitle: {
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Semibold',
         fontSize: 14,
         marginVertical: 10,
         color: '#0000FF',
     },
     headingSubTitle: {
+        fontFamily: 'SFProDisplay-Medium',
         fontSize: 12,
         color: '#2B2D42',
     },
@@ -148,8 +136,10 @@ const styles = StyleSheet.create({
         color: '#747E8F',
         marginBottom: 10,
         marginLeft: 32,
+        fontFamily: 'SFProDisplay-Regular',
     },
     paragraph: {
+        fontFamily: 'SFProDisplay-Regular',
         fontSize: 14,
         lineHeight: 24,
         marginTop: 15,
@@ -184,7 +174,8 @@ const styles = StyleSheet.create({
     },
     textCheck: {
         fontSize: 14,
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
         color: '#212121',
         paddingLeft: 5,
         paddingTop: 5,
@@ -220,11 +211,13 @@ const styles = StyleSheet.create({
     },
     cancelText: {
         color: '#0000FF',
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
     acceptText: {
         color: '#FFFFFF',
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
     image: {
         width: '100%',

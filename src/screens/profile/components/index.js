@@ -186,7 +186,8 @@ const styles = StyleSheet.create({
     name: {
     	color: '#FFFFFF',
         fontSize: 18,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -196,7 +197,8 @@ const styles = StyleSheet.create({
     amount: {
     	color: '#F2F2F2',
         fontSize: 14,
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
         lineHeight: 24,
     },
     circleImage: {
@@ -222,7 +224,8 @@ const styles = StyleSheet.create({
     fundText: {
         color: '#FFFFFF',
         fontSize: 14,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
     middleContent: {
     	backgroundColor: '#FFFFFF',
@@ -258,7 +261,8 @@ const styles = StyleSheet.create({
     },
     listName: {
     	fontSize: 14,
-    	fontWeight: '700',
+    	//fontWeight: '700',
+        fontFamily: 'SFProDisplay-Semibold',
     	lineHeight: 21,
     	color: '#212121',
     	paddingLeft: 40,

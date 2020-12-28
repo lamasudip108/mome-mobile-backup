@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     transactionsSummaryNumber: {
     	color: '#14151E',
         fontSize: 20,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -154,6 +155,7 @@ const styles = StyleSheet.create({
         lineHeight: 27,
     },
     transactionsSummaryText: {
+        fontFamily: 'SFProDisplay-Medium',
     	color: 'rgba(20,21,30,0.40)',
         fontSize: 9,
         lineHeight: 18,
@@ -179,14 +181,16 @@ const styles = StyleSheet.create({
     },
     middleContentText: {
     	fontSize: 10, 
-    	fontWeight:'700', 
+    	//fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold', 
     	color: 'rgba(20,21,30,0.40)', 
     	lineHeight: 18,
     },
     filter: {
     	color: '#0000FF',
     	fontSize: 10, 
-    	fontWeight:'700',
+    	//fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold',
     	lineHeight: 18,
     	paddingRight: 2,
     },
@@ -219,7 +223,8 @@ const styles = StyleSheet.create({
     transactionInfo: {},
     transactionsName: {
     	fontSize: 14,
-    	fontWeight: '700',
+    	//fontWeight: '700',
+        fontFamily: 'SFProDisplay-Semibold',
     	lineHeight: 21,
     	color: '#212121',
     },
@@ -227,11 +232,13 @@ const styles = StyleSheet.create({
     	color: 'rgba(20,21,30,0.60)',
     	fontSize: 10,
     	lineHeight: 18,
+        fontFamily: 'SFProDisplay-Regular',
     },
     transactionsAmount: {
     	color: '#F02323',
     	fontSize: 14,
-    	fontWeight: 'bold',
+    	//fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     	lineHeight: 21,
     },
 

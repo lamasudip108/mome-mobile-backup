@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     },
     textHeading1: {
         fontSize: 24,
-        fontWeight: '700',
+        //fontWeight: '700',
+        fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
@@ -113,12 +114,14 @@ const styles = StyleSheet.create({
     listNumber: {
     	color: '#0000FF',
     	fontSize: 24,
-    	fontWeight: 'bold',
+    	//fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     	lineHeight: 36,
     },
     listDescription: {
     	fontSize: 14,
-    	fontWeight: '500',
+    	//fontWeight: '500',
+        fontFamily: 'SFProDisplay-Medium',
     	lineHeight: 21,
     	color: '#747E8F',
     	paddingTop: 25,

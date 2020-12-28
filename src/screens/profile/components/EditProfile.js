@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        fontWeight: '700',
+        //fontWeight: '700',
+        fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
@@ -148,26 +149,8 @@ const styles = StyleSheet.create({
     updateText: {
         color: '#FFFFFF',
         fontSize: 14,
-        fontWeight: 'bold',
-    },
-
-    viewLoginLink: {
-        flexDirection: 'row',
-        fontSize: 14,
-        paddingTop: 50,
-        paddingBottom: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    textLogin: {
-        color: '#212121',
-    },
-
-    loginButton: {
-        color: '#0000FF',
-        fontWeight: '600',
-        paddingLeft: 8,
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
 
     errorView: {
