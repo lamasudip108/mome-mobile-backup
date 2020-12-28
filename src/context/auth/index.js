@@ -16,6 +16,8 @@ export const AuthProvider = ({children}) => {
         <AuthContext.Provider value={{
             loading,
             message,
+            setMessage,
+            setLoading,
             signIn: async (fromData) => {
                 setLoading(true);
                 try {

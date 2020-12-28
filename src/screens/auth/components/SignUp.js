@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -57,7 +57,6 @@ const SignUpForm = (props) => {
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Create new account</Text>
             </View>
-
 
                 <FloatingLabelInput
                     label="FIRST NAME"
@@ -127,7 +126,6 @@ const SignUpForm = (props) => {
                         <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
                     </TouchableOpacity>
                 </View>
-
 
         </View>
     );

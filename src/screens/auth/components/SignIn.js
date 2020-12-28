@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -8,6 +8,7 @@ import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
+import Spinner from '@/shared/spinner';
 
 const signinSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
@@ -17,11 +18,9 @@ const signinSchema = Yup.object().shape({
         .required('Password is required.'),
 });
 
-const SignInForm = (props) => {
+const SignInForm = ({navigation}) => {
 
-    const {loading, message, signIn} = useAuthentication();
-
-    const {navigation} = props;
+    const {loading, setLoading, message, setMessage, signIn} = useAuthentication();
 
     const {
         handleChange,
@@ -39,7 +38,10 @@ const SignInForm = (props) => {
         },
     });
 
-    console.log("message", message);
+    useEffect(() => {
+        setMessage(null);
+        setLoading(false)
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -53,10 +55,14 @@ const SignInForm = (props) => {
             </View>
 
             <View style={styles.errorView}>
-                {message &&
+                {!message?.success &&
                 <Text style={styles.errorText}>{message?.message}</Text>
                 }
             </View>
+
+            {loading &&
+            <Spinner/>
+            }
 
             <FloatingLabelInput
                 label="USERNAME"
