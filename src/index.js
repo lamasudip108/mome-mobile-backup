@@ -8,7 +8,6 @@ import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
 import {navigationRef} from '@/utils/navigationUtil';
 import {LanguageDirectionProvider} from '@/context/language';
-import LanguageSplashScreen from '@/screens/language/LanguageSplash';
 
 const App = () => {
 
@@ -21,7 +20,7 @@ const App = () => {
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
         <LanguageDirectionProvider>
-            <PersistGate loading={<LanguageSplashScreen/>} persistor={persistor}>
+            <PersistGate loading={null} persistor={persistor}>
                 <NavigationContainer ref={navigationRef}>
                     <MainNavigation/>
                 </NavigationContainer>
