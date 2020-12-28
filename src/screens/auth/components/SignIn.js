@@ -71,7 +71,7 @@ const SignInForm = ({navigation}) => {
                 label="USERNAME"
                 value={values.email}
                 onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
+                onFocus={handleBlur('email')}
                 error={errors.email}
                 touched={touched.email}
             />
@@ -81,7 +81,7 @@ const SignInForm = ({navigation}) => {
                 value={values.password}
                 isPassword={true}
                 onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
+                onFocus={handleBlur('password')}
                 error={errors.password}
                 touched={touched.password}
                 customShowPasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-off-outline" size={25}
