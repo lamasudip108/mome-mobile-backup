@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const signUpSchema = Yup.object().shape({
-    first_name: Yup
+    /*first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -23,7 +23,7 @@ const signUpSchema = Yup.object().shape({
         .required('Password is required.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),
+        .required('Confirm Password is required.'),*/
 });
 
 const SignUpForm = (props) => {
@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        fontWeight: '700',
+        //fontWeight: '700',
+        fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
@@ -171,7 +172,8 @@ const styles = StyleSheet.create({
     signupText: {
         color: '#FFFFFF',
         fontSize: 14,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
 
     viewLoginLink: {
@@ -189,7 +191,8 @@ const styles = StyleSheet.create({
 
     loginButton: {
         color: '#0000FF',
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
         paddingLeft: 8,
     },
 

@@ -126,14 +126,16 @@ const styles = StyleSheet.create({
     },
     textHeading1: {
         fontSize: 24,
-        fontWeight: '700',
+        //fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
     },
     textHeading2: {
         fontSize: 10,
-        fontWeight: '700',
+        //fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold',
         color: 'rgba(20,21,30,0.40)',
         marginBottom: 2,
         lineHeight: 18,
@@ -168,7 +170,8 @@ const styles = StyleSheet.create({
     },
     listName: {
     	fontSize: 14,
-    	fontWeight: '700',
+    	//fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold',
     	lineHeight: 21,
     	color: '#212121',
     	paddingLeft: 40,

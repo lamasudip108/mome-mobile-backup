@@ -132,12 +132,14 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         color: '#212121',
         marginBottom: 2,
     },
 
     textHeading2: {
+        fontFamily: 'SFProDisplay-Regular',
         fontSize: 14,
         color: '#2B2D42',
         width: 210,
@@ -179,7 +181,8 @@ const styles = StyleSheet.create({
     loginText: {
         color: '#FFFFFF',
         fontSize: 14,
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
     },
 
     forgotButton: {
@@ -198,7 +201,8 @@ const styles = StyleSheet.create({
 
     signupButton: {
         color: '#0000FF',
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
         paddingLeft: 8,
     },
 

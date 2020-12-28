@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
+import {Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
 
 import {useDirection} from '@/context/language';
 
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7F9FB',
         alignItems: 'center',
-        paddingTop: 150,
+        paddingTop: Platform.OS === 'ios' ? 120 : 60,
     },
 
     viewHeading: {
@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
     },
@@ -96,7 +97,8 @@ const styles = StyleSheet.create({
     langText: {
         color: '#212121',
         fontSize: 16,
-        fontWeight: '600',
+        //fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',

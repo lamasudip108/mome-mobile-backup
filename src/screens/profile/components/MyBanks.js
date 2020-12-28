@@ -98,11 +98,13 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     banksName: {
+        fontFamily: 'SFProDisplay-Regular',
     	fontSize: 14,
     	lineHeight: 21,
     	color: '#212121',
     },
     addBank: {
+        fontFamily: 'SFProDisplay-Regular',
         fontSize: 14,
         lineHeight: 21,
         color: '#0000FF',

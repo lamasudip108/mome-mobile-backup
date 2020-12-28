@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import {Container, Content, Spinner} from 'native-base';
 
 import {clearAsyncStorage, getAsyncStorage} from '@/utils/storageUtil';
@@ -24,8 +24,8 @@ const LanguageSplashScreen = () => {
     }, []);
 
     return (
-        <Container>
-            <Content>
+        <Container style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
+            <Content contentContainerStyle={{flex: 1, justifyContent:'center', alignItems:'center'}}>
                 <Spinner color='#0000FF'/>
 
                 <Text>Just a moment while we setup language.</Text>

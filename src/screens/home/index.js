@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     },
     topContentText: {
     	fontSize: 12,
-    	fontWeight: '600',
+    	//fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
     	color: '#F2F2F2',
     },
     topContentLeft: {
@@ -85,13 +86,15 @@ const styles = StyleSheet.create({
     	marginBottom: Platform.OS === 'ios' ? 30 : 20,
     },
     name: {
-        fontWeight: 'bold',
+        //fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         fontSize: 16,
         lineHeight: 24,
         color: '#FFFFFF',
     },
     walletAmount: {
-    	fontWeight: 'bold',
+    	//fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         fontSize: 24,
         lineHeight: 36,
         color: '#FFFFFF',
@@ -116,12 +119,14 @@ const styles = StyleSheet.create({
     },
     purchaseText: {
     	fontSize: 9,
-    	fontWeight: '600',
+    	//fontWeight: '600',
+        fontFamily: 'SFProDisplay-Medium',
     	color: '#F2F2F2',
     	lineHeight: 18,
     },
     purchaseAmount: {
-    	fontWeight: 'bold',
+    	//fontWeight: 'bold',
+        fontFamily: 'SFProDisplay-Bold',
         fontSize: 20,
         lineHeight: 27,
         color: '#FFFFFF',
@@ -139,7 +144,8 @@ const styles = StyleSheet.create({
     },
     middleContentText: {
     	fontSize: 10, 
-    	fontWeight:'700', 
+    	//fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold', 
     	color: 'rgba(20,21,30,0.40)', 
     	lineHeight: 18,
     },
@@ -174,7 +180,8 @@ const styles = StyleSheet.create({
     fundTransferText: {
     	color: '#212121',
         fontSize: 12,
-        fontWeight: '700',
+        //fontWeight:'700',
+        fontFamily: 'SFProDisplay-Semibold',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
