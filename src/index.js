@@ -8,6 +8,10 @@ import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
 import {navigationRef} from '@/utils/navigationUtil';
 import {LanguageDirectionProvider} from '@/context/language';
+import {AuthProvider} from '@/context/auth';
+
+// XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
+//     GLOBAL.originalXMLHttpRequest : GLOBAL.XMLHttpRequest;
 
 const App = () => {
 
@@ -20,11 +24,13 @@ const App = () => {
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
         <LanguageDirectionProvider>
-            <PersistGate loading={null} persistor={persistor}>
-                <NavigationContainer ref={navigationRef}>
-                    <MainNavigation/>
-                </NavigationContainer>
-            </PersistGate>
+            <AuthProvider>
+                <PersistGate loading={null} persistor={persistor}>
+                    <NavigationContainer ref={navigationRef}>
+                        <MainNavigation/>
+                    </NavigationContainer>
+                </PersistGate>
+            </AuthProvider>
         </LanguageDirectionProvider>
     </Provider>);
 };

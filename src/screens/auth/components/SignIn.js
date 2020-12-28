@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
@@ -7,8 +8,10 @@ import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+import {useAuthentication} from '@/context/auth';
+import Spinner from '@/shared/spinner';
 
-const signinSchema = Yup.object().shape({
+const signInSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
     password: Yup
         .string()
@@ -16,9 +19,9 @@ const signinSchema = Yup.object().shape({
         .required('Password is required.'),
 });
 
-const SignInForm = (props) => {
+const SignInForm = ({navigation}) => {
 
-    const {navigation, customerSignin, auths, authLoading, authErrors} = props;
+    const {loading, setLoading, message, setMessage, signIn} = useAuthentication();
 
     const {
         handleChange,
@@ -29,17 +32,24 @@ const SignInForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: signinSchema,
+        validationSchema: signInSchema,
         initialValues: {email: 'customer@gmail.com', password: '123456'},
         onSubmit: values => {
-            customerSignin(values);
+            signIn(values);
         },
     });
+
+    useFocusEffect(
+        useCallback(() => {
+            setMessage(null);
+            setLoading(false);
+        }, []),
+    );
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
-            
+
             <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
             <View style={styles.viewHeading}>
@@ -48,10 +58,14 @@ const SignInForm = (props) => {
             </View>
 
             <View style={styles.errorView}>
-                {authErrors &&
-                <Text style={styles.errorText}>{authErrors.message}</Text>
+                {!message?.success &&
+                <Text style={styles.errorText}>{message?.message}</Text>
                 }
             </View>
+
+            {loading &&
+            <Spinner/>
+            }
 
             <FloatingLabelInput
                 label="USERNAME"
@@ -92,7 +106,7 @@ const SignInForm = (props) => {
                     <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </View>
     );
 };
