@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
@@ -10,7 +11,7 @@ import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
 
-const signinSchema = Yup.object().shape({
+const signInSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
     password: Yup
         .string()
@@ -31,17 +32,19 @@ const SignInForm = ({navigation}) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: signinSchema,
+        validationSchema: signInSchema,
         initialValues: {email: 'customer@gmail.com', password: '123456'},
         onSubmit: values => {
             signIn(values);
         },
     });
 
-    useEffect(() => {
-        setMessage(null);
-        setLoading(false)
-    }, []);
+    useFocusEffect(
+        useCallback(() => {
+            setMessage(null);
+            setLoading(false);
+        }, []),
+    );
 
     return (
         <View style={styles.container}>

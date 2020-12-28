@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
-const signupSchema = Yup.object().shape({
+const signUpSchema = Yup.object().shape({
     first_name: Yup
         .string()
         .required('First name is required.'),
@@ -39,7 +39,7 @@ const SignUpForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: signupSchema,
+        validationSchema: signUpSchema,
         initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirmPassword: ''},
         onSubmit: values =>{
             navigation.navigate('Model', {
