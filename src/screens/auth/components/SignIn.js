@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+import {useAuthentication} from '@/context/auth';
 
 const signinSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
@@ -18,7 +19,9 @@ const signinSchema = Yup.object().shape({
 
 const SignInForm = (props) => {
 
-    const {navigation, customerSignin, auths, authLoading, authErrors} = props;
+    const {loading, message, signIn} = useAuthentication();
+
+    const {navigation} = props;
 
     const {
         handleChange,
@@ -32,14 +35,16 @@ const SignInForm = (props) => {
         validationSchema: signinSchema,
         initialValues: {email: 'customer@gmail.com', password: '123456'},
         onSubmit: values => {
-            customerSignin(values);
+            signIn(values);
         },
     });
+
+    console.log("message", message);
 
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
-            
+
             <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
             <View style={styles.viewHeading}>
@@ -48,8 +53,8 @@ const SignInForm = (props) => {
             </View>
 
             <View style={styles.errorView}>
-                {authErrors &&
-                <Text style={styles.errorText}>{authErrors.message}</Text>
+                {message &&
+                <Text style={styles.errorText}>{message?.message}</Text>
                 }
             </View>
 
@@ -92,7 +97,7 @@ const SignInForm = (props) => {
                     <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </View>
     );
 };
