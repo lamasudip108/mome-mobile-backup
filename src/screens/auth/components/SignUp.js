@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const signUpSchema = Yup.object().shape({
-    /*first_name: Yup
+    first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -23,7 +23,7 @@ const signUpSchema = Yup.object().shape({
         .required('Password is required.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),*/
+        .required('Confirm Password is required.'),
 });
 
 const SignUpForm = (props) => {
