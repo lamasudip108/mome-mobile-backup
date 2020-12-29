@@ -5,6 +5,8 @@ import {useDirection} from '@/context/language';
 
 import CircleIcon from '@/shared/circle';
 
+import i18n from 'i18n-js';
+
 const LanguageScreen = ({navigation}) => {
 
     const {toggleDirection, direction} = useDirection();
@@ -15,7 +17,7 @@ const LanguageScreen = ({navigation}) => {
             <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
 
             <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Select Language</Text>
+                <Text style={styles.textHeading1}>{i18n.t('select')}</Text>
             </View>
 
             <View style={styles.language}>

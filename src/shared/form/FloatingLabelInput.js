@@ -2,7 +2,7 @@ import React, {forwardRef} from 'react';
 import {I18nManager} from 'react-native';
 import {FloatingLabelInput as FLTextInput} from 'react-native-floating-label-input';
 
-const FloatingLabelInput = forwardRef(({error, ...otherProps}, ref) => {
+const FloatingLabelInput = forwardRef(({error, focused, ...otherProps}, ref) => {
 
     const validationColor = error ? 'red' : '#F2F2F2';
 
@@ -16,16 +16,16 @@ const FloatingLabelInput = forwardRef(({error, ...otherProps}, ref) => {
                 width: '70%',
                 height: 56,
                 marginBottom: 15,
+                paddingHorizontal: 10,
             }}
             labelStyles={{
-                paddingTop: 20,
-                paddingHorizontal: 10,
-                paddingBottom: 15,
+                paddingTop: 15,
+                //paddingHorizontal: 10,
             }}
             inputStyles={{
                 fontSize: 14,
                 color: '#212121',
-                paddingHorizontal: 10,
+                //paddingHorizontal: 10,
                 marginLeft: 5,
                 fontWeight: '500',
                 marginTop: 10,

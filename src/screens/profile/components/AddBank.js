@@ -53,6 +53,7 @@ const AddBankForm = (props) => {
                 <Text style={styles.textHeading1}>Add Bank</Text>
             </View>
     
+            <View style={styles.viewForm}>
                 <FloatingLabelInput 
                     label="BANK NAME"
                     value={values.bank_name}
@@ -89,7 +90,8 @@ const AddBankForm = (props) => {
                     error={errors.account_number}
                     touched={touched.account_number}
                 />
-        
+            </View>
+
                 <View style={styles.viewBtn}>
                     <Button style={styles.updateBtn} onPress={handleSubmit} disabled={!isValid}>
                         <Text style={styles.updateText}>SAVE</Text>
@@ -128,6 +130,12 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+    },
+
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     viewBtn: {

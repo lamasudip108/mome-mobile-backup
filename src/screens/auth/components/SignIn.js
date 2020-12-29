@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, I18nManager} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -67,8 +67,9 @@ const SignInForm = ({navigation}) => {
             <Spinner/>
             }
 
+            <View style={styles.viewForm}>
             <FloatingLabelInput
-                label="USERNAME"
+                label={i18n.t('USERNAME')}
                 value={values.email}
                 onChangeText={handleChange('email')}
                 onFocus={handleBlur('email')}
@@ -77,7 +78,7 @@ const SignInForm = ({navigation}) => {
             />
 
             <FloatingLabelInput
-                label="PASSWORD"
+                label={i18n.t('PASSWORD')}
                 value={values.password}
                 isPassword={true}
                 onChangeText={handleChange('password')}
@@ -89,21 +90,21 @@ const SignInForm = ({navigation}) => {
                 customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
                                                        color="#212121"/>}
             />
-
+            </View>
             <View style={styles.viewBtn}>
                 <Button style={styles.loginBtn} onPress={handleSubmit} disabled={!isValid}>
-                    <Text style={styles.loginText}>LOGIN</Text>
+                    <Text style={styles.loginText}>{i18n.t('LOGIN')}</Text>
                 </Button>
             </View>
 
             <TouchableOpacity>
-                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
+                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>{i18n.t('forgot')}</Text>
             </TouchableOpacity>
 
             <View style={styles.viewSignupLink}>
-                <Text style={styles.textSignup}>Don’t have account?</Text>
+                <Text style={styles.textSignup}>{i18n.t('dont')}</Text>
                 <TouchableOpacity>
-                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
+                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>{i18n.t('SIGNUPHERE')}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -160,6 +161,12 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         marginLeft: 20,
+    },
+
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     viewBtn: {
