@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const signUpSchema = Yup.object().shape({
-    /*first_name: Yup
+    first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -23,7 +23,7 @@ const signUpSchema = Yup.object().shape({
         .required('Password is required.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),*/
+        .required('Confirm Password is required.'),
 });
 
 const SignUpForm = (props) => {
@@ -40,13 +40,14 @@ const SignUpForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signUpSchema,
-        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirm_password: ''},
-        onSubmit: values =>{
+        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: ''},
+        onSubmit: values => {
+            delete values.confirm_password;
             navigation.navigate('Model', {
                 screen: 'Agreement',
-                params: { customer: values },
+                params: {customer: values},
             });
-        }
+        },
     });
 
     return (
@@ -58,74 +59,74 @@ const SignUpForm = (props) => {
                 <Text style={styles.textHeading1}>Create new account</Text>
             </View>
 
-                <FloatingLabelInput
-                    label="FIRST NAME"
-                    value={values.first_name}
-                    onChangeText={handleChange('first_name')}
-                    onFocus={handleBlur('first_name')}
-                    error={errors.first_name}
-                    touched={touched.first_name}
-                />
+            <FloatingLabelInput
+                label="FIRST NAME"
+                value={values.first_name}
+                onChangeText={handleChange('first_name')}
+                onFocus={handleBlur('first_name')}
+                error={errors.first_name}
+                touched={touched.first_name}
+            />
 
-                <FloatingLabelInput
-                    label="LAST NAME"
-                    value={values.last_name}
-                    onChangeText={handleChange('last_name')}
-                    onFocus={handleBlur('last_name')}
-                    error={errors.last_name}
-                    touched={touched.last_name}
-                />
+            <FloatingLabelInput
+                label="LAST NAME"
+                value={values.last_name}
+                onChangeText={handleChange('last_name')}
+                onFocus={handleBlur('last_name')}
+                error={errors.last_name}
+                touched={touched.last_name}
+            />
 
-                <FloatingLabelInput
-                    label="PHONE NUMBER"
-                    value={values.phone}
-                    keyboardType="numeric"
-                    onChangeText={handleChange('phone')}
-                    onFocus={handleBlur('phone')}
-                    error={errors.phone}
-                    touched={touched.phone}
-                />
+            <FloatingLabelInput
+                label="PHONE NUMBER"
+                value={values.phone}
+                keyboardType="numeric"
+                onChangeText={handleChange('phone')}
+                onFocus={handleBlur('phone')}
+                error={errors.phone}
+                touched={touched.phone}
+            />
 
-                <FloatingLabelInput
-                    label="EMAIL"
-                    value={values.email}
-                    onChangeText={handleChange('email')}
-                    onFocus={handleBlur('email')}
-                    error={errors.email}
-                    touched={touched.email}
-                />
+            <FloatingLabelInput
+                label="EMAIL"
+                value={values.email}
+                onChangeText={handleChange('email')}
+                onFocus={handleBlur('email')}
+                error={errors.email}
+                touched={touched.email}
+            />
 
-                <FloatingLabelInput
-                    label="PASSWORD"
-                    value={values.password}
-                    isPassword={true}
-                    onChangeText={handleChange('password')}
-                    onFocus={handleBlur('password')}
-                    error={errors.password}
-                    touched={touched.password}
-                />
+            <FloatingLabelInput
+                label="PASSWORD"
+                value={values.password}
+                isPassword={true}
+                onChangeText={handleChange('password')}
+                onFocus={handleBlur('password')}
+                error={errors.password}
+                touched={touched.password}
+            />
 
-                <FloatingLabelInput
-                    label="CONFIRM PASSWORD"
-                    value={values.confirm_password}
-                    isPassword={true}
-                    onChangeText={handleChange('confirm_password')}
-                    onFocus={handleBlur('confirm_password')}
-                    error={errors.confirm_password}
-                />
+            <FloatingLabelInput
+                label="CONFIRM PASSWORD"
+                value={values.confirm_password}
+                isPassword={true}
+                onChangeText={handleChange('confirm_password')}
+                onFocus={handleBlur('confirm_password')}
+                error={errors.confirm_password}
+            />
 
-                <View style={styles.viewBtn}>
-                    <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.signupText}>SIGNUP</Text>
-                    </Button>
-                </View>
+            <View style={styles.viewBtn}>
+                <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
+                    <Text style={styles.signupText}>SIGNUP</Text>
+                </Button>
+            </View>
 
-                <View style={styles.viewLoginLink}>
-                    <Text style={styles.textLogin}>Already have login?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.viewLoginLink}>
+                <Text style={styles.textLogin}>Already have login?</Text>
+                <TouchableOpacity>
+                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     );
