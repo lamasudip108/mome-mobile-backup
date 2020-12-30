@@ -1,4 +1,21 @@
 {
   "welcome": "Welcome to MOME",
-  "message": "Hassle free payment for your shopping."
+  "message": "Hassle free payment for your shopping.",
+  "select" : "Select Language",
+  "USERNAME": "USERNAME",
+  "PASSWORD": "PASSWORD",
+  "LOGIN": "LOGIN",
+  "forgot": "Forgot Password?",
+  "dont": "Don’t have account?",
+  "SIGNUPHERE": "SIGNUP HERE",
+  "create": "Create new account",
+  "fname": "FIRST NAME",
+  "lname": "LAST NAME",
+  "phone": "PHONE NUMBER",
+  "email": "EMAIL",
+  "password": "PASSWORD",
+  "confirm": "CONFIRM PASSWORD",
+  "SIGNUP": "SIGNUP",
+  "already": "Already have login?",
+  "LOGINHERE": "LOGIN HERE",
 }

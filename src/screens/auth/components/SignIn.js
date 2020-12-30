@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, I18nManager} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, I18nManager, Dimensions} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -10,6 +10,8 @@ import i18n from 'i18n-js';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signInSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
@@ -47,6 +49,7 @@ const SignInForm = ({navigation}) => {
     );
 
     return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
             <StatusBar style="auto"/>
 
@@ -109,6 +112,7 @@ const SignInForm = ({navigation}) => {
             </View>
 
         </View>
+        </ScrollView>
     );
 };
 

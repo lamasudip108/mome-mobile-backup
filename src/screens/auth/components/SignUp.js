@@ -1,11 +1,13 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signUpSchema = Yup.object().shape({
     first_name: Yup
@@ -52,6 +54,7 @@ const SignUpForm = (props) => {
     });
 
     return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
@@ -132,6 +135,7 @@ const SignUpForm = (props) => {
             </View>
 
         </View>
+        </ScrollView>
     );
 };
 
