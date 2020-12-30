@@ -2,9 +2,9 @@ import React, {forwardRef} from 'react';
 import {I18nManager, Platform} from 'react-native';
 import {FloatingLabelInput as FLTextInput} from 'react-native-floating-label-input';
 
-const FloatingLabelInput = forwardRef(({error, focused, ...otherProps}, ref) => {
+const FloatingLabelInput = forwardRef(({error, touched, ...otherProps}, ref) => {
 
-    const validationColor = error ? 'red' : '#F2F2F2';
+    const validationColor = !touched ? '#BEBEBE' : error ? 'red' : '#F2F2F2';
 
     return (
         <FLTextInput
