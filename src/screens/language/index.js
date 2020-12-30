@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
 
 import {useDirection} from '@/context/language';
 
@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
         height: 50,
         marginBottom: 10,
         width: '80%',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
 
     textHeading1: {
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
         fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
     language: {

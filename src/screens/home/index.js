@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -141,6 +141,8 @@ const styles = StyleSheet.create({
     	paddingTop: 20, 
     	height: '100%',
     	marginTop: Platform.OS === 'ios' ? 10 : 0,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     middleContentText: {
     	fontSize: 10, 
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
         fontFamily: 'SFProDisplay-Semibold', 
     	color: 'rgba(20,21,30,0.40)', 
     	lineHeight: 18,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     fundTransfer: {
         flexDirection: 'row',

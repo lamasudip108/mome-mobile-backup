@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         marginLeft: 32,
         marginRight: 32,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     textHeading1: {
         fontSize: 24,
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     list: {
     	paddingTop: 45,

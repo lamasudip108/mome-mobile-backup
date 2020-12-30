@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -10,7 +10,7 @@ import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signUpSchema = Yup.object().shape({
-    first_name: Yup
+    /*first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -26,7 +26,7 @@ const signUpSchema = Yup.object().shape({
         .required('Password is required.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),
+        .required('Confirm Password is required.'),*/
 });
 
 const SignUpForm = (props) => {
@@ -151,6 +151,8 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 22 : 62,
         width: '70%',
         paddingBottom: 10,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
 
     textHeading1: {
@@ -159,6 +161,7 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
     viewForm: {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -57,7 +57,13 @@ const SettingScreen = ({navigation}) => {
 	            	</ScrollView>
             	</View>
 	  
-	  			<View style={{ marginLeft: 32, marginRight: 32, paddingBottom: 10}}>
+	  			<View style={{ 
+	  				marginLeft: 32, 
+	  				marginRight: 32, 
+	  				paddingBottom: 10,
+	  				alignItems: 'flex-start',
+        			justifyContent: 'flex-start',
+        		}}>
         			<Text style={styles.textHeading2}>PAYMENT SETTING</Text>
             	</View>
 
@@ -123,6 +129,8 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         marginLeft: 32,
         marginRight: 32,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     textHeading1: {
         fontSize: 24,
@@ -131,6 +139,7 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     textHeading2: {
         fontSize: 10,
@@ -139,6 +148,7 @@ const styles = StyleSheet.create({
         color: 'rgba(20,21,30,0.40)',
         marginBottom: 2,
         lineHeight: 18,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     list: {
     	paddingTop: 11,

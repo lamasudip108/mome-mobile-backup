@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -112,6 +112,8 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 22 : 42,
         width: '70%',
         paddingBottom: 10,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
 
     textHeading1: {
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
     viewForm: {

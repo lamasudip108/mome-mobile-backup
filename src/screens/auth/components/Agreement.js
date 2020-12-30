@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
@@ -25,7 +25,9 @@ const AgreementForm = (props) => {
                     </Text>
                 </TouchableOpacity>
             </View>
+            
             <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
+            
 
             <ScrollView
                 style={styles.scrollView}
@@ -87,6 +89,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
     },
     scrollView: {
         height: '20%',
@@ -97,6 +101,8 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         paddingBottom: 30,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
     },
     content: {
         paddingVertical: 16,
@@ -123,11 +129,13 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginVertical: 10,
         color: '#0000FF',
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     headingSubTitle: {
         fontFamily: 'SFProDisplay-Medium',
         fontSize: 12,
         color: '#2B2D42',
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     colors: {
         color: '#212121',
@@ -138,6 +146,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginLeft: 32,
         fontFamily: 'SFProDisplay-Regular',
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     paragraph: {
         fontFamily: 'SFProDisplay-Regular',
@@ -146,6 +155,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 25,
         color: '#747E8F',
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     termsBottom: {
         width: '100%',

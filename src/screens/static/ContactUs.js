@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -141,6 +141,8 @@ const styles = StyleSheet.create({
     middleContentAbout: {
         paddingTop:  50,
         paddingBottom: 15,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
     },
     aboutTitle: {
     	fontSize: 18, 
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
         fontFamily: 'SFProDisplay-Medium', 
     	color: '#212121', 
     	lineHeight: 27,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     aboutContent: {
         fontFamily: 'SFProDisplay-Regular',
@@ -156,6 +159,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         marginTop: 20,
         marginBottom: 20,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     bottomContent: {
         height: '100%',
