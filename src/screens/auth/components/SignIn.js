@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, I18nManager, Dimensions} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -10,6 +10,8 @@ import i18n from 'i18n-js';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signInSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
@@ -47,6 +49,7 @@ const SignInForm = ({navigation}) => {
     );
 
     return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
             <StatusBar style="auto"/>
 
@@ -67,8 +70,9 @@ const SignInForm = ({navigation}) => {
             <Spinner/>
             }
 
+            <View style={styles.viewForm}>
             <FloatingLabelInput
-                label="USERNAME"
+                label={i18n.t('username')}
                 value={values.email}
                 onChangeText={handleChange('email')}
                 onFocus={handleBlur('email')}
@@ -77,7 +81,7 @@ const SignInForm = ({navigation}) => {
             />
 
             <FloatingLabelInput
-                label="PASSWORD"
+                label={i18n.t('password')}
                 value={values.password}
                 isPassword={true}
                 onChangeText={handleChange('password')}
@@ -89,25 +93,26 @@ const SignInForm = ({navigation}) => {
                 customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
                                                        color="#212121"/>}
             />
-
+            </View>
             <View style={styles.viewBtn}>
                 <Button style={styles.loginBtn} onPress={handleSubmit} disabled={!isValid}>
-                    <Text style={styles.loginText}>LOGIN</Text>
+                    <Text style={styles.loginText}>{i18n.t('login')}</Text>
                 </Button>
             </View>
 
             <TouchableOpacity>
-                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>Forgot Password?</Text>
+                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>{i18n.t('forgot')}</Text>
             </TouchableOpacity>
 
             <View style={styles.viewSignupLink}>
-                <Text style={styles.textSignup}>Don’t have account?</Text>
+                <Text style={styles.textSignup}>{i18n.t('dont')}</Text>
                 <TouchableOpacity>
-                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>SIGNUP HERE</Text>
+                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>{i18n.t('signuphere')}</Text>
                 </TouchableOpacity>
             </View>
 
         </View>
+        </ScrollView>
     );
 };
 
@@ -132,7 +137,6 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        //fontWeight: 'bold',
         fontFamily: 'SFProDisplay-Bold',
         color: '#212121',
         marginBottom: 2,
@@ -162,6 +166,12 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
 
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
     viewBtn: {
         width: '70%',
         alignItems: 'center',
@@ -181,7 +191,6 @@ const styles = StyleSheet.create({
     loginText: {
         color: '#FFFFFF',
         fontSize: 14,
-        //fontWeight: 'bold',
         fontFamily: 'SFProDisplay-Bold',
     },
 
@@ -201,7 +210,6 @@ const styles = StyleSheet.create({
 
     signupButton: {
         color: '#0000FF',
-        //fontWeight: '600',
         fontFamily: 'SFProDisplay-Medium',
         paddingLeft: 8,
     },

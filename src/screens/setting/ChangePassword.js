@@ -51,7 +51,7 @@ const ChangePasswordScreen = (props) => {
                 <Text style={styles.textHeading1}>Change Password</Text>
             </View>
 
-            
+            <View style={styles.viewForm}>
                 <FloatingLabelInput
                     label="OLD PASSWORD"
                     value={values.old_password}
@@ -80,7 +80,7 @@ const ChangePasswordScreen = (props) => {
                     onBlur={handleBlur('confirmPassword')}
                     error={errors.confirmPassword}
                 />
-
+            </View>
         
 
                 <View style={styles.viewBtn}>
@@ -121,6 +121,12 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+    },
+
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     viewBtn: {

@@ -51,7 +51,7 @@ const EditProfileForm = (props) => {
                 <Text style={styles.textHeading1}>Edit Profile</Text>
             </View>
 
-            
+            <View style={styles.viewForm}>
                 <FloatingLabelInput 
                     label="FIRST NAME"
                     value={values.first_name}
@@ -88,7 +88,7 @@ const EditProfileForm = (props) => {
                     error={errors.email}
                     touched={touched.email}
                 />
-
+            </View>
         
 
                 <View style={styles.viewBtn}>
@@ -129,6 +129,12 @@ const styles = StyleSheet.create({
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+    },
+
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     viewBtn: {

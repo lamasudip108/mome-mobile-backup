@@ -1,10 +1,13 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signUpSchema = Yup.object().shape({
     first_name: Yup
@@ -51,16 +54,18 @@ const SignUpForm = (props) => {
     });
 
     return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
 
             <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Create new account</Text>
+                <Text style={styles.textHeading1}>{i18n.t('create')}</Text>
             </View>
 
+            <View style={styles.viewForm}>
             <FloatingLabelInput
-                label="FIRST NAME"
+                label={i18n.t('firstname')}
                 value={values.first_name}
                 onChangeText={handleChange('first_name')}
                 onFocus={handleBlur('first_name')}
@@ -69,7 +74,7 @@ const SignUpForm = (props) => {
             />
 
             <FloatingLabelInput
-                label="LAST NAME"
+                label={i18n.t('lastname')}
                 value={values.last_name}
                 onChangeText={handleChange('last_name')}
                 onFocus={handleBlur('last_name')}
@@ -78,7 +83,7 @@ const SignUpForm = (props) => {
             />
 
             <FloatingLabelInput
-                label="PHONE NUMBER"
+                label={i18n.t('phone')}
                 value={values.phone}
                 keyboardType="numeric"
                 onChangeText={handleChange('phone')}
@@ -88,7 +93,7 @@ const SignUpForm = (props) => {
             />
 
             <FloatingLabelInput
-                label="EMAIL"
+                label={i18n.t('email')}
                 value={values.email}
                 onChangeText={handleChange('email')}
                 onFocus={handleBlur('email')}
@@ -97,7 +102,7 @@ const SignUpForm = (props) => {
             />
 
             <FloatingLabelInput
-                label="PASSWORD"
+                label={i18n.t('password')}
                 value={values.password}
                 isPassword={true}
                 onChangeText={handleChange('password')}
@@ -107,28 +112,30 @@ const SignUpForm = (props) => {
             />
 
             <FloatingLabelInput
-                label="CONFIRM PASSWORD"
+                label={i18n.t('confirm')}
                 value={values.confirm_password}
                 isPassword={true}
                 onChangeText={handleChange('confirm_password')}
                 onFocus={handleBlur('confirm_password')}
                 error={errors.confirm_password}
             />
+            </View>
 
             <View style={styles.viewBtn}>
                 <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
-                    <Text style={styles.signupText}>SIGNUP</Text>
+                    <Text style={styles.signupText}>{i18n.t('signup')}</Text>
                 </Button>
             </View>
 
             <View style={styles.viewLoginLink}>
-                <Text style={styles.textLogin}>Already have login?</Text>
+                <Text style={styles.textLogin}>{i18n.t('already')}</Text>
                 <TouchableOpacity>
-                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>LOGIN HERE</Text>
+                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>{i18n.t('loginhere')}</Text>
                 </TouchableOpacity>
             </View>
 
         </View>
+        </ScrollView>
     );
 };
 
@@ -148,11 +155,16 @@ const styles = StyleSheet.create({
 
     textHeading1: {
         fontSize: 24,
-        //fontWeight: '700',
         fontFamily: 'SFProDisplay-Semibold',
         color: '#212121',
         marginBottom: 2,
         lineHeight: 36,
+    },
+
+    viewForm: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     viewBtn: {
@@ -173,7 +185,6 @@ const styles = StyleSheet.create({
     signupText: {
         color: '#FFFFFF',
         fontSize: 14,
-        //fontWeight: 'bold',
         fontFamily: 'SFProDisplay-Bold',
     },
 
@@ -192,7 +203,6 @@ const styles = StyleSheet.create({
 
     loginButton: {
         color: '#0000FF',
-        //fontWeight: '600',
         fontFamily: 'SFProDisplay-Medium',
         paddingLeft: 8,
     },
