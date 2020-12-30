@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, I18nManager, Dimensions} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';

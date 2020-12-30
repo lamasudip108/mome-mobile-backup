@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {Container, Content, Spinner} from 'native-base';
 import i18n from 'i18n-js';
 
