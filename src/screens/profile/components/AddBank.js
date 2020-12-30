@@ -6,6 +6,39 @@ import * as Yup from 'yup';
 
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
+import {Dropdown} from 'sharingan-rn-modal-dropdown';
+
+export const data = [
+  {
+    value: 'Qatar National Bank',
+    label: 'Qatar National Bank',
+    avatarSource: {
+      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+    },
+  },
+  {
+    value: 'Abu Dubai Islamic Bank',
+    label: 'Abu Dubai Islamic Bank',
+    avatarSource: {
+      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+    },
+  },
+  {
+    value: 'Arab Bank PLC',
+    label: 'Arab Bank PLC',
+    avatarSource: {
+      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+    },
+  },
+  {
+    value: 'Bank Melli Iran',
+    label: 'Bank Melli Iran',
+    avatarSource: {
+      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
+    },
+  },
+];
+
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
         .string()
@@ -22,6 +55,11 @@ const updateSchema = Yup.object().shape({
 const AddBankForm = (props) => {
 
     const [selectedValue, setSelectedValue] = useState("select");
+
+    const [valueSS, setValueSS] = useState('');
+    const onChangeSS = (value: string) => {
+        setValueSS(value);
+      };
 
     const {navigation} = props;
 
@@ -48,20 +86,42 @@ const AddBankForm = (props) => {
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
+            
             <View style={styles.content}>
             <View style={styles.viewHeading}>
                 <Text style={styles.textHeading1}>Add Bank</Text>
             </View>
+
+            <View style={{
+                width: '70%', 
+                position: 'relative',
+                backgroundColor: '#FFFFFF',
+                borderRadius: 30,
+                borderColor: '#F2F2F2',
+                borderWidth: 1,
+                width: '70%',
+                height: 56,
+                marginBottom: 15,
+                paddingHorizontal: 2,
+            }}>
+            <Dropdown
+                    //label="BANK NAME"
+                    data={data}
+                    enableSearch
+                    value={valueSS}
+                    onChange={onChangeSS}
+                    underlineColor="transparent"
+                    textInputStyle={{
+                        fontSize: 14, 
+                        color: '#212121', 
+                        marginTop: -7,
+                    }}
+                    textInputPlaceholder="BANK NAME"
+                    textInputPlaceholderColor="#BEBEBE"
+                  />
+            </View>
     
             <View style={styles.viewForm}>
-                <FloatingLabelInput 
-                    label="BANK NAME"
-                    value={values.bank_name}
-                    onChangeText={handleChange('bank_name')}
-                    onBlur={handleBlur('bank_name')}
-                    error={errors.bank_name}
-                    touched={touched.bank_name}
-                />
 
                 <FloatingLabelInput
                     label="BANK BRANCH"

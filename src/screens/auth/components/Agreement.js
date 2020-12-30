@@ -59,12 +59,13 @@ const AgreementForm = (props) => {
 
             </ScrollView>
             <View style={styles.errorView}>
-                {authErrors &&
-                <Text style={styles.errorText}>{authErrors.message}</Text>
-                }
+                
             </View>
 
             <View style={styles.termsBottom}>
+                {authErrors &&
+                <Text style={styles.errorText}>{authErrors.message}</Text>
+                }
                 <View style={styles.checkBtn}>
                     <CheckBox style={styles.checkBox} checked={true}/>
                     <Text style={styles.textCheck}>I Accept the terms of service</Text>
@@ -231,8 +232,9 @@ const styles = StyleSheet.create({
     errorText: {
         fontSize: 14,
         color: 'red',
-        marginLeft: 32,
-        marginBottom: 15,
+        marginLeft: 12,
+        marginBottom: 5,
+        marginTop: 0,
         lineHeight: 18,
     },
 });
