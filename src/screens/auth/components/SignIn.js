@@ -35,7 +35,7 @@ const SignInForm = ({navigation}) => {
         isValid,
     } = useFormik({
         validationSchema: signInSchema,
-        initialValues: {email: 'customer@gmail.com', password: '123456'},
+        initialValues: {email: 'krishna@gmail.com', password: '123456'},
         onSubmit: values => {
             signIn(values);
         },
