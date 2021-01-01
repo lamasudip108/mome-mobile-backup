@@ -30,7 +30,9 @@ const HomeScreen = ({navigation}) => {
             </View>
 
             <View style={styles.middleContent}>
-            	<Text style={styles.middleContentText}>FUND TRANSFER</Text>
+                <View style={styles.middleContentView}>
+            	   <Text style={styles.middleContentText}>FUND TRANSFER</Text>
+                </View>
             	<View style={styles.fundTransfer}>
 	                <View style={styles.fundTransferBox}>
 		                <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('ContactUs')}>
@@ -50,7 +52,9 @@ const HomeScreen = ({navigation}) => {
 	            </View>
 
 	            <View style={styles.referEarn}>
-					<Text style={styles.middleContentText}>REFER & EARN</Text>
+                    <View style={styles.middleContentView}>
+					   <Text style={styles.middleContentText}>REFER & EARN</Text>
+                    </View>
 					<Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
 				</View>	            
             </View>
@@ -141,6 +145,8 @@ const styles = StyleSheet.create({
     	paddingTop: 20, 
     	height: '100%',
     	marginTop: Platform.OS === 'ios' ? 10 : 0,
+    },
+    middleContentView: {
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
     },

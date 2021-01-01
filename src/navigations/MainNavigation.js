@@ -16,6 +16,7 @@ import SignUpScreen from '@/screens/auth/SignUp';
 import EditProfileScreen from '@/screens/profile/EditProfile';
 import MyBanksScreen from '@/screens/profile/MyBanks';
 import AddBankScreen from '@/screens/profile/AddBank';
+import MyCodeScreen from '@/screens/profile/MyCode';
 import MyTransactionScreen from '@/screens/profile/MyTransaction';
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
@@ -156,6 +157,17 @@ const MainNavigation = () => {
             <Stack.Screen name="MyBanks" component={MyBanksScreen}
                           options={{
                               title: 'My Banks',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="MyCode" component={MyCodeScreen}
+                          options={{
+                              title: 'Scan to Request',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',
