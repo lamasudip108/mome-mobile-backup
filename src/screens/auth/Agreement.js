@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import AgreementForm from './components/Agreement';
-import {customerServices} from './duck';
+import {customerServices, customerActions} from './duck';
 
 const AgreementScreen = (props) => {
 
@@ -15,8 +15,16 @@ const AgreementScreen = (props) => {
      * @param {object} formData
      *
      */
-    const customerSignup = formData => {
-        dispatch(customerServices.customerSignup(formData));
+    const customerSignUp = formData => {
+        dispatch(customerServices.customerSignUp(formData));
+    };
+
+    /**
+     * Clean customer sign up record.
+     *
+     */
+    const cleanCustomerSignUp = () => {
+        dispatch(customerActions.customerSignupCleanRequest());
     };
 
     return (
@@ -25,7 +33,8 @@ const AgreementScreen = (props) => {
             auths={payload}
             authLoading={loading}
             authErrors={errors}
-            customerSignup={customerSignup}
+            customerSignUp={customerSignUp}
+            cleanCustomerSignUp={cleanCustomerSignUp}
         />
     );
 };

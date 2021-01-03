@@ -1,16 +1,24 @@
-import * as React from 'react';
+import  React, {useCallback} from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const AgreementForm = (props) => {
 
-    const {navigation, route, customerSignup, authErrors} = props;
+    const {navigation, route, customerSignUp, authErrors, cleanCustomerSignUp} = props;
 
     const handleSubmit = () => {
         const customerData = route?.params?.customer;
-        customerSignup(customerData);
+        delete customerData.confirm_password;
+        customerSignUp(customerData);
     };
+
+    useFocusEffect(
+        useCallback(() => {
+            return () =>cleanCustomerSignUp();
+        }, [])
+    );
 
     return (
         <View style={styles.container}>

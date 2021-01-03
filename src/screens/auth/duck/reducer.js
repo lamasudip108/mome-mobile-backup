@@ -6,7 +6,7 @@ import {
 } from './types';
 
 const INITIAL_STATE = {
-    payload: [],
+    payload: {},
     loading: false,
     errors: {},
 };
@@ -39,7 +39,7 @@ const reducer = (state, action) => {
         case CUSTOMER_SIGNUP_CLEAN_REQUEST:
             return Object.assign({}, state, {
                 loading: false,
-                payload: [],
+                payload: {},
                 errors: {},
             });
 

@@ -26,7 +26,7 @@ const signUpSchema = Yup.object().shape({
         .required('Password is required.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password and confirm password must be match.')
-        .required('Confirm Password is required.'),
+        .required('Confirm password is required.'),
 });
 
 const SignUpForm = (props) => {
@@ -43,9 +43,8 @@ const SignUpForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: signUpSchema,
-        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: ''},
+        initialValues: {first_name: '', last_name: '', phone: '', email: '', password: '', confirm_password: ''},
         onSubmit: values => {
-            delete values.confirm_password;
             navigation.navigate('Model', {
                 screen: 'Agreement',
                 params: {customer: values},

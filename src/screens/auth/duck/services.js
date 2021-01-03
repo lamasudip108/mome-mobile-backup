@@ -8,7 +8,7 @@ import {
     customerSignupRequestFailure,
 } from './actions';
 
-export const customerSignup = (formData = {}) => {
+export const customerSignUp = (formData = {}) => {
     return (dispatch) => {
         dispatch(customerSignupRequest());
         return store(`api/customers`, formData)
