@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
     },
     topContentRight: {
     	paddingRight: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     circle: {
     	backgroundColor:'#D2D4FC', 
