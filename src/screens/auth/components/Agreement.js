@@ -5,14 +5,12 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const AgreementForm = (props) => {
 
-    const {navigation, route, customerSignup, auths, authLoading,  authErrors} = props;
+    const {navigation, route, customerSignup, authErrors} = props;
 
     const handleSubmit = () => {
         const customerData = route?.params?.customer;
         customerSignup(customerData);
     };
-
-    console.log("YYYYY:::", auths);
 
     return (
         <View style={styles.container}>
@@ -25,9 +23,9 @@ const AgreementForm = (props) => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            
+
             <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
-            
+
 
             <ScrollView
                 style={styles.scrollView}
@@ -61,7 +59,7 @@ const AgreementForm = (props) => {
 
             </ScrollView>
             <View style={styles.errorView}>
-                
+
             </View>
 
             <View style={styles.termsBottom}>

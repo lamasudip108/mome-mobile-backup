@@ -3,11 +3,12 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
+import {Root as NativeBaseProvider} from 'native-base';
 
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
 import {navigationRef} from '@/utils/navigationUtil';
-import {LanguageDirectionProvider} from '@/context/language';
+import {LanguageProvider} from '@/context/language';
 import {AuthProvider} from '@/context/auth';
 
 // XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
@@ -23,15 +24,17 @@ const App = () => {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-        <LanguageDirectionProvider>
-            <AuthProvider>
-                <PersistGate loading={null} persistor={persistor}>
-                    <NavigationContainer ref={navigationRef}>
-                        <MainNavigation/>
-                    </NavigationContainer>
-                </PersistGate>
-            </AuthProvider>
-        </LanguageDirectionProvider>
+        <NativeBaseProvider>
+            <LanguageProvider>
+                <AuthProvider>
+                    <PersistGate loading={null} persistor={persistor}>
+                        <NavigationContainer ref={navigationRef}>
+                            <MainNavigation/>
+                        </NavigationContainer>
+                    </PersistGate>
+                </AuthProvider>
+            </LanguageProvider>
+        </NativeBaseProvider>
     </Provider>);
 };
 

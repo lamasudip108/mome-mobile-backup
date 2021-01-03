@@ -1,12 +1,12 @@
 import {navigate} from '@/utils/navigationUtil';
+import ToastMessage from '@/shared/toast';
+import {store} from '@/utils/httpUtil';
 
 import {
     customerSignupRequest,
     customerSignupRequestSuccess,
     customerSignupRequestFailure,
 } from './actions';
-
-import {store} from '@/utils/httpUtil';
 
 export const customerSignup = (formData = {}) => {
     return (dispatch) => {
@@ -16,6 +16,7 @@ export const customerSignup = (formData = {}) => {
                 if (response.data.success) {
                     dispatch(customerSignupRequestSuccess(response.data));
                     navigate('SignIn');
+                    ToastMessage.show('Your account has been successfully created. We\'ve sent you verification link to your email account. Please check your email inbox and verify your email address.');
                 }
             })
             .catch((error) =>

@@ -31,11 +31,11 @@ const setI18nConfig = (langKey) => {
     i18n.locale = languageTag;
 };
 
-export const LanguageDirectionContext = createContext({
+export const LanguageContext = createContext({
     direction: I18nManager.isRTL ? 'rtl' : 'ltr',
 });
 
-export const LanguageDirectionProvider = ({children}) => {
+export const LanguageProvider = ({children}) => {
 
     const [direction, setDirection] = useState(I18nManager.isRTL ? 'rtl' : 'ltr');
 
@@ -89,18 +89,18 @@ export const LanguageDirectionProvider = ({children}) => {
     }, []);
 
     return (
-        <LanguageDirectionContext.Provider value={{
+        <LanguageContext.Provider value={{
             direction,
             toggleDirection,
             state
         }}>
             {children}
-        </LanguageDirectionContext.Provider>
+        </LanguageContext.Provider>
     );
 };
 
 export const useDirection = () => {
-    const context = useContext(LanguageDirectionContext);
+    const context = useContext(LanguageContext);
 
     if (!context) {
         throw new Error('You forgot to implement the language provider.');
