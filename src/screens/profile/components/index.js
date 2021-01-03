@@ -3,7 +3,11 @@ import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} f
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {useDirection} from '@/context/language';
+
 const ProfileForm = ({navigation}) => {
+
+    const {toggleDirection, direction} = useDirection();
 
     return (
         <View style={styles.container}>
@@ -46,7 +50,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>My Transactions</Text>
 		            			</View>
 		            			<View>
+                                    {direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -59,7 +68,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>My Code</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -72,7 +86,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>My Banks</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -85,7 +104,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>How it works</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -98,7 +122,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>Terms and Conditions</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -111,7 +140,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>Contact Us</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -124,7 +158,12 @@ const ProfileForm = ({navigation}) => {
 		            				<Text style={styles.listName}>Logout</Text>
 		            			</View>
 		            			<View>
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				{direction === 'ltr' &&
+                                    <Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -266,6 +305,7 @@ const styles = StyleSheet.create({
     	lineHeight: 21,
     	color: '#212121',
     	paddingLeft: 40,
+        marginLeft: Platform.OS === 'ios' ? 0 : 15,
     },
 
 });
