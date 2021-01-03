@@ -3,7 +3,11 @@ import {I18nManager, Platform, Text, View, Image, ScrollView, StatusBar, StyleSh
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {useDirection} from '@/context/language';
+
 const SettingScreen = ({navigation}) => {
+
+	const {direction} = useDirection();
 
     return (
         <View style={styles.container}>
@@ -24,7 +28,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Change Password</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -37,7 +46,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Setting Item Two</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -50,7 +64,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Setting Item Three</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -78,7 +97,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Setting Item Four</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -91,7 +115,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Setting Item Five</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -104,7 +133,12 @@ const SettingScreen = ({navigation}) => {
 		            				<Text style={styles.listName}>Setting Item Six</Text>
 		            			</View>
 		            			<View>
+		            				{direction === 'ltr' &&
 		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+                                    }
+                                    {direction === 'rtl' &&
+                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    }
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
@@ -185,6 +219,7 @@ const styles = StyleSheet.create({
     	lineHeight: 21,
     	color: '#212121',
     	paddingLeft: 40,
+    	marginLeft: Platform.OS === 'ios' ? 0 : 15,
     },
 
 });
