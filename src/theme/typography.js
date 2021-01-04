@@ -1,3 +1,7 @@
+export const FONT_NORMAL = 'SFProDisplay-Regular';
+export const FONT_MEDIUM = 'SFProDisplay-Medium';
+export const FONT_BOLD = 'SFProDisplay-Bold';
+export const FONT_SEMI_BOLD = 'SFProDisplay-Semibold';
 export const FONT_SIZE_SMALL = 12;
 export const FONT_SIZE_MEDIUM = 14;
 export const FONT_SIZE_LARGE = 16;
