@@ -1,8 +1,6 @@
-import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import React from 'react';
+import {Text, View, Image, StatusBar, StyleSheet} from 'react-native';
+import {Button} from 'native-base';
 
 const PayingSuccess = ({navigation}) => {
 
@@ -18,8 +16,8 @@ const PayingSuccess = ({navigation}) => {
                 <Button style={styles.updateBtn} onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.updateText}>GO TO DASHBOARD</Text>
                 </Button>
-            </View> 
-            
+            </View>
+
         </View>
     );
 
@@ -66,7 +64,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'SFProDisplay-Bold',
     },
-    
 
 });
 

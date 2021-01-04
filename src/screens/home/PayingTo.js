@@ -1,32 +1,37 @@
-import * as React from 'react';
-import {I18nManager, Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import React from 'react';
+import {Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const PayingToScreen = ({navigation}) => {
-    return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
-        <View style={styles.container}>
-        	<StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
-            <View style={styles.topContent}>
-            	
-  
-            </View>
+const PayingToScreen = (props) => {
 
-            <View style={styles.content}>
-                
-                    
+    const {navigation, route} = props;
+
+    const QRData = route?.params?.result;
+
+    return (
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
+                <View style={styles.topContent}>
+
+
+                </View>
+
+                <View style={styles.content}>
+
+
                     <Text style={[styles.Text, styles.fontSize3, styles.lineHeight3]}>You are paying to:</Text>
-                    
+
                     <View style={styles.imageCircle}>
                         <Image source={require('@/assets/img/outlet.png')}/>
                     </View>
 
-                    <Text style={[styles.Text, styles.fontSize4, styles.lineHeight4]}>The Outlet</Text>
+                    <Text style={[styles.Text, styles.fontSize4, styles.lineHeight4]}>{QRData.data}</Text>
 
-                    <Text style={[styles.Text1, styles.fontSize2, styles.lineHeight2]}>Palm Jumeirah, Dubai, United Arab Emirates</Text>
+                    <Text style={[styles.Text1, styles.fontSize2, styles.lineHeight2]}>Palm Jumeirah, Dubai, United Arab
+                        Emirates</Text>
 
                     <View style={styles.billBlock}>
                         <Text style={[styles.Text2, styles.fontSize2, styles.lineHeight2]}>BILL AMOUNT</Text>
@@ -34,28 +39,29 @@ const PayingToScreen = ({navigation}) => {
                     </View>
 
                     <View style={styles.inputBlock}>
-                        <TextInput 
+                        <TextInput
                             style={styles.TextInput}
-                            placeholder="Purchase Note ( if Any)" 
+                            placeholder="Purchase Note ( if Any)"
                         />
                     </View>
 
-                     <View style={styles.termsBottom}>
-                       <View style={styles.termsBottmBtn}>
-                            <Button style={styles.cancelBtn} onPress={() => navigation.goBack()}>
+                    <View style={styles.termsBottom}>
+                        <View style={styles.termsBottmBtn}>
+                            <Button style={styles.cancelBtn} onPress={() =>
+                                navigation.navigate('Model', {
+                                    screen: 'QRCode',
+                                })}>
                                 <Text style={styles.cancelText}>CANCEL</Text>
                             </Button>
                             <Button style={styles.acceptBtn} onPress={() => handleSubmit()}>
                                 <Text style={styles.acceptText}>ACCEPT</Text>
                             </Button>
                         </View>
-                    </View> 
-                    
-                </View>  
-           
-            
-            
-        </View>
+                    </View>
+
+                </View>
+
+            </View>
         </ScrollView>
     );
 };
@@ -71,17 +77,16 @@ const styles = StyleSheet.create({
         marginRight: 32,
     },
     content: {
-        marginTop: Platform.OS === 'ios' ? 90 : 40, 
+        marginTop: Platform.OS === 'ios' ? 90 : 40,
         backgroundColor: '#FFFFFF',
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
-        borderColor: '#FFFFFF', 
+        borderColor: '#FFFFFF',
         borderWidth: 1,
         padding: 32,
-        paddingTop: 40, 
+        paddingTop: 40,
         height: '100%',
         alignItems: 'center',
-        //justifyContent: 'center',
     },
     billBlock: {
         backgroundColor: 'rgba(247,249,251,0.80)',
@@ -90,7 +95,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 20,
         alignItems: 'center',
-        width: '80%',   
+        width: '80%',
     },
     inputBlock: {
         width: '80%',
@@ -103,9 +108,9 @@ const styles = StyleSheet.create({
         paddingTop: 10,
     },
     TextInput: {
-       maxHeight: 110,
+        maxHeight: 110,
     },
-    viewBox:{
+    viewBox: {
         paddingTop: 15,
         paddingBottom: 15,
         paddingLeft: 10,
@@ -125,39 +130,36 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     fontSize4: {
-        fontSize: 20,
-    },
-    fontSize4: {
         fontSize: 26,
     },
-    lineHeight1:{
+    lineHeight1: {
         lineHeight: 18,
     },
-    lineHeight2:{
+    lineHeight2: {
         lineHeight: 21,
     },
-    lineHeight3:{
+    lineHeight3: {
         lineHeight: 24,
     },
-    lineHeight4:{
+    lineHeight4: {
         lineHeight: 27,
     },
-    lineHeight5:{
+    lineHeight5: {
         lineHeight: 48,
     },
     Text: {
-        fontFamily: 'SFProDisplay-Bold', 
+        fontFamily: 'SFProDisplay-Bold',
         color: '#212121',
     },
     Text1: {
-        fontFamily: 'SFProDisplay-Regular', 
+        fontFamily: 'SFProDisplay-Regular',
         color: 'rgba(20,21,30,0.40)',
     },
     Text2: {
-        fontFamily: 'SFProDisplay-Regular', 
+        fontFamily: 'SFProDisplay-Regular',
         color: '#2B2D42',
     },
-    imageCircle:{
+    imageCircle: {
         height: 124,
         width: 124,
         borderRadius: 62,
@@ -192,12 +194,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 7,
     },
-    image:{
-        width:40,
-        height:40,
-        borderRadius:20,
+    image: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
     },
-    imageContent:{
+    imageContent: {
         marginRight: 15,
     },
     termsBottom: {
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
         paddingLeft: 22,
         paddingRight: 22,
         paddingBottom: 20,
-        
+
     },
     termsBottmBtn: {
         marginTop: 15,
@@ -239,12 +241,10 @@ const styles = StyleSheet.create({
     },
     cancelText: {
         color: '#0000FF',
-        //fontWeight: 'bold',
         fontFamily: 'SFProDisplay-Bold',
     },
     acceptText: {
         color: '#FFFFFF',
-        //fontWeight: 'bold',
         fontFamily: 'SFProDisplay-Bold',
     },
 });

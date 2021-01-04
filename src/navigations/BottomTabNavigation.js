@@ -7,6 +7,7 @@ import {Platform, View} from 'react-native';
 import HomeScreen from '@/screens/home';
 import SettingScreen from '@/screens/setting';
 import ProfileScreen from '@/screens/profile';
+import {HeaderBackButton} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +37,7 @@ const BottomTabNavigation = () => {
             <Tab.Screen
                 name="Home"
                 component={HomeScreen}
-                options={({route}) => ({
+                options={({route, navigation}) => ({
                     tabBarLabel: 'QRCode',
                     tabBarIcon: ({color, size, focused}) => (
                         <View style={{
@@ -48,7 +49,11 @@ const BottomTabNavigation = () => {
                             alignItems: 'center',
                             bottom: Platform.OS === 'ios' ? 10 : 18,
                         }}>
-                        <MaterialCommunityIcons name="qrcode-scan" color={'#FFFFFF'} size={focused ? 50 : size} />
+                        <MaterialCommunityIcons name="qrcode-scan" color={'#FFFFFF'} size={focused ? 50 : size} onPress={() => {
+                            navigation.navigate('Model', {
+                                screen: 'QRCode'
+                            });
+                        }}/>
                         </View>
                     ),
                     tabBarVisible: true,

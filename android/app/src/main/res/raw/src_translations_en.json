@@ -16,5 +16,6 @@
   "confirm": "CONFIRM PASSWORD",
   "signup": "SIGNUP",
   "already": "Already have login?",
-  "loginhere": "LOGIN HERE"
+  "loginhere": "LOGIN HERE",
+  "justamoment": "Just a moment while we setup language."
 }
