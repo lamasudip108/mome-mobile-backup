@@ -218,8 +218,8 @@ const styles = StyleSheet.create({
         fontFamily: 'SFProDisplay-Semibold',
     	lineHeight: 21,
     	color: '#212121',
-    	paddingLeft: 40,
-    	marginLeft: Platform.OS === 'ios' ? 0 : 15,
+    	//paddingLeft: 40,
+    	marginLeft: 15,
     },
 
 });
