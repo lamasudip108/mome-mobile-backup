@@ -1,4 +1,4 @@
-import {I18nManager, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import * as Colors from './colors';
 import * as Typography from './typography';
