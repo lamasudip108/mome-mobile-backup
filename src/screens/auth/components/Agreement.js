@@ -1,8 +1,10 @@
-import  React, {useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+
+import {CommonStyles, Colors, Typography} from '@/theme';
 
 const AgreementForm = (props) => {
 
@@ -16,8 +18,8 @@ const AgreementForm = (props) => {
 
     useFocusEffect(
         useCallback(() => {
-            return () =>cleanCustomerSignUp();
-        }, [])
+            return () => cleanCustomerSignUp();
+        }, []),
     );
 
     return (
@@ -26,7 +28,7 @@ const AgreementForm = (props) => {
             <View style={styles.meta}>
                 <Text style={styles.title}>TERMS OF SERVICE</Text>
                 <TouchableOpacity>
-                    <Text style={styles.closeBtn} onPress={() => navigation.goBack()}>
+                    <Text onPress={() => navigation.goBack()}>
                         <AntIcon name="close" size={25} color="#212121"/>
                     </Text>
                 </TouchableOpacity>
@@ -34,9 +36,8 @@ const AgreementForm = (props) => {
 
             <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
 
-
             <ScrollView
-                style={styles.scrollView}
+                style={styles.scrollContainer}
                 contentContainerStyle={styles.contentContainer}
             >
                 <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
@@ -66,24 +67,21 @@ const AgreementForm = (props) => {
                 </Text>
 
             </ScrollView>
-            <View style={styles.errorView}>
 
-            </View>
-
-            <View style={styles.termsBottom}>
+            <View style={styles.termsWrapper}>
                 {authErrors &&
                 <Text style={styles.errorText}>{authErrors.message}</Text>
                 }
-                <View style={styles.checkBtn}>
-                    <CheckBox style={styles.checkBox} checked={true}/>
-                    <Text style={styles.textCheck}>I Accept the terms of service</Text>
+                <View style={styles.checkboxWrapper}>
+                    <CheckBox style={styles.checkbox} checked={true}/>
+                    <Text style={styles.checkboxText}>I Accept the terms of service</Text>
                 </View>
-                <View style={styles.termsBottmBtn}>
-                    <Button style={styles.cancelBtn} onPress={() => navigation.goBack()}>
-                        <Text style={styles.cancelText}>CANCEL</Text>
+                <View style={styles.termsActionButton}>
+                    <Button style={styles.cancelButton} onPress={() => navigation.goBack()}>
+                        <Text style={styles.cancelButtonText}>CANCEL</Text>
                     </Button>
-                    <Button style={styles.acceptBtn} onPress={() => handleSubmit()}>
-                        <Text style={styles.acceptText}>ACCEPT</Text>
+                    <Button style={styles.acceptButton} onPress={() => handleSubmit()}>
+                        <Text style={styles.acceptButtonText}>ACCEPT</Text>
                     </Button>
                 </View>
             </View>
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    scrollView: {
+    scrollContainer: {
         height: '20%',
         width: '85%',
         marginLeft: 32,
@@ -110,10 +108,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    content: {
-        paddingVertical: 16,
-        padding: 15,
-    },
     meta: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -123,39 +117,29 @@ const styles = StyleSheet.create({
         marginRight: 32,
     },
     title: {
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Semibold',
+        fontFamily: Typography.FONT_SEMI_BOLD,
         fontSize: 18,
         marginVertical: 8,
         color: '#212121',
     },
     headingTitle: {
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Semibold',
-        fontSize: 14,
-        marginVertical: 10,
-        color: '#0000FF',
+        ...CommonStyles.headingTitle,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     headingSubTitle: {
-        fontFamily: 'SFProDisplay-Medium',
-        fontSize: 12,
-        color: '#2B2D42',
+        ...CommonStyles.headingSubTitle,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
-    },
-    colors: {
-        color: '#212121',
     },
     timestamp: {
         fontSize: 12,
         color: '#747E8F',
         marginBottom: 10,
         marginLeft: 32,
-        fontFamily: 'SFProDisplay-Regular',
+        fontFamily: Typography.FONT_NORMAL,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     paragraph: {
-        fontFamily: 'SFProDisplay-Regular',
+        fontFamily: Typography.FONT_NORMAL,
         fontSize: 14,
         lineHeight: 24,
         marginTop: 15,
@@ -163,7 +147,7 @@ const styles = StyleSheet.create({
         color: '#747E8F',
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-    termsBottom: {
+    termsWrapper: {
         width: '100%',
         backgroundColor: 'white',
         paddingTop: 30,
@@ -176,10 +160,10 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         elevation: 5,
     },
-    checkBtn: {
+    checkboxWrapper: {
         flexDirection: 'row',
     },
-    checkBox: {
+    checkbox: {
         borderRadius: 5,
         borderColor: '#0000FF',
         height: Platform.OS === 'ios' ? 30 : 24,
@@ -189,15 +173,14 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         marginRight: 15,
     },
-    textCheck: {
+    checkboxText: {
         fontSize: 14,
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Medium',
+        fontFamily: Typography.FONT_MEDIUM,
         color: '#212121',
         paddingLeft: 5,
         paddingTop: 5,
     },
-    termsBottmBtn: {
+    termsActionButton: {
         marginTop: 15,
         marginLeft: 12,
         marginRight: 20,
@@ -206,7 +189,7 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5,
     },
-    cancelBtn: {
+    cancelButton: {
         width: '50%',
         borderRadius: 25,
         borderColor: '#0000FF',
@@ -214,40 +197,28 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor:Colors.SECONDARY_BUTTON_COLOR,
         marginRight: 5,
     },
-    acceptBtn: {
+    cancelButtonText: {
+        color: Colors.SECONDARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_BOLD,
+    },
+    acceptButton: {
         width: '50%',
         borderRadius: 25,
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#0000FF',
+        backgroundColor: Colors.PRIMARY_BUTTON_COLOR,
         marginLeft: 5,
     },
-    cancelText: {
-        color: '#0000FF',
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
-    },
-    acceptText: {
-        color: '#FFFFFF',
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
-    },
-    image: {
-        width: '100%',
-        height: 200,
-        resizeMode: 'cover',
-        marginVertical: 8,
-    },
-    errorView: {
-        width: '70%',
+    acceptButtonText: {
+        color: Colors.PRIMARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_BOLD,
     },
     errorText: {
-        fontSize: 14,
-        color: 'red',
+        ...CommonStyles.errorText,
         marginLeft: 12,
         marginBottom: 5,
         marginTop: 0,

@@ -1,5 +1,5 @@
 import * as Colors from './colors';
 import * as Typography from './typography';
-import  Styles from './styles';
+import  CommonStyles from './common.style';
 
-export { Typography, Colors, Styles }
+export { Typography, Colors, CommonStyles }

@@ -7,6 +7,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
@@ -49,180 +50,129 @@ const SignInForm = ({navigation}) => {
     );
 
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
-        <View style={styles.container}>
-            <StatusBar style="auto"/>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
+                <StatusBar style="auto"/>
 
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>{i18n.t('welcome')}</Text>
-                <Text style={styles.textHeading2}>{i18n.t('message')}</Text>
-            </View>
+                <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
-            <View style={styles.errorView}>
-                {!message?.success &&
-                <Text style={styles.errorText}>{message?.message}</Text>
-                }
-            </View>
+                <View style={styles.header}>
+                    <Text style={styles.headingText1}>{i18n.t('welcome')}</Text>
+                    <Text style={styles.headingText2}>{i18n.t('message')}</Text>
+                </View>
 
-            {loading &&
-            <Spinner/>
-            }
+                <View style={styles.message}>
+                    {!message?.success && <Text style={styles.errorText}>{message?.message}</Text>}
+                </View>
 
-            <View style={styles.viewForm}>
-            <FloatingLabelInput
-                label={i18n.t('username')}
-                value={values.email}
-                onChangeText={handleChange('email')}
-                onFocus={handleBlur('email')}
-                error={errors.email}
-                touched={touched.email}
-            />
+                {loading && <Spinner/>}
 
-            <FloatingLabelInput
-                label={i18n.t('password')}
-                value={values.password}
-                isPassword={true}
-                onChangeText={handleChange('password')}
-                onFocus={handleBlur('password')}
-                error={errors.password}
-                touched={touched.password}
-                customShowPasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-off-outline" size={25}
-                                                       color="#212121"/>}
-                customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
-                                                       color="#212121"/>}
-            />
-            </View>
-            <View style={styles.viewBtn}>
-                <Button style={styles.loginBtn} onPress={handleSubmit} disabled={!isValid}>
-                    <Text style={styles.loginText}>{i18n.t('login')}</Text>
-                </Button>
-            </View>
+                <View style={styles.body}>
+                    <FloatingLabelInput
+                        label={i18n.t('username')}
+                        value={values.email}
+                        onChangeText={handleChange('email')}
+                        onFocus={handleBlur('email')}
+                        error={errors.email}
+                        touched={touched.email}
+                    />
 
-            <TouchableOpacity>
-                <Text style={styles.forgotButton} onPress={() => navigation.navigate('Forgot')}>{i18n.t('forgot')}</Text>
-            </TouchableOpacity>
+                    <FloatingLabelInput
+                        label={i18n.t('password')}
+                        value={values.password}
+                        isPassword={true}
+                        onChangeText={handleChange('password')}
+                        onFocus={handleBlur('password')}
+                        error={errors.password}
+                        touched={touched.password}
+                        customShowPasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-off-outline"
+                                                               size={25}
+                                                               color="#212121"/>}
+                        customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
+                                                               color="#212121"/>}
+                    />
+                </View>
+                <View style={styles.loginButtonWrapper}>
+                    <Button style={styles.loginButton} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.loginButtonText}>{i18n.t('login')}</Text>
+                    </Button>
+                </View>
 
-            <View style={styles.viewSignupLink}>
-                <Text style={styles.textSignup}>{i18n.t('dont')}</Text>
                 <TouchableOpacity>
-                    <Text style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>{i18n.t('signuphere')}</Text>
+                    <Text style={styles.forgotButtonText} onPress={() => navigation.navigate('Forgot')}>{i18n.t('forgot')}</Text>
                 </TouchableOpacity>
-            </View>
 
-        </View>
+                <View style={styles.signUpLinkWrapper}>
+                    <Text style={{color: '#212121'}}>{i18n.t('dont')}</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.signUpButtonText} onPress={() => navigation.navigate('SignUp')}>{i18n.t('signuphere')}</Text>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
         </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    profileImage: {
-        marginBottom: 30,
-    },
-
-    viewHeading: {
+    header: {
         justifyContent: 'center',
         alignItems: 'center',
         height: 50,
         marginBottom: 40,
     },
-
-    textHeading1: {
-        fontSize: 24,
-        fontFamily: 'SFProDisplay-Bold',
-        color: '#212121',
-        marginBottom: 2,
+    body: {
+        width: '70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-
-    textHeading2: {
-        fontFamily: 'SFProDisplay-Regular',
-        fontSize: 14,
-        color: '#2B2D42',
+    message: {
+        ...CommonStyles.message,
+    },
+    profileImage: {
+        marginBottom: 30,
+    },
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_BOLD,
+    },
+    headingText2: {
+        ...CommonStyles.headingText2,
+        fontFamily: Typography.FONT_NORMAL,
         width: 210,
         textAlign: 'center',
-        lineHeight: 22,
     },
-
-    inputView: {
-        backgroundColor: '#FFFFFF',
-        borderRadius: 30,
-        width: '70%',
-        height: 45,
+    loginButtonWrapper: {
+        ...CommonStyles.buttonWrapper,
+    },
+    loginButton: {
+        ...CommonStyles.button,
+        height: 50,
         marginBottom: 20,
     },
-
-    TextInput: {
-        height: 50,
-        flex: 1,
-        padding: 10,
-        marginLeft: 20,
+    loginButtonText: {
+        ...CommonStyles.buttonText,
     },
-
-    viewForm: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    loginBtn: {
-        width: '100%',
-        borderRadius: 25,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 20,
-        backgroundColor: '#0000FF',
-    },
-
-    loginText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        fontFamily: 'SFProDisplay-Bold',
-    },
-
-    forgotButton: {
+    forgotButtonText: {
         height: 30,
         marginBottom: 30,
     },
-
-    viewSignupLink: {
-        flexDirection: 'row',
-        fontSize: 14,
+    signUpLinkWrapper: {
+        ...CommonStyles.linkWrapper,
     },
-
-    textSignup: {
-        color: '#212121',
-    },
-
-    signupButton: {
-        color: '#0000FF',
-        fontFamily: 'SFProDisplay-Medium',
+    signUpButtonText: {
+        color: Colors.SECONDARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_MEDIUM,
         paddingLeft: 8,
     },
-
-    errorView: {
-        width: '70%',
-    },
-
     errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 15,
-        marginBottom: 15,
+        ...CommonStyles.errorText,
     },
 });
 
