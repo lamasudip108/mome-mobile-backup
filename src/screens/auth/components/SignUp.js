@@ -1,10 +1,21 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import {
+    I18nManager,
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+    StatusBar,
+    TouchableOpacity,
+    Dimensions,
+} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
 import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -53,171 +64,136 @@ const SignUpForm = (props) => {
     });
 
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1, height: screenHeight}}>
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <StatusBar style="auto"/>
+                <StatusBar style="auto"/>
 
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>{i18n.t('create')}</Text>
+                <View style={styles.header}>
+                    <Text style={styles.headingText1}>{i18n.t('create')}</Text>
+                </View>
+
+                <View style={styles.body}>
+                    <FloatingLabelInput
+                        label={i18n.t('firstname')}
+                        value={values.first_name}
+                        onChangeText={handleChange('first_name')}
+                        onFocus={handleBlur('first_name')}
+                        error={errors.first_name}
+                        touched={touched.first_name}
+                    />
+
+                    <FloatingLabelInput
+                        label={i18n.t('lastname')}
+                        value={values.last_name}
+                        onChangeText={handleChange('last_name')}
+                        onFocus={handleBlur('last_name')}
+                        error={errors.last_name}
+                        touched={touched.last_name}
+                    />
+
+                    <FloatingLabelInput
+                        label={i18n.t('phone')}
+                        value={values.phone}
+                        keyboardType="numeric"
+                        onChangeText={handleChange('phone')}
+                        onFocus={handleBlur('phone')}
+                        error={errors.phone}
+                        touched={touched.phone}
+                    />
+
+                    <FloatingLabelInput
+                        label={i18n.t('email')}
+                        value={values.email}
+                        onChangeText={handleChange('email')}
+                        onFocus={handleBlur('email')}
+                        error={errors.email}
+                        touched={touched.email}
+                    />
+
+                    <FloatingLabelInput
+                        label={i18n.t('password')}
+                        value={values.password}
+                        isPassword={true}
+                        onChangeText={handleChange('password')}
+                        onFocus={handleBlur('password')}
+                        error={errors.password}
+                        touched={touched.password}
+                    />
+
+                    <FloatingLabelInput
+                        label={i18n.t('confirm')}
+                        value={values.confirm_password}
+                        isPassword={true}
+                        onChangeText={handleChange('confirm_password')}
+                        onFocus={handleBlur('confirm_password')}
+                        error={errors.confirm_password}
+                    />
+                </View>
+
+                <View style={styles.signUpButtonWrapper}>
+                    <Button style={styles.signUpButton} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.signUpButtonText}>{i18n.t('signup')}</Text>
+                    </Button>
+                </View>
+
+                <View style={styles.loginLinkWrapper}>
+                    <Text style={{color: '#212121'}}>{i18n.t('already')}</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.loginButtonText} onPress={() => navigation.navigate('SignIn')}>{i18n.t('loginhere')}</Text>
+                    </TouchableOpacity>
+                </View>
+
             </View>
-
-            <View style={styles.viewForm}>
-            <FloatingLabelInput
-                label={i18n.t('firstname')}
-                value={values.first_name}
-                onChangeText={handleChange('first_name')}
-                onFocus={handleBlur('first_name')}
-                error={errors.first_name}
-                touched={touched.first_name}
-            />
-
-            <FloatingLabelInput
-                label={i18n.t('lastname')}
-                value={values.last_name}
-                onChangeText={handleChange('last_name')}
-                onFocus={handleBlur('last_name')}
-                error={errors.last_name}
-                touched={touched.last_name}
-            />
-
-            <FloatingLabelInput
-                label={i18n.t('phone')}
-                value={values.phone}
-                keyboardType="numeric"
-                onChangeText={handleChange('phone')}
-                onFocus={handleBlur('phone')}
-                error={errors.phone}
-                touched={touched.phone}
-            />
-
-            <FloatingLabelInput
-                label={i18n.t('email')}
-                value={values.email}
-                onChangeText={handleChange('email')}
-                onFocus={handleBlur('email')}
-                error={errors.email}
-                touched={touched.email}
-            />
-
-            <FloatingLabelInput
-                label={i18n.t('password')}
-                value={values.password}
-                isPassword={true}
-                onChangeText={handleChange('password')}
-                onFocus={handleBlur('password')}
-                error={errors.password}
-                touched={touched.password}
-            />
-
-            <FloatingLabelInput
-                label={i18n.t('confirm')}
-                value={values.confirm_password}
-                isPassword={true}
-                onChangeText={handleChange('confirm_password')}
-                onFocus={handleBlur('confirm_password')}
-                error={errors.confirm_password}
-            />
-            </View>
-
-            <View style={styles.viewBtn}>
-                <Button style={styles.signupBtn} onPress={handleSubmit} disabled={!isValid}>
-                    <Text style={styles.signupText}>{i18n.t('signup')}</Text>
-                </Button>
-            </View>
-
-            <View style={styles.viewLoginLink}>
-                <Text style={styles.textLogin}>{i18n.t('already')}</Text>
-                <TouchableOpacity>
-                    <Text style={styles.loginButton} onPress={() => navigation.navigate('SignIn')}>{i18n.t('loginhere')}</Text>
-                </TouchableOpacity>
-            </View>
-
-        </View>
         </ScrollView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    viewHeading: {
+    header: {
         marginTop: Platform.OS === 'ios' ? 22 : 62,
         width: '70%',
         paddingBottom: 10,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
     },
-
-    textHeading1: {
-        fontSize: 24,
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-
-    viewForm: {
+    body: {
         width: '70%',
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    signUpButtonWrapper: {
+        ...CommonStyles.buttonWrapper,
     },
-
-    signupBtn: {
-        width: '100%',
-        borderRadius: 25,
+    signUpButton: {
+        ...CommonStyles.button,
         height: 56,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0000FF',
     },
-
-    signupText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        fontFamily: 'SFProDisplay-Bold',
+    signUpButtonText: {
+        ...CommonStyles.buttonText,
     },
-
-    viewLoginLink: {
-        flexDirection: 'row',
-        fontSize: 14,
+    loginLinkWrapper: {
+        ...CommonStyles.linkWrapper,
         paddingTop: 50,
         paddingBottom: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    textLogin: {
-        color: '#212121',
-    },
-
-    loginButton: {
-        color: '#0000FF',
-        fontFamily: 'SFProDisplay-Medium',
+    loginButtonText: {
+        color: Colors.SECONDARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_MEDIUM,
         paddingLeft: 8,
-    },
-
-    errorView: {
-        width: '70%',
-    },
-
-    errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 15,
-        marginBottom: 15,
     },
 });
 
