@@ -31,7 +31,7 @@ const SplashScreen = () => {
     return (
         <View style={styles.container}>
 
-            <StatusBar style="auto"/>
+            <StatusBar backgroundColor={'#0000FF'}/>
 
             <Animated.Image
                 style={[styles.bottomView, animatedStyles]}
