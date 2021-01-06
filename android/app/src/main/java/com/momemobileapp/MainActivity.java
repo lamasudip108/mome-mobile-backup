@@ -6,6 +6,8 @@ import com.facebook.react.ReactActivity;
 
 import com.facebook.react.modules.i18nmanager.I18nUtil;
 
+import com.zoontek.rnbootsplash.RNBootSplash;
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -23,5 +25,7 @@ public class MainActivity extends ReactActivity {
 
        I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
        sharedI18nUtilInstance.allowRTL(getApplicationContext(), true);
+
+       RNBootSplash.init(R.drawable.bootsplash, MainActivity.this);
     }
 }

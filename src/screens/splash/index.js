@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Animated, StyleSheet, View} from 'react-native';
+import {Animated, StatusBar, StyleSheet, View} from 'react-native';
 
 const SplashScreen = () => {
 
@@ -15,7 +15,7 @@ const SplashScreen = () => {
 
     const animatedInterpolate = animation.interpolate({
         inputRange: [.5, 1],
-        outputRange: [0, -150],
+        outputRange: [0, -170],
     });
 
     const animatedStyles = {
@@ -30,9 +30,12 @@ const SplashScreen = () => {
 
     return (
         <View style={styles.container}>
+
+            <StatusBar style="auto"/>
+
             <Animated.Image
                 style={[styles.bottomView, animatedStyles]}
-                source={require('@/assets/img/splash.png')}
+                source={require('@/assets/img/splash-logo.png')}
             />
         </View>
     );
