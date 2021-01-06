@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Text} from 'react-native';
+import {StatusBar, Text} from 'react-native';
 import {Container, Content, Spinner} from 'native-base';
 import i18n from 'i18n-js';
 
@@ -26,6 +26,9 @@ const LanguageSplashScreen = () => {
 
     return (
         <Container style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
+
+            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+
             <Content contentContainerStyle={{flex: 1, justifyContent:'center', alignItems:'center'}}>
                 <Spinner color='#0000FF'/>
 

@@ -31,10 +31,10 @@ const SplashScreen = () => {
     return (
         <View style={styles.container}>
 
-            <StatusBar backgroundColor={'#0000FF'}/>
+            <StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
 
             <Animated.Image
-                style={[styles.bottomView, animatedStyles]}
+                style={[animatedStyles]}
                 source={require('@/assets/img/splash-logo.png')}
             />
         </View>
