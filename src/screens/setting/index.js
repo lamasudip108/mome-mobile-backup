@@ -5,16 +5,18 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const SettingScreen = ({navigation}) => {
 
 	const {direction} = useDirection();
 
     return (
         <View style={styles.container}>
-        		<StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
-            	<View style={styles.viewHeading}>
-	                <Text style={styles.textHeading1}>Setting</Text>
-	                <Text style={styles.textHeading2}>ACCOUNT SETTING</Text>
+        		<StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+            	<View style={styles.header}>
+	                <Text style={styles.headingText1}>Setting</Text>
+	                <Text style={styles.headingText2}>ACCOUNT SETTING</Text>
 	            </View>
 
 	            <View style={styles.List}>
@@ -22,17 +24,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#E6F0FF'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Change Password</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -40,17 +42,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#DDE0FD'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Setting Item Two</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -58,17 +60,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#FEEFF8'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Setting Item Three</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -83,7 +85,7 @@ const SettingScreen = ({navigation}) => {
 	  				alignItems: 'flex-start',
         			justifyContent: 'flex-start',
         		}}>
-        			<Text style={styles.textHeading2}>PAYMENT SETTING</Text>
+        			<Text style={styles.headingText2}>PAYMENT SETTING</Text>
             	</View>
 
             	<View style={styles.List}>
@@ -91,17 +93,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#E6F0FF'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Setting Item Four</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -109,17 +111,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#DDE0FD'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Setting Item Five</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -127,17 +129,17 @@ const SettingScreen = ({navigation}) => {
 	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
-			            			<View style={styles.roundedListItem} backgroundColor='#FEEFF8'>
+			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
 		            				<Text style={styles.listName}>Setting Item Six</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
-		            				<Icon name="chevron-right" size={22} color="#F2F2F2" />
+		            				<Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
                                     {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color="#F2F2F2" />
+                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
                                     }
 		            			</View>
 		            		</View>
@@ -154,46 +156,36 @@ const SettingScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
-    viewHeading: {
+    header: {
+    	...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 120 : 62,
         width: '100%',
-        paddingBottom: 10,
         marginLeft: 32,
         marginRight: 32,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
     },
-    textHeading1: {
-        fontSize: 24,
-        //fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-    textHeading2: {
-        fontSize: 10,
-        //fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
+    headingText2: {
+        ...CommonStyles.headingText2,
+        fontSize: Typography.FONT_SIZE_TINY_PLUS,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         color: 'rgba(20,21,30,0.40)',
         marginBottom: 2,
         lineHeight: 18,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     list: {
-    	paddingTop: 11,
-    	paddingBottom: 11,
+    	...CommonStyles.list,
     	width: '100%',
     },
     listItem: {
-    	backgroundColor: '#FFFFFF',
-    	flexDirection: 'row',
-    	justifyContent: 'space-between',
-    	alignItems: 'center',
+    	...CommonStyles.listItem,
     	paddingTop: 20,
     	paddingBottom: 20,
     	paddingLeft: 32,
@@ -201,25 +193,13 @@ const styles = StyleSheet.create({
     	marginBottom: 1,
     },
     listItemInner: {
-    	flexDirection: 'row', 
-    	alignItems: 'center',
+    	...CommonStyles.listItemInner,
     },
-    roundedListItem: {
-    	height:35, 
-    	width: 35,
-    	borderRadius: 8,
-    	borderWidth: 0,
-    	alignItems: 'center',
-    	justifyContent: 'center',
+    roundedWrapper: {
+    	...CommonStyles.roundedWrapper,
     },
     listName: {
-    	fontSize: 14,
-    	//fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
-    	lineHeight: 21,
-    	color: '#212121',
-    	//paddingLeft: 40,
-    	marginLeft: 15,
+    	...CommonStyles.listName,
     },
 
 });

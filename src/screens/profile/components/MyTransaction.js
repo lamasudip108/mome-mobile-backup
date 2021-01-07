@@ -3,6 +3,8 @@ import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} f
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const MyTransactionForm = ({navigation}) => {
 
     return (
@@ -11,7 +13,7 @@ const MyTransactionForm = ({navigation}) => {
             <View style={styles.topContent}>
 
             	<View style={styles.transactionsSummary}>
-	                <View style={styles.transactionsSummaryBox}>
+	                <View style={styles.transactionsSummaryWrapper}>
 		                <TouchableOpacity style={styles.circleTransactionsSummary} onPress={() => navigation.navigate('ContactUs')}>
 		                	<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
 		                </TouchableOpacity>
@@ -21,7 +23,7 @@ const MyTransactionForm = ({navigation}) => {
 
 	                <View style={{marginLeft:20}}></View>
 
-	                <View style={styles.transactionsSummaryBox}>
+	                <View style={styles.transactionsSummaryWrapper}>
 	                    <TouchableOpacity style={styles.circleTransactionsSummary} onPress={() => navigation.navigate('MyTransaction')}>
 		                	<Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
 		                </TouchableOpacity>
@@ -40,54 +42,54 @@ const MyTransactionForm = ({navigation}) => {
             			<Image style={{height:9, width:9}} source={require('@/assets/img/filter.png')}/>
             		</TouchableOpacity>	
 	            </View>
-            	<View style={styles.transactionsList}>
+            	<View style={styles.list}>
 	            	<ScrollView style={{ height: 220 }}>
-	            		<View style={styles.transactionsItem}>
-	            			<View style={styles.circleTransactionsItem}>
+	            		<View style={styles.listItem}>
+	            			<View style={styles.circleListItem}>
 	            				<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
 	            			</View>
-	            			<View style={styles.transactionInfo}>
-	            				<Text style={styles.transactionsName}>AI Nakheel Mall</Text>
-	            				<Text style={styles.transactionsDate}>4 October 2020, 8:30 AM</Text>
+	            			<View style={styles.listInfo}>
+	            				<Text style={styles.listName}>AI Nakheel Mall</Text>
+	            				<Text style={styles.listDate}>4 October 2020, 8:30 AM</Text>
 	            			</View>
-	            			<Text style={styles.transactionsAmount}>-$250</Text>
+	            			<Text style={styles.listAmount}>-$250</Text>
 	            		</View>
-	            		<View style={styles.transactionsItem}>
-	            			<View style={styles.circleTransactionsItem}>
+	            		<View style={styles.listItem}>
+	            			<View style={styles.circleListItem}>
 	            				<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
 	            			</View>
-	            			<View style={styles.transactionInfo}>
-	            				<Text style={styles.transactionsName}>The Outlet</Text>
-	            				<Text style={styles.transactionsDate}>3 October 2020, 10:45 AM</Text>
+	            			<View style={styles.listInfo}>
+	            				<Text style={styles.listName}>The Outlet</Text>
+	            				<Text style={styles.listDate}>3 October 2020, 10:45 AM</Text>
 	            			</View>
-	            			<Text style={styles.transactionsAmount}>-$1250</Text>
+	            			<Text style={styles.listAmount}>-$1250</Text>
 	            		</View>
 	            	</ScrollView>
             	</View>
 	            
 	            <View style={{ paddingTop:5 }}>
 					<Text style={styles.middleContentText}>YESTERDAY</Text>
-					<View style={styles.transactionsList}>
+					<View style={styles.list}>
 						<ScrollView style={{ height: Platform.OS === 'ios' ? 200 : 150 }}>
-		            		<View style={styles.transactionsItem}>
-		            			<View style={styles.circleTransactionsItem}>
+		            		<View style={styles.listItem}>
+		            			<View style={styles.circleListItem}>
 		            				<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
 		            			</View>
-		            			<View style={styles.transactionInfo}>
-		            				<Text style={styles.transactionsName}>Khaadi Sharjah</Text>
-		            				<Text style={styles.transactionsDate}>2 October 2020, 1:05 PM</Text>
+		            			<View style={styles.listInfo}>
+		            				<Text style={styles.listName}>Khaadi Sharjah</Text>
+		            				<Text style={styles.listDate}>2 October 2020, 1:05 PM</Text>
 		            			</View>
-		            			<Text style={styles.transactionsAmount}>-$3500</Text>
+		            			<Text style={styles.listAmount}>-$3500</Text>
 		            		</View>
-		            		<View style={styles.transactionsItem}>
-		            			<View style={styles.circleTransactionsItem}>
+		            		<View style={styles.listItem}>
+		            			<View style={styles.circleListItem}>
 		            				<Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
 		            			</View>
-		            			<View style={styles.transactionInfo}>
-		            				<Text style={styles.transactionsName}>Mall of the Emirates</Text>
-		            				<Text style={styles.transactionsDate}>2 October 2020, 3:45 PM</Text>
+		            			<View style={styles.listInfo}>
+		            				<Text style={styles.listName}>Mall of the Emirates</Text>
+		            				<Text style={styles.listDate}>2 October 2020, 3:45 PM</Text>
 		            			</View>
-		            			<Text style={styles.transactionsAmount}>-$110</Text>
+		            			<Text style={styles.listAmount}>-$110</Text>
 		            		</View>
 		            	</ScrollView>	
 	            	</View>
@@ -103,13 +105,12 @@ const MyTransactionForm = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#0000FF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
     },
     topContent: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        //width: '85%',
         marginTop: Platform.OS === 'ios' ? 90 : 40,
         marginLeft: 32,
         marginRight: 32,
@@ -121,33 +122,30 @@ const styles = StyleSheet.create({
         marginRight: 10,
         paddingRight: 32,
     },
-    transactionsSummaryBox: {
+    transactionsSummaryWrapper: {
         width: '50%',
         borderRadius: 6,
         height: 152,
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 15,
-        backgroundColor: '#FFFFFF',
-        borderColor: '#FFFFFF',
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
+        borderColor: Colors.SENARY_BORDER_COLOR,
         borderWidth: 1,
     },
     circleTransactionsSummary: {
+        ...CommonStyles.circleListItem,
     	backgroundColor:'rgba(210,212,252,0.50)', 
-    	height:60, 
-    	width: 60,
-    	borderRadius: 30,
     	borderColor: 'rgba(210,212,252,0.50)', 
-    	borderWidth: 1,
     	marginBottom: 5,
-    	alignItems: 'center',
-    	justifyContent: 'center',
+        height:60, 
+        width: 60,
+        borderRadius: 30,
     },
     transactionsSummaryNumber: {
-    	color: '#14151E',
-        fontSize: 20,
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
+    	color: Colors.SEPTENARY_TEXT_COLOR,
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE_PLUS,
+        fontFamily: Typography.FONT_BOLD,
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
@@ -155,9 +153,9 @@ const styles = StyleSheet.create({
         lineHeight: 27,
     },
     transactionsSummaryText: {
-        fontFamily: 'SFProDisplay-Medium',
+        fontFamily: Typography.FONT_MEDIUM,
     	color: 'rgba(20,21,30,0.40)',
-        fontSize: 9,
+        fontSize: Typography.FONT_SIZE_TINY,
         lineHeight: 18,
     },
     circleImage: {
@@ -165,10 +163,10 @@ const styles = StyleSheet.create({
     	height: 28,
     },
     middleContent: {
-    	backgroundColor: '#F7F9FB',
+    	backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
     	borderTopLeftRadius: 24,
     	borderTopRightRadius: 24,
-    	borderColor: '#F7F9FB', 
+    	borderColor: Colors.QUINARY_BORDER_COLOR, 
     	borderWidth: 1,
     	padding: 32,
         paddingTop: 20,
@@ -180,65 +178,54 @@ const styles = StyleSheet.create({
     	justifyContent: 'space-between',
     },
     middleContentText: {
-    	fontSize: 10, 
-    	//fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold', 
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
+    	fontFamily: Typography.FONT_SEMI_BOLD, 
     	color: 'rgba(20,21,30,0.40)', 
     	lineHeight: 18,
     },
     filter: {
-    	color: '#0000FF',
-    	fontSize: 10, 
-    	//fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
+    	color: Colors.PRIMARY_TEXT_COLOR,
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
+    	fontFamily: Typography.FONT_SEMI_BOLD,
     	lineHeight: 18,
     	paddingRight: 2,
     },
-    transactionsList: {
-    	paddingTop: 11,
-    	paddingBottom: 11,
+    list: {
+    	...CommonStyles.list,
     },
-    transactionsItem: {
-    	backgroundColor: '#FFFFFF',
+    listItem: {
+        ...CommonStyles.listItem,
     	borderRadius: 6,
-    	borderColor: '#FFFFFF',
+    	borderColor: Colors.SENARY_BORDER_COLOR,
     	borderWidth: 1,
-    	flexDirection: 'row',
-    	justifyContent: 'space-between',
     	alignItems: 'center',
     	padding: 20,
     	marginBottom: 10,
     },
-    circleTransactionsItem: {
-    	backgroundColor:'#F4F5F7', 
-    	height:60, 
-    	width: 60,
-    	borderRadius: 30,
-    	borderColor: '#F4F5F7', 
-    	borderWidth: 1,
+    circleListItem: {
+        ...CommonStyles.circleListItem,
+    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR, 
+    	borderColor: Colors.SEPTENARY_BORDER_COLOR, 
     	marginBottom: 5,
-    	alignItems: 'center',
-    	justifyContent: 'center',
+        height:60, 
+        width: 60,
+        borderRadius: 30,
     },
-    transactionInfo: {},
-    transactionsName: {
-    	fontSize: 14,
-    	//fontWeight: '700',
-        fontFamily: 'SFProDisplay-Semibold',
-    	lineHeight: 21,
-    	color: '#212121',
+    listInfo: {},
+    listName: {
+        ...CommonStyles.listName,
+    	marginLeft: 0,
     },
-    transactionsDate: {
+    listDate: {
     	color: 'rgba(20,21,30,0.60)',
-    	fontSize: 10,
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS,
     	lineHeight: 18,
-        fontFamily: 'SFProDisplay-Regular',
+        fontFamily: Typography.FONT_NORMAL,
     },
-    transactionsAmount: {
-    	color: '#F02323',
-    	fontSize: 14,
-    	//fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
+    listAmount: {
+        color: Colors.OCTONARY_TEXT_COLOR,
+    	fontSize: Typography.FONT_SIZE_MEDIUM,
+    	fontFamily: Typography.FONT_BOLD,
     	lineHeight: 21,
     },
 

@@ -7,6 +7,8 @@ import {clearAsyncStorage, getAsyncStorage} from '@/utils/storageUtil';
 import {LANGUAGE_CHANGED} from '@/constants';
 import {navigate} from '@/utils/navigationUtil';
 
+import {Colors} from '@/theme';
+
 const LanguageSplashScreen = () => {
 
     useEffect(() => {
@@ -27,7 +29,7 @@ const LanguageSplashScreen = () => {
     return (
         <Container style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
             <Content contentContainerStyle={{flex: 1, justifyContent:'center', alignItems:'center'}}>
-                <Spinner color='#0000FF'/>
+                <Spinner color={Colors.PRIMARY_TEXT_COLOR}/>
 
                 <Text>{i18n.t('justamoment')}</Text>
             </Content>

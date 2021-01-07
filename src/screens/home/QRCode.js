@@ -4,6 +4,8 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const QRCodeScreen = ({navigation}) => {
 
     let scanner;
@@ -15,7 +17,7 @@ const QRCodeScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
 
             <View style={styles.content}>
 
@@ -25,7 +27,7 @@ const QRCodeScreen = ({navigation}) => {
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Text onPress={() => navigation.goBack()}>
-                        <AntIcon name="close" size={25} color="#212121"/>
+                        <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -55,7 +57,7 @@ const QRCodeScreen = ({navigation}) => {
                 markerStyle={{
                     position: 'absolute',
                     top: '20%',
-                    borderColor: '#747E8F'
+                    borderColor: Colors.DENARY_BORDER_COLOR,
                 }}
             />
             </View>
@@ -68,16 +70,13 @@ const QRCodeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
     content: {
         marginTop: Platform.OS === 'ios' ? 60 : 30,
-        //marginLeft: 32,
-        //marginRight: 32,
-        //width: '85%',
     },
     meta: {
         flexDirection: 'row',
@@ -88,30 +87,25 @@ const styles = StyleSheet.create({
     topContent:{
         alignItems:'center',
         justifyContent: 'center',
-        //width: '80%',
         marginLeft: 52,
         marginRight: 52,
     },
     topText: {
-        color: '#212121',
-        fontFamily: 'SFProDisplay-Regular',
+        color: Colors.QUATERNARY_TEXT_COLOR,
+        fontFamily: Typography.FONT_NORMAL,
         textAlign: 'center',
-        fontSize: 14,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 21,
         padding: 30,
     },
     centerText: {
-        //flex: 1,
-        fontSize: 14,
-        //padding: 32,
-        color: '#212121',
-        fontFamily: 'SFProDisplay-Regular',
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        color: Colors.QUATERNARY_TEXT_COLOR,
+        fontFamily: Typography.FONT_NORMAL,
         textAlign: 'center',
-        //marginTop: Platform.OS === 'ios' ? 62 : 20,
-        //marginRight: 64,
     },
     bottomText: {
-        color: '#FFFFFF',
+        color: Colors.QUINARY_TEXT_COLOR,
     },
 });
 
