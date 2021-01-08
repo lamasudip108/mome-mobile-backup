@@ -7,6 +7,8 @@ import CircleIcon from '@/shared/circle';
 
 import i18n from 'i18n-js';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const LanguageScreen = ({navigation}) => {
 
     const {toggleDirection, direction} = useDirection();
@@ -14,13 +16,13 @@ const LanguageScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
 
-            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>{i18n.t('select')}</Text>
+            <View style={styles.header}>
+                <Text style={styles.headingText1}>{i18n.t('select')}</Text>
             </View>
 
-            <View style={styles.language}>
+            <View style={styles.languageWrapper}>
                 <TouchableOpacity
                     style={[styles.languageBtn, direction === 'rtl' ? styles.active : styles.passive]}
                     onPress={() => {
@@ -52,13 +54,12 @@ const LanguageScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
         alignItems: 'center',
         paddingTop: Platform.OS === 'ios' ? 120 : 60,
     },
 
-    viewHeading: {
+    header: {
         height: 50,
         marginBottom: 10,
         width: '80%',
@@ -66,16 +67,12 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
 
-    textHeading1: {
-        fontSize: 24,
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
-    language: {
+    languageWrapper: {
         flexDirection: 'row',
         width: '80%',
         paddingRight: 10,
@@ -92,18 +89,17 @@ const styles = StyleSheet.create({
     passive: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.SECONDARY_BUTTON_COLOR,
     },
 
     active: {
-        backgroundColor: '#D2D4FC',
+        backgroundColor: Colors.TERTIARY_BUTTON_COLOR,
     },
 
     langText: {
-        color: '#212121',
-        fontSize: 16,
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Medium',
+        color: Colors.PRIMARY_HEADING_COLOR,
+        fontSize: Typography.FONT_SIZE_LARGE,
+        fontFamily: Typography.FONT_MEDIUM,
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
