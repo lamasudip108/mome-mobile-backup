@@ -38,13 +38,13 @@ const SettingScreen = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+	            		<TouchableOpacity onPress={() => navigation.goBack()}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Setting Item Two</Text>
+		            				<Text style={styles.listName}>Notifications</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -56,13 +56,13 @@ const SettingScreen = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+	            		<TouchableOpacity onPress={() => navigation.goBack()}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Setting Item Three</Text>
+		            				<Text style={styles.listName}>Setting Item One</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -89,13 +89,13 @@ const SettingScreen = ({navigation}) => {
 
             	<View style={styles.List}>
 	            	<ScrollView style={{ height: Platform.OS === 'ios' ? 350 : 300 }}>
-	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+	            		<TouchableOpacity onPress={() => navigation.goBack()}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Setting Item Four</Text>
+		            				<Text style={styles.listName}>Setting Item One</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -107,13 +107,13 @@ const SettingScreen = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+	            		<TouchableOpacity onPress={() => navigation.goBack()}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Setting Item Five</Text>
+		            				<Text style={styles.listName}>Setting Item Two</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -125,13 +125,13 @@ const SettingScreen = ({navigation}) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+	            		<TouchableOpacity onPress={() => navigation.goBack()}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Setting Item Six</Text>
+		            				<Text style={styles.listName}>Setting Item Three</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&

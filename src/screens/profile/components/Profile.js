@@ -1,11 +1,13 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -34,75 +36,123 @@ const ProfileForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: updateSchema,
-        initialValues: {first_name: 'Fatima', last_name: 'Abdullah', phone: '+97142328900', email: 'customer@gmail.com'},
-        onSubmit: values =>{
+        initialValues: {
+            first_name: 'Fatima',
+            last_name: 'Abdullah',
+            phone: '+97442328900',
+            email: 'customer@gmail.com',
+            street: 'Beside Teyseer Petrol Station, Salwa Rd',
+            city: 'Doha',
+            state_province: 'Doha',
+            po_box: '31021',
+        },
+        onSubmit: values => {
             navigation.navigate('Profile', {
                 screen: 'Profile',
-                params: { customer: values },
+                params: {customer: values},
             });
-        }
+        },
     });
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
 
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+            <View style={styles.container}>
 
-            <View style={styles.content}>
-                <View style={styles.header}>
-                    <Text style={styles.headingText1}>Edit Profile</Text>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+
+                <View style={styles.content}>
+                    <View style={styles.header}>
+                        <Text style={styles.headingText1}>Edit Profile</Text>
+                    </View>
+
+                    <View style={styles.body}>
+                        <FlatTextInput
+                            label="FIRST NAME"
+                            value={values.first_name}
+                            onChangeText={handleChange('first_name')}
+                            onBlur={handleBlur('first_name')}
+                            error={errors.first_name}
+                            touched={touched.first_name}
+                        />
+
+                        <FlatTextInput
+                            label="LAST NAME"
+                            value={values.last_name}
+                            onChangeText={handleChange('last_name')}
+                            onBlur={handleBlur('last_name')}
+                            error={errors.last_name}
+                            touched={touched.last_name}
+                        />
+
+                        <FlatTextInput
+                            label="PHONE NUMBER"
+                            value={values.phone}
+                            keyboardType="numeric"
+                            onChangeText={handleChange('phone')}
+                            onBlur={handleBlur('phone')}
+                            error={errors.phone}
+                            touched={touched.phone}
+                        />
+
+                        <FlatTextInput
+                            label="EMAIL"
+                            value={values.email}
+                            onChangeText={handleChange('email')}
+                            onBlur={handleBlur('email')}
+                            error={errors.email}
+                            touched={touched.email}
+                        />
+
+                        <FlatTextInput
+                            label="STREET"
+                            value={values.street}
+                            onChangeText={handleChange('street')}
+                            onBlur={handleBlur('street')}
+                            error={errors.street}
+                            touched={touched.street}
+                        />
+
+                        <FlatTextInput
+                            label="CITY"
+                            value={values.city}
+                            onChangeText={handleChange('city')}
+                            onBlur={handleBlur('city')}
+                            error={errors.city}
+                            touched={touched.city}
+                        />
+
+                        <FlatTextInput
+                            label="STATE/PROVINCE"
+                            value={values.street}
+                            onChangeText={handleChange('state_province')}
+                            onBlur={handleBlur('state_province')}
+                            error={errors.state_province}
+                            touched={touched.state_province}
+                        />
+
+                        <FlatTextInput
+                            label="P.O.BOX"
+                            value={values.po_box}
+                            onChangeText={handleChange('po_box')}
+                            onBlur={handleBlur('po_box')}
+                            error={errors.po_box}
+                            touched={touched.po_box}
+                        />
+                    </View>
+
+
+                    <View style={styles.buttonWrapper}>
+                        <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                            <Text style={styles.buttonText}>UPDATE</Text>
+                        </Button>
+                    </View>
+
                 </View>
 
-                <View style={styles.body}>
-                    <FlatTextInput
-                        label="FIRST NAME"
-                        value={values.first_name}
-                        onChangeText={handleChange('first_name')}
-                        onBlur={handleBlur('first_name')}
-                        error={errors.first_name}
-                        touched={touched.first_name}
-                    />
+            </View>
 
-                    <FlatTextInput
-                        label="LAST NAME"
-                        value={values.last_name}
-                        onChangeText={handleChange('last_name')}
-                        onBlur={handleBlur('last_name')}
-                        error={errors.last_name}
-                        touched={touched.last_name}
-                    />
-
-                    <FlatTextInput
-                        label="PHONE NUMBER"
-                        value={values.phone}
-                        keyboardType="numeric"
-                        onChangeText={handleChange('phone')}
-                        onBlur={handleBlur('phone')}
-                        error={errors.phone}
-                        touched={touched.phone}
-                    />
-
-                    <FlatTextInput
-                        label="EMAIL"
-                        value={values.email}
-                        onChangeText={handleChange('email')}
-                        onBlur={handleBlur('email')}
-                        error={errors.email}
-                        touched={touched.email}
-                    />
-                </View>
-
-
-                <View style={styles.buttonWrapper}>
-                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>UPDATE</Text>
-                    </Button>
-                </View>
-
-              </View>
-
-
-        </View>
+        </ScrollView>
     );
 };
 
