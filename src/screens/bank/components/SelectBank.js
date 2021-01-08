@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
     I18nManager,
-    Platform,
     FlatList,
     Text,
     View,
@@ -48,31 +47,27 @@ const SelectBankForm = ({navigation}) => {
     );
 
     useEffect(() => {
-       setBanks(bankOptions)
+        setBanks(bankOptions);
     }, []);
 
     return (
         <View style={styles.container}>
-            <View style={styles.content}>
-                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-                <View style={styles.formContent}>
-                    <View style={styles.inputContainer}>
-                        <TextInput style={styles.inputs}
-                                   useRef={'txtSearch'}
-                                   placeholder="Search Bank..."
-                                   underlineColorAndroid='transparent'
-                                   onChangeText={text => bankFilter(text)}/>
-                        <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{paddingRight: 15}}/>
-                    </View>
-                </View>
-
-                <FlatList
-                    data={banks}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.id}
-                />
-
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+            <View style={styles.searchWrapper}>
+                <TextInput style={styles.searchInput}
+                           useRef={'txtSearch'}
+                           placeholder="Search Bank..."
+                           underlineColorAndroid='transparent'
+                           onChangeText={text => bankFilter(text)}/>
+                <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{paddingRight: 15}}/>
             </View>
+
+            <FlatList
+                data={banks}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+
         </View>
     );
 
@@ -82,7 +77,6 @@ const styles = StyleSheet.create({
     container: {
         ...CommonStyles.container,
     },
-
     item: {
         backgroundColor: '#f9c2ff',
         padding: 20,
@@ -92,28 +86,13 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 32,
     },
-    content: {
-        marginTop: Platform.OS === 'ios' ? 80 : 22,
-    },
-    formContent: {
+    searchWrapper: {
         flexDirection: 'row',
         marginTop: 30,
         marginLeft: 32,
         marginRight: 32,
     },
-    inputContainer: {
-        borderBottomColor: Colors.NONARY_BORDER_COLOR,
-        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
-        height: 45,
-        flexDirection: 'row',
-        alignItems: 'center',
-        flex: 1,
-        shadowColor: '#A9A9A933',
-        shadowOffset: {width: 0, height: 1},
-        shadowOpacity: 0.8,
-        shadowRadius: 3,
-    },
-    inputs: {
+    searchInput: {
         height: 45,
         marginLeft: 16,
         borderBottomColor: Colors.SENARY_BORDER_COLOR,

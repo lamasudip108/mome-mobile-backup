@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
@@ -24,9 +24,9 @@ const AddBankForm = (props) => {
 
     const {navigation, route} = props;
     const selectedItem = route?.params?.item;
-    const bankEl = useRef(null);
 
     const {
+        setFieldValue,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -44,22 +44,25 @@ const AddBankForm = (props) => {
         },
         onSubmit: values => {
             console.log("Values", values);
-            // navigation.navigate('MyBanks', {
-            //     screen: 'MyBanks',
-            //     params: {customer: values},
-            // });
+            navigation.navigate('MyBanks');
         },
     });
 
-    const renderTouchText = () => {
+    const renderTouchText = ({value}) => {
         return (
             <TouchableOpacity onPress={() => {
                 navigation.navigate('SelectBank');
             }}>
-                <Text>{selectedItem?.name}</Text>
+                <Text>{value}</Text>
             </TouchableOpacity>
         );
     };
+
+    useEffect(() => {
+        if(selectedItem?.name){
+            setFieldValue('bank_name', selectedItem?.name)
+        }
+    }, [selectedItem]);
 
     return (
         <View style={styles.container}>
@@ -74,7 +77,6 @@ const AddBankForm = (props) => {
                 <View style={styles.formSection}>
 
                     <FlatTextInput
-                        ref={bankEl}
                         label="BANK NAME"
                         value={values.bank_name}
                         render={renderTouchText}
