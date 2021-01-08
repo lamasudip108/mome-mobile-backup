@@ -29,7 +29,7 @@ const LanguageSplashScreen = () => {
     return (
         <Container style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
 
-            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
             <Content contentContainerStyle={{flex: 1, justifyContent:'center', alignItems:'center'}}>
                 <Spinner color={Colors.PRIMARY_TEXT_COLOR}/>
