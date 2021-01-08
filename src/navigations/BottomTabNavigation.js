@@ -1,13 +1,12 @@
 import React from 'react';
+import {Platform, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Platform, View} from 'react-native';
 
 import HomeScreen from '@/screens/home';
 import SettingScreen from '@/screens/setting';
 import ProfileScreen from '@/screens/profile';
-import {HeaderBackButton} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
 

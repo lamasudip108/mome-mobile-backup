@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -10,7 +8,7 @@ const MyBanksForm = ({navigation}) => {
     return (
         <View style={styles.container}>
 
-         <View style={styles.content}>   
+         <View style={styles.content}>
          <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <View style={styles.contentWrapper}>
             	<View style={styles.list}>
@@ -45,11 +43,11 @@ const MyBanksForm = ({navigation}) => {
                             <Text style={styles.text}>+ ADD BANK</Text>
                         </View>
                     </TouchableOpacity>
-            	</View>	            
+            	</View>
             </View>
-          
-          </View>  
-            
+
+          </View>
+
         </View>
     );
 
@@ -87,11 +85,11 @@ const styles = StyleSheet.create({
     },
     circleListItem: {
         ...CommonStyles.circleListItem,
-    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR, 
-    	height:44, 
+    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
+    	height:44,
     	width: 44,
     	borderRadius: 22,
-    	borderColor: Colors.SEPTENARY_BORDER_COLOR, 
+    	borderColor: Colors.SEPTENARY_BORDER_COLOR,
     	marginRight: 15,
     },
     listName: {

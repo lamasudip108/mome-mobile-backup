@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
+import { Text, View, StatusBar, StyleSheet} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -11,14 +9,14 @@ const MyCodeForm = ({navigation}) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-            <View style={styles.content}>   
-                <View style={styles.myCode}>   
+            <View style={styles.content}>
+                <View style={styles.myCode}>
                     <MaterialIcons name="qr-code-2" size={257} color={Colors.NONARY_TEXT_COLOR} />
                 </View>
                 <Text style={styles.name}>Fatima Abdullah</Text>
                 <Text style={styles.scan}>Scan to pay @Fatima Abdullah</Text>
-            </View>  
-            
+            </View>
+
         </View>
     );
 
@@ -59,7 +57,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         paddingBottom: 25,
     },
-    
+
 
 });
 

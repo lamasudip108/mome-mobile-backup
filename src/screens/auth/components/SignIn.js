@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
+import {TextInput} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -12,7 +13,6 @@ import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
 
 import FlatTextInput from '@/shared/form/FlatTextInput';
-import {TextInput} from 'react-native-paper';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -92,19 +92,19 @@ const SignInForm = ({navigation}) => {
                         error={errors.password}
                         touched={touched.password}
                         right={
-                            <TextInput.Icon 
+                            <TextInput.Icon
                                 name={
-                                    () => <Ionicons 
-                                                name={hidePass ? 'eye-off-outline' : 'eye-outline'} 
-                                                size={25} 
+                                    () => <Ionicons
+                                                name={hidePass ? 'eye-off-outline' : 'eye-outline'}
+                                                size={25}
                                                 color={Colors.PRIMARY_HEADING_COLOR}
                                                 onPress={() => setHidePass(!hidePass)}
                                             />
-                                    } 
+                                    }
                             />
                         }
                     />
-                    
+
                 </View>
                 <View style={styles.loginButtonWrapper}>
                     <Button style={styles.loginButton} onPress={handleSubmit} disabled={!isValid}>

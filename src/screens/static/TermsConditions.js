@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
 import {CommonStyles, Colors, Typography} from '@/theme';

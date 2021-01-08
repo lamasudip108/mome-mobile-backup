@@ -1,5 +1,5 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -92,8 +92,8 @@ const ChangePasswordScreen = (props) => {
                     </Button>
                 </View>
 
-            </View>  
-            
+            </View>
+
 
         </View>
     );

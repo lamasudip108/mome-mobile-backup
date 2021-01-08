@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
+import {Button} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -86,20 +86,19 @@ const AddBankForm = (props) => {
         <View style={styles.container}>
 
             <StatusBar style="auto"/>
-            
+
             <View style={styles.content}>
                 <View style={styles.header}>
                     <Text style={styles.headingText1}>Add Bank</Text>
                 </View>
 
                 <View style={{
-                    width: '70%', 
+                    width: '70%',
                     position: 'relative',
                     backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
                     borderRadius: 30,
                     borderColor: Colors.PRIMARY_BORDER_COLOR,
                     borderWidth: 1,
-                    width: '70%',
                     height: 56,
                     marginBottom: 15,
                     paddingHorizontal: 2,
@@ -112,15 +111,15 @@ const AddBankForm = (props) => {
                         onChange={onChangeSS}
                         underlineColor="transparent"
                         textInputStyle={{
-                            fontSize: Typography.FONT_SIZE_MEDIUM, 
-                            color: Colors.QUATERNARY_TEXT_COLOR, 
+                            fontSize: Typography.FONT_SIZE_MEDIUM,
+                            color: Colors.QUATERNARY_TEXT_COLOR,
                             marginTop: -7,
                         }}
                         textInputPlaceholder="BANK NAME"
                         textInputPlaceholderColor={Colors.DENARY_TEXT_COLOR}
                       />
                 </View>
-    
+
                 <View style={styles.formSection}>
 
                     <FlatTextInput
@@ -158,8 +157,8 @@ const AddBankForm = (props) => {
                     </Button>
                 </View>
 
-              </View>  
-            
+              </View>
+
 
         </View>
     );

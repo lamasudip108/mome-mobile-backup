@@ -1,7 +1,5 @@
-import * as React from 'react';
+import  React from 'react';
 import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -31,7 +29,7 @@ const MyTransactionForm = ({navigation}) => {
 		                <Text style={styles.transactionsSummaryText}>TOTAL PURCHASE</Text>
 	                </View>
 	            </View>
-  
+
             </View>
 
             <View style={styles.middleContent}>
@@ -40,7 +38,7 @@ const MyTransactionForm = ({navigation}) => {
             		<TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
             			<Text style={styles.filter}>FILTER</Text>
             			<Image style={{height:9, width:9}} source={require('@/assets/img/filter.png')}/>
-            		</TouchableOpacity>	
+            		</TouchableOpacity>
 	            </View>
             	<View style={styles.list}>
 	            	<ScrollView style={{ height: 220 }}>
@@ -66,7 +64,7 @@ const MyTransactionForm = ({navigation}) => {
 	            		</View>
 	            	</ScrollView>
             	</View>
-	            
+
 	            <View style={{ paddingTop:5 }}>
 					<Text style={styles.middleContentText}>YESTERDAY</Text>
 					<View style={styles.list}>
@@ -91,13 +89,13 @@ const MyTransactionForm = ({navigation}) => {
 		            			</View>
 		            			<Text style={styles.listAmount}>-$110</Text>
 		            		</View>
-		            	</ScrollView>	
+		            	</ScrollView>
 	            	</View>
 	            </View>
-				            
+
             </View>
-            
-            
+
+
         </View>
     );
 
@@ -135,10 +133,10 @@ const styles = StyleSheet.create({
     },
     circleTransactionsSummary: {
         ...CommonStyles.circleListItem,
-    	backgroundColor:'rgba(210,212,252,0.50)', 
-    	borderColor: 'rgba(210,212,252,0.50)', 
+    	backgroundColor:'rgba(210,212,252,0.50)',
+    	borderColor: 'rgba(210,212,252,0.50)',
     	marginBottom: 5,
-        height:60, 
+        height:60,
         width: 60,
         borderRadius: 30,
     },
@@ -166,7 +164,7 @@ const styles = StyleSheet.create({
     	backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
     	borderTopLeftRadius: 24,
     	borderTopRightRadius: 24,
-    	borderColor: Colors.QUINARY_BORDER_COLOR, 
+    	borderColor: Colors.QUINARY_BORDER_COLOR,
     	borderWidth: 1,
     	padding: 32,
         paddingTop: 20,
@@ -178,14 +176,14 @@ const styles = StyleSheet.create({
     	justifyContent: 'space-between',
     },
     middleContentText: {
-    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
-    	fontFamily: Typography.FONT_SEMI_BOLD, 
-    	color: 'rgba(20,21,30,0.40)', 
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS,
+    	fontFamily: Typography.FONT_SEMI_BOLD,
+    	color: 'rgba(20,21,30,0.40)',
     	lineHeight: 18,
     },
     filter: {
     	color: Colors.PRIMARY_TEXT_COLOR,
-    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS,
     	fontFamily: Typography.FONT_SEMI_BOLD,
     	lineHeight: 18,
     	paddingRight: 2,
@@ -204,10 +202,10 @@ const styles = StyleSheet.create({
     },
     circleListItem: {
         ...CommonStyles.circleListItem,
-    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR, 
-    	borderColor: Colors.SEPTENARY_BORDER_COLOR, 
+    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
+    	borderColor: Colors.SEPTENARY_BORDER_COLOR,
     	marginBottom: 5,
-        height:60, 
+        height:60,
         width: 60,
         borderRadius: 30,
     },

@@ -1,6 +1,5 @@
-import * as React from 'react';
-import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
+import  React from 'react';
+import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -34,18 +33,18 @@ const ContactUsScreen = ({navigation}) => {
             	   <Text style={styles.headingText1}>About Us</Text>
                    <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
                        <Text style={styles.paragraph}>
-                        is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, 
-                        remaining essentially unchanged.is simply dummy text of the printing and typesetting industry. 
-                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, 
+                        is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially unchanged.is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
                         remaining essentially unchanged.
                        </Text>
                    </ScrollView>
-                </View>            
+                </View>
             </View>
 
             <View style={styles.bottomContent}>
@@ -53,13 +52,13 @@ const ContactUsScreen = ({navigation}) => {
                     <Ionicons name="location-outline" size={25} color={Colors.PRIMARY_TEXT_COLOR} />
                 </View>
                 <Text style={styles.locationText}>
-                    Financial Center Street, 
-                    Along Sheikh Zayed Road, 
+                    Financial Center Street,
+                    Along Sheikh Zayed Road,
                     Next to Burj Khalifa - United Arab Emirates
                 </Text>
             </View>
-            
-            
+
+
         </View>
     );
 };
@@ -98,7 +97,7 @@ const styles = StyleSheet.create({
         right: 32,
         width: '100%',
         height: 93,
-        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR, 
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         borderRadius: 4,
         borderColor: 'rgba(1,1,1,0.10)',
         paddingTop: 15,
@@ -107,17 +106,17 @@ const styles = StyleSheet.create({
     },
     circleEnvelope: {
         ...CommonStyles.circleFixed,
-        backgroundColor: 'rgba(107,89,237,0.10)', 
-        borderColor: 'rgba(107,89,237,0.10)', 
+        backgroundColor: 'rgba(107,89,237,0.10)',
+        borderColor: 'rgba(107,89,237,0.10)',
     },
     circleMessage: {
         ...CommonStyles.circleFixed,
-        backgroundColor: 'rgba(11,142,254,0.10)', 
-        borderColor: 'rgba(11,142,254,0.10)', 
+        backgroundColor: 'rgba(11,142,254,0.10)',
+        borderColor: 'rgba(11,142,254,0.10)',
     },
     circlePhone: {
         ...CommonStyles.circleFixed,
-        backgroundColor: 'rgba(83,213,116,0.10)', 
+        backgroundColor: 'rgba(83,213,116,0.10)',
         borderColor: 'rgba(83,213,116,0.10)',
     },
     contentWrapper: {
@@ -128,14 +127,14 @@ const styles = StyleSheet.create({
     },
     headingText1: {
         ...CommonStyles.headingText1,
-    	fontSize: Typography.FONT_SIZE_EXTRA_LARGE, 
-    	fontFamily: Typography.FONT_MEDIUM, 
+    	fontSize: Typography.FONT_SIZE_EXTRA_LARGE,
+    	fontFamily: Typography.FONT_MEDIUM,
     	lineHeight: 27,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     paragraph: {
         fontFamily: Typography.FONT_NORMAL,
-        fontSize: Typography.FONT_SIZE_MEDIUM, 
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         color: Colors.TERTIARY_TEXT_COLOR,
         lineHeight: 21,
         marginTop: 20,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     circleLocation: {
         ...CommonStyles.circleFixed,
         backgroundColor: 'rgba(0,0,255,0.10)',
-        borderColor: 'rgba(0,0,255,0.10)', 
+        borderColor: 'rgba(0,0,255,0.10)',
         marginTop: 20,
     },
     locationText: {

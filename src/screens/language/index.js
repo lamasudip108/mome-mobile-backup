@@ -1,11 +1,9 @@
 import React from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
+import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
-
 import CircleIcon from '@/shared/circle';
-
-import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 

@@ -1,6 +1,5 @@
-import * as React from 'react';
+import  React from 'react';
 import {I18nManager, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';
@@ -77,10 +76,10 @@ const SettingScreen = ({navigation}) => {
 	            		</TouchableOpacity>
 	            	</ScrollView>
             	</View>
-	  
-	  			<View style={{ 
-	  				marginLeft: 32, 
-	  				marginRight: 32, 
+
+	  			<View style={{
+	  				marginLeft: 32,
+	  				marginRight: 32,
 	  				paddingBottom: 10,
 	  				alignItems: 'flex-start',
         			justifyContent: 'flex-start',
@@ -147,8 +146,8 @@ const SettingScreen = ({navigation}) => {
 	            	</ScrollView>
             	</View>
 
-            
-            
+
+
         </View>
     );
 

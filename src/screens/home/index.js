@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
+import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -28,7 +27,7 @@ const HomeScreen = ({navigation}) => {
             		<Text style={styles.purchaseAmount}>$2550.00</Text>
             		<Text style={styles.purchaseText}>TOTAL PURCHASE</Text>
             	</View>
-  
+
             </View>
 
             <View style={styles.middleContent}>
@@ -58,10 +57,10 @@ const HomeScreen = ({navigation}) => {
 					   <Text style={styles.middleContentText}>REFER & EARN</Text>
                     </View>
 					<Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
-				</View>	            
+				</View>
             </View>
-            
-            
+
+
         </View>
     );
 };
@@ -105,11 +104,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     circle: {
-    	backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR, 
-    	height:60, 
+    	backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR,
+    	height:60,
     	width: 60,
     	borderRadius: 30,
-    	borderColor: Colors.QUATERNARY_BORDER_COLOR, 
+    	borderColor: Colors.QUATERNARY_BORDER_COLOR,
     	borderWidth: 1,
     	marginBottom: 5,
     	alignItems: 'center',
@@ -135,10 +134,10 @@ const styles = StyleSheet.create({
     	backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
     	borderTopLeftRadius: 24,
     	borderTopRightRadius: 24,
-    	borderColor: Colors.QUINARY_BORDER_COLOR, 
+    	borderColor: Colors.QUINARY_BORDER_COLOR,
     	borderWidth: 1,
     	padding: 32,
-    	paddingTop: 20, 
+    	paddingTop: 20,
     	height: '100%',
     	marginTop: Platform.OS === 'ios' ? 10 : 0,
     },
@@ -147,9 +146,9 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     middleContentText: {
-    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
-    	fontFamily: Typography.FONT_SEMI_BOLD, 
-    	color: 'rgba(20,21,30,0.40)', 
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS,
+    	fontFamily: Typography.FONT_SEMI_BOLD,
+    	color: 'rgba(20,21,30,0.40)',
     	lineHeight: 18,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
@@ -171,11 +170,11 @@ const styles = StyleSheet.create({
         paddingTop: 25,
     },
     circleFundTransfer: {
-    	backgroundColor:'rgba(210,212,252,0.50)', 
-    	height:46, 
+    	backgroundColor:'rgba(210,212,252,0.50)',
+    	height:46,
     	width: 46,
     	borderRadius: 23,
-    	borderColor: 'rgba(210,212,252,0.50)', 
+    	borderColor: 'rgba(210,212,252,0.50)',
     	borderWidth: 1,
     	marginBottom: 5,
     	alignItems: 'center',

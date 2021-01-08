@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
-import {Button, CheckBox} from 'native-base';
+import {Button} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
 
