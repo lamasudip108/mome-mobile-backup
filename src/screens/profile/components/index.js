@@ -8,7 +8,7 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 
 const Profile = ({navigation}) => {
 
-    const {toggleDirection, direction} = useDirection();
+    const { direction} = useDirection();
 
     return (
         <View style={styles.container}>

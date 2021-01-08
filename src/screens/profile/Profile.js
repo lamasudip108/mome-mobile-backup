@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import EditProfileForm from './components/EditProfile';
+import ProfileForm from './components/ProfileForm';
 import {profileServices} from './duck';
 
-const EditProfileScreen = (props) => {
+const ProfileFormScreen = (props) => {
 
     const dispatch = useDispatch();
 
@@ -15,11 +15,11 @@ const EditProfileScreen = (props) => {
     // }, [dispatch]);
 
     return (
-        <EditProfileForm
+        <ProfileForm
             {...props}
         />
     );
 
 };
 
-export default EditProfileScreen;
+export default ProfileFormScreen;

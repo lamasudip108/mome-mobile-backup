@@ -1,5 +1,5 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -20,7 +20,7 @@ const updateSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),*/
 });
 
-const EditProfileForm = (props) => {
+const ProfileForm = (props) => {
 
     const {navigation} = props;
 
@@ -53,7 +53,7 @@ const EditProfileForm = (props) => {
                 </View>
 
                 <View style={styles.body}>
-                    <FlatTextInput 
+                    <FlatTextInput
                         label="FIRST NAME"
                         value={values.first_name}
                         onChangeText={handleChange('first_name')}
@@ -90,7 +90,7 @@ const EditProfileForm = (props) => {
                         touched={touched.email}
                     />
                 </View>
-        
+
 
                 <View style={styles.buttonWrapper}>
                     <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
@@ -98,8 +98,8 @@ const EditProfileForm = (props) => {
                     </Button>
                 </View>
 
-              </View>  
-            
+              </View>
+
 
         </View>
     );
@@ -154,4 +154,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default EditProfileForm;
+export default ProfileForm;

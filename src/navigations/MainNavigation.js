@@ -15,7 +15,7 @@ import LanguageScreen from '@/screens/language';
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
 
-import EditProfileScreen from '@/screens/profile/EditProfile';
+import EditProfileScreen from '@/screens/profile/Profile';
 import MyTransactionScreen from '@/screens/profile/MyTransaction';
 import MyCodeScreen from '@/screens/profile/MyCode';
 
