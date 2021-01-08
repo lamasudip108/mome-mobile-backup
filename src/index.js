@@ -1,20 +1,37 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Root as NativeBaseProvider} from 'native-base';
+import RNBootSplash from 'react-native-bootsplash';
 
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
 import {navigationRef} from '@/utils/navigationUtil';
 import {LanguageProvider} from '@/context/language';
 import {AuthProvider} from '@/context/auth';
+import SplashScreen from '@/screens/splash';
 
 // XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
 //     GLOBAL.originalXMLHttpRequest : GLOBAL.XMLHttpRequest;
 
+let fakeApiCallWithoutBadNetwork = (ms) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
 const App = () => {
+
+    let init = async () => {
+        await RNBootSplash.hide();
+    };
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    const onBeforeLift = async () => {
+        await fakeApiCallWithoutBadNetwork(3000);
+    };
 
     return (<Provider store={store}>
         {/**
@@ -24,17 +41,17 @@ const App = () => {
          * for example `loading={<SplashScreen />}`.
          * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
          */}
-        <NativeBaseProvider>
-            <LanguageProvider>
-                <AuthProvider>
-                    <PersistGate loading={null} persistor={persistor}>
+        <LanguageProvider>
+            <PersistGate loading={<SplashScreen/>} onBeforeLift={onBeforeLift} persistor={persistor}>
+                <NativeBaseProvider>
+                    <AuthProvider>
                         <NavigationContainer ref={navigationRef}>
                             <MainNavigation/>
                         </NavigationContainer>
-                    </PersistGate>
-                </AuthProvider>
-            </LanguageProvider>
-        </NativeBaseProvider>
+                    </AuthProvider>
+                </NativeBaseProvider>
+            </PersistGate>
+        </LanguageProvider>
     </Provider>);
 };
 

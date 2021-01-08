@@ -69,7 +69,7 @@ const SignUpForm = (props) => {
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
             <View style={styles.container}>
 
-                <StatusBar style="auto"/>
+                <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
 
                 <View style={styles.header}>
                     <Text style={styles.headingText1}>{i18n.t('create')}</Text>

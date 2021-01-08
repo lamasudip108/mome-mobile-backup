@@ -57,7 +57,7 @@ const SignInForm = ({navigation}) => {
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
             <View style={styles.container}>
 
-                <StatusBar style="auto"/>
+                <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
 
                 <Image style={styles.profileImage} source={require('@/assets/img/profile.png')}/>
 
