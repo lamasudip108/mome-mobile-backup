@@ -36,7 +36,7 @@ const HomeScreen = ({navigation}) => {
                 </View>
             	<View style={styles.fundTransferWrapper}>
 	                <View style={styles.fundTransferInner}>
-		                <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.goBack()}>
+		                <TouchableOpacity style={styles.circleFundTransfer}>
 		                	<Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>Request</Text>
@@ -45,7 +45,7 @@ const HomeScreen = ({navigation}) => {
 	                <View style={{marginLeft:20}}></View>
 
 	                <View style={styles.fundTransferInner}>
-	                    <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.goBack()}>
+	                    <TouchableOpacity style={styles.circleFundTransfer}>
 		                	<Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>Send</Text>
