@@ -3,23 +3,26 @@ import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, To
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const TermsConditionsScreen = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
             <View style={styles.meta}>
                 <Text style={styles.title}>TERMS OF SERVICE</Text>
                 <TouchableOpacity>
-                    <Text style={styles.closeBtn} onPress={() => navigation.goBack()}>
-                        <AntIcon name="close" size={25} color="#212121"/>
+                    <Text onPress={() => navigation.goBack()}>
+                        <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
                     </Text>
                 </TouchableOpacity>
             </View>
+
             <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
 
             <ScrollView
-                style={styles.scrollView}
+                style={styles.scrollContainer}
                 contentContainerStyle={styles.contentContainer}
             >
                 <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
@@ -55,12 +58,12 @@ const TermsConditionsScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    scrollView: {
+    scrollContainer: {
         height: '20%',
         width: '85%',
         marginLeft: 32,
@@ -72,73 +75,44 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    content: {
-        paddingVertical: 16,
-        padding: 15,
-    },
-    author: {
-        flexDirection: 'row',
-        marginVertical: 8,
-        marginHorizontal: 16,
-    },
     meta: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '85%',
-        marginTop: Platform.OS === 'ios' ? 60 : 10,
+        marginTop: Platform.OS === 'ios' ? 50 : 10,
         marginLeft: 32,
         marginRight: 32,
     },
     title: {
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Semibold',
-        fontSize: 18,
+        fontFamily: Typography.FONT_SEMI_BOLD,
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE,
         marginVertical: 8,
-        color: '#212121',
+        color: Colors.PRIMARY_HEADING_COLOR,
     },
     headingTitle: {
-        //fontWeight: '600',
-        fontFamily: 'SFProDisplay-Semibold',
-        fontSize: 14,
-        marginVertical: 10,
-        color: '#0000FF',
+        ...CommonStyles.headingTitle,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     headingSubTitle: {
-        fontFamily: 'SFProDisplay-Medium',
-        fontSize: 12,
-        color: '#2B2D42',
+        ...CommonStyles.headingSubTitle,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-    colors: {
-        color: '#212121',
-    },
     timestamp: {
-        fontSize: 12,
-        color: '#747E8F',
+        fontSize: Typography.FONT_SIZE_SMALL,
+        color: Colors.TERTIARY_TEXT_COLOR,
         marginBottom: 10,
         marginLeft: 32,
-        fontFamily: 'SFProDisplay-Regular',
+        fontFamily: Typography.FONT_NORMAL,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     paragraph: {
-        fontFamily: 'SFProDisplay-Regular',
-        fontSize: 14,
+        fontFamily: Typography.FONT_NORMAL,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 24,
         marginTop: 15,
         marginBottom: 25,
-        color: '#747E8F',
+        color: Colors.TERTIARY_TEXT_COLOR,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
-    },
-    errorView: {
-        width: '70%',
-    },
-    errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 32,
-        marginBottom: 15,
-        lineHeight: 18,
     },
 });
 export default TermsConditionsScreen;

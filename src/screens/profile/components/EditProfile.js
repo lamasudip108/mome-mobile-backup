@@ -4,7 +4,8 @@ import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+import {CommonStyles, Colors, Typography} from '@/theme';
+import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -45,55 +46,55 @@ const EditProfileForm = (props) => {
     return (
         <View style={styles.container}>
 
-            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <View style={styles.content}>
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Edit Profile</Text>
-            </View>
+                <View style={styles.header}>
+                    <Text style={styles.headingText1}>Edit Profile</Text>
+                </View>
 
-            <View style={styles.viewForm}>
-                <FloatingLabelInput 
-                    label="FIRST NAME"
-                    value={values.first_name}
-                    onChangeText={handleChange('first_name')}
-                    onBlur={handleBlur('first_name')}
-                    error={errors.first_name}
-                    touched={touched.first_name}
-                />
+                <View style={styles.body}>
+                    <FlatTextInput 
+                        label="FIRST NAME"
+                        value={values.first_name}
+                        onChangeText={handleChange('first_name')}
+                        onBlur={handleBlur('first_name')}
+                        error={errors.first_name}
+                        touched={touched.first_name}
+                    />
 
-                <FloatingLabelInput
-                    label="LAST NAME"
-                    value={values.last_name}
-                    onChangeText={handleChange('last_name')}
-                    onBlur={handleBlur('last_name')}
-                    error={errors.last_name}
-                    touched={touched.last_name}
-                />
+                    <FlatTextInput
+                        label="LAST NAME"
+                        value={values.last_name}
+                        onChangeText={handleChange('last_name')}
+                        onBlur={handleBlur('last_name')}
+                        error={errors.last_name}
+                        touched={touched.last_name}
+                    />
 
-                <FloatingLabelInput
-                    label="PHONE NUMBER"
-                    value={values.phone}
-                    keyboardType="numeric"
-                    onChangeText={handleChange('phone')}
-                    onBlur={handleBlur('phone')}
-                    error={errors.phone}
-                    touched={touched.phone}
-                />
+                    <FlatTextInput
+                        label="PHONE NUMBER"
+                        value={values.phone}
+                        keyboardType="numeric"
+                        onChangeText={handleChange('phone')}
+                        onBlur={handleBlur('phone')}
+                        error={errors.phone}
+                        touched={touched.phone}
+                    />
 
-                <FloatingLabelInput
-                    label="EMAIL"
-                    value={values.email}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                    error={errors.email}
-                    touched={touched.email}
-                />
-            </View>
+                    <FlatTextInput
+                        label="EMAIL"
+                        value={values.email}
+                        onChangeText={handleChange('email')}
+                        onBlur={handleBlur('email')}
+                        error={errors.email}
+                        touched={touched.email}
+                    />
+                </View>
         
 
-                <View style={styles.viewBtn}>
-                    <Button style={styles.updateBtn} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.updateText}>UPDATE</Text>
+                <View style={styles.buttonWrapper}>
+                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.buttonText}>UPDATE</Text>
                     </Button>
                 </View>
 
@@ -106,71 +107,49 @@ const EditProfileForm = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
 
     content: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        ...CommonStyles.content,
         marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
 
-    viewHeading: {
+    header: {
+        ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 22 : 42,
-        width: '70%',
-        paddingBottom: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
     },
 
-    textHeading1: {
-        fontSize: 24,
-        //fontWeight: '700',
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
-    viewForm: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    body: {
+        ...CommonStyles.body,
     },
 
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    buttonWrapper: {
+        ...CommonStyles.buttonWrapper,
     },
 
-    updateBtn: {
-        width: '100%',
-        borderRadius: 25,
+    button: {
+        ...CommonStyles.button,
         height: 56,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0000FF',
     },
 
-    updateText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
+    buttonText: {
+        ...CommonStyles.buttonText,
     },
 
-    errorView: {
+    errorWrapper: {
         width: '70%',
     },
 
     errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 15,
-        marginBottom: 15,
+        ...CommonStyles.errorText,
     },
 });
 

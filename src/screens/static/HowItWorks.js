@@ -1,18 +1,20 @@
 import React from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StatusBar, StyleSheet} from 'react-native';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const HowItWorksScreen = () => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>How it works</Text>
+            <View style={styles.header}>
+                <Text style={styles.headingText1}>How it works</Text>
             </View>
 
             <ScrollView style={{
-                transform: [{scaleX: I18nManager.isRTL ? -1 : 1}],
+                //transform: [{scaleX: I18nManager.isRTL ? -1 : 1}],
                 height: Platform.OS === 'ios' ? 400 : 350,
             }}>
                 <View style={styles.list}>
@@ -62,23 +64,18 @@ const HowItWorksScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
-    viewHeading: {
+    header: {
+        ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 120 : 62,
         width: '100%',
-        paddingBottom: 10,
         marginLeft: 32,
         marginRight: 32,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
     },
-    textHeading1: {
-        fontSize: 24,
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
@@ -89,9 +86,9 @@ const styles = StyleSheet.create({
         marginRight: 32,
     },
     listItem: {
-        backgroundColor: '#FFFFFF',
+        ...CommonStyles.listItem,
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
         paddingTop: 20,
         paddingBottom: 20,
         paddingLeft: 32,
@@ -100,31 +97,31 @@ const styles = StyleSheet.create({
 
     },
     listItemInner: {
-        alignItems: 'center',
-        justifyContent: 'center',
+       ...CommonStyles.listItemInner,
+       justifyContent: 'center',
+       flexDirection: 'column',
     },
     circleListItem: {
+        ...CommonStyles.circleListItem,
         height: 51,
         width: 51,
         borderRadius: 25.5,
         borderWidth: 0,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#D2D4FC',
+        backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR,
         position: 'absolute',
         top: -50,
     },
     listNumber: {
-        color: '#0000FF',
-        fontSize: 24,
-        fontFamily: 'SFProDisplay-Bold',
+        color: Colors.PRIMARY_TEXT_COLOR,
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE,
+        fontFamily: Typography.FONT_BOLD,
         lineHeight: 36,
     },
     listDescription: {
-        fontSize: 14,
-        fontFamily: 'SFProDisplay-Medium',
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        fontFamily: Typography.FONT_MEDIUM,
         lineHeight: 21,
-        color: '#747E8F',
+        color: Colors.TERTIARY_TEXT_COLOR,
         paddingTop: 25,
         paddingBottom: 25,
     },

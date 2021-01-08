@@ -3,6 +3,7 @@ import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, To
 import {useFocusEffect} from '@react-navigation/native';
 import {Button, CheckBox} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -24,12 +25,12 @@ const AgreementForm = (props) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
             <View style={styles.meta}>
                 <Text style={styles.title}>TERMS OF SERVICE</Text>
                 <TouchableOpacity>
                     <Text onPress={() => navigation.goBack()}>
-                        <AntIcon name="close" size={25} color="#212121"/>
+                        <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -73,7 +74,7 @@ const AgreementForm = (props) => {
                 <Text style={styles.errorText}>{authErrors.message}</Text>
                 }
                 <View style={styles.checkboxWrapper}>
-                    <CheckBox style={styles.checkbox} checked={true}/>
+                    <Icon name="ios-checkbox" size={25} color={Colors.PRIMARY_TEXT_COLOR}/>
                     <Text style={styles.checkboxText}>I Accept the terms of service</Text>
                 </View>
                 <View style={styles.termsActionButton}>
@@ -91,8 +92,8 @@ const AgreementForm = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#FFFFFF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
@@ -118,9 +119,9 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: Typography.FONT_SEMI_BOLD,
-        fontSize: 18,
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE,
         marginVertical: 8,
-        color: '#212121',
+        color: Colors.PRIMARY_HEADING_COLOR,
     },
     headingTitle: {
         ...CommonStyles.headingTitle,
@@ -131,8 +132,8 @@ const styles = StyleSheet.create({
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     timestamp: {
-        fontSize: 12,
-        color: '#747E8F',
+        fontSize: Typography.FONT_SIZE_SMALL,
+        color: Colors.TERTIARY_TEXT_COLOR,
         marginBottom: 10,
         marginLeft: 32,
         fontFamily: Typography.FONT_NORMAL,
@@ -140,16 +141,16 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         fontFamily: Typography.FONT_NORMAL,
-        fontSize: 14,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 24,
         marginTop: 15,
         marginBottom: 25,
-        color: '#747E8F',
+        color: Colors.TERTIARY_TEXT_COLOR,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     termsWrapper: {
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         paddingTop: 30,
         paddingLeft: 22,
         paddingRight: 22,
@@ -162,21 +163,22 @@ const styles = StyleSheet.create({
     },
     checkboxWrapper: {
         flexDirection: 'row',
+        marginLeft: 12,
     },
     checkbox: {
         borderRadius: 5,
-        borderColor: '#0000FF',
+        borderColor: Colors.TERTIARY_BORDER_COLOR,
         height: Platform.OS === 'ios' ? 30 : 24,
         padding: Platform.OS === 'ios' ? 5 : 2,
         width: Platform.OS === 'ios' ? 30 : 24,
-        backgroundColor: '#0000FF',
-        color: '#FFFFFF',
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
+        color: Colors.QUINARY_TEXT_COLOR,
         marginRight: 15,
     },
     checkboxText: {
-        fontSize: 14,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         fontFamily: Typography.FONT_MEDIUM,
-        color: '#212121',
+        color: Colors.QUATERNARY_TEXT_COLOR,
         paddingLeft: 5,
         paddingTop: 5,
     },
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
     cancelButton: {
         width: '50%',
         borderRadius: 25,
-        borderColor: '#0000FF',
+        borderColor: Colors.TERTIARY_BORDER_COLOR,
         borderWidth: 2,
         height: 56,
         alignItems: 'center',

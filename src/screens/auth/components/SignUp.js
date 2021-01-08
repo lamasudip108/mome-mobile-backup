@@ -16,7 +16,7 @@ import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
-import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -29,6 +29,8 @@ const signUpSchema = Yup.object().shape({
         .required('Last name is required.'),
     phone: Yup
         .string()
+        .min(10, 'Too Short!')
+        .max(10, 'Too Long!')
         .required('Phone is required.'),
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
     password: Yup.string()
@@ -74,8 +76,9 @@ const SignUpForm = (props) => {
                 </View>
 
                 <View style={styles.body}>
-                    <FloatingLabelInput
-                        label={i18n.t('firstname')}
+
+                    <FlatTextInput
+                       label={i18n.t('firstname')}
                         value={values.first_name}
                         onChangeText={handleChange('first_name')}
                         onFocus={handleBlur('first_name')}
@@ -83,7 +86,7 @@ const SignUpForm = (props) => {
                         touched={touched.first_name}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('lastname')}
                         value={values.last_name}
                         onChangeText={handleChange('last_name')}
@@ -92,7 +95,7 @@ const SignUpForm = (props) => {
                         touched={touched.last_name}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('phone')}
                         value={values.phone}
                         keyboardType="numeric"
@@ -102,7 +105,7 @@ const SignUpForm = (props) => {
                         touched={touched.phone}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('email')}
                         value={values.email}
                         onChangeText={handleChange('email')}
@@ -111,23 +114,26 @@ const SignUpForm = (props) => {
                         touched={touched.email}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('password')}
                         value={values.password}
                         isPassword={true}
+                        secureTextEntry={true}
                         onChangeText={handleChange('password')}
                         onFocus={handleBlur('password')}
                         error={errors.password}
                         touched={touched.password}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('confirm')}
                         value={values.confirm_password}
                         isPassword={true}
+                        secureTextEntry={true}
                         onChangeText={handleChange('confirm_password')}
                         onFocus={handleBlur('confirm_password')}
                         error={errors.confirm_password}
+                        touched={touched.confirm_password}
                     />
                 </View>
 
@@ -138,7 +144,7 @@ const SignUpForm = (props) => {
                 </View>
 
                 <View style={styles.loginLinkWrapper}>
-                    <Text style={{color: '#212121'}}>{i18n.t('already')}</Text>
+                    <Text style={{color: Colors.QUATERNARY_TEXT_COLOR}}>{i18n.t('already')}</Text>
                     <TouchableOpacity>
                         <Text style={styles.loginButtonText} onPress={() => navigation.navigate('SignIn')}>{i18n.t('loginhere')}</Text>
                     </TouchableOpacity>
@@ -156,11 +162,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     header: {
-        marginTop: Platform.OS === 'ios' ? 22 : 62,
-        width: '70%',
-        paddingBottom: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        ...CommonStyles.header,
+        marginTop: Platform.OS === 'ios' ? 22 : 52,
     },
     headingText1: {
         ...CommonStyles.headingText1,
@@ -169,9 +172,7 @@ const styles = StyleSheet.create({
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     body: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+        ...CommonStyles.body,
     },
     signUpButtonWrapper: {
         ...CommonStyles.buttonWrapper,

@@ -3,10 +3,12 @@ import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, Status
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-        	<StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
+        	<StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
             <View style={styles.topContent}>
             	<View style={styles.topContentLeft}>
             		<View style={styles.topContentLeftCol}>
@@ -30,29 +32,29 @@ const HomeScreen = ({navigation}) => {
             </View>
 
             <View style={styles.middleContent}>
-                <View style={styles.middleContentView}>
+                <View style={styles.middleContentHeading}>
             	   <Text style={styles.middleContentText}>FUND TRANSFER</Text>
                 </View>
-            	<View style={styles.fundTransfer}>
-	                <View style={styles.fundTransferBox}>
+            	<View style={styles.fundTransferWrapper}>
+	                <View style={styles.fundTransferInner}>
 		                <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('PayingTo')}>
-		                	<Icon name="arrow-down-left" color="#0000FF" size={30} />
+		                	<Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>Request</Text>
 	                </View>
 
 	                <View style={{marginLeft:20}}></View>
 
-	                <View style={styles.fundTransferBox}>
+	                <View style={styles.fundTransferInner}>
 	                    <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('SelectBank')}>
-		                	<Icon name="arrow-up-right" color="#0000FF" size={30} />
+		                	<Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>Send</Text>
 	                </View>
 	            </View>
 
-	            <View style={styles.referEarn}>
-                    <View style={styles.middleContentView}>
+	            <View style={styles.referEarnWrapper}>
+                    <View style={styles.middleContentHeading}>
 					   <Text style={styles.middleContentText}>REFER & EARN</Text>
                     </View>
 					<Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
@@ -66,42 +68,36 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#0000FF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
     },
     topContent: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        //width: '85%',
         marginTop: Platform.OS === 'ios' ? 90 : 50,
         marginLeft: 32,
         marginRight: 32,
     },
     topContentText: {
-    	fontSize: 12,
-    	//fontWeight: '600',
-        fontFamily: 'SFProDisplay-Medium',
-    	color: '#F2F2F2',
+    	fontSize: Typography.FONT_SIZE_SMALL,
+    	fontFamily: Typography.FONT_MEDIUM,
+    	color: Colors.SENARY_TEXT_COLOR,
     },
-    topContentLeft: {
-    	
-    },
+    topContentLeft: {},
     topContentLeftCol: {
     	marginBottom: Platform.OS === 'ios' ? 30 : 20,
     },
     name: {
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
-        fontSize: 16,
+        fontFamily: Typography.FONT_BOLD,
+        fontSize: Typography.FONT_SIZE_LARGE,
         lineHeight: 24,
-        color: '#FFFFFF',
+        color: Colors.QUINARY_TEXT_COLOR,
     },
     walletAmount: {
-    	//fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
-        fontSize: 24,
+    	fontFamily: Typography.FONT_BOLD,
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE,
         lineHeight: 36,
-        color: '#FFFFFF',
+        color: Colors.QUINARY_TEXT_COLOR,
     },
     topContentRight: {
     	paddingRight: 40,
@@ -109,11 +105,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     circle: {
-    	backgroundColor:'#D2D4FC', 
+    	backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR, 
     	height:60, 
     	width: 60,
     	borderRadius: 30,
-    	borderColor: '#D2D4FC', 
+    	borderColor: Colors.QUATERNARY_BORDER_COLOR, 
     	borderWidth: 1,
     	marginBottom: 5,
     	alignItems: 'center',
@@ -124,56 +120,53 @@ const styles = StyleSheet.create({
     	height: 28,
     },
     purchaseText: {
-    	fontSize: 9,
-    	//fontWeight: '600',
-        fontFamily: 'SFProDisplay-Medium',
-    	color: '#F2F2F2',
+    	fontSize: Typography.FONT_SIZE_TINY,
+    	fontFamily: Typography.FONT_MEDIUM,
+    	color: Colors.SENARY_TEXT_COLOR,
     	lineHeight: 18,
     },
     purchaseAmount: {
-    	//fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
-        fontSize: 20,
+    	fontFamily: Typography.FONT_BOLD,
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE_PLUS,
         lineHeight: 27,
-        color: '#FFFFFF',
+        color: Colors.QUINARY_TEXT_COLOR,
     },
     middleContent: {
-    	backgroundColor: '#F7F9FB',
+    	backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
     	borderTopLeftRadius: 24,
     	borderTopRightRadius: 24,
-    	borderColor: '#F7F9FB', 
+    	borderColor: Colors.QUINARY_BORDER_COLOR, 
     	borderWidth: 1,
     	padding: 32,
     	paddingTop: 20, 
     	height: '100%',
     	marginTop: Platform.OS === 'ios' ? 10 : 0,
     },
-    middleContentView: {
+    middleContentHeading: {
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
     },
     middleContentText: {
-    	fontSize: 10, 
-    	//fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold', 
+    	fontSize: Typography.FONT_SIZE_TINY_PLUS, 
+    	fontFamily: Typography.FONT_SEMI_BOLD, 
     	color: 'rgba(20,21,30,0.40)', 
     	lineHeight: 18,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-    fundTransfer: {
+    fundTransferWrapper: {
         flexDirection: 'row',
         paddingTop: 14,
         marginRight: 20,
     },
-    fundTransferBox: {
+    fundTransferInner: {
         width: '50%',
         borderRadius: 6,
         height: 120,
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 20,
-        backgroundColor: '#FFFFFF',
-        borderColor: '#FFFFFF',
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
+        borderColor: Colors.SENARY_BORDER_COLOR,
         borderWidth: 1,
         paddingTop: 25,
     },
@@ -189,17 +182,16 @@ const styles = StyleSheet.create({
     	justifyContent: 'center',
     },
     fundTransferText: {
-    	color: '#212121',
-        fontSize: 12,
-        //fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
+    	color: Colors.QUATERNARY_TEXT_COLOR,
+        fontSize: Typography.FONT_SIZE_SMALL,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
         paddingTop: 10,
         paddingBottom: 25,
     },
-    referEarn: {
+    referEarnWrapper: {
     	paddingTop: Platform.OS === 'ios' ? 30 : 20,
     	paddingBottom: 15,
     },

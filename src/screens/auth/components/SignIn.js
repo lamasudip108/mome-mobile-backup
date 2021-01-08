@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
@@ -8,9 +8,11 @@ import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
-import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
+
+import FlatTextInput from '@/shared/form/FlatTextInput';
+import {TextInput} from 'react-native-paper';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -23,6 +25,8 @@ const signInSchema = Yup.object().shape({
 });
 
 const SignInForm = ({navigation}) => {
+
+    const [hidePass, setHidePass] = useState(true);
 
     const {loading, setLoading, message, setMessage, signIn} = useAuthentication();
 
@@ -69,7 +73,7 @@ const SignInForm = ({navigation}) => {
                 {loading && <Spinner/>}
 
                 <View style={styles.body}>
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('username')}
                         value={values.email}
                         onChangeText={handleChange('email')}
@@ -78,20 +82,29 @@ const SignInForm = ({navigation}) => {
                         touched={touched.email}
                     />
 
-                    <FloatingLabelInput
+                    <FlatTextInput
                         label={i18n.t('password')}
                         value={values.password}
                         isPassword={true}
+                        secureTextEntry={hidePass ? true : false}
                         onChangeText={handleChange('password')}
                         onFocus={handleBlur('password')}
                         error={errors.password}
                         touched={touched.password}
-                        customShowPasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-off-outline"
-                                                               size={25}
-                                                               color="#212121"/>}
-                        customHidePasswordComponent={<Ionicons style={{paddingRight: 15}} name="eye-outline" size={25}
-                                                               color="#212121"/>}
+                        right={
+                            <TextInput.Icon 
+                                name={
+                                    () => <Ionicons 
+                                                name={hidePass ? 'eye-off-outline' : 'eye-outline'} 
+                                                size={25} 
+                                                color={Colors.PRIMARY_HEADING_COLOR}
+                                                onPress={() => setHidePass(!hidePass)}
+                                            />
+                                    } 
+                            />
+                        }
                     />
+                    
                 </View>
                 <View style={styles.loginButtonWrapper}>
                     <Button style={styles.loginButton} onPress={handleSubmit} disabled={!isValid}>
@@ -104,7 +117,7 @@ const SignInForm = ({navigation}) => {
                 </TouchableOpacity>
 
                 <View style={styles.signUpLinkWrapper}>
-                    <Text style={{color: '#212121'}}>{i18n.t('dont')}</Text>
+                    <Text style={{color: Colors.PRIMARY_HEADING_COLOR}}>{i18n.t('dont')}</Text>
                     <TouchableOpacity>
                         <Text style={styles.signUpButtonText} onPress={() => navigation.navigate('SignUp')}>{i18n.t('signuphere')}</Text>
                     </TouchableOpacity>

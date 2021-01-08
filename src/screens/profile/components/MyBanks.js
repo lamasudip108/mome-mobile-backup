@@ -3,44 +3,46 @@ import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, Touchabl
 import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const MyBanksForm = ({navigation}) => {
 
     return (
         <View style={styles.container}>
 
          <View style={styles.content}>   
-         <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
-            <View style={styles.middleContent}>
-            	<View style={styles.banksList}>
+         <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+            <View style={styles.contentWrapper}>
+            	<View style={styles.list}>
 	            	<ScrollView style={{ height: Platform.OS === 'ios' ? 385 : 385 }}>
-	            		<View style={styles.banksItem}>
-	            			<View style={styles.circleBanksItem}>
+	            		<View style={styles.listItem}>
+	            			<View style={styles.circleListItem}>
 	            				<Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
 	            			</View>
-	            			<Text style={styles.BanksName}>Qatar National Bank</Text>
+	            			<Text style={styles.listName}>Qatar National Bank</Text>
 	            		</View>
-	            		<View style={styles.banksItem}>
-                            <View style={styles.circleBanksItem}>
+	            		<View style={styles.listItem}>
+                            <View style={styles.circleListItem}>
                                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                             </View>
-                            <Text style={styles.BanksName}>Abu Dubai Islamic Bank</Text>
+                            <Text style={styles.listName}>Abu Dubai Islamic Bank</Text>
                         </View>
-                        <View style={styles.banksItem}>
-                            <View style={styles.circleBanksItem}>
+                        <View style={styles.listItem}>
+                            <View style={styles.circleListItem}>
                                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                             </View>
-                            <Text style={styles.BanksName}>Arab Bank PLC</Text>
+                            <Text style={styles.listName}>Arab Bank PLC</Text>
                         </View>
-                        <View style={styles.banksItem}>
-                            <View style={styles.circleBanksItem}>
+                        <View style={styles.listItem}>
+                            <View style={styles.circleListItem}>
                                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                             </View>
-                            <Text style={styles.BanksName}>Bank Melli Iran</Text>
+                            <Text style={styles.listName}>Bank Melli Iran</Text>
                         </View>
 	            	</ScrollView>
                     <TouchableOpacity onPress={() => navigation.navigate('AddBank')} >
-                        <View style={styles.banksItem} justifyContent="center">
-                            <Text style={styles.addBank}>+ ADD BANK</Text>
+                        <View style={styles.listItem} justifyContent="center">
+                            <Text style={styles.text}>+ ADD BANK</Text>
                         </View>
                     </TouchableOpacity>
             	</View>	            
@@ -55,8 +57,7 @@ const MyBanksForm = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
     content: {
         marginTop: Platform.OS === 'ios' ? 70 : 22,
@@ -65,49 +66,43 @@ const styles = StyleSheet.create({
     	width: 22,
     	height: 24,
     },
-    middleContent: {
-    	backgroundColor: '#F7F9FB',
+    contentWrapper: {
+    	backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
     	padding: 32,
         paddingTop: 20,
     	height: '100%',
     	marginTop: 10,
     },
-    banksList: {
-    	paddingTop: 11,
-    	paddingBottom: 11,
+    list: {
+    	...CommonStyles.list,
     },
-    banksItem: {
-    	backgroundColor: '#FFFFFF',
+    listItem: {
+        ...CommonStyles.listItem,
     	borderRadius: 6,
-    	borderColor: '#FFFFFF',
+    	borderColor: Colors.SENARY_BORDER_COLOR,
     	borderWidth: 1,
-    	flexDirection: 'row',
-    	alignItems: 'center',
     	padding: 20,
     	marginBottom: 10,
+        justifyContent: 'flex-start',
     },
-    circleBanksItem: {
-    	backgroundColor:'#F4F5F7', 
+    circleListItem: {
+        ...CommonStyles.circleListItem,
+    	backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR, 
     	height:44, 
     	width: 44,
     	borderRadius: 22,
-    	borderColor: '#F4F5F7', 
-    	borderWidth: 1,
-    	alignItems: 'center',
-    	justifyContent: 'center',
-        marginRight: 15,
+    	borderColor: Colors.SEPTENARY_BORDER_COLOR, 
+    	marginRight: 15,
     },
-    banksName: {
-        fontFamily: 'SFProDisplay-Regular',
-    	fontSize: 14,
-    	lineHeight: 21,
-    	color: '#212121',
+    listName: {
+        ...CommonStyles.listName,
+        fontFamily: Typography.FONT_NORMAL,
     },
-    addBank: {
-        fontFamily: 'SFProDisplay-Regular',
-        fontSize: 14,
+    text: {
+        fontFamily: Typography.FONT_NORMAL,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 21,
-        color: '#0000FF',
+        color: Colors.PRIMARY_TEXT_COLOR,
         padding: 9,
     }
 

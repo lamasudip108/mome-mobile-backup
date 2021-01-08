@@ -4,7 +4,8 @@ import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
+import {CommonStyles, Colors, Typography} from '@/theme';
+import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -47,49 +48,51 @@ const ChangePasswordScreen = (props) => {
 
             <StatusBar style="auto"/>
             <View style={styles.content}>
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Change Password</Text>
-            </View>
+                <View style={styles.header}>
+                    <Text style={styles.headingText1}>Change Password</Text>
+                </View>
 
-            <View style={styles.viewForm}>
-                <FloatingLabelInput
-                    label="OLD PASSWORD"
-                    value={values.old_password}
-                    isPassword={true}
-                    onChangeText={handleChange('old_password')}
-                    onBlur={handleBlur('old_password')}
-                    error={errors.old_password}
-                    touched={touched.old_password}
-                />
+                <View style={styles.body}>
+                    <FlatTextInput
+                        label="OLD PASSWORD"
+                        value={values.old_password}
+                        isPassword={true}
+                        secureTextEntry={true}
+                        onChangeText={handleChange('old_password')}
+                        onBlur={handleBlur('old_password')}
+                        error={errors.old_password}
+                        touched={touched.old_password}
+                    />
 
-                <FloatingLabelInput
-                    label="NEW PASSWORD"
-                    value={values.new_password}
-                    isPassword={true}
-                    onChangeText={handleChange('new_password')}
-                    onBlur={handleBlur('new_password')}
-                    error={errors.new_password}
-                    touched={touched.new_password}
-                />
+                    <FlatTextInput
+                        label="NEW PASSWORD"
+                        value={values.new_password}
+                        isPassword={true}
+                        secureTextEntry={true}
+                        onChangeText={handleChange('new_password')}
+                        onBlur={handleBlur('new_password')}
+                        error={errors.new_password}
+                        touched={touched.new_password}
+                    />
 
-                <FloatingLabelInput
-                    label="CONFIRM PASSWORD"
-                    value={values.confirmPassword}
-                    isPassword={true}
-                    onChangeText={handleChange('confirmPassword')}
-                    onBlur={handleBlur('confirmPassword')}
-                    error={errors.confirmPassword}
-                />
-            </View>
-        
+                    <FlatTextInput
+                        label="CONFIRM PASSWORD"
+                        value={values.confirmPassword}
+                        isPassword={true}
+                        secureTextEntry={true}
+                        onChangeText={handleChange('confirmPassword')}
+                        onBlur={handleBlur('confirmPassword')}
+                        error={errors.confirmPassword}
+                    />
+                </View>
 
-                <View style={styles.viewBtn}>
-                    <Button style={styles.updateBtn} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.updateText}>UPDATE</Text>
+                <View style={styles.buttonWrapper}>
+                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.buttonText}>UPDATE</Text>
                     </Button>
                 </View>
 
-              </View>  
+            </View>  
             
 
         </View>
@@ -98,71 +101,49 @@ const ChangePasswordScreen = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
 
     content: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        ...CommonStyles.content,
         marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
 
-    viewHeading: {
+    header: {
+        ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 22 : 42,
-        width: '70%',
-        paddingBottom: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
     },
 
-    textHeading1: {
-        fontSize: 24,
-        //fontWeight:'700',
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
-    viewForm: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    body: {
+        ...CommonStyles.body,
     },
 
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    buttonWrapper: {
+        ...CommonStyles.buttonWrapper,
     },
 
-    updateBtn: {
-        width: '100%',
-        borderRadius: 25,
+    button: {
+        ...CommonStyles.button,
         height: 56,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0000FF',
     },
 
-    updateText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
+    buttonText: {
+        ...CommonStyles.buttonText,
     },
 
-    errorView: {
+    errorWrapper: {
         width: '70%',
     },
 
     errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 15,
-        marginBottom: 15,
+        ...CommonStyles.errorText,
     },
 });
 

@@ -4,14 +4,16 @@ import {Button, CheckBox} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const MyCodeForm = ({navigation}) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor="#F7F9FB"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <View style={styles.content}>   
                 <View style={styles.myCode}>   
-                    <MaterialIcons name="qr-code-2" size={257} color="#000000" />
+                    <MaterialIcons name="qr-code-2" size={257} color={Colors.NONARY_TEXT_COLOR} />
                 </View>
                 <Text style={styles.name}>Fatima Abdullah</Text>
                 <Text style={styles.scan}>Scan to pay @Fatima Abdullah</Text>
@@ -24,19 +26,17 @@ const MyCodeForm = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
         justifyContent: 'center',
         alignItems: 'center',
     },
     content: {
-        backgroundColor: '#FFFFFF',
+        ...CommonStyles.content,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         borderRadius: 25,
         padding: 20,
         marginLeft: 32,
         marginRight: 32,
-        justifyContent: 'center',
-        alignItems: 'center',
         shadowColor: '#A9A9A90F',
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.8,
@@ -46,16 +46,16 @@ const styles = StyleSheet.create({
         width: 257,
     },
     name: {
-        color: '#212121',
-        fontFamily: 'SFProDisplay-Bold',
-        fontSize: 18,
+        color: Colors.QUATERNARY_TEXT_COLOR,
+        fontFamily: Typography.FONT_BOLD,
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE,
         lineHeight: 27,
         marginTop: 7,
     },
     scan: {
-        color: '#747E8F',
-        fontFamily: 'SFProDisplay-Regular',
-        fontSize: 14,
+        color: Colors.TERTIARY_TEXT_COLOR,
+        fontFamily: Typography.FONT_NORMAL,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 21,
         paddingBottom: 25,
     },
