@@ -1,11 +1,13 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, View, ScrollView, StatusBar, TouchableOpacity, Dimensions,} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -34,7 +36,16 @@ const EditProfileForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: updateSchema,
-        initialValues: {first_name: 'Fatima', last_name: 'Abdullah', phone: '+97142328900', email: 'customer@gmail.com'},
+        initialValues: {
+            first_name: 'Fatima', 
+            last_name: 'Abdullah', 
+            phone: '+97442328900', 
+            email: 'customer@gmail.com',
+            street: 'Beside Teyseer Petrol Station, Salwa Rd',
+            city: 'Doha',
+            state_province: 'Doha',
+            po_box: '31021',
+        },
         onSubmit: values =>{
             navigation.navigate('Profile', {
                 screen: 'Profile',
@@ -44,6 +55,7 @@ const EditProfileForm = (props) => {
     });
 
     return (
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
 
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -89,6 +101,42 @@ const EditProfileForm = (props) => {
                         error={errors.email}
                         touched={touched.email}
                     />
+
+                    <FlatTextInput
+                        label="STREET"
+                        value={values.street}
+                        onChangeText={handleChange('street')}
+                        onBlur={handleBlur('street')}
+                        error={errors.street}
+                        touched={touched.street}
+                    />
+
+                    <FlatTextInput
+                        label="CITY"
+                        value={values.city}
+                        onChangeText={handleChange('city')}
+                        onBlur={handleBlur('city')}
+                        error={errors.city}
+                        touched={touched.city}
+                    />
+
+                    <FlatTextInput
+                        label="STATE/PROVINCE"
+                        value={values.street}
+                        onChangeText={handleChange('state_province')}
+                        onBlur={handleBlur('state_province')}
+                        error={errors.state_province}
+                        touched={touched.state_province}
+                    />
+
+                    <FlatTextInput
+                        label="P.O.BOX"
+                        value={values.po_box}
+                        onChangeText={handleChange('po_box')}
+                        onBlur={handleBlur('po_box')}
+                        error={errors.po_box}
+                        touched={touched.po_box}
+                    />
                 </View>
         
 
@@ -102,6 +150,7 @@ const EditProfileForm = (props) => {
             
 
         </View>
+        </ScrollView>
     );
 };
 
