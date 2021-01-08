@@ -1,8 +1,8 @@
 import React, {forwardRef} from 'react';
-import {I18nManager, Platform, StyleSheet, View} from 'react-native';
+import {I18nManager, StyleSheet, View} from 'react-native';
 import {TextInput as FLTextInput} from 'react-native-paper';
 
-import {CommonStyles, Colors, Typography} from '@/theme';
+import { Colors, Typography} from '@/theme';
 
 const FlatTextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
 
@@ -19,7 +19,7 @@ const FlatTextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
             marginBottom: 15,
         }}>
                <FLTextInput
-                    style={styles.input}
+                    style={styles.textInput}
                     selectionColor={Colors.PRIMARY_INPUT_TEXT_COLOR}
                     theme={{
                         roundness: 30,
@@ -36,7 +36,7 @@ const FlatTextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
 });
 
 const styles = StyleSheet.create({
-    input: {
+    textInput: {
         borderRadius: 0,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
