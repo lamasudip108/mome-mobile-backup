@@ -44,10 +44,10 @@ const AddBankForm = (props) => {
         },
         onSubmit: values => {
             console.log("Values", values);
-            navigation.navigate('MyBanks', {
-                screen: 'MyBanks',
-                params: {customer: values},
-            });
+            // navigation.navigate('MyBanks', {
+            //     screen: 'MyBanks',
+            //     params: {customer: values},
+            // });
         },
     });
 

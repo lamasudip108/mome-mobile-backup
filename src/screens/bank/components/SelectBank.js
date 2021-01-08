@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     I18nManager,
     Platform,
@@ -21,13 +21,13 @@ const SelectBankForm = ({navigation}) => {
     const [banks, setBanks] = useState([]);
 
     const bankOptions = [
-        {id: '1', name: 'First Item'},
-        {id: '2', name: 'Second Item'},
-        {id: '3', name: 'Third Item'},
-        {id: '4', name: 'Third Item'},
-        {id: '5', name: 'Third Item'},
-        {id: '6', name: 'Third Item'},
-        {id: '7', name: 'Third Item'},
+        {id: '1', name: 'Qatar National Bank'},
+        {id: '2', name: 'Abu Dubai Islamic Bank'},
+        {id: '3', name: 'Arab Bank PLC'},
+        {id: '4', name: 'Bank Melli Iran'},
+        {id: '5', name: 'Abu Dubai Islamic Bank'},
+        {id: '6', name: 'Arab Bank PLC'},
+        {id: '7', name: 'Bank Melli Iran'},
     ];
 
     const bankFilter = text => {
@@ -46,6 +46,10 @@ const SelectBankForm = ({navigation}) => {
             }}>{item.name}</Text>
         </View>
     );
+
+    useEffect(() => {
+       setBanks(bankOptions)
+    }, []);
 
     return (
         <View style={styles.container}>
