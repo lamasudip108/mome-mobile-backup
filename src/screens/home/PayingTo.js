@@ -2,6 +2,8 @@ import React from 'react';
 import {Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const PayingToScreen = (props) => {
@@ -13,7 +15,7 @@ const PayingToScreen = (props) => {
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
             <View style={styles.container}>
-                <StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR} />
                 <View style={styles.topContent}>
 
 
@@ -33,28 +35,28 @@ const PayingToScreen = (props) => {
                     <Text style={[styles.Text1, styles.fontSize2, styles.lineHeight2]}>Palm Jumeirah, Dubai, United Arab
                         Emirates</Text>
 
-                    <View style={styles.billBlock}>
+                    <View style={styles.billWrapper}>
                         <Text style={[styles.Text2, styles.fontSize2, styles.lineHeight2]}>BILL AMOUNT</Text>
                         <Text style={[styles.Text, styles.fontSize4, styles.lineHeight5]}>$ 250</Text>
                     </View>
 
-                    <View style={styles.inputBlock}>
+                    <View style={styles.inputWrapper}>
                         <TextInput
                             style={styles.TextInput}
                             placeholder="Purchase Note ( if Any)"
                         />
                     </View>
 
-                    <View style={styles.termsBottom}>
-                        <View style={styles.termsBottmBtn}>
-                            <Button style={styles.cancelBtn} onPress={() =>
+                    <View style={styles.bottomWrapper}>
+                        <View style={styles.bottomAction}>
+                            <Button style={styles.cancelButton} onPress={() =>
                                 navigation.navigate('Model', {
                                     screen: 'QRCode',
                                 })}>
-                                <Text style={styles.cancelText}>CANCEL</Text>
+                                <Text style={styles.cancelButtonText}>CANCEL</Text>
                             </Button>
-                            <Button style={styles.acceptBtn} onPress={() => handleSubmit()}>
-                                <Text style={styles.acceptText}>ACCEPT</Text>
+                            <Button style={styles.acceptButton} onPress={() => handleSubmit()}>
+                                <Text style={styles.acceptButtonText}>ACCEPT</Text>
                             </Button>
                         </View>
                     </View>
@@ -68,8 +70,8 @@ const PayingToScreen = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#0000FF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
     },
     topContent: {
         marginTop: Platform.OS === 'ios' ? 90 : 50,
@@ -78,17 +80,17 @@ const styles = StyleSheet.create({
     },
     content: {
         marginTop: Platform.OS === 'ios' ? 90 : 40,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
-        borderColor: '#FFFFFF',
+        borderColor: Colors.SENARY_BORDER_COLOR,
         borderWidth: 1,
         padding: 32,
         paddingTop: 40,
         height: '100%',
         alignItems: 'center',
     },
-    billBlock: {
+    billWrapper: {
         backgroundColor: 'rgba(247,249,251,0.80)',
         borderRadius: 6,
         padding: 10,
@@ -97,10 +99,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '80%',
     },
-    inputBlock: {
+    inputWrapper: {
         width: '80%',
         borderRadius: 4,
-        borderColor: '#F2F2F2',
+        borderColor: Colors.SENARY_TEXT_COLOR,
         borderWidth: 1,
         height: 111,
         color: 'rgba(20,21,30,0.40)',
@@ -121,16 +123,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.5,
     },
     fontSize1: {
-        fontSize: 12,
+        fontSize: Typography.FONT_SIZE_SMALL,
     },
     fontSize2: {
-        fontSize: 14,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
     },
     fontSize3: {
-        fontSize: 16,
+        fontSize: Typography.FONT_SIZE_LARGE,
     },
     fontSize4: {
-        fontSize: 26,
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS,
     },
     lineHeight1: {
         lineHeight: 18,
@@ -148,16 +150,16 @@ const styles = StyleSheet.create({
         lineHeight: 48,
     },
     Text: {
-        fontFamily: 'SFProDisplay-Bold',
-        color: '#212121',
+        fontFamily: Typography.FONT_BOLD,
+        color: Colors.QUATERNARY_TEXT_COLOR,
     },
     Text1: {
-        fontFamily: 'SFProDisplay-Regular',
+        fontFamily: Typography.FONT_NORMAL,
         color: 'rgba(20,21,30,0.40)',
     },
     Text2: {
-        fontFamily: 'SFProDisplay-Regular',
-        color: '#2B2D42',
+        fontFamily: Typography.FONT_NORMAL,
+        color: Colors.SECONDARY_TEXT_COLOR,
     },
     imageCircle: {
         height: 124,
@@ -170,39 +172,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 20,
-    },
-    confirmBtn: {
-        width: '100%',
-        borderRadius: 25,
-        height: 56,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0000FF',
-    },
-    confirmText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        fontFamily: 'SFProDisplay-Bold',
-    },
-    contact: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 7,
-    },
-    image: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-    },
-    imageContent: {
-        marginRight: 15,
-    },
-    termsBottom: {
+    bottomWrapper: {
         width: '100%',
         paddingTop: 30,
         paddingLeft: 22,
@@ -210,7 +180,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
 
     },
-    termsBottmBtn: {
+    bottomAction: {
         marginTop: 15,
         marginLeft: 12,
         marginRight: 20,
@@ -219,33 +189,33 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5,
     },
-    cancelBtn: {
+    cancelButton: {
         width: '50%',
         borderRadius: 25,
-        borderColor: '#0000FF',
+        borderColor: Colors.TERTIARY_BORDER_COLOR,
         borderWidth: 2,
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor:Colors.SECONDARY_BUTTON_COLOR,
         marginRight: 5,
     },
-    acceptBtn: {
+    acceptButton: {
         width: '50%',
         borderRadius: 25,
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#0000FF',
+        backgroundColor: Colors.PRIMARY_BUTTON_COLOR,
         marginLeft: 5,
     },
-    cancelText: {
-        color: '#0000FF',
-        fontFamily: 'SFProDisplay-Bold',
+    cancelButtonText: {
+        color: Colors.SECONDARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_BOLD,
     },
-    acceptText: {
-        color: '#FFFFFF',
-        fontFamily: 'SFProDisplay-Bold',
+    acceptButtonText: {
+        color: Colors.PRIMARY_BUTTON_TEXT_COLOR,
+        fontFamily: Typography.FONT_BOLD,
     },
 });
 

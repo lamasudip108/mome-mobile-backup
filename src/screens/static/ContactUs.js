@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const ContactUsScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
@@ -14,24 +16,24 @@ const ContactUsScreen = ({navigation}) => {
             </View>
 
             <View style={styles.middleContent}>
-                <View style={styles.middleContentCircle}>
+                <View style={styles.middleCircleWrapper}>
                     <View style={styles.circleEnvelope}>
-                        <Icon name="envelope" size={20} color="#6B59ED" />
+                        <Icon name="envelope" size={20} color={Colors.UNDENARY_TEXT_COLOR} />
                     </View>
                     <View style={{ marginRight: 60}} />
                     <View style={styles.circleMessage}>
-                        <MaterialCommunityIcons name="message-text" color="#0B8EFE" size={20} />
+                        <MaterialCommunityIcons name="message-text" color={Colors.DUODENARY_TEXT_COLOR} size={20} />
                     </View>
                     <View style={{ marginRight: 60}} />
                     <View style={styles.circlePhone}>
-                        <MaterialCommunityIcons name="phone" color="#53D574" size={20}  />
+                        <MaterialCommunityIcons name="phone" color={Colors.THRIODENARY_TEXT_COLOR} size={20}  />
                     </View>
                 </View>
 
-                <View style={styles.middleContentAbout}>
-            	   <Text style={styles.aboutTitle}>About Us</Text>
+                <View style={styles.contentWrapper}>
+            	   <Text style={styles.headingText1}>About Us</Text>
                    <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
-                       <Text style={styles.aboutContent}>
+                       <Text style={styles.paragraph}>
                         is simply dummy text of the printing and typesetting industry. 
                         Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, 
                         when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
@@ -48,7 +50,7 @@ const ContactUsScreen = ({navigation}) => {
 
             <View style={styles.bottomContent}>
                 <View style={styles.circleLocation}>
-                    <Ionicons name="location-outline" size={25} color="#0000FF" />
+                    <Ionicons name="location-outline" size={25} color={Colors.PRIMARY_TEXT_COLOR} />
                 </View>
                 <Text style={styles.locationText}>
                     Financial Center Street, 
@@ -64,9 +66,9 @@ const ContactUsScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#0000FF',
-        color: '#FFFFFF',
+        ...CommonStyles.container,
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
+        color: Colors.QUINARY_TEXT_COLOR,
     },
     topContent: {
         justifyContent: 'center',
@@ -82,80 +84,59 @@ const styles = StyleSheet.create({
         height: 109,
     },
     middleContent: {
-    	backgroundColor: '#FFFFFF',
+    	backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
     	padding: 32,
     	marginTop: 10,
         height: '45%',
     },
-    middleContentCircle: {
+    middleCircleWrapper: {
+        ...CommonStyles.circleListItem,
         flexDirection:'row',
-        alignItems: 'center',
-        justifyContent: 'center',
         position: 'absolute',
         top: '-18%',
         left: 32,
         right: 32,
         width: '100%',
         height: 93,
-        backgroundColor: '#FFFFFF', 
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR, 
         borderRadius: 4,
-        borderWidth: 1,
         borderColor: 'rgba(1,1,1,0.10)',
         paddingTop: 15,
         paddingBottom: 15,
         zIndex: 1,
     },
     circleEnvelope: {
+        ...CommonStyles.circleFixed,
         backgroundColor: 'rgba(107,89,237,0.10)', 
-        height:55, 
-        width: 55,
-        borderRadius: 27.5,
         borderColor: 'rgba(107,89,237,0.10)', 
-        borderWidth: 0,
-        marginBottom: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     circleMessage: {
+        ...CommonStyles.circleFixed,
         backgroundColor: 'rgba(11,142,254,0.10)', 
-        height:55, 
-        width: 55,
-        borderRadius: 27.5,
         borderColor: 'rgba(11,142,254,0.10)', 
-        borderWidth: 0,
-        marginBottom: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     circlePhone: {
+        ...CommonStyles.circleFixed,
         backgroundColor: 'rgba(83,213,116,0.10)', 
-        height:55, 
-        width: 55,
-        borderRadius: 27.5,
-        borderColor: 'rgba(83,213,116,0.10)', 
-        borderWidth: 0,
-        marginBottom: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
+        borderColor: 'rgba(83,213,116,0.10)',
     },
-    middleContentAbout: {
+    contentWrapper: {
         paddingTop:  50,
         paddingBottom: 15,
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    aboutTitle: {
-    	fontSize: 18, 
-    	//fontWeight: '600',
-        fontFamily: 'SFProDisplay-Medium', 
-    	color: '#212121', 
+    headingText1: {
+        ...CommonStyles.headingText1,
+    	fontSize: Typography.FONT_SIZE_EXTRA_LARGE, 
+    	fontFamily: Typography.FONT_MEDIUM, 
     	lineHeight: 27,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-    aboutContent: {
-        fontFamily: 'SFProDisplay-Regular',
-        fontSize: 14, 
-        color: '#747E8F',
+    paragraph: {
+        fontFamily: Typography.FONT_NORMAL,
+        fontSize: Typography.FONT_SIZE_MEDIUM, 
+        color: Colors.TERTIARY_TEXT_COLOR,
         lineHeight: 21,
         marginTop: 20,
         marginBottom: 20,
@@ -163,7 +144,7 @@ const styles = StyleSheet.create({
     },
     bottomContent: {
         height: '100%',
-        backgroundColor: '#F7F9FB',
+        backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
         paddingTop: Platform.OS === 'ios' ? 20 : 10,
         paddingBottom: 0,
         paddingLeft: 32,
@@ -171,25 +152,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     circleLocation: {
+        ...CommonStyles.circleFixed,
         backgroundColor: 'rgba(0,0,255,0.10)',
-        height:55, 
-        width: 55,
-        borderRadius: 27.5,
         borderColor: 'rgba(0,0,255,0.10)', 
-        borderWidth: 0,
         marginTop: 20,
-        marginBottom: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     locationText: {
         width: '75%',
         marginTop: 13,
         paddingLeft: 15,
-        fontSize: 14,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
         lineHeight: 21,
-        color: '#747E8F',
-        fontFamily: 'SFProDisplay-Medium',
+        color: Colors.TERTIARY_TEXT_COLOR,
+        fontFamily: Typography.FONT_MEDIUM,
     },
 });
 

@@ -4,8 +4,8 @@ import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import FloatingLabelInput from '@/shared/form/FloatingLabelInput';
-
+import {CommonStyles, Colors, Typography} from '@/theme';
+import FlatTextInput from '@/shared/form/FlatTextInput';
 import {Dropdown} from 'sharingan-rn-modal-dropdown';
 
 export const data = [
@@ -88,73 +88,73 @@ const AddBankForm = (props) => {
             <StatusBar style="auto"/>
             
             <View style={styles.content}>
-            <View style={styles.viewHeading}>
-                <Text style={styles.textHeading1}>Add Bank</Text>
-            </View>
+                <View style={styles.header}>
+                    <Text style={styles.headingText1}>Add Bank</Text>
+                </View>
 
-            <View style={{
-                width: '70%', 
-                position: 'relative',
-                backgroundColor: '#FFFFFF',
-                borderRadius: 30,
-                borderColor: '#F2F2F2',
-                borderWidth: 1,
-                width: '70%',
-                height: 56,
-                marginBottom: 15,
-                paddingHorizontal: 2,
-            }}>
-            <Dropdown
-                    //label="BANK NAME"
-                    data={data}
-                    enableSearch
-                    value={valueSS}
-                    onChange={onChangeSS}
-                    underlineColor="transparent"
-                    textInputStyle={{
-                        fontSize: 14, 
-                        color: '#212121', 
-                        marginTop: -7,
-                    }}
-                    textInputPlaceholder="BANK NAME"
-                    textInputPlaceholderColor="#BEBEBE"
-                  />
-            </View>
+                <View style={{
+                    width: '70%', 
+                    position: 'relative',
+                    backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
+                    borderRadius: 30,
+                    borderColor: Colors.PRIMARY_BORDER_COLOR,
+                    borderWidth: 1,
+                    width: '70%',
+                    height: 56,
+                    marginBottom: 15,
+                    paddingHorizontal: 2,
+                }}>
+                <Dropdown
+                        //label="BANK NAME"
+                        data={data}
+                        enableSearch
+                        value={valueSS}
+                        onChange={onChangeSS}
+                        underlineColor="transparent"
+                        textInputStyle={{
+                            fontSize: Typography.FONT_SIZE_MEDIUM, 
+                            color: Colors.QUATERNARY_TEXT_COLOR, 
+                            marginTop: -7,
+                        }}
+                        textInputPlaceholder="BANK NAME"
+                        textInputPlaceholderColor={Colors.DENARY_TEXT_COLOR}
+                      />
+                </View>
     
-            <View style={styles.viewForm}>
+                <View style={styles.formSection}>
 
-                <FloatingLabelInput
-                    label="BANK BRANCH"
-                    value={values.bank_branch}
-                    onChangeText={handleChange('bank_branch')}
-                    onBlur={handleBlur('bank_branch')}
-                    error={errors.bank_branch}
-                    touched={touched.bank_branch}
-                />
+                    <FlatTextInput
+                        label="BANK BRANCH"
+                        value={values.bank_branch}
+                        onChangeText={handleChange('bank_branch')}
+                        onBlur={handleBlur('bank_branch')}
+                        error={errors.bank_branch}
+                        touched={touched.bank_branch}
+                    />
 
-                <FloatingLabelInput
-                    label="ACCOUNT HOLDER"
-                    value={values.account_holder}
-                    onChangeText={handleChange('account_holder')}
-                    onBlur={handleBlur('account_holder')}
-                    error={errors.account_holder}
-                    touched={touched.account_holder}
-                />
+                    <FlatTextInput
+                        label="ACCOUNT HOLDER"
+                        value={values.account_holder}
+                        onChangeText={handleChange('account_holder')}
+                        onBlur={handleBlur('account_holder')}
+                        error={errors.account_holder}
+                        touched={touched.account_holder}
+                    />
 
-                <FloatingLabelInput
-                    label="ACCOUNT NUMBER"
-                    value={values.account_number}
-                    keyboardType="numeric"
-                    onChangeText={handleChange('accont_number')}
-                    onBlur={handleBlur('account_number')}
-                    error={errors.account_number}
-                    touched={touched.account_number}
-                />
-            </View>
+                    <FlatTextInput
+                        label="ACCOUNT NUMBER"
+                        value={values.account_number}
+                        keyboardType="numeric"
+                        onChangeText={handleChange('accont_number')}
+                        onBlur={handleBlur('account_number')}
+                        error={errors.account_number}
+                        touched={touched.account_number}
+                    />
+                </View>
 
-                <View style={styles.viewBtn}>
-                    <Button style={styles.updateBtn} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.updateText}>SAVE</Text>
+                <View style={styles.buttonWrapper}>
+                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.buttonText}>SAVE</Text>
                     </Button>
                 </View>
 
@@ -167,71 +167,49 @@ const AddBankForm = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#F7F9FB',
+        ...CommonStyles.container,
     },
 
     content: {
-        justifyContent: 'center',
-        alignItems: 'center',
+        ...CommonStyles.content,
         marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
 
-    viewHeading: {
+    header: {
+        ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 22 : 42,
-        width: '70%',
-        paddingBottom: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
     },
 
-    textHeading1: {
-        fontSize: 24,
-        //fontWeight: '700',
-        fontFamily: 'SFProDisplay-Semibold',
-        color: '#212121',
-        marginBottom: 2,
+    headingText1: {
+        ...CommonStyles.headingText1,
+        fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 
-    viewForm: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    formSection: {
+        ...CommonStyles.formSection,
     },
 
-    viewBtn: {
-        width: '70%',
-        alignItems: 'center',
-        justifyContent: 'center',
+    buttonWrapper: {
+        ...CommonStyles.buttonWrapper,
     },
 
-    updateBtn: {
-        width: '100%',
-        borderRadius: 25,
+    button: {
+        ...CommonStyles.button,
         height: 56,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#0000FF',
     },
 
-    updateText: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        //fontWeight: 'bold',
-        fontFamily: 'SFProDisplay-Bold',
+    buttonText: {
+        ...CommonStyles.buttonText,
     },
 
-    errorView: {
+    errorWrapper: {
         width: '70%',
     },
 
     errorText: {
-        fontSize: 14,
-        color: 'red',
-        marginLeft: 15,
-        marginBottom: 15,
+        ...CommonStyles.errorText,
     },
 });
 
