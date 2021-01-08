@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import {CommonStyles, Typography} from '@/theme';
+import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const updateSchema = Yup.object().shape({
@@ -67,7 +67,7 @@ const AddBankForm = (props) => {
     return (
         <View style={styles.container}>
 
-            <StatusBar style="auto"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
             <View style={styles.content}>
                 <View style={styles.header}>

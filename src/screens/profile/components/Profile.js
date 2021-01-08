@@ -47,6 +47,7 @@ const ProfileForm = (props) => {
         <View style={styles.container}>
 
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+
             <View style={styles.content}>
                 <View style={styles.header}>
                     <Text style={styles.headingText1}>Edit Profile</Text>
