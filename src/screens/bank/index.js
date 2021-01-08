@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import MyBanksForm from './components/MyBanks';
+import MyBanksForm from './components';
 import {profileServices} from './duck';
 
 const MyBanksScreen = (props) => {
