@@ -118,6 +118,7 @@ const SignUpForm = (props) => {
                         label={i18n.t('password')}
                         value={values.password}
                         isPassword={true}
+                        secureTextEntry={true}
                         onChangeText={handleChange('password')}
                         onFocus={handleBlur('password')}
                         error={errors.password}
@@ -128,9 +129,11 @@ const SignUpForm = (props) => {
                         label={i18n.t('confirm')}
                         value={values.confirm_password}
                         isPassword={true}
+                        secureTextEntry={true}
                         onChangeText={handleChange('confirm_password')}
                         onFocus={handleBlur('confirm_password')}
                         error={errors.confirm_password}
+                        touched={touched.confirm_password}
                     />
                 </View>
 
