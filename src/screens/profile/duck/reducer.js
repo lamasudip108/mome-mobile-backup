@@ -2,6 +2,9 @@ import {
     CUSTOMER_PROFILE_FETCH_REQUEST,
     CUSTOMER_PROFILE_FETCH_REQUEST_SUCCESS,
     CUSTOMER_PROFILE_FETCH_REQUEST_FAILURE,
+    CUSTOMER_PROFILE_UPDATE_REQUEST,
+    CUSTOMER_PROFILE_UPDATE_REQUEST_SUCCESS,
+    CUSTOMER_PROFILE_UPDATE_REQUEST_FAILURE,
     CUSTOMER_PROFILE_CLEAN_REQUEST,
 } from './types';
 
@@ -19,11 +22,13 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case CUSTOMER_PROFILE_FETCH_REQUEST:
+        case CUSTOMER_PROFILE_UPDATE_REQUEST:
             return Object.assign({}, state, {
                 loading: true,
             });
 
         case CUSTOMER_PROFILE_FETCH_REQUEST_SUCCESS:
+        case CUSTOMER_PROFILE_UPDATE_REQUEST_SUCCESS:
             return Object.assign({}, state, {
                 loading: false,
                 payload: action.data,
@@ -31,6 +36,7 @@ const reducer = (state, action) => {
             });
 
         case CUSTOMER_PROFILE_FETCH_REQUEST_FAILURE:
+        case CUSTOMER_PROFILE_UPDATE_REQUEST_FAILURE:
             return Object.assign({}, state, {
                 loading: false,
                 errors: action.error,

@@ -12,8 +12,11 @@ import {
 } from 'redux-persist';
 import {configureStore} from '@reduxjs/toolkit';
 
-import profileReducer from '@/screens/profile/duck';
 import authReducer from '@/screens/auth/duck';
+import profileReducer from '@/screens/profile/duck';
+import passwordReducer from '@/screens/setting/duck';
+import transactionReducer from '@/screens/transaction/duck';
+import bankReducer from '@/screens/bank/duck';
 
 const persistConfig = {
     key: 'root',
@@ -22,8 +25,11 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-    profile: profileReducer,
     auth: authReducer,
+    profile: profileReducer,
+    password: passwordReducer,
+    transactions: transactionReducer,
+    banks: bankReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

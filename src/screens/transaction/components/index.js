@@ -3,7 +3,7 @@ import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} f
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const MyTransactionForm = ({navigation}) => {
+const Transaction = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -229,4 +229,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MyTransactionForm;
+export default Transaction;

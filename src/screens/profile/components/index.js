@@ -42,7 +42,7 @@ const Profile = ({navigation}) => {
 
             	<View style={styles.List}>
 	            	<ScrollView style={{ height: Platform.OS === 'ios' ? 520 : 400 }}>
-	            		<TouchableOpacity onPress={() => navigation.navigate('MyTransaction')}>
+	            		<TouchableOpacity onPress={() => navigation.navigate('Transaction')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.DENARY_BACKGROUND_COLOR}>

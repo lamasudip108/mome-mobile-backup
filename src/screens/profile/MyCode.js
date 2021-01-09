@@ -11,7 +11,7 @@ const MyCodeScreen = (props) => {
     const {profile, loading, errors} = useSelector(state => state.profile);
 
     useEffect(() => {
-        dispatch(profileServices.fetchProfileInfo());
+       // dispatch(profileServices.fetchProfileInfo());
     }, [dispatch]);
 
     return (

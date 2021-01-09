@@ -1,25 +1,25 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import MyTransactionForm from './components/MyTransaction';
+import EditProfileForm from './components/EditProfile';
 import {profileServices} from './duck';
 
-const MyTransactionScreen = (props) => {
+const EditProfileFormScreen = (props) => {
 
     const dispatch = useDispatch();
 
     const {profile, loading, errors} = useSelector(state => state.profile);
 
-    useEffect(() => {
-        dispatch(profileServices.fetchProfileInfo());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(profileServices.fetchCustomerProfileByIdentifier());
+    // }, [dispatch]);
 
     return (
-        <MyTransactionForm
+        <EditProfileForm
             {...props}
         />
     );
 
 };
 
-export default MyTransactionScreen;
+export default EditProfileFormScreen;

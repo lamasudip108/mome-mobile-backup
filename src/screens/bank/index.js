@@ -2,16 +2,16 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import MyBanksForm from './components';
-import {profileServices} from './duck';
+import {bankServices} from './duck';
 
 const MyBanksScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {profile, loading, errors} = useSelector(state => state.profile);
+    const {banks, loading, errors} = useSelector(state => state.banks);
 
     useEffect(() => {
-        dispatch(profileServices.fetchProfileInfo());
+       // dispatch(bankServices.fetchCustomerBankByIdentifier());
     }, [dispatch]);
 
     return (
