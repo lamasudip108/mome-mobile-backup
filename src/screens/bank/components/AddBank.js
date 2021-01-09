@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
+import {TextInput} from 'react-native-paper';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -53,7 +55,7 @@ const AddBankForm = (props) => {
             <TouchableOpacity onPress={() => {
                 navigation.navigate('SelectBank');
             }}>
-                <Text>{value}</Text>
+                <Text style={styles.renderText}>{value}</Text>
             </TouchableOpacity>
         );
     };
@@ -82,6 +84,18 @@ const AddBankForm = (props) => {
                         render={renderTouchText}
                         error={errors.bank_name}
                         touched={touched.bank_name}
+                        right={
+                            <TextInput.Icon
+                                name={
+                                    () => <Ionicons
+                                                name='chevron-down'
+                                                size={25}
+                                                color={Colors.DENARY_TEXT_COLOR}
+                                                onPress={() => navigation.navigate('SelectBank')}
+                                            />
+                                    }
+                            />
+                        }
                     />
 
                     <FlatTextInput
@@ -146,6 +160,12 @@ const styles = StyleSheet.create({
         fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
+    },
+
+    renderText: {
+        position: 'absolute',
+        top: 30, 
+        left: 12,
     },
 
     formSection: {
