@@ -11,7 +11,7 @@ const EditProfileFormScreen = (props) => {
     const {profile, loading, errors} = useSelector(state => state.profile);
 
     // useEffect(() => {
-    //     dispatch(profileServices.fetchProfileInfo());
+    //     dispatch(profileServices.fetchCustomerProfileByIdentifier());
     // }, [dispatch]);
 
     return (

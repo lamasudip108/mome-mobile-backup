@@ -11,7 +11,7 @@ const ChangePasswordScreen = (props) => {
     const {password, loading, errors} = useSelector(state => state.password);
 
     useEffect(() => {
-        dispatch(passwordServices.updateCustomerPassword());
+       // dispatch(passwordServices.updateCustomerPassword());
     }, [dispatch]);
 
     return (

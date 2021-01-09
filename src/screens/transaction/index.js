@@ -11,7 +11,7 @@ const TransactionScreen = (props) => {
     const {transactions, loading, errors} = useSelector(state => state.transactions);
 
     useEffect(() => {
-        dispatch(transactionServices.fetchCustomerTransactionByIdentifier());
+       // dispatch(transactionServices.fetchCustomerTransactionByIdentifier());
     }, [dispatch]);
 
     return (

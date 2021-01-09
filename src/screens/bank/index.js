@@ -8,10 +8,10 @@ const MyBanksScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {profile, loading, errors} = useSelector(state => state.profile);
+    const {banks, loading, errors} = useSelector(state => state.banks);
 
     useEffect(() => {
-       // dispatch(bankServices.fetchProfileInfo());
+       // dispatch(bankServices.fetchCustomerBankByIdentifier());
     }, [dispatch]);
 
     return (
