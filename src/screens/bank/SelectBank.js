@@ -11,7 +11,7 @@ const SelectBankScreen = (props) => {
     const {profile, loading, errors} = useSelector(state => state.banks);
 
     useEffect(() => {
-       // dispatch(profileServices.fetchProfileInfo());
+       // dispatch(bankServices.fetchProfileInfo());
     }, [dispatch]);
 
     return (
