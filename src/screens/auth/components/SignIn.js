@@ -11,7 +11,6 @@ import i18n from 'i18n-js';
 import {CommonStyles, Colors, Typography} from '@/theme';
 import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
-
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const screenHeight = Math.round(Dimensions.get('window').height);

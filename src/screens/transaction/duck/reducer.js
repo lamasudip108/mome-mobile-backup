@@ -1,8 +1,8 @@
 import {
-    BANK_FETCH_REQUEST,
-    BANK_FETCH_REQUEST_SUCCESS,
-    BANK_FETCH_REQUEST_FAILURE,
-    BANK_CLEAN_REQUEST,
+    CUSTOMER_TRANSACTION_FETCH_REQUEST,
+    CUSTOMER_TRANSACTION_FETCH_REQUEST_SUCCESS,
+    CUSTOMER_TRANSACTION_FETCH_REQUEST_FAILURE,
+    CUSTOMER_TRANSACTION_CLEAN_REQUEST,
 } from './types';
 
 const INITIAL_STATE = {
@@ -18,25 +18,25 @@ const reducer = (state, action) => {
     state = state || INITIAL_STATE;
 
     switch (action.type) {
-        case BANK_FETCH_REQUEST:
+        case CUSTOMER_TRANSACTION_FETCH_REQUEST:
             return Object.assign({}, state, {
                 loading: true,
             });
 
-        case BANK_FETCH_REQUEST_SUCCESS:
+        case CUSTOMER_TRANSACTION_FETCH_REQUEST_SUCCESS:
             return Object.assign({}, state, {
                 loading: false,
                 payload: action.data,
                 errors: {},
             });
 
-        case BANK_FETCH_REQUEST_FAILURE:
+        case CUSTOMER_TRANSACTION_FETCH_REQUEST_FAILURE:
             return Object.assign({}, state, {
                 loading: false,
                 errors: action.error,
             });
 
-        case BANK_CLEAN_REQUEST:
+        case CUSTOMER_TRANSACTION_CLEAN_REQUEST:
             return Object.assign({}, state, {
                 loading: false,
                 payload: [],

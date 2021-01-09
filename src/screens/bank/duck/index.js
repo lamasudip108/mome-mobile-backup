@@ -1,9 +1,9 @@
 import reducer from './reducer';
-import * as profileActions from './actions';
-import * as profileServices from './services';
-import * as profileTypes from './types';
+import * as bankActions from './actions';
+import * as bankServices from './services';
+import * as bankTypes from './types';
 
-export {profileActions, profileServices, profileTypes};
+export {bankActions, bankServices, bankTypes};
 
 export default reducer;
 

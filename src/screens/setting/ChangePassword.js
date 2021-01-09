@@ -4,7 +4,7 @@ import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
-import {CommonStyles, Colors, Typography} from '@/theme';
+import {CommonStyles, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const updateSchema = Yup.object().shape({

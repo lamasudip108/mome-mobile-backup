@@ -15,9 +15,12 @@ import LanguageScreen from '@/screens/language';
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
 
-import EditProfileScreen from '@/screens/profile/Profile';
-import MyTransactionScreen from '@/screens/profile/MyTransaction';
+import EditProfileScreen from '@/screens/profile/EditProfile';
 import MyCodeScreen from '@/screens/profile/MyCode';
+
+import TransactionScreen from '@/screens/transaction';
+import PayingToScreen from '@/screens/home/PayingTo';
+import PayingSuccessScreen from '@/screens/home/PayingSuccess';
 
 import MyBanksScreen from '@/screens/bank';
 import AddBankScreen from '@/screens/bank/AddBank';
@@ -28,9 +31,6 @@ import HowItWorksScreen from '@/screens/static/HowItWorks';
 import TermsConditionsScreen from '@/screens/static/TermsConditions';
 
 import ChangePasswordScreen from '@/screens/setting/ChangePassword';
-
-import PayingToScreen from '@/screens/home/PayingTo';
-import PayingSuccessScreen from '@/screens/home/PayingSuccess';
 
 import {useDirection} from '@/context/language';
 
@@ -198,7 +198,7 @@ const MainNavigation = () => {
             />
             <Stack.Screen name="AddBank" component={AddBankScreen}
                           options={{headerTitle: '', headerTransparent: true}}/>
-            <Stack.Screen name="MyTransaction" component={MyTransactionScreen}
+            <Stack.Screen name="Transaction" component={TransactionScreen}
                           options={{
                               title: 'All Transactions',
                               headerTintColor: '#fff',
