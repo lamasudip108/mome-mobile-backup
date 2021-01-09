@@ -7,13 +7,12 @@ import * as Yup from 'yup';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
-import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const signInSchema = Yup.object().shape({
+const forgotSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
 });
 
@@ -28,7 +27,7 @@ const ForgotForm = ({navigation}) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: signInSchema,
+        validationSchema: forgotSchema,
         initialValues: {email: ''},
         onSubmit: values => {
            // forgot(values);
@@ -63,9 +62,9 @@ const ForgotForm = ({navigation}) => {
                     />
 
                 </View>
-                <View style={styles.loginButtonWrapper}>
-                    <Button style={styles.loginButton} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.loginButtonText}>SUBMIT</Text>
+                <View style={styles.submitButtonWrapper}>
+                    <Button style={styles.submitButton} onPress={handleSubmit} disabled={!isValid}>
+                        <Text style={styles.submitButtonText}>SUBMIT</Text>
                     </Button>
                 </View>
 
@@ -94,9 +93,6 @@ const styles = StyleSheet.create({
     message: {
         ...CommonStyles.message,
     },
-    profileImage: {
-        marginBottom: 30,
-    },
     headingText1: {
         ...CommonStyles.headingText1,
         fontFamily: Typography.FONT_BOLD,
@@ -107,28 +103,16 @@ const styles = StyleSheet.create({
         width: 210,
         textAlign: 'center',
     },
-    loginButtonWrapper: {
+    submitButtonWrapper: {
         ...CommonStyles.buttonWrapper,
     },
-    loginButton: {
+    submitButton: {
         ...CommonStyles.button,
         height: 50,
         marginBottom: 20,
     },
-    loginButtonText: {
+    submitButtonText: {
         ...CommonStyles.buttonText,
-    },
-    forgotButtonText: {
-        height: 30,
-        marginBottom: 30,
-    },
-    signUpLinkWrapper: {
-        ...CommonStyles.linkWrapper,
-    },
-    signUpButtonText: {
-        color: Colors.SECONDARY_BUTTON_TEXT_COLOR,
-        fontFamily: Typography.FONT_MEDIUM,
-        paddingLeft: 8,
     },
     errorText: {
         ...CommonStyles.errorText,
