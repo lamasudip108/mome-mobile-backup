@@ -14,13 +14,15 @@ import LanguageScreen from '@/screens/language';
 
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
+import ForgotScreen from '@/screens/auth/Forgot';
 
 import EditProfileScreen from '@/screens/profile/EditProfile';
 import MyCodeScreen from '@/screens/profile/MyCode';
 
 import TransactionScreen from '@/screens/transaction';
-import PayingToScreen from '@/screens/home/PayingTo';
-import PayingSuccessScreen from '@/screens/home/PayingSuccess';
+
+import PayingToScreen from '@/screens/payment/PayingTo';
+import PayingSuccessScreen from '@/screens/payment/PayingSuccess';
 
 import MyBanksScreen from '@/screens/bank';
 import AddBankScreen from '@/screens/bank/AddBank';
@@ -131,6 +133,12 @@ const MainNavigation = () => {
                 gestureDirection: 'horizontal-inverted',
             })}/>
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{
+                headerTitle: '',
+                headerTransparent: true,
+                ...TransitionPresets.SlideFromRightIOS,
+                gestureDirection: 'horizontal-inverted',
+            }}/>
+            <Stack.Screen name="Forgot" component={ForgotScreen} options={{
                 headerTitle: '',
                 headerTransparent: true,
                 ...TransitionPresets.SlideFromRightIOS,

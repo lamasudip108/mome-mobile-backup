@@ -6,7 +6,7 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const QRCodeScreen = ({navigation}) => {
+const QRCode = ({navigation}) => {
 
     let scanner;
 
@@ -116,4 +116,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default QRCodeScreen;
+export default QRCode;

@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import AgreementScreen from '@/screens/auth/Agreement';
-import QRCodeScreen from '@/screens/home/QRCode';
+import QRCodeScreen from '@/screens/payment/QRCode';
 
 const Stack = createStackNavigator();
 

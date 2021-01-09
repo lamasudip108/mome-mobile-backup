@@ -6,7 +6,7 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const PayingToScreen = (props) => {
+const PayingToForm = (props) => {
 
     const {navigation, route} = props;
 
@@ -219,5 +219,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PayingToScreen;
-
+export default PayingToForm;
