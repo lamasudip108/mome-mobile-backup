@@ -6,9 +6,9 @@ import Icon from 'react-native-vector-icons/Feather';
 import {useDirection} from '@/context/language';
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const ProfileForm = ({navigation}) => {
+const Profile = ({navigation}) => {
 
-    const {toggleDirection, direction} = useDirection();
+    const { direction} = useDirection();
 
     return (
         <View style={styles.container}>
@@ -289,5 +289,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default ProfileForm;
+export default Profile;
 

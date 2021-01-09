@@ -11,18 +11,24 @@ import ModelNavigation from '@/navigations/ModelNavigation';
 
 import LanguageSplashScreen from '@/screens/language/LanguageSplash';
 import LanguageScreen from '@/screens/language';
+
 import SignInScreen from '@/screens/auth/SignIn';
 import SignUpScreen from '@/screens/auth/SignUp';
-import EditProfileScreen from '@/screens/profile/EditProfile';
-import MyBanksScreen from '@/screens/profile/MyBanks';
-import AddBankScreen from '@/screens/profile/AddBank';
-import SelectBankScreen from '@/screens/profile/SelectBank';
-import MyCodeScreen from '@/screens/profile/MyCode';
+
+import EditProfileScreen from '@/screens/profile/Profile';
 import MyTransactionScreen from '@/screens/profile/MyTransaction';
+import MyCodeScreen from '@/screens/profile/MyCode';
+
+import MyBanksScreen from '@/screens/bank';
+import AddBankScreen from '@/screens/bank/AddBank';
+import SelectBankScreen from '@/screens/bank/SelectBank';
+
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
 import TermsConditionsScreen from '@/screens/static/TermsConditions';
+
 import ChangePasswordScreen from '@/screens/setting/ChangePassword';
+
 import PayingToScreen from '@/screens/home/PayingTo';
 import PayingSuccessScreen from '@/screens/home/PayingSuccess';
 

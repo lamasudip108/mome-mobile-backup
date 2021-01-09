@@ -1,43 +1,11 @@
-import React, {useState} from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
+import React, {useEffect} from 'react';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
-import {Dropdown} from 'sharingan-rn-modal-dropdown';
-
-export const data = [
-  {
-    value: 'Qatar National Bank',
-    label: 'Qatar National Bank',
-    avatarSource: {
-      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
-    },
-  },
-  {
-    value: 'Abu Dubai Islamic Bank',
-    label: 'Abu Dubai Islamic Bank',
-    avatarSource: {
-      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
-    },
-  },
-  {
-    value: 'Arab Bank PLC',
-    label: 'Arab Bank PLC',
-    avatarSource: {
-      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
-    },
-  },
-  {
-    value: 'Bank Melli Iran',
-    label: 'Bank Melli Iran',
-    avatarSource: {
-      uri: 'https://img.icons8.com/color/344/circled-user-male-skin-type-5.png',
-    },
-  },
-];
 
 const updateSchema = Yup.object().shape({
     /*first_name: Yup
@@ -54,16 +22,11 @@ const updateSchema = Yup.object().shape({
 
 const AddBankForm = (props) => {
 
-    const [selectedValue, setSelectedValue] = useState("select");
-
-    const [valueSS, setValueSS] = useState('');
-    const onChangeSS = (value: string) => {
-        setValueSS(value);
-      };
-
-    const {navigation} = props;
+    const {navigation, route} = props;
+    const selectedItem = route?.params?.item;
 
     const {
+        setFieldValue,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -73,54 +36,53 @@ const AddBankForm = (props) => {
         isValid,
     } = useFormik({
         validationSchema: updateSchema,
-        initialValues: {bank_name: 'Select Bank Here', bank_branch: 'Qatar', account_holder: 'Fatima Abdullah', account_number: '142328900'},
-        onSubmit: values =>{
-            navigation.navigate('MyBanks', {
-                screen: 'MyBanks',
-                params: { customer: values },
-            });
-        }
+        initialValues: {
+            bank_name: 'Select Bank Here',
+            bank_branch: 'Qatar',
+            account_holder: 'Fatima Abdullah',
+            account_number: '142328900',
+        },
+        onSubmit: values => {
+            console.log("Values", values);
+            navigation.navigate('MyBanks');
+        },
     });
+
+    const renderTouchText = ({value}) => {
+        return (
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('SelectBank');
+            }}>
+                <Text>{value}</Text>
+            </TouchableOpacity>
+        );
+    };
+
+    useEffect(() => {
+        if(selectedItem?.name){
+            setFieldValue('bank_name', selectedItem?.name)
+        }
+    }, [selectedItem]);
 
     return (
         <View style={styles.container}>
 
-            <StatusBar style="auto"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
             <View style={styles.content}>
                 <View style={styles.header}>
                     <Text style={styles.headingText1}>Add Bank</Text>
                 </View>
 
-                <View style={{
-                    width: '70%',
-                    position: 'relative',
-                    backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
-                    borderRadius: 30,
-                    borderColor: Colors.PRIMARY_BORDER_COLOR,
-                    borderWidth: 1,
-                    height: 56,
-                    marginBottom: 15,
-                    paddingHorizontal: 2,
-                }}>
-                <Dropdown
-                        //label="BANK NAME"
-                        data={data}
-                        enableSearch
-                        value={valueSS}
-                        onChange={onChangeSS}
-                        underlineColor="transparent"
-                        textInputStyle={{
-                            fontSize: Typography.FONT_SIZE_MEDIUM,
-                            color: Colors.QUATERNARY_TEXT_COLOR,
-                            marginTop: -7,
-                        }}
-                        textInputPlaceholder="BANK NAME"
-                        textInputPlaceholderColor={Colors.DENARY_TEXT_COLOR}
-                      />
-                </View>
-
                 <View style={styles.formSection}>
+
+                    <FlatTextInput
+                        label="BANK NAME"
+                        value={values.bank_name}
+                        render={renderTouchText}
+                        error={errors.bank_name}
+                        touched={touched.bank_name}
+                    />
 
                     <FlatTextInput
                         label="BANK BRANCH"
@@ -157,7 +119,7 @@ const AddBankForm = (props) => {
                     </Button>
                 </View>
 
-              </View>
+            </View>
 
 
         </View>

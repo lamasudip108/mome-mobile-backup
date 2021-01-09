@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import ProfileForm from './components';
+import Profile from './components';
 import {profileServices} from './duck';
 
 const ProfileScreen = (props) => {
@@ -15,7 +15,7 @@ const ProfileScreen = (props) => {
     // }, [dispatch]);
 
     return (
-        <ProfileForm
+        <Profile
             {...props}
         />
     );
