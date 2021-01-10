@@ -76,7 +76,7 @@ const SelectBankForm = ({navigation}) => {
                                    placeholder="Search Bank..."
                                    underlineColorAndroid='transparent'
                                    onChangeText={text => bankFilter(text)}/>
-                        <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{paddingRight: 15}}/>
+                        <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{marginRight: 15}}/>
                     </View>
                 </View>
 

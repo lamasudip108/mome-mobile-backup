@@ -13,6 +13,8 @@ import {useAuthentication} from '@/context/auth';
 import Spinner from '@/shared/spinner';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
+import {useDirection} from '@/context/language';
+
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const signInSchema = Yup.object().shape({
@@ -24,6 +26,8 @@ const signInSchema = Yup.object().shape({
 });
 
 const SignInForm = ({navigation}) => {
+
+    const {direction} = useDirection();
 
     const [hidePass, setHidePass] = useState(true);
 
@@ -90,7 +94,7 @@ const SignInForm = ({navigation}) => {
                         onFocus={handleBlur('password')}
                         error={errors.password}
                         touched={touched.password}
-                        right={
+                        /*right={
                             <TextInput.Icon
                                 name={
                                     () => <Ionicons
@@ -101,7 +105,18 @@ const SignInForm = ({navigation}) => {
                                             />
                                     }
                             />
-                        }
+                        }*/
+                    />
+                    <Ionicons
+                        name={hidePass ? 'eye-off-outline' : 'eye-outline'}
+                        size={25}
+                        color={Colors.PRIMARY_HEADING_COLOR}
+                        onPress={() => setHidePass(!hidePass)}
+                        style={{
+                            position: 'absolute',
+                            bottom: 30,
+                            right: 15,
+                        }}
                     />
 
                 </View>

@@ -84,7 +84,7 @@ const AddBankForm = (props) => {
                         render={renderTouchText}
                         error={errors.bank_name}
                         touched={touched.bank_name}
-                        right={
+                        /*right={
                             <TextInput.Icon
                                 name={
                                     () => <Ionicons
@@ -95,7 +95,18 @@ const AddBankForm = (props) => {
                                             />
                                     }
                             />
-                        }
+                        }*/
+                    />
+                    <Ionicons
+                        name='chevron-down'
+                        size={25}
+                        color={Colors.DENARY_TEXT_COLOR}
+                        onPress={() => navigation.navigate('SelectBank')}
+                        style={{
+                            position: 'absolute',
+                            top: 15,
+                            right: 15,
+                        }}
                     />
 
                     <FlatTextInput
