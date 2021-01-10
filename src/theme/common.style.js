@@ -44,6 +44,12 @@ export default StyleSheet.create({
         marginLeft: 15,
         marginBottom: 15,
     },
+    successText: {
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        color: Colors.PRIMARY_SUCCESS_COLOR,
+        marginLeft: 15,
+        marginBottom: 15,
+    },
     buttonWrapper: {
         width: '70%',
         alignItems: 'center',
