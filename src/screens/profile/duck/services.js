@@ -1,3 +1,6 @@
+import {fetch, store} from '@/utils/httpUtil';
+import ToastMessage from '@/shared/toast'
+
 import {
     customerProfileFetchRequest,
     customerProfileFetchRequestSuccess,
@@ -7,15 +10,13 @@ import {
     customerProfileUpdateRequestFailure,
 } from './actions';
 
-import {fetch, store} from '@/utils/httpUtil';
-
 export const fetchCustomerProfileByIdentifier = (identifier) => {
     return (dispatch) => {
         dispatch(customerProfileFetchRequest());
         return fetch(`api/customers/${identifier}`)
             .then((response) => {
-                if (response.data.message === 'SUCCESS') {
-                    dispatch(customerProfileFetchRequestSuccess(response.data.data));
+                if (response.data.success) {
+                    dispatch(customerProfileFetchRequestSuccess(response.data));
                 }
             })
             .catch((error) =>
@@ -29,8 +30,9 @@ export const updateCustomerProfile = (identifier, formData = {}) => {
         dispatch(customerProfileUpdateRequest());
         return store(`api/customers/${identifier}`, formData)
             .then((response) => {
-                if (response.data.message === 'SUCCESS') {
-                    dispatch(customerProfileUpdateRequestSuccess(response.data.data));
+                if (response.data.success) {
+                    dispatch(customerProfileUpdateRequestSuccess(response.data));
+                    ToastMessage.show('Your information has been successfully updated.');
                 }
             })
             .catch((error) =>

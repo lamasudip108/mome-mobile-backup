@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import EditProfileForm from './components/EditProfile';
@@ -10,13 +10,19 @@ const EditProfileFormScreen = (props) => {
 
     const {profile, loading, errors} = useSelector(state => state.profile);
 
-    // useEffect(() => {
-    //     dispatch(profileServices.fetchCustomerProfileByIdentifier());
-    // }, [dispatch]);
+    /**
+     * Fetch profile data.
+     * @param {string} identifier
+     *
+     */
+    const fetchCustomerProfileByIdentifier = identifier => {
+        dispatch(profileServices.fetchCustomerProfileByIdentifier(identifier));
+    };
 
     return (
         <EditProfileForm
             {...props}
+            fetchCustomerProfileByIdentifier={fetchCustomerProfileByIdentifier}
         />
     );
 

@@ -9,7 +9,7 @@ import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const updateSchema = Yup.object().shape({
+const profileUpdateSchema = Yup.object().shape({
     /*first_name: Yup
         .string()
         .required('First name is required.'),
@@ -35,7 +35,7 @@ const EditProfileForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: updateSchema,
+        validationSchema: profileUpdateSchema,
         initialValues: {
             first_name: 'Fatima',
             last_name: 'Abdullah',

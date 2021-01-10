@@ -1,18 +1,21 @@
+import {update} from '@/utils/httpUtil';
+import ToastMessage from '@/shared/toast';
+
 import {
     customerPasswordUpdateRequest,
     customerPasswordUpdateRequestSuccess,
     customerPasswordUpdateRequestFailure,
 } from './actions';
 
-import {update} from '@/utils/httpUtil';
 
 export const updateCustomerPassword = (identifier, formData = {}) => {
     return (dispatch) => {
         dispatch(customerPasswordUpdateRequest());
         return update(`api/customers/${identifier}`, formData)
             .then((response) => {
-                if (response.data.message === 'SUCCESS') {
-                    dispatch(customerPasswordUpdateRequestSuccess(response.data.data));
+                if (response.data.success) {
+                    dispatch(customerPasswordUpdateRequestSuccess(response.data));
+                    ToastMessage.show('Your current password has been successfully changed.');
                 }
             })
             .catch((error) =>
