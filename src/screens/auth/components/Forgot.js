@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     },
     submitButton: {
         ...CommonStyles.button,
-        height: 50,
+        height: 56,
         marginBottom: 20,
     },
     submitButtonText: {
@@ -116,6 +116,9 @@ const styles = StyleSheet.create({
     },
     errorText: {
         ...CommonStyles.errorText,
+    },
+    successText: {
+        ...CommonStyles.successText,
     },
 });
 

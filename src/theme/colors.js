@@ -57,3 +57,7 @@ export const PRIMARY_INPUT_TEXT_BACKGROUND_COLOR = '#FFFFFF';
 export const SECONDARY_INPUT_TEXT_BACKGROUND_COLOR = '';
 
 export const PRIMARY_ERROR_COLOR = 'red';
+
+export const PRIMARY_SUCCESS_COLOR = 'green';
+
+
