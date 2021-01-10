@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
@@ -24,7 +24,7 @@ const profileUpdateSchema = Yup.object().shape({
 
 const EditProfileForm = (props) => {
 
-    const {navigation} = props;
+    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer} = props;
 
     const {
         handleChange,
@@ -47,12 +47,20 @@ const EditProfileForm = (props) => {
             po_box: '31021',
         },
         onSubmit: values => {
-            navigation.navigate('Profile', {
-                screen: 'Profile',
-                params: {customer: values},
-            });
+            // navigation.navigate('Profile', {
+            //     screen: 'Profile',
+            //     params: {customer: values},
+            // });
+
+            updateCustomer(values);
         },
     });
+
+    useEffect(() => {
+        fetchCustomerByIdentifier(1);
+    }, []);
+
+    console.log('PPPP::::', profile);
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
@@ -64,6 +72,10 @@ const EditProfileForm = (props) => {
                 <View style={styles.content}>
                     <View style={styles.header}>
                         <Text style={styles.headingText1}>Edit Profile</Text>
+                    </View>
+
+                    <View style={styles.message}>
+                        {error && <Text style={styles.errorText}>{error}</Text>}
                     </View>
 
                     <View style={styles.body}>
@@ -180,6 +192,10 @@ const styles = StyleSheet.create({
 
     body: {
         ...CommonStyles.body,
+    },
+
+    message: {
+        ...CommonStyles.message,
     },
 
     buttonWrapper: {

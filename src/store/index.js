@@ -13,7 +13,7 @@ import {
 import {configureStore} from '@reduxjs/toolkit';
 
 import authReducer from '@/screens/auth/duck';
-import profileReducer from '@/screens/profile/duck';
+import profileReducer from '@/screens/profile/profileSlice';
 import passwordReducer from '@/screens/setting/duck';
 import transactionReducer from '@/screens/transaction/duck';
 import bankReducer from '@/screens/bank/duck';
