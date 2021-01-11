@@ -8,7 +8,7 @@ const EditProfileFormScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const { profile, loading, error } = useSelector((state) => state.profile);
+    const { entities, loading, error } = useSelector((state) => state.profile);
 
     /**
      * Fetch customer data.
@@ -31,7 +31,7 @@ const EditProfileFormScreen = (props) => {
     return (
         <EditProfileForm
             {...props}
-            profile={profile}
+            profile={entities}
             loading={loading}
             error={error}
             fetchCustomerByIdentifier={fetchCustomerByIdentifier}

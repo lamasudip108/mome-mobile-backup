@@ -60,7 +60,7 @@ const EditProfileForm = (props) => {
         fetchCustomerByIdentifier(1);
     }, []);
 
-    console.log('PPPP::::', profile);
+    console.log('PPPP::::', profile, loading, error);
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
