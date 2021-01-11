@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+import Spinner from '@/shared/spinner';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -39,12 +40,12 @@ const EditProfileForm = (props) => {
         initialValues: {
             first_name: profile?.first_name,
             last_name: profile?.last_name,
-            phone: profile?.phone,
             email: profile?.email,
-            street: 'Beside Teyseer Petrol Station, Salwa Rd',
-            city: 'Doha',
-            state_province: 'Doha',
-            po_box: '31021',
+            phone: profile?.phone,
+            street: profile?.street,
+            city: profile?.city,
+            state_province: profile?.state_province,
+            po_box: profile?.po_box,
         },
         onSubmit: values => {
             // navigation.navigate('Profile', {
@@ -77,6 +78,8 @@ const EditProfileForm = (props) => {
                     <View style={styles.message}>
                         {error && <Text style={styles.errorText}>{error}</Text>}
                     </View>
+
+                    {loading && <Spinner/>}
 
                     <View style={styles.body}>
                         <FlatTextInput
