@@ -35,7 +35,7 @@ export const updateCustomer = createAsyncThunk(
 
 const profileSlice = createSlice({
     name: 'profile',
-    initialState: {entities: [], loading: false, error: null},
+    initialState: {entities: {}, loading: false, error: null},
     reducers: {},
     extraReducers: {
         [fetchCustomerByID.pending]: (state, action) => {
@@ -43,7 +43,9 @@ const profileSlice = createSlice({
         },
         [fetchCustomerByID.fulfilled]: (state, action) => {
             state.loading = false;
-            state.entities.push(action.payload);
+           // state.entities.push(action.payload);
+           //  state.entities[action.payload.data.id] = action.payload.data;
+            state.entities = action.payload.data;
         },
         [fetchCustomerByID.rejected]: (state, action) => {
             state.loading = false;
@@ -58,8 +60,8 @@ const profileSlice = createSlice({
         },
         [updateCustomer.fullfilled]: (state, action) => {
             state.loading = false;
-            const user = action.payload;
-            state.entities[user.id] = user;
+            // state.entities[action.payload.data.id] = action.payload.data;
+            state.entities = action.payload.data;
         },
         [updateCustomer.rejected]: (state, action) => {
             state.loading = false;

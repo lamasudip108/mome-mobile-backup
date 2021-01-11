@@ -37,10 +37,10 @@ const EditProfileForm = (props) => {
     } = useFormik({
         validationSchema: profileUpdateSchema,
         initialValues: {
-            first_name: 'Fatima',
-            last_name: 'Abdullah',
-            phone: '+97442328900',
-            email: 'customer@gmail.com',
+            first_name: profile?.first_name,
+            last_name: profile?.last_name,
+            phone: profile?.phone,
+            email: profile?.email,
             street: 'Beside Teyseer Petrol Station, Salwa Rd',
             city: 'Doha',
             state_province: 'Doha',
