@@ -70,9 +70,11 @@ const AgreementForm = (props) => {
             </ScrollView>
 
             <View style={styles.termsWrapper}>
+                <View style={styles.message}>
                 {authErrors &&
                 <Text style={styles.errorText}>{authErrors.message}</Text>
                 }
+                </View>
                 <View style={styles.checkboxWrapper}>
                     <Icon name="ios-checkbox" size={25} color={Colors.PRIMARY_TEXT_COLOR}/>
                     <Text style={styles.checkboxText}>I Accept the terms of service</Text>
@@ -219,12 +221,16 @@ const styles = StyleSheet.create({
         color: Colors.PRIMARY_BUTTON_TEXT_COLOR,
         fontFamily: Typography.FONT_BOLD,
     },
+    message: {
+        ...CommonStyles.message,
+    },
     errorText: {
         ...CommonStyles.errorText,
         marginLeft: 12,
         marginBottom: 5,
         marginTop: 0,
         lineHeight: 18,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 });
 export default AgreementForm;

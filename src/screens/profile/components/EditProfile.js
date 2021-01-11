@@ -10,7 +10,7 @@ import FlatTextInput from '@/shared/form/FlatTextInput';
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const profileUpdateSchema = Yup.object().shape({
-    /*first_name: Yup
+    first_name: Yup
         .string()
         .required('First name is required.'),
     last_name: Yup
@@ -18,8 +18,22 @@ const profileUpdateSchema = Yup.object().shape({
         .required('Last name is required.'),
     phone: Yup
         .string()
+        .min(10, 'Too Short!')
+        .max(10, 'Too Long!')
         .required('Phone is required.'),
-    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),*/
+    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
+    street: Yup
+        .string()
+        .required('Stree is required.'),
+    city: Yup
+        .string()
+        .required('City is required.'),
+    state_province: Yup
+    .string()
+    .required('State/Province is required.'),
+    po_box: Yup
+        .string()
+        .required('P.O.BOX is required.'),
 });
 
 const EditProfileForm = (props) => {
@@ -124,7 +138,7 @@ const EditProfileForm = (props) => {
 
                         <FlatTextInput
                             label="STATE/PROVINCE"
-                            value={values.street}
+                            value={values.state_province}
                             onChangeText={handleChange('state_province')}
                             onBlur={handleBlur('state_province')}
                             error={errors.state_province}

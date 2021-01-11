@@ -37,6 +37,8 @@ export default StyleSheet.create({
     },
     message: {
         width: '70%',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     errorText: {
         fontSize: Typography.FONT_SIZE_MEDIUM,

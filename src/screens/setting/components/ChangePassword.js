@@ -8,16 +8,17 @@ import {CommonStyles, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 
 const updateSchema = Yup.object().shape({
-    /*first_name: Yup
-        .string()
-        .required('First name is required.'),
-    last_name: Yup
-        .string()
-        .required('Last name is required.'),
-    phone: Yup
-        .string()
-        .required('Phone is required.'),
-    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),*/
+    old_password: Yup.string()
+        .min(6, 'Too Short!')
+        .max(10, 'Too Long!')
+        .required('Old Password is required.'),
+    new_password: Yup.string()
+        .min(6, 'Too Short!')
+        .max(10, 'Too Long!')
+        .required('New Password is required.'),
+    confirm_password: Yup.string()
+        .oneOf([Yup.ref('new_password'), null], 'Password and confirm password must be match.')
+        .required('Confirm password is required.'),
 });
 
 const ChangePasswordForm = (props) => {
@@ -60,6 +61,7 @@ const ChangePasswordForm = (props) => {
                         secureTextEntry={true}
                         onChangeText={handleChange('old_password')}
                         onBlur={handleBlur('old_password')}
+                        onFocus={handleBlur('old_password')}
                         error={errors.old_password}
                         touched={touched.old_password}
                     />
@@ -71,18 +73,21 @@ const ChangePasswordForm = (props) => {
                         secureTextEntry={true}
                         onChangeText={handleChange('new_password')}
                         onBlur={handleBlur('new_password')}
+                        onFocus={handleBlur('new_password')}
                         error={errors.new_password}
                         touched={touched.new_password}
                     />
 
                     <FlatTextInput
                         label="CONFIRM PASSWORD"
-                        value={values.confirmPassword}
+                        value={values.confirm_password}
                         isPassword={true}
                         secureTextEntry={true}
-                        onChangeText={handleChange('confirmPassword')}
-                        onBlur={handleBlur('confirmPassword')}
-                        error={errors.confirmPassword}
+                        onChangeText={handleChange('confirm_password')}
+                        onBlur={handleBlur('confirm_password')}
+                        onFocus={handleBlur('confirm_password')}
+                        error={errors.confirm_password}
+                        touched={touched.confirm_password}
                     />
                 </View>
 

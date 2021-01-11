@@ -10,16 +10,18 @@ import FlatTextInput from '@/shared/form/FlatTextInput';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const updateSchema = Yup.object().shape({
-    /*first_name: Yup
+    bank_name: Yup
         .string()
-        .required('First name is required.'),
-    last_name: Yup
+        .required('Bank name is required.'),
+    bank_branch: Yup
         .string()
-        .required('Last name is required.'),
-    phone: Yup
+        .required('Bank branch is required.'),
+    account_holder: Yup
         .string()
-        .required('Phone is required.'),
-    email: Yup.string().email('Please enter a valid email.').required('Email is required.'),*/
+        .required('Account holder is required.'),
+    account_number: Yup
+        .string()
+        .required('Account number is required.'),
 });
 
 const AddBankForm = (props) => {
@@ -131,7 +133,7 @@ const AddBankForm = (props) => {
                         label="ACCOUNT NUMBER"
                         value={values.account_number}
                         keyboardType="numeric"
-                        onChangeText={handleChange('accont_number')}
+                        onChangeText={handleChange('account_number')}
                         onBlur={handleBlur('account_number')}
                         error={errors.account_number}
                         touched={touched.account_number}

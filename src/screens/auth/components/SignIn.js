@@ -1,5 +1,15 @@
 import React, {useCallback, useState} from 'react';
-import {StyleSheet, Text, View, ScrollView, Image, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import {
+    I18nManager, 
+    StyleSheet, 
+    Text, 
+    View, 
+    ScrollView, 
+    Image, 
+    StatusBar, 
+    TouchableOpacity, 
+    Dimensions,
+} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import {TextInput} from 'react-native-paper';
@@ -200,6 +210,7 @@ const styles = StyleSheet.create({
     },
     errorText: {
         ...CommonStyles.errorText,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 });
 
