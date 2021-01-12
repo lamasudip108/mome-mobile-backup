@@ -6,8 +6,13 @@ import * as Yup from 'yup';
 
 import {CommonStyles, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+import ToastMessage from '@/shared/toast';
+import Spinner from '../../../shared/spinner';
+import {getAsyncStorage} from '@/utils/storageUtil';
+import {JWT_TOKEN} from '@/constants';
+import {decodeUserID} from '@/utils/tokenUtil';
 
-const updateSchema = Yup.object().shape({
+const passwordSchema = Yup.object().shape({
     old_password: Yup.string()
         .min(6, 'Too Short!')
         .max(10, 'Too Long!')
@@ -23,7 +28,7 @@ const updateSchema = Yup.object().shape({
 
 const ChangePasswordForm = (props) => {
 
-    const {navigation} = props;
+    const {navigation, loading, error, updateCustomer} = props;
 
     const {
         handleChange,
@@ -34,14 +39,17 @@ const ChangePasswordForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: updateSchema,
+        validationSchema: passwordSchema,
         initialValues: {old_password: '', new_password: '', confirm_password: ''},
-        onSubmit: values =>{
-            navigation.navigate('Setting', {
-                screen: 'Setting',
-                params: { customer: values },
-            });
-        }
+        onSubmit: async (values) => {
+            let token = await getAsyncStorage(JWT_TOKEN);
+            values.id =  decodeUserID(token);
+            updateCustomer(values);
+            if (error !== null) {
+                navigation.navigate('Setting');
+                ToastMessage.show('Your current password has been successfully changed.');
+            }
+        },
     });
 
     return (
@@ -52,6 +60,12 @@ const ChangePasswordForm = (props) => {
                 <View style={styles.header}>
                     <Text style={styles.headingText1}>Change Password</Text>
                 </View>
+
+                <View style={styles.message}>
+                    {error && <Text style={styles.errorText}>{error}</Text>}
+                </View>
+
+                {loading && <Spinner/>}
 
                 <View style={styles.body}>
                     <FlatTextInput
@@ -108,45 +122,39 @@ const styles = StyleSheet.create({
     container: {
         ...CommonStyles.container,
     },
-
     content: {
         ...CommonStyles.content,
         marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
-
     header: {
         ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 22 : 42,
     },
-
     headingText1: {
         ...CommonStyles.headingText1,
         fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-
     body: {
         ...CommonStyles.body,
     },
-
+    message: {
+        ...CommonStyles.message,
+    },
     buttonWrapper: {
         ...CommonStyles.buttonWrapper,
     },
-
     button: {
         ...CommonStyles.button,
         height: 56,
     },
-
     buttonText: {
         ...CommonStyles.buttonText,
     },
-
     errorWrapper: {
         width: '70%',
     },
-
     errorText: {
         ...CommonStyles.errorText,
     },

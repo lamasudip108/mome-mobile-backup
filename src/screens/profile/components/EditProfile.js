@@ -202,49 +202,39 @@ const styles = StyleSheet.create({
     container: {
         ...CommonStyles.container,
     },
-
     content: {
         ...CommonStyles.content,
         marginTop: Platform.OS === 'ios' ? 90 : 22,
     },
-
     header: {
         ...CommonStyles.header,
         marginTop: Platform.OS === 'ios' ? 22 : 42,
     },
-
     headingText1: {
         ...CommonStyles.headingText1,
         fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 36,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
-
     body: {
         ...CommonStyles.body,
     },
-
     message: {
         ...CommonStyles.message,
     },
-
     buttonWrapper: {
         ...CommonStyles.buttonWrapper,
     },
-
     button: {
         ...CommonStyles.button,
         height: 56,
     },
-
     buttonText: {
         ...CommonStyles.buttonText,
     },
-
     errorWrapper: {
         width: '70%',
     },
-
     errorText: {
         ...CommonStyles.errorText,
     },

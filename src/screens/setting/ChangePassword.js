@@ -1,22 +1,41 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import ChangePasswordForm from './components/ChangePassword';
-import {passwordServices} from './duck';
+import {updateCustomerByID, resetCustomerPassword} from './passwordSlice';
 
 const ChangePasswordScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {password, loading, errors} = useSelector(state => state.password);
+    const {entities, loading, error} = useSelector((state) => state.password);
 
-    useEffect(() => {
-       // dispatch(passwordServices.updateCustomerPassword());
-    }, [dispatch]);
+    /**
+     * Update customer data.
+     * @param {object} formData
+     *
+     */
+    const updateCustomer = formData => {
+        dispatch(updateCustomerByID(formData));
+    };
+
+    /**
+     * Clear customer data.
+     *
+     */
+    const cleanCustomerPassword = () => {
+        dispatch(resetCustomerPassword());
+    };
 
     return (
         <ChangePasswordForm
             {...props}
+            {...props}
+            password={entities}
+            loading={loading}
+            error={error}
+            updateCustomer={updateCustomer}
+            cleanCustomerPassword={cleanCustomerPassword}
         />
     );
 
