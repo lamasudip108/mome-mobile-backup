@@ -8,6 +8,9 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 import Spinner from '@/shared/spinner';
 import ToastMessage from '@/shared/toast';
+import {getAsyncStorage} from '@/utils/storageUtil';
+import {decodeUserID} from '@/utils/tokenUtil';
+import {JWT_TOKEN} from '@/constants';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -65,7 +68,7 @@ const EditProfileForm = (props) => {
             po_box: profile?.po_box,
         },
         onSubmit: values => {
-            values.id = 1;
+            values.id = profile?.id;
             updateCustomer(values);
             if (error !== null) {
                 navigation.navigate('Profile');
@@ -75,7 +78,13 @@ const EditProfileForm = (props) => {
     });
 
     useEffect(() => {
-        fetchCustomerByIdentifier(1);
+        const fetchCustomerAsync = async () => {
+            let token = await getAsyncStorage(JWT_TOKEN);
+            let customerID = decodeUserID(token);
+            fetchCustomerByIdentifier(customerID);
+        };
+        fetchCustomerAsync();
+
         return () => {
             cleanCustomer();
         };
