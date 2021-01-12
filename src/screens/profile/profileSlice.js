@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {fetch, store} from '@/utils/httpUtil';
+import {fetch, update} from '@/utils/httpUtil';
 
 export const fetchCustomerByID = createAsyncThunk(
     'profile/fetchByID',
@@ -13,7 +13,7 @@ export const updateCustomerByID = createAsyncThunk(
     'profile/updateByID',
      (formData, {rejectWithValue}) => {
         const {id, ...fields} = formData;
-        return store(`api/customers/${id}`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return update(`api/customers/${id}`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 

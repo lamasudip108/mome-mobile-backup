@@ -45,7 +45,7 @@ const ChangePasswordForm = (props) => {
             let token = await getAsyncStorage(JWT_TOKEN);
             values.id =  decodeUserID(token);
             updateCustomer(values);
-            if (error !== null) {
+            if (error === null) {
                 navigation.navigate('Setting');
                 ToastMessage.show('Your current password has been successfully changed.');
             }

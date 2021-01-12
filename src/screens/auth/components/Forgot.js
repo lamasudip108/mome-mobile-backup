@@ -33,7 +33,7 @@ const ForgotForm = (props) => {
         initialValues: {email: ''},
         onSubmit: values => {
             forgotPassword(values);
-            if (error !== null) {
+            if (error === null) {
                 navigation.navigate('SignIn');
             }
         },

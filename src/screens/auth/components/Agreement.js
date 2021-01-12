@@ -16,7 +16,7 @@ const AgreementForm = (props) => {
         const customerData = route?.params?.customer;
         delete customerData.confirm_password;
         customerSignUp(customerData);
-        if (error !== null) {
+        if (error === null) {
             navigation.navigate('SignIn');
             ToastMessage.show('Your account has been successfully created. We\'ve sent you verification link to your email account. Please check your email inbox and verify your email address.');
         }

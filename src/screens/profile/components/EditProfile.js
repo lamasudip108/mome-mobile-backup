@@ -70,7 +70,7 @@ const EditProfileForm = (props) => {
         onSubmit: values => {
             values.id = profile?.id;
             updateCustomer(values);
-            if (error !== null) {
+            if (error === null) {
                 navigation.navigate('Profile');
                 ToastMessage.show('Your information has been successfully updated.');
             }
