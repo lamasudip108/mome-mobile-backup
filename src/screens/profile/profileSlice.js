@@ -6,13 +6,12 @@ export const fetchCustomerByID = createAsyncThunk(
     'profile/fetchByID',
     (identifier, {rejectWithValue}) => {
         return fetch(`api/customers/${identifier}`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
-
     },
 );
 
 export const updateCustomerByID = createAsyncThunk(
     'profile/updateByID',
-    async (formData, {rejectWithValue}) => {
+     (formData, {rejectWithValue}) => {
         const {id, ...fields} = formData;
         return store(`api/customers/${id}`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
