@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
-import {TextInput} from 'react-native-paper';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
@@ -9,7 +8,7 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const updateSchema = Yup.object().shape({
+const addBankSchema = Yup.object().shape({
     bank_name: Yup
         .string()
         .required('Bank name is required.'),
@@ -26,7 +25,8 @@ const updateSchema = Yup.object().shape({
 
 const AddBankForm = (props) => {
 
-    const {navigation, route} = props;
+    const {navigation, route, banks, loading, error, addBankByCustomerIdentifier, cleanCustomerBank} = props;
+
     const selectedItem = route?.params?.item;
 
     const {
@@ -39,16 +39,18 @@ const AddBankForm = (props) => {
         touched,
         isValid,
     } = useFormik({
-        validationSchema: updateSchema,
+        validationSchema: addBankSchema,
         initialValues: {
             bank_name: 'Select Bank Here',
-            bank_branch: 'Qatar',
-            account_holder: 'Fatima Abdullah',
-            account_number: '142328900',
+            bank_branch: '',
+            account_holder: '',
+            account_number: '',
         },
         onSubmit: values => {
-            console.log("Values", values);
-            navigation.navigate('MyBanks');
+            addBankByCustomerIdentifier(values);
+            if (error === null) {
+                navigation.navigate('MyBanks');
+            }
         },
     });
 
@@ -86,18 +88,6 @@ const AddBankForm = (props) => {
                         render={renderTouchText}
                         error={errors.bank_name}
                         touched={touched.bank_name}
-                        /*right={
-                            <TextInput.Icon
-                                name={
-                                    () => <Ionicons
-                                                name='chevron-down'
-                                                size={25}
-                                                color={Colors.DENARY_TEXT_COLOR}
-                                                onPress={() => navigation.navigate('SelectBank')}
-                                            />
-                                    }
-                            />
-                        }*/
                     />
                     <Ionicons
                         name='chevron-down'
@@ -177,7 +167,7 @@ const styles = StyleSheet.create({
 
     renderText: {
         position: 'absolute',
-        top: 30, 
+        top: 30,
         left: 12,
     },
 

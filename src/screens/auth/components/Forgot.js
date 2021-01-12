@@ -1,6 +1,5 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View, ScrollView, StatusBar, Dimensions} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
