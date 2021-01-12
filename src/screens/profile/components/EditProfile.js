@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
 import Spinner from '@/shared/spinner';
+import ToastMessage from '@/shared/toast';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -25,7 +26,8 @@ const profileUpdateSchema = Yup.object().shape({
 
 const EditProfileForm = (props) => {
 
-    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer} = props;
+    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer, cleanCustomer} = props;
+
 
     const {
         handleChange,
@@ -36,6 +38,7 @@ const EditProfileForm = (props) => {
         touched,
         isValid,
     } = useFormik({
+        enableReinitialize:true,
         validationSchema: profileUpdateSchema,
         initialValues: {
             first_name: profile?.first_name,
@@ -48,20 +51,21 @@ const EditProfileForm = (props) => {
             po_box: profile?.po_box,
         },
         onSubmit: values => {
-            // navigation.navigate('Profile', {
-            //     screen: 'Profile',
-            //     params: {customer: values},
-            // });
-
+            values.id = 1;
             updateCustomer(values);
+            if (error !== null) {
+                navigation.navigate('Profile');
+                ToastMessage.show('Your information has been successfully updated.');
+            }
         },
     });
 
     useEffect(() => {
         fetchCustomerByIdentifier(1);
+        return () => {
+            cleanCustomer();
+        };
     }, []);
-
-    console.log('PPPP::::', profile, loading, error);
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>

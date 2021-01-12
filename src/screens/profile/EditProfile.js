@@ -1,14 +1,14 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import EditProfileForm from './components/EditProfile';
-import {fetchCustomerByID, updateCustomer} from './profileSlice';
+import {fetchCustomerByID, updateCustomerByID, resetProfile} from './profileSlice';
 
 const EditProfileFormScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const { entities, loading, error } = useSelector((state) => state.profile);
+    const {entities, loading, error} = useSelector((state) => state.profile);
 
     /**
      * Fetch customer data.
@@ -25,7 +25,15 @@ const EditProfileFormScreen = (props) => {
      *
      */
     const updateCustomer = formData => {
-        dispatch(updateCustomer(formData));
+        dispatch(updateCustomerByID(formData));
+    };
+
+    /**
+     * Clear customer data.
+     *
+     */
+    const cleanCustomer = () => {
+        dispatch(resetProfile());
     };
 
     return (
@@ -36,6 +44,7 @@ const EditProfileFormScreen = (props) => {
             error={error}
             fetchCustomerByIdentifier={fetchCustomerByIdentifier}
             updateCustomer={updateCustomer}
+            cleanCustomer={cleanCustomer}
         />
     );
 

@@ -4,9 +4,16 @@ import {fetch, store} from '@/utils/httpUtil';
 
 export const fetchCustomerByID = createAsyncThunk(
     'profile/fetchByID',
-    (identifier, {rejectWithValue}) => {
-        return fetch(`api/customers/${identifier}`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
-
+     (identifier, { rejectWithValue}) => {
+        try {
+            const response =  fetch(`api/customers/${identifier}`);
+            return response.data;
+        } catch (error) {
+            if (!error.response) {
+                throw error;
+            }
+            return rejectWithValue(error.response.data);
+        }
     },
 );
 
@@ -14,7 +21,15 @@ export const updateCustomerByID = createAsyncThunk(
     'profile/updateByID',
     async (formData, {rejectWithValue}) => {
         const {id, ...fields} = formData;
-        return store(`api/customers/${id}`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        try {
+            const response = await store(`api/customers/${id}`, fields);
+            return response.data;
+        } catch (error) {
+            if (!error.response) {
+                throw error;
+            }
+            return rejectWithValue(error.response.data);
+        }
     },
 );
 
@@ -30,15 +45,18 @@ const profileSlice = createSlice({
     },
     extraReducers: {
         [fetchCustomerByID.pending]: (state, action) => {
+            console.log('PPPP::::', action);
             state.loading = true;
             state.error = null;
         },
         [fetchCustomerByID.fulfilled]: (state, action) => {
+            console.log('FFFF::::', action);
             state.loading = false;
             state.entities = action.payload;
             state.error = null;
         },
         [fetchCustomerByID.rejected]: (state, action) => {
+            console.log('RRRRRR::::', action.payload);
             state.loading = false;
             if (action.payload) {
                 state.error = action.payload.error.message;
