@@ -1,18 +1,17 @@
 import React, {useCallback, useState} from 'react';
 import {
-    I18nManager, 
-    StyleSheet, 
-    Text, 
-    View, 
-    ScrollView, 
-    Image, 
-    StatusBar, 
-    TouchableOpacity, 
+    I18nManager,
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+    Image,
+    StatusBar,
+    TouchableOpacity,
     Dimensions,
 } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
-import {TextInput} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -104,18 +103,6 @@ const SignInForm = ({navigation}) => {
                         onFocus={handleBlur('password')}
                         error={errors.password}
                         touched={touched.password}
-                        /*right={
-                            <TextInput.Icon
-                                name={
-                                    () => <Ionicons
-                                                name={hidePass ? 'eye-off-outline' : 'eye-outline'}
-                                                size={25}
-                                                color={Colors.PRIMARY_HEADING_COLOR}
-                                                onPress={() => setHidePass(!hidePass)}
-                                            />
-                                    }
-                            />
-                        }*/
                     />
                     <Ionicons
                         name={hidePass ? 'eye-off-outline' : 'eye-outline'}

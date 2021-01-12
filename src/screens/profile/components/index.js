@@ -17,7 +17,6 @@ const Profile = ({navigation}) => {
 
             	<View style={styles.profile}>
 
-
 	                <View style={styles.circleProfile}>
 
 	                	<Image style={styles.circleImage} source={require('@/assets/img/profile-cropped.png')}/>
@@ -171,9 +170,7 @@ const Profile = ({navigation}) => {
 	            	</ScrollView>
             	</View>
 
-
             </View>
-
 
         </View>
     );
