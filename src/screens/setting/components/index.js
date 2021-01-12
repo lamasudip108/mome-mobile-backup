@@ -145,9 +145,6 @@ const Setting = ({navigation}) => {
                     </TouchableOpacity>
                 </ScrollView>
             </View>
-
-
-
         </View>
     );
 

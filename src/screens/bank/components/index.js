@@ -1,9 +1,27 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
+import {getAsyncStorage} from '@/utils/storageUtil';
+import {JWT_TOKEN} from '@/constants';
+import {decodeUserID} from '@/utils/tokenUtil';
 
-const MyBanksForm = ({navigation}) => {
+const MyBanksForm = (props) => {
+
+    const {navigation, banks, loading, error, fetchBankByCustomerIdentifier, cleanCustomerBank} = props;
+
+    useEffect(() => {
+        const fetchCustomerBankAsync = async () => {
+            let token = await getAsyncStorage(JWT_TOKEN);
+            let customerID = decodeUserID(token);
+            fetchBankByCustomerIdentifier(customerID);
+        };
+        fetchCustomerBankAsync();
+
+        return () => {
+            cleanCustomerBank();
+        };
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -12,7 +30,7 @@ const MyBanksForm = ({navigation}) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
-                        <ScrollView style={{ height: Platform.OS === 'ios' ? 385 : 385 }}>
+                        <ScrollView style={{height: Platform.OS === 'ios' ? 385 : 385}}>
                             <View style={styles.listItem}>
                                 <View style={styles.circleListItem}>
                                     <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
@@ -38,7 +56,7 @@ const MyBanksForm = ({navigation}) => {
                                 <Text style={styles.listName}>Bank Melli Iran</Text>
                             </View>
                         </ScrollView>
-                        <TouchableOpacity onPress={() => navigation.navigate('AddBank')} >
+                        <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                             <View style={styles.listItem} justifyContent="center">
                                 <Text style={styles.text}>+ ADD BANK</Text>
                             </View>
@@ -85,8 +103,8 @@ const styles = StyleSheet.create({
     },
     circleListItem: {
         ...CommonStyles.circleListItem,
-        backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
-        height:44,
+        backgroundColor: Colors.OCTONARY_BACKGROUND_COLOR,
+        height: 44,
         width: 44,
         borderRadius: 22,
         borderColor: Colors.SEPTENARY_BORDER_COLOR,
@@ -102,7 +120,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         color: Colors.PRIMARY_TEXT_COLOR,
         padding: 9,
-    }
+    },
 
 });
 

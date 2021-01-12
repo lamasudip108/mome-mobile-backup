@@ -1,22 +1,30 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import SelectBankForm from './components/SelectBank';
-import {bankServices} from './duck';
+import {fetchAllBanks} from './bankSlice';
 
 const SelectBankScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {banks, loading, errors} = useSelector(state => state.banks);
+    const {entities, loading, error} = useSelector(state => state.banks);
 
-    useEffect(() => {
-       // dispatch(bankServices.fetchBank());
-    }, [dispatch]);
+    /**
+     * Fetch banks data.
+     *
+     */
+    const fetchAllBankList = () => {
+        dispatch(fetchAllBanks());
+    };
 
     return (
         <SelectBankForm
             {...props}
+            bankOptions={entities}
+            loading={loading}
+            error={error}
+            fetchAllBanks={fetchAllBankList}
         />
     );
 

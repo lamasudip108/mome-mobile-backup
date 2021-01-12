@@ -11,7 +11,6 @@ const CircleIcon = () => {
 };
 
 const styles = StyleSheet.create({
-
     checkCircle: {
         textAlign: 'right',
         marginTop: 10,

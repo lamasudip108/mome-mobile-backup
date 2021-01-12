@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {Modal, ActivityIndicator, StyleSheet, View} from 'react-native';
 
 import {Colors} from '@/theme';
@@ -8,34 +8,32 @@ const Spinner = () => {
     const [animating, setAnimating] = useState(true);
 
     useEffect(() => {
-      const timer = setTimeout(() => {
-        setAnimating(false);
-      }, 3000);
-      return () => clearTimeout(timer);
+        const timer = setTimeout(() => {
+            setAnimating(false);
+        }, 3000);
+        return () => clearTimeout(timer);
     }, []);
 
     return (
-        /*<View style={styles.loading}>
-            <ActivityIndicator animating={true} size='large' color={Colors.PRIMARY_TEXT_COLOR} />
-        </View>*/
         <Modal
-          transparent={true}
-          animationType={'none'}
-          visible={animating}
-          onRequestClose={() => {console.log('close modal')}}
+            transparent={true}
+            animationType={'none'}
+            visible={animating}
+            onRequestClose={() => {
+                console.log('close modal');
+            }}
         >
-          <View style={styles.modalBackground}>
-            <View style={styles.activityIndicatorWrapper}>
-              <ActivityIndicator
-                animating={animating} size='large' color={Colors.PRIMARY_TEXT_COLOR} />
+            <View style={styles.modalBackground}>
+                <View style={styles.activityIndicatorWrapper}>
+                    <ActivityIndicator
+                        animating={animating} size='large' color={Colors.PRIMARY_TEXT_COLOR}/>
+                </View>
             </View>
-          </View>
         </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-
     loading: {
         position: 'absolute',
         left: 0,
@@ -45,7 +43,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     modalBackground: {
         flex: 1,
         alignItems: 'center',
@@ -53,7 +50,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: '#00000040',
     },
-
     activityIndicatorWrapper: {
         display: 'flex',
         alignItems: 'center',

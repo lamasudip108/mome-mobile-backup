@@ -16,7 +16,6 @@ const MyCodeForm = ({navigation}) => {
                 <Text style={styles.name}>Fatima Abdullah</Text>
                 <Text style={styles.scan}>Scan to pay @Fatima Abdullah</Text>
             </View>
-
         </View>
     );
 

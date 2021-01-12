@@ -114,4 +114,5 @@ const styles = StyleSheet.create({
         textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
 });
+
 export default TermsConditionsScreen;

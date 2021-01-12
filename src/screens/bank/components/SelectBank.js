@@ -15,21 +15,26 @@ import Icon from 'react-native-vector-icons/Feather';
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
 
-const SelectBankForm = ({navigation}) => {
+const SelectBankForm = (props) => {
 
     const {direction} = useDirection();
 
+    const {navigation, bankOptions, loading, error, fetchAllBanks} = props;
+
     const [banks, setBanks] = useState([]);
 
-    const bankOptions = [
-        {id: '1', name: 'Qatar National Bank'},
-        {id: '2', name: 'Abu Dubai Islamic Bank'},
-        {id: '3', name: 'Arab Bank PLC'},
-        {id: '4', name: 'Bank Melli Iran'},
-        {id: '5', name: 'Abu Dubai Islamic Bank'},
-        {id: '6', name: 'Arab Bank PLC'},
-        {id: '7', name: 'Bank Melli Iran'},
-    ];
+    // const bankOptions = [
+    //     {id: '1', name: 'Qatar National Bank'},
+    //     {id: '2', name: 'Abu Dubai Islamic Bank'},
+    //     {id: '3', name: 'Arab Bank PLC'},
+    //     {id: '4', name: 'Bank Melli Iran'},
+    //     {id: '5', name: 'Abu Dubai Islamic Bank'},
+    //     {id: '6', name: 'Arab Bank PLC'},
+    //     {id: '7', name: 'Bank Melli Iran'},
+    //     {id: '8', name: 'Arab Bank PLC'},
+    //     {id: '9', name: 'Bank Melli Iran'},
+    //     {id: '10', name: 'Bank Melli Iran'},
+    // ];
 
     const bankFilter = text => {
         const newData = bankOptions.filter(item => {
@@ -60,6 +65,10 @@ const SelectBankForm = ({navigation}) => {
             </View>
         </TouchableOpacity>
     );
+
+    useEffect(() => {
+        fetchAllBanks();
+    }, []);
 
     useEffect(() => {
         setBanks(bankOptions);
@@ -144,11 +153,11 @@ const styles = StyleSheet.create({
     },
     circleItem: {
         ...CommonStyles.circleListItem,
-        backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR, 
-        height:44, 
+        backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
+        height:44,
         width: 44,
         borderRadius: 22,
-        borderColor: Colors.SEPTENARY_BORDER_COLOR, 
+        borderColor: Colors.SEPTENARY_BORDER_COLOR,
         marginRight: 15,
         marginLeft: Platform.OS === 'ios' ? 0 : 15,
     },

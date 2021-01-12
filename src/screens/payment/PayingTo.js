@@ -1,22 +1,32 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import PayingToForm from './components/PayingTo';
-import {paymentServices} from './duck';
+import {payAmount} from './paymentSlice';
 
 const PayingToScreen = (props) => {
 
     const dispatch = useDispatch();
 
-   // const {payment, loading, errors} = useSelector(state => state.payment);
+    const {entities, loading, error} = useSelector(state => state.payment);
 
-    // useEffect(() => {
-    //     dispatch(paymentServices.payAmount());
-    // }, [dispatch]);
+    /**
+     * Pay bill amount.
+     * @param {object} formData
+     *
+     */
+    const payBillAmount = formData => {
+        dispatch(payAmount(formData));
+    };
+
 
     return (
         <PayingToForm
             {...props}
+            payment={entities}
+            loading={loading}
+            error={error}
+            payBillAmount={payBillAmount}
         />
     );
 

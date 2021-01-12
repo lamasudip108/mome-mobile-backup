@@ -1,6 +1,7 @@
 import React from 'react';
 import {Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
+import {useFormik} from 'formik';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -8,21 +9,38 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const PayingToForm = (props) => {
 
-    const {navigation, route} = props;
-
+    const {navigation, route, payment, loading, error, payBillAmount} = props;
     const QRData = route?.params?.result;
+
+    const {
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        errors,
+        touched,
+        isValid,
+    } = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            name: 'Test',
+            description: 'This is test',
+            amount: 200,
+            notes: 'notes',
+        },
+        onSubmit: values => {
+            values.id = 1;
+            payBillAmount(values);
+        },
+    });
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
             <View style={styles.container}>
-                <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR} />
-                <View style={styles.topContent}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
+                <View style={styles.header}></View>
 
-
-                </View>
-
-                <View style={styles.content}>
-
+                <View style={styles.body}>
 
                     <Text style={[styles.Text, styles.fontSize3, styles.lineHeight3]}>You are paying to:</Text>
 
@@ -44,6 +62,11 @@ const PayingToForm = (props) => {
                         <TextInput
                             style={styles.TextInput}
                             placeholder="Purchase Note ( if Any)"
+                            value={values.notes}
+                            onChangeText={handleChange('notes')}
+                            onBlur={handleBlur('notes')}
+                            error={errors.notes}
+                            touched={touched.notes}
                         />
                     </View>
 
@@ -55,7 +78,7 @@ const PayingToForm = (props) => {
                                 })}>
                                 <Text style={styles.cancelButtonText}>CANCEL</Text>
                             </Button>
-                            <Button style={styles.acceptButton} onPress={() => handleSubmit()}>
+                            <Button style={styles.acceptButton} onPress={handleSubmit} disabled={!isValid}>
                                 <Text style={styles.acceptButtonText}>ACCEPT</Text>
                             </Button>
                         </View>
@@ -73,12 +96,12 @@ const styles = StyleSheet.create({
         ...CommonStyles.container,
         backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
     },
-    topContent: {
+    header: {
         marginTop: Platform.OS === 'ios' ? 90 : 50,
         marginLeft: 32,
         marginRight: 32,
     },
-    content: {
+    body: {
         marginTop: Platform.OS === 'ios' ? 90 : 40,
         backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
         borderTopLeftRadius: 24,
@@ -197,7 +220,7 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:Colors.SECONDARY_BUTTON_COLOR,
+        backgroundColor: Colors.SECONDARY_BUTTON_COLOR,
         marginRight: 5,
     },
     acceptButton: {
