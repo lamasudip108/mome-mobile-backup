@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, Dimensions, ScrollView} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
+import Spinner from '@/shared/spinner';
+import ToastMessage from '@/shared/toast';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -38,7 +40,8 @@ const profileUpdateSchema = Yup.object().shape({
 
 const EditProfileForm = (props) => {
 
-    const {navigation} = props;
+    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer, cleanCustomer} = props;
+
 
     const {
         handleChange,
@@ -49,24 +52,34 @@ const EditProfileForm = (props) => {
         touched,
         isValid,
     } = useFormik({
+        enableReinitialize:true,
         validationSchema: profileUpdateSchema,
         initialValues: {
-            first_name: 'Fatima',
-            last_name: 'Abdullah',
-            phone: '+97442328900',
-            email: 'customer@gmail.com',
-            street: 'Beside Teyseer Petrol Station, Salwa Rd',
-            city: 'Doha',
-            state_province: 'Doha',
-            po_box: '31021',
+            first_name: profile?.first_name,
+            last_name: profile?.last_name,
+            email: profile?.email,
+            phone: profile?.phone,
+            street: profile?.street,
+            city: profile?.city,
+            state_province: profile?.state_province,
+            po_box: profile?.po_box,
         },
         onSubmit: values => {
-            navigation.navigate('Profile', {
-                screen: 'Profile',
-                params: {customer: values},
-            });
+            values.id = 1;
+            updateCustomer(values);
+            if (error !== null) {
+                navigation.navigate('Profile');
+                ToastMessage.show('Your information has been successfully updated.');
+            }
         },
     });
+
+    useEffect(() => {
+        fetchCustomerByIdentifier(1);
+        return () => {
+            cleanCustomer();
+        };
+    }, []);
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
@@ -79,6 +92,12 @@ const EditProfileForm = (props) => {
                     <View style={styles.header}>
                         <Text style={styles.headingText1}>Edit Profile</Text>
                     </View>
+
+                    <View style={styles.message}>
+                        {error && <Text style={styles.errorText}>{error}</Text>}
+                    </View>
+
+                    {loading && <Spinner/>}
 
                     <View style={styles.body}>
                         <FlatTextInput
@@ -194,6 +213,10 @@ const styles = StyleSheet.create({
 
     body: {
         ...CommonStyles.body,
+    },
+
+    message: {
+        ...CommonStyles.message,
     },
 
     buttonWrapper: {

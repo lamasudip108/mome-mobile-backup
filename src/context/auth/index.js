@@ -1,4 +1,5 @@
 import React, {createContext, useContext, useState} from 'react';
+import {I18nManager} from 'react-native';
 import axios from 'axios';
 
 import {setAsyncStorage, clearAsyncStorage} from '@/utils/storageUtil';
@@ -25,6 +26,7 @@ export const AuthProvider = ({children}) => {
                         headers: {
                             Accept: 'application/json',
                             'Content-Type': 'application/json',
+                            'lang': I18nManager.isRTL ? 'ar' : 'en',
                         }, responseType: 'json',
                     });
                     if (response.data.success) {

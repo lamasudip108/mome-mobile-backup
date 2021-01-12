@@ -1,28 +1,50 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import EditProfileForm from './components/EditProfile';
-import {profileServices} from './duck';
+import {fetchCustomerByID, updateCustomerByID, resetProfile} from './profileSlice';
 
 const EditProfileFormScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {profile, loading, errors} = useSelector(state => state.profile);
+    const {entities, loading, error} = useSelector((state) => state.profile);
 
     /**
-     * Fetch profile data.
+     * Fetch customer data.
      * @param {string} identifier
      *
      */
-    const fetchCustomerProfileByIdentifier = identifier => {
-        dispatch(profileServices.fetchCustomerProfileByIdentifier(identifier));
+    const fetchCustomerByIdentifier = identifier => {
+        dispatch(fetchCustomerByID(identifier));
+    };
+
+    /**
+     * Update customer data.
+     * @param {object} formData
+     *
+     */
+    const updateCustomer = formData => {
+        dispatch(updateCustomerByID(formData));
+    };
+
+    /**
+     * Clear customer data.
+     *
+     */
+    const cleanCustomer = () => {
+        dispatch(resetProfile());
     };
 
     return (
         <EditProfileForm
             {...props}
-            fetchCustomerProfileByIdentifier={fetchCustomerProfileByIdentifier}
+            profile={entities}
+            loading={loading}
+            error={error}
+            fetchCustomerByIdentifier={fetchCustomerByIdentifier}
+            updateCustomer={updateCustomer}
+            cleanCustomer={cleanCustomer}
         />
     );
 
