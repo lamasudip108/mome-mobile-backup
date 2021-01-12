@@ -6,20 +6,25 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
+import ToastMessage from '@/shared/toast';
 
 const AgreementForm = (props) => {
 
-    const {navigation, route, customerSignUp, authErrors, cleanCustomerSignUp} = props;
+    const {navigation, route, error, customerSignUp, cleanCustomer} = props;
 
     const handleSubmit = () => {
         const customerData = route?.params?.customer;
         delete customerData.confirm_password;
         customerSignUp(customerData);
+        if (error !== null) {
+            navigation.navigate('SignIn');
+            ToastMessage.show('Your account has been successfully created. We\'ve sent you verification link to your email account. Please check your email inbox and verify your email address.');
+        }
     };
 
     useFocusEffect(
         useCallback(() => {
-            return () => cleanCustomerSignUp();
+            return () => cleanCustomer();
         }, []),
     );
 
@@ -70,11 +75,11 @@ const AgreementForm = (props) => {
             </ScrollView>
 
             <View style={styles.termsWrapper}>
+
                 <View style={styles.message}>
-                {authErrors &&
-                <Text style={styles.errorText}>{authErrors.message}</Text>
-                }
+                    {error && <Text style={styles.errorText}>{error}</Text>}
                 </View>
+
                 <View style={styles.checkboxWrapper}>
                     <Icon name="ios-checkbox" size={25} color={Colors.PRIMARY_TEXT_COLOR}/>
                     <Text style={styles.checkboxText}>I Accept the terms of service</Text>
@@ -201,7 +206,7 @@ const styles = StyleSheet.create({
         height: 56,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:Colors.SECONDARY_BUTTON_COLOR,
+        backgroundColor: Colors.SECONDARY_BUTTON_COLOR,
         marginRight: 5,
     },
     cancelButtonText: {

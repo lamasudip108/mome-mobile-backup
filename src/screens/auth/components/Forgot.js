@@ -16,7 +16,9 @@ const forgotSchema = Yup.object().shape({
     email: Yup.string().email('Please enter a valid email.').required('Email is required.'),
 });
 
-const ForgotForm = ({navigation}) => {
+const ForgotForm = (props) => {
+
+    const {navigation, error, loading, forgotPassword} = props;
 
     const {
         handleChange,
@@ -30,7 +32,10 @@ const ForgotForm = ({navigation}) => {
         validationSchema: forgotSchema,
         initialValues: {email: ''},
         onSubmit: values => {
-           // forgot(values);
+            forgotPassword(values);
+            if (error !== null) {
+                navigation.navigate('SignIn');
+            }
         },
     });
 
@@ -45,11 +50,11 @@ const ForgotForm = ({navigation}) => {
                     <Text style={styles.headingText2}>To reset your password, please provide your username.</Text>
                 </View>
 
-                {/*<View style={styles.message}>*/}
-                    {/*{!message?.success && <Text style={styles.errorText}>{message?.message}</Text>}*/}
-                {/*</View>*/}
+                <View style={styles.message}>
+                    {error && <Text style={styles.errorText}>{error}</Text>}
+                </View>
 
-                {/*{loading && <Spinner/>}*/}
+                {loading && <Spinner/>}
 
                 <View style={styles.body}>
                     <FlatTextInput

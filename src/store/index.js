@@ -12,8 +12,7 @@ import {
 } from 'redux-persist';
 import {configureStore} from '@reduxjs/toolkit';
 
-import authReducer from '@/screens/auth/duck';
-
+import authReducer from '@/screens/auth/authSlice';
 import profileReducer from '@/screens/profile/profileSlice';
 import passwordReducer from '@/screens/setting/passwordSlice';
 

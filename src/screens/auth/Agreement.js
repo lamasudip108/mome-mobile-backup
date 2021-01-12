@@ -2,39 +2,39 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import AgreementForm from './components/Agreement';
-import {customerServices, customerActions} from './duck';
+import {signUpCustomer, resetCustomer} from './authSlice';
 
 const AgreementScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {payload, loading, errors} = useSelector(state => state.auth);
+    const {entities, loading, error} = useSelector((state) => state.auth);
 
     /**
-     * Customer sign up.
+     * Customer Sign Up.
      * @param {object} formData
      *
      */
     const customerSignUp = formData => {
-        dispatch(customerServices.customerSignUp(formData));
+        dispatch(signUpCustomer(formData));
     };
 
     /**
-     * Clean customer sign up record.
+     * Clean customer record.
      *
      */
-    const cleanCustomerSignUp = () => {
-        dispatch(customerActions.customerSignupCleanRequest());
+    const cleanCustomer = () => {
+        dispatch(resetCustomer());
     };
 
     return (
         <AgreementForm
             {...props}
-            auths={payload}
-            authLoading={loading}
-            authErrors={errors}
+            auths={entities}
+            loading={loading}
+            error={error}
             customerSignUp={customerSignUp}
-            cleanCustomerSignUp={cleanCustomerSignUp}
+            cleanCustomer={cleanCustomer}
         />
     );
 };
