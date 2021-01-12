@@ -7,7 +7,7 @@ const MyCodeScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {profile, loading, errors} = useSelector(state => state.profile);
+    const {entities, loading, error} = useSelector(state => state.profile);
 
     return (
         <MyCodeForm
