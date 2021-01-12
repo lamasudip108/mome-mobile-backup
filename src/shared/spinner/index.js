@@ -9,9 +9,8 @@ const Spinner = () => {
 
     useEffect(() => {
       const timer = setTimeout(() => {
-        console.log('This will run after 1 second!');
         setAnimating(false);
-      }, 1500);
+      }, 3000);
       return () => clearTimeout(timer);
     }, []);
 
