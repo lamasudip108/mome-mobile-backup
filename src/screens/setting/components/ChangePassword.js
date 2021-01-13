@@ -3,6 +3,7 @@ import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-na
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
@@ -47,7 +48,7 @@ const ChangePasswordForm = (props) => {
             updateCustomer(values);
             if (error === null) {
                 navigation.navigate('Setting');
-                ToastMessage.show('Your current password has been successfully changed.');
+                ToastMessage.show(i18n.t('changedpasswordinfo'));
             }
         },
     });
@@ -58,7 +59,7 @@ const ChangePasswordForm = (props) => {
             <StatusBar style="auto"/>
             <View style={styles.content}>
                 <View style={styles.header}>
-                    <Text style={styles.headingText1}>Change Password</Text>
+                    <Text style={styles.headingText1}>{i18n.t('change')}</Text>
                 </View>
 
                 <View style={styles.message}>
@@ -69,7 +70,7 @@ const ChangePasswordForm = (props) => {
 
                 <View style={styles.body}>
                     <FlatTextInput
-                        label="OLD PASSWORD"
+                        label={i18n.t('old')}
                         value={values.old_password}
                         isPassword={true}
                         secureTextEntry={true}
@@ -81,7 +82,7 @@ const ChangePasswordForm = (props) => {
                     />
 
                     <FlatTextInput
-                        label="NEW PASSWORD"
+                        label={i18n.t('new')}
                         value={values.new_password}
                         isPassword={true}
                         secureTextEntry={true}
@@ -93,7 +94,7 @@ const ChangePasswordForm = (props) => {
                     />
 
                     <FlatTextInput
-                        label="CONFIRM PASSWORD"
+                        label={i18n.t('confirm')}
                         value={values.confirm_password}
                         isPassword={true}
                         secureTextEntry={true}
@@ -107,7 +108,7 @@ const ChangePasswordForm = (props) => {
 
                 <View style={styles.buttonWrapper}>
                     <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>UPDATE</Text>
+                        <Text style={styles.buttonText}>{i18n.t('update')}</Text>
                     </Button>
                 </View>
 

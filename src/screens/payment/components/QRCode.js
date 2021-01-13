@@ -3,6 +3,7 @@ import {TouchableOpacity, Text, View, Image, StyleSheet, StatusBar} from 'react-
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -42,7 +43,7 @@ const QRCode = ({navigation}) => {
 
                 <View style={styles.topContent}>
                     <Text style={styles.topText}>
-                        Place the QR code of shop to continue payment of your purchase made.
+                        {i18n.t('placeqr')}
                     </Text>
                 </View>
 
@@ -58,7 +59,7 @@ const QRCode = ({navigation}) => {
                         }
                         bottomContent={
                             <TouchableOpacity>
-                                <Text style={styles.bottomText}>OK. Got it!</Text>
+                                <Text style={styles.bottomText}>{i18n.t('okgot')}</Text>
                             </TouchableOpacity>
                         }
                         markerStyle={{

@@ -3,6 +3,7 @@ import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, Dimensions, Sc
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
@@ -72,7 +73,7 @@ const EditProfileForm = (props) => {
             updateCustomer(values);
             if (error === null) {
                 navigation.navigate('Profile');
-                ToastMessage.show('Your information has been successfully updated.');
+                ToastMessage.show(i18n.t('updatedinfo'));
             }
         },
     });
@@ -99,7 +100,7 @@ const EditProfileForm = (props) => {
 
                 <View style={styles.content}>
                     <View style={styles.header}>
-                        <Text style={styles.headingText1}>Edit Profile</Text>
+                        <Text style={styles.headingText1}>{i18n.t('edit')}</Text>
                     </View>
 
                     <View style={styles.message}>
@@ -110,7 +111,7 @@ const EditProfileForm = (props) => {
 
                     <View style={styles.body}>
                         <FlatTextInput
-                            label="FIRST NAME"
+                            label={i18n.t('firstname')}
                             value={values.first_name}
                             onChangeText={handleChange('first_name')}
                             onBlur={handleBlur('first_name')}
@@ -119,7 +120,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="LAST NAME"
+                            label={i18n.t('lastname')}
                             value={values.last_name}
                             onChangeText={handleChange('last_name')}
                             onBlur={handleBlur('last_name')}
@@ -128,7 +129,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="PHONE NUMBER"
+                            label={i18n.t('phone')}
                             value={values.phone}
                             keyboardType="numeric"
                             onChangeText={handleChange('phone')}
@@ -138,7 +139,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="EMAIL"
+                            label={i18n.t('email')}
                             value={values.email}
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
@@ -147,7 +148,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="STREET"
+                            label={i18n.t('street')}
                             value={values.street}
                             onChangeText={handleChange('street')}
                             onBlur={handleBlur('street')}
@@ -156,7 +157,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="CITY"
+                            label={i18n.t('city')}
                             value={values.city}
                             onChangeText={handleChange('city')}
                             onBlur={handleBlur('city')}
@@ -165,7 +166,7 @@ const EditProfileForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label="STATE/PROVINCE"
+                            label={i18n.t('stateprovince')}
                             value={values.state_province}
                             onChangeText={handleChange('state_province')}
                             onBlur={handleBlur('state_province')}
@@ -186,7 +187,7 @@ const EditProfileForm = (props) => {
 
                     <View style={styles.buttonWrapper}>
                         <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                            <Text style={styles.buttonText}>UPDATE</Text>
+                            <Text style={styles.buttonText}>{i18n.t('update')}</Text>
                         </Button>
                     </View>
 

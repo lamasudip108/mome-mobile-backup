@@ -2,6 +2,7 @@ import React from 'react';
 import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Button} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
+import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -30,7 +31,7 @@ const Profile = ({navigation}) => {
 	                <Text style={styles.amount}>$ 2500.00</Text>
 	                <View>
 	                <Button style={styles.button} onPress={() => navigation.navigate('AddFund')}>
-	                    <Text style={styles.buttonText}>+ ADD FUND</Text>
+	                    <Text style={styles.buttonText}>+ {i18n.t('addfund')}</Text>
 	                </Button>
 	                </View>
 	            </View>
@@ -47,7 +48,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.DENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 18, width: 14}} source={require('@/assets/img/my-transactions.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>My Transactions</Text>
+		            				<Text style={styles.listName}>{i18n.t('mytransactions')}</Text>
 		            			</View>
 		            			<View>
                                     {direction === 'ltr' &&
@@ -65,7 +66,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.UNDENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 18, width: 18, marginLeft: 2}} source={require('@/assets/img/my-code.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>My Code</Text>
+		            				<Text style={styles.listName}>{i18n.t('mycode')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -83,7 +84,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor='#FFEFD0B7'>
 			            				<Image style={{height: 20, width: 16}} source={require('@/assets/img/my-banks.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>My Banks</Text>
+		            				<Text style={styles.listName}>{i18n.t('mybanks')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -101,7 +102,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.DUODENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 20, width: 20}} source={require('@/assets/img/how-it-works.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>How it works</Text>
+		            				<Text style={styles.listName}>{i18n.t('how')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -119,7 +120,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.THRIODENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 21, width: 16}} source={require('@/assets/img/terms-n-conditions.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Terms and Conditions</Text>
+		            				<Text style={styles.listName}>{i18n.t('tc')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -137,7 +138,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.THRIODENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 20, width: 20}} source={require('@/assets/img/contact-us.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Contact Us</Text>
+		            				<Text style={styles.listName}>{i18n.t('contactus')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&
@@ -155,7 +156,7 @@ const Profile = ({navigation}) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.DENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 20, width: 20}} source={require('@/assets/img/logout.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>Logout</Text>
+		            				<Text style={styles.listName}>{i18n.t('logout')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&

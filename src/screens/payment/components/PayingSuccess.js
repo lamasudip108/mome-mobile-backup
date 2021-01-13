@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, Image, StatusBar, StyleSheet} from 'react-native';
 import {Button} from 'native-base';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -10,13 +11,13 @@ const PayingSuccess = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <Image source={require('@/assets/img/success.png')}/>
-            <Text style={styles.successText1}>Payment success!</Text>
+            <Text style={styles.successText1}>{i18n.t('paymentsuccess')}</Text>
             <View style={{width:'60%'}}>
-                <Text style={styles.successText2}>You have successfully paid your bill amount.</Text>
+                <Text style={styles.successText2}>{i18n.t('youhave')}</Text>
             </View>
             <View style={styles.buttonWrapper}>
                 <Button style={styles.button} onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.buttonText}>GO TO DASHBOARD</Text>
+                    <Text style={styles.buttonText}>{i18n.t('goto')}</Text>
                 </Button>
             </View>
 

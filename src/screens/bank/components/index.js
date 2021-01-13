@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
@@ -58,7 +59,7 @@ const MyBanksForm = (props) => {
                         </ScrollView>
                         <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                             <View style={styles.listItem} justifyContent="center">
-                                <Text style={styles.text}>+ ADD BANK</Text>
+                                <Text style={styles.text}>+ {i18n.t('addbank')}</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

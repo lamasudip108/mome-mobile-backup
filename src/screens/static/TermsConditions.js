@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -10,7 +11,7 @@ const TermsConditionsScreen = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
             <View style={styles.meta}>
-                <Text style={styles.title}>TERMS OF SERVICE</Text>
+                <Text style={styles.title}>{i18n.t('terms')}</Text>
                 <TouchableOpacity>
                     <Text onPress={() => navigation.goBack()}>
                         <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
@@ -18,13 +19,13 @@ const TermsConditionsScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
 
-            <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
+            <Text style={styles.timestamp}>{i18n.t('last')}: 8 OCT 2020</Text>
 
             <ScrollView
                 style={styles.scrollContainer}
                 contentContainerStyle={styles.contentContainer}
             >
-                <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
+                <Text style={styles.headingTitle}>{i18n.t('introduction')}</Text>
                 <Text style={styles.paragraph}>
                     This Agreement governs your use of Apple’s services (“Services”),
                     through which you can buy, get, license, rent or subscribe to content,
@@ -36,8 +37,8 @@ const TermsConditionsScreen = ({navigation}) => {
                     To use our Services, you need compatible hardware, software (latest version recommended and
                     sometimes required) and Internet access (fees may apply).
                 </Text>
-                <Text style={styles.headingTitle}>B. USING OUR SERVICES </Text>
-                <Text style={styles.headingSubTitle}>PAYMENTS, TAXES, AND REFUNDS </Text>
+                <Text style={styles.headingTitle}>{i18n.t('using')}</Text>
+                <Text style={styles.headingSubTitle}>{i18n.t('paymentstaxes')}</Text>
                 <Text style={styles.paragraph}>
                     This Agreement governs your use of Apple’s services (“Services”),
                     through which you can buy, get, license, rent or subscribe to content,
