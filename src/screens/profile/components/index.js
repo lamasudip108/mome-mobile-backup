@@ -29,7 +29,7 @@ const Profile = ({navigation}) => {
 	                <Text style={styles.name}>Fatima Abdullah</Text>
 	                <Text style={styles.amount}>$ 2500.00</Text>
 	                <View>
-	                <Button style={styles.button} onPress={() => navigation.navigate('AddFund')}>
+	                <Button style={styles.button} onPress={() => navigation.navigate('SelectMyBank')}>
 	                    <Text style={styles.buttonText}>+ ADD FUND</Text>
 	                </Button>
 	                </View>

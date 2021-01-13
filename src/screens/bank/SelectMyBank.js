@@ -1,14 +1,14 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import MyBank from './components';
-import {fetchBankByCustomerID, resetCustomerBank} from './customerBankSlice';
+import SelectMyBank from './components/SelectMyBank';
+import {fetchBankByCustomerID} from './customerBankSlice';
 
-const MyBankScreen = (props) => {
+const SelectMyBankScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {entities, loading, error} = useSelector(state => state.customerBanks);
+    const {entities, loading, error} = useSelector(state => state.banks);
 
     /**
      * Fetch customer banks data.
@@ -19,25 +19,16 @@ const MyBankScreen = (props) => {
         dispatch(fetchBankByCustomerID(identifier));
     };
 
-    /**
-     * Clear customer bank data.
-     *
-     */
-    const cleanCustomerBank = () => {
-        dispatch(resetCustomerBank());
-    };
-
     return (
-        <MyBank
+        <SelectMyBank
             {...props}
-            banks={entities}
+            bankOptions={entities}
             loading={loading}
             error={error}
             fetchBankByCustomerIdentifier={fetchBankByCustomerIdentifier}
-            cleanCustomerBank={cleanCustomerBank}
         />
     );
 
 };
 
-export default MyBankScreen;
+export default SelectMyBankScreen;

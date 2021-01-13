@@ -8,18 +8,21 @@ import {
     StatusBar,
     StyleSheet,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
+import {getAsyncStorage} from '@/utils/storageUtil';
+import {JWT_TOKEN} from '@/constants';
+import {decodeUserID} from '@/utils/tokenUtil';
 
-const SelectBank = (props) => {
+const SelectMyBank = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, bankOptions, loading, error, fetchAllBanks} = props;
+    const {navigation, bankOptions, loading, error, fetchBankByCustomerIdentifier} = props;
 
     const [banks, setBanks] = useState([]);
 
@@ -46,15 +49,21 @@ const SelectBank = (props) => {
     };
 
     useEffect(() => {
-        fetchAllBanks();
+        const fetchCustomerBankAsync = async () => {
+            let token = await getAsyncStorage(JWT_TOKEN);
+            let customerID = decodeUserID(token);
+            fetchBankByCustomerIdentifier(customerID);
+        };
+        fetchCustomerBankAsync();
     }, []);
+
 
     useEffect(() => {
         setBanks(bankOptions);
     }, []);
 
     const renderItem = ({item}) => (
-        <TouchableOpacity onPress={() => navigation.navigate('AddBank', {item})}>
+        <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
                 <View style={styles.itemInner}>
                     <View style={styles.circleItem}>
@@ -64,10 +73,10 @@ const SelectBank = (props) => {
                 </View>
                 <View>
                     {direction === 'ltr' &&
-                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
                     }
                     {direction === 'rtl' &&
-                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
                     }
                 </View>
             </View>
@@ -109,19 +118,19 @@ const styles = StyleSheet.create({
     content: {
         marginTop: Platform.OS === 'ios' ? 80 : 22,
     },
-    form:{
+    form: {
         flexDirection: 'row',
-        marginTop:30,
+        marginTop: 30,
         marginLeft: 32,
         marginRight: 32,
     },
     searchWrapper: {
         borderBottomColor: Colors.NONARY_BORDER_COLOR,
         backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
-        height:45,
+        height: 45,
         flexDirection: 'row',
-        alignItems:'center',
-        flex:1,
+        alignItems: 'center',
+        flex: 1,
         shadowColor: '#A9A9A933',
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.8,
@@ -141,7 +150,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     item: {
-         ...CommonStyles.listItem,
+        ...CommonStyles.listItem,
         borderRadius: 6,
         borderColor: Colors.SENARY_BORDER_COLOR,
         borderWidth: 1,
@@ -153,8 +162,8 @@ const styles = StyleSheet.create({
     },
     circleItem: {
         ...CommonStyles.circleListItem,
-        backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
-        height:44,
+        backgroundColor: Colors.OCTONARY_BACKGROUND_COLOR,
+        height: 44,
         width: 44,
         borderRadius: 22,
         borderColor: Colors.SEPTENARY_BORDER_COLOR,
@@ -167,4 +176,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SelectBank;
+export default SelectMyBank;

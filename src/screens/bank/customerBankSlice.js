@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {fetch, update} from '@/utils/httpUtil';
+import {fetch, store} from '@/utils/httpUtil';
 
 export const fetchBankByCustomerID = createAsyncThunk(
     'bank/fetchByCustomerID',
     (identifier, {rejectWithValue}) => {
-        return fetch(`api/banks/${identifier}`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return fetch(`api/customers/${identifier}/banks`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 
@@ -13,7 +13,7 @@ export const AddBankByCustomerID = createAsyncThunk(
     'bank/addByCustomerID',
      (formData, {rejectWithValue}) => {
         const {id, ...fields} = formData;
-        return update(`api/banks/${id}`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return store(`api/customers/${id}/banks`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 

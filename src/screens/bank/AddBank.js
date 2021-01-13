@@ -12,6 +12,7 @@ const AddBankScreen = (props) => {
 
     /**
      * Fetch customer banks data.
+     * @param {string} identifier
      *
      */
     const addBankByCustomerIdentifier = (identifier) => {

@@ -6,7 +6,7 @@ import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
 
-const MyBanksForm = (props) => {
+const MyBank = (props) => {
 
     const {navigation, banks, loading, error, fetchBankByCustomerIdentifier, cleanCustomerBank} = props;
 
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MyBanksForm;
+export default MyBank;

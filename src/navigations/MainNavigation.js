@@ -24,9 +24,11 @@ import TransactionScreen from '@/screens/transaction';
 import PayingToScreen from '@/screens/payment/PayingTo';
 import PayingSuccessScreen from '@/screens/payment/PayingSuccess';
 
-import MyBanksScreen from '@/screens/bank';
+import MyBankScreen from '@/screens/bank';
 import AddBankScreen from '@/screens/bank/AddBank';
 import SelectBankScreen from '@/screens/bank/SelectBank';
+import SelectMyBankScreen from '@/screens/bank/SelectMyBank';
+import LoadMoneyScreen from '@/screens/bank/LoadMoney';
 
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
@@ -171,7 +173,7 @@ const MainNavigation = () => {
                               headerTitle: '',
                               headerTransparent: true,
                           }}/>
-            <Stack.Screen name="MyBanks" component={MyBanksScreen}
+            <Stack.Screen name="MyBanks" component={MyBankScreen}
                           options={{
                               title: 'My Banks',
                               headerTintColor: '#000',
@@ -193,6 +195,21 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
+            <Stack.Screen name="AddBank" component={AddBankScreen}
+                          options={{headerTitle: '', headerTransparent: true}}/>
+            <Stack.Screen name="SelectMyBank" component={SelectMyBankScreen}
+                          options={{
+                              title: 'Select Bank',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="LoadMoney" component={LoadMoneyScreen}
+                          options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="MyCode" component={MyCodeScreen}
                           options={{
                               title: 'Scan to Request',
@@ -204,8 +221,6 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="AddBank" component={AddBankScreen}
-                          options={{headerTitle: '', headerTransparent: true}}/>
             <Stack.Screen name="Transaction" component={TransactionScreen}
                           options={{
                               title: 'All Transactions',
