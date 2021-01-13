@@ -52,7 +52,7 @@ const SelectBank = (props) => {
 
     useEffect(() => {
         setBanks(bankOptions);
-    }, []);
+    }, [bankOptions]);
 
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('AddBank', {item})}>
@@ -94,7 +94,7 @@ const SelectBank = (props) => {
                     <FlatList
                         data={banks}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => `${item.id}`}
                     />
                 </View>
             </View>

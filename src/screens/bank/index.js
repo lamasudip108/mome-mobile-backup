@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import MyBank from './components';
-import {fetchBankByCustomerID, resetCustomerBank} from './customerBankSlice';
+import {fetchBanksByCustomerID, resetCustomerBanks} from './customerBanksSlice';
 
 const MyBankScreen = (props) => {
 
@@ -15,16 +15,16 @@ const MyBankScreen = (props) => {
      * @param {string} identifier
      *
      */
-    const fetchBankByCustomerIdentifier = (identifier) => {
-        dispatch(fetchBankByCustomerID(identifier));
+    const fetchBanksByCustomerIdentifier = (identifier) => {
+        dispatch(fetchBanksByCustomerID(identifier));
     };
 
     /**
-     * Clear customer bank data.
+     * Clear customer banks data.
      *
      */
-    const cleanCustomerBank = () => {
-        dispatch(resetCustomerBank());
+    const cleanCustomerBanks = () => {
+        dispatch(resetCustomerBanks());
     };
 
     return (
@@ -33,8 +33,8 @@ const MyBankScreen = (props) => {
             banks={entities}
             loading={loading}
             error={error}
-            fetchBankByCustomerIdentifier={fetchBankByCustomerIdentifier}
-            cleanCustomerBank={cleanCustomerBank}
+            fetchBanksByCustomerIdentifier={fetchBanksByCustomerIdentifier}
+            cleanCustomerBanks={cleanCustomerBanks}
         />
     );
 

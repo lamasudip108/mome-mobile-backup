@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {
-    FlatList, 
-    Platform, 
-    Text, 
-    View, 
-    Image, 
-    ScrollView, 
-    StyleSheet, 
+    FlatList,
+    Platform,
+    Text,
+    View,
+    Image,
+    StyleSheet,
     TouchableOpacity
 } from 'react-native';
 import i18n from 'i18n-js';

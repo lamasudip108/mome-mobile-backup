@@ -3,15 +3,15 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {fetch} from '@/utils/httpUtil';
 
 export const fetchAllBanks = createAsyncThunk(
-    'bank/fetchAll',
+    'banks/fetchAll',
     (_, {rejectWithValue}) => {
         return fetch(`api/banks`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 
-const bankSlice = createSlice({
-    name: 'bank',
-    initialState: {entities: {}, loading: false, error: null},
+const banksSlice = createSlice({
+    name: 'banks',
+    initialState: {entities: [], loading: false, error: null},
     reducers: {},
     extraReducers: {
         [fetchAllBanks.pending]: (state, action) => {
@@ -34,4 +34,4 @@ const bankSlice = createSlice({
     },
 });
 
-export default bankSlice.reducer;
+export default banksSlice.reducer;

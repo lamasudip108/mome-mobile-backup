@@ -22,7 +22,7 @@ const SelectMyBank = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, loading, error, fetchBankByCustomerIdentifier} = props;
+    const {navigation, loading, error, fetchBanksByCustomerIdentifier} = props;
 
     const [banks, setBanks] = useState([]);
 
@@ -49,12 +49,12 @@ const SelectMyBank = (props) => {
     };
 
     useEffect(() => {
-        const fetchCustomerBankAsync = async () => {
+        const fetchCustomerBanksAsync = async () => {
             let token = await getAsyncStorage(JWT_TOKEN);
             let customerID = decodeUserID(token);
-            fetchBankByCustomerIdentifier(customerID);
+            fetchBanksByCustomerIdentifier(customerID);
         };
-        fetchCustomerBankAsync();
+        fetchCustomerBanksAsync();
     }, []);
 
 

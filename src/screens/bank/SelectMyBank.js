@@ -2,21 +2,21 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import SelectMyBank from './components/SelectMyBank';
-import {fetchBankByCustomerID} from './customerBankSlice';
+import {fetchBanksByCustomerID} from './customerBanksSlice';
 
 const SelectMyBankScreen = (props) => {
 
     const dispatch = useDispatch();
 
-    const {entities, loading, error} = useSelector(state => state.banks);
+    const {entities, loading, error} = useSelector(state => state.customerBanks);
 
     /**
      * Fetch customer banks data.
      * @param {string} identifier
      *
      */
-    const fetchBankByCustomerIdentifier = (identifier) => {
-        dispatch(fetchBankByCustomerID(identifier));
+    const fetchBanksByCustomerIdentifier = (identifier) => {
+        dispatch(fetchBanksByCustomerID(identifier));
     };
 
     return (
@@ -25,7 +25,7 @@ const SelectMyBankScreen = (props) => {
             bankOptions={entities}
             loading={loading}
             error={error}
-            fetchBankByCustomerIdentifier={fetchBankByCustomerIdentifier}
+            fetchBanksByCustomerIdentifier={fetchBanksByCustomerIdentifier}
         />
     );
 

@@ -9,21 +9,19 @@ import {decodeUserID} from '@/utils/tokenUtil';
 
 const MyBank = (props) => {
 
-    const {navigation, banks, loading, error, fetchBankByCustomerIdentifier, cleanCustomerBank} = props;
+    const {navigation, banks, loading, error, fetchBanksByCustomerIdentifier} = props;
 
     useEffect(() => {
-        const fetchCustomerBankAsync = async () => {
+        const fetchCustomerBanksAsync = async () => {
             let token = await getAsyncStorage(JWT_TOKEN);
             let customerID = decodeUserID(token);
-            fetchBankByCustomerIdentifier(customerID);
+            fetchBanksByCustomerIdentifier(customerID);
         };
-        fetchCustomerBankAsync();
+        fetchCustomerBanksAsync();
 
-        return () => {
-            cleanCustomerBank();
-        };
     }, []);
 
+    console.log('banks', banks);
     return (
         <View style={styles.container}>
 
@@ -32,30 +30,14 @@ const MyBank = (props) => {
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
                         <ScrollView style={{height: Platform.OS === 'ios' ? 385 : 385}}>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                            {banks?.map((item, index) => (
+                                <View style={styles.listItem}>
+                                    <View style={styles.circleListItem}>
+                                        <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                                    </View>
+                                    <Text style={styles.listName}>{item.name}</Text>
                                 </View>
-                                <Text style={styles.listName}>Qatar National Bank</Text>
-                            </View>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
-                                </View>
-                                <Text style={styles.listName}>Abu Dubai Islamic Bank</Text>
-                            </View>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
-                                </View>
-                                <Text style={styles.listName}>Arab Bank PLC</Text>
-                            </View>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
-                                </View>
-                                <Text style={styles.listName}>Bank Melli Iran</Text>
-                            </View>
+                            ))}
                         </ScrollView>
                         <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                             <View style={styles.listItem} justifyContent="center">

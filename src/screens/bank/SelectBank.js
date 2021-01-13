@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import SelectBankForm from './components/SelectBank';
-import {fetchAllBanks} from './bankSlice';
+import {fetchAllBanks} from './banksSlice';
 
 const SelectBankScreen = (props) => {
 

@@ -17,8 +17,10 @@ import profileReducer from '@/screens/profile/profileSlice';
 import passwordReducer from '@/screens/setting/passwordSlice';
 import paymentReducer from '@/screens/payment/paymentSlice';
 import transactionReducer from '@/screens/transaction/transactionSlice';
-import bankReducer from '@/screens/bank/bankSlice';
+
+import banksReducer from '@/screens/bank/banksSlice';
 import customerBankReducer from '@/screens/bank/customerBankSlice';
+import customerBanksReducer from '@/screens/bank/customerBanksSlice';
 
 const persistConfig = {
     key: 'root',
@@ -32,8 +34,9 @@ const reducers = combineReducers({
     password: passwordReducer,
     payment: paymentReducer,
     transactions: transactionReducer,
-    banks: bankReducer,
-    customerBanks: customerBankReducer,
+    banks: banksReducer,
+    customerBank: customerBankReducer,
+    customerBanks: customerBanksReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
