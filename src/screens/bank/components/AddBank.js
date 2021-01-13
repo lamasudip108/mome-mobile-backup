@@ -42,7 +42,7 @@ const AddBankForm = (props) => {
     } = useFormik({
         validationSchema: addBankSchema,
         initialValues: {
-            bank_name: i18n.t('select'),
+            bank_name: i18n.t('selectbank'),
             bank_branch: '',
             account_holder: '',
             account_number: '',
