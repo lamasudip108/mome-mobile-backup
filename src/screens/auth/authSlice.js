@@ -12,7 +12,7 @@ export const signUpCustomer = createAsyncThunk(
 export const forgotCustomerPassword = createAsyncThunk(
     'auth/forgot',
     (formData, {rejectWithValue}) => {
-        return store(`api/customers/forgot`, formData).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return store(`api/customers/forgot-password-request`, formData).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 
