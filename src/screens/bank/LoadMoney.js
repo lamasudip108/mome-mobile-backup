@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import SelectBankForm from './components/SelectBank';
+import LoadMoney from './components/LoadMoney';
 
 const LoadMoneyScreen = (props) => {
 

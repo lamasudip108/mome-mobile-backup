@@ -3,6 +3,7 @@ import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet} from '
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -30,7 +31,7 @@ const ContactUsScreen = ({navigation}) => {
                 </View>
 
                 <View style={styles.contentWrapper}>
-            	   <Text style={styles.headingText1}>About Us</Text>
+            	   <Text style={styles.headingText1}>{i18n.t('aboutus')}</Text>
                    <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
                        <Text style={styles.paragraph}>
                         is simply dummy text of the printing and typesetting industry.

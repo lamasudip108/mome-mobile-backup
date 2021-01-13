@@ -1,5 +1,6 @@
 import React from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, StatusBar, StyleSheet} from 'react-native';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -10,7 +11,7 @@ const HowItWorksScreen = () => {
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
 
             <View style={styles.header}>
-                <Text style={styles.headingText1}>How it works</Text>
+                <Text style={styles.headingText1}>{i18n.t('how')}</Text>
             </View>
 
             <ScrollView style={{

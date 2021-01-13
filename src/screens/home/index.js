@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -11,11 +12,11 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.topContent}>
             	<View style={styles.topContentLeft}>
             		<View style={styles.topContentLeftCol}>
-            			<Text style={styles.topContentText}>Welcome Back,</Text>
+            			<Text style={styles.topContentText}>{i18n.t('welcomeback')},</Text>
             			<Text style={styles.name}>Fatima Abdullah!</Text>
             		</View>
             		<View style={styles.topContentLeftCol}>
-            			<Text style={styles.topContentText}>Wallet Amount</Text>
+            			<Text style={styles.topContentText}>{i18n.t('wallet')}</Text>
             			<Text style={styles.walletAmount}>$ 2500</Text>
             		</View>
             	</View>
@@ -25,21 +26,21 @@ const HomeScreen = ({navigation}) => {
             			<Image style={styles.shoppingcart} source={require('@/assets/img/cart.png')}/>
             		</View>
             		<Text style={styles.purchaseAmount}>$2550.00</Text>
-            		<Text style={styles.purchaseText}>TOTAL PURCHASE</Text>
+            		<Text style={styles.purchaseText}>{i18n.t('total')}</Text>
             	</View>
 
             </View>
 
             <View style={styles.middleContent}>
                 <View style={styles.middleContentHeading}>
-            	   <Text style={styles.middleContentText}>FUND TRANSFER</Text>
+            	   <Text style={styles.middleContentText}>{i18n.t('fund')}</Text>
                 </View>
             	<View style={styles.fundTransferWrapper}>
 	                <View style={styles.fundTransferInner}>
 		                <TouchableOpacity style={styles.circleFundTransfer}>
 		                	<Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
-		                <Text style={styles.fundTransferText}>Request</Text>
+		                <Text style={styles.fundTransferText}>{i18n.t('request')}</Text>
 	                </View>
 
 	                <View style={{marginLeft:20}}></View>
@@ -48,13 +49,13 @@ const HomeScreen = ({navigation}) => {
 	                    <TouchableOpacity style={styles.circleFundTransfer}>
 		                	<Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
-		                <Text style={styles.fundTransferText}>Send</Text>
+		                <Text style={styles.fundTransferText}>{i18n.t('send')}</Text>
 	                </View>
 	            </View>
 
 	            <View style={styles.referEarnWrapper}>
                     <View style={styles.middleContentHeading}>
-					   <Text style={styles.middleContentText}>REFER & EARN</Text>
+					   <Text style={styles.middleContentText}>{i18n.t('refer')}</Text>
                     </View>
 					<Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
 				</View>

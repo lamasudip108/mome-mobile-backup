@@ -1,6 +1,7 @@
 import  React from 'react';
 import {I18nManager, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
 
@@ -14,8 +15,8 @@ const Setting = ({navigation}) => {
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <View style={styles.header}>
-                <Text style={styles.headingText1}>Setting</Text>
-                <Text style={styles.headingText2}>ACCOUNT SETTING</Text>
+                <Text style={styles.headingText1}>{i18n.t('setting')}</Text>
+                <Text style={styles.headingText2}>{i18n.t('accountsetting')}</Text>
             </View>
 
             <View style={styles.List}>
@@ -26,7 +27,7 @@ const Setting = ({navigation}) => {
                                 <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
                                     <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
                                 </View>
-                                <Text style={styles.listName}>Change Password</Text>
+                                <Text style={styles.listName}>{i18n.t('change')}</Text>
                             </View>
                             <View>
                                 {direction === 'ltr' &&
@@ -44,7 +45,7 @@ const Setting = ({navigation}) => {
                                 <View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
                                     <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
                                 </View>
-                                <Text style={styles.listName}>Notifications</Text>
+                                <Text style={styles.listName}>{i18n.t('notifications')}</Text>
                             </View>
                             <View>
                                 {direction === 'ltr' &&
@@ -84,7 +85,7 @@ const Setting = ({navigation}) => {
                 alignItems: 'flex-start',
                 justifyContent: 'flex-start',
             }}>
-                <Text style={styles.headingText2}>PAYMENT SETTING</Text>
+                <Text style={styles.headingText2}>{i18n.t('paymentsetting')}</Text>
             </View>
 
             <View style={styles.List}>

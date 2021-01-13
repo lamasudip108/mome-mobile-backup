@@ -1,5 +1,15 @@
-import React, {useEffect} from 'react';
-import {Platform, Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+    FlatList, 
+    Platform, 
+    Text, 
+    View, 
+    Image, 
+    ScrollView, 
+    StyleSheet, 
+    TouchableOpacity
+} from 'react-native';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
@@ -10,6 +20,15 @@ const Transaction = (props) => {
 
     const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction} = props;
 
+    const [transaction, setTransaction] = useState([]);
+
+    const transactionOptions = [
+        {id: '1', name: 'AI Nakheel Mall', date: '4 October 2020, 8:30 AM', amount: '250'},
+        {id: '2', name: 'The Outlet', date: '4 October 2020, 10:45 AM', amount: '1250'},
+        {id: '3', name: 'Mall of the Emirates', date: '3 October 2020, 11:45 AM', amount: '110'},
+        {id: '4', name: 'Khaadi Sharjah', date: '3 October 2020, 1:05 PM', amount: '3500'},
+    ];
+
     useEffect(() => {
         const fetchCustomerTransactionAsync = async () => {
             let token = await getAsyncStorage(JWT_TOKEN);
@@ -18,10 +37,25 @@ const Transaction = (props) => {
         };
         fetchCustomerTransactionAsync();
 
+        setTransaction(transactionOptions);
+
         return () => {
             cleanCustomerTransaction();
         };
     }, []);
+
+    const renderItem = ({item}) => (
+        <View style={styles.listItem}>
+            <View style={styles.circleListItem}>
+                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
+            </View>
+            <View style={styles.listInfo}>
+                <Text style={styles.listName}>{item.name}</Text>
+                <Text style={styles.listDate}>{item.date}</Text>
+            </View>
+            <Text style={styles.listAmount}>-${item.amount}</Text>
+        </View>
+     );
 
     return (
         <View style={styles.container}>
@@ -35,7 +69,7 @@ const Transaction = (props) => {
                             <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.transactionsSummaryNumber}>250</Text>
-                        <Text style={styles.transactionsSummaryText}>TRANSCATION</Text>
+                        <Text style={styles.transactionsSummaryText}>{i18n.t('transaction')}</Text>
                     </View>
 
                     <View style={{marginLeft: 20}}></View>
@@ -46,7 +80,7 @@ const Transaction = (props) => {
                             <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.transactionsSummaryNumber}>$2550.00</Text>
-                        <Text style={styles.transactionsSummaryText}>TOTAL PURCHASE</Text>
+                        <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
                     </View>
                 </View>
 
@@ -54,64 +88,30 @@ const Transaction = (props) => {
 
             <View style={styles.middleContent}>
                 <View style={styles.middleContentHeading}>
-                    <Text style={styles.middleContentText}>TODAY</Text>
+                    <Text style={styles.middleContentText}>{i18n.t('today')}</Text>
                     <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={styles.filter}>FILTER</Text>
+                        <Text style={styles.filter}>{i18n.t('filter')}</Text>
                         <Image style={{height: 9, width: 9}} source={require('@/assets/img/filter.png')}/>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.list}>
-                    <ScrollView style={{height: 220}}>
-                        <View style={styles.listItem}>
-                            <View style={styles.circleListItem}>
-                                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
-                            </View>
-                            <View style={styles.listInfo}>
-                                <Text style={styles.listName}>AI Nakheel Mall</Text>
-                                <Text style={styles.listDate}>4 October 2020, 8:30 AM</Text>
-                            </View>
-                            <Text style={styles.listAmount}>-$250</Text>
-                        </View>
-                        <View style={styles.listItem}>
-                            <View style={styles.circleListItem}>
-                                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
-                            </View>
-                            <View style={styles.listInfo}>
-                                <Text style={styles.listName}>The Outlet</Text>
-                                <Text style={styles.listDate}>3 October 2020, 10:45 AM</Text>
-                            </View>
-                            <Text style={styles.listAmount}>-$1250</Text>
-                        </View>
-                    </ScrollView>
+                <View style={[styles.list, styles.todayHeight]}>
+                    <FlatList
+                        data={transaction}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.id}
+                    />
                 </View>
 
                 <View style={{paddingTop: 5}}>
-                    <Text style={styles.middleContentText}>YESTERDAY</Text>
-                    <View style={styles.list}>
-                        <ScrollView style={{height: Platform.OS === 'ios' ? 200 : 150}}>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage}
-                                           source={require('@/assets/img/transactions.png')}/>
-                                </View>
-                                <View style={styles.listInfo}>
-                                    <Text style={styles.listName}>Khaadi Sharjah</Text>
-                                    <Text style={styles.listDate}>2 October 2020, 1:05 PM</Text>
-                                </View>
-                                <Text style={styles.listAmount}>-$3500</Text>
-                            </View>
-                            <View style={styles.listItem}>
-                                <View style={styles.circleListItem}>
-                                    <Image style={styles.circleImage}
-                                           source={require('@/assets/img/transactions.png')}/>
-                                </View>
-                                <View style={styles.listInfo}>
-                                    <Text style={styles.listName}>Mall of the Emirates</Text>
-                                    <Text style={styles.listDate}>2 October 2020, 3:45 PM</Text>
-                                </View>
-                                <Text style={styles.listAmount}>-$110</Text>
-                            </View>
-                        </ScrollView>
+                    <View style={styles.middleContentHeading}>
+                        <Text style={styles.middleContentText}>{i18n.t('yesterday')}</Text>
+                    </View>
+                    <View style={[styles.list, styles.yesterdayHeight]}>
+                        <FlatList
+                            data={transaction}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                        />
                     </View>
                 </View>
 
@@ -209,6 +209,12 @@ const styles = StyleSheet.create({
         fontFamily: Typography.FONT_SEMI_BOLD,
         lineHeight: 18,
         paddingRight: 2,
+    },
+    todayHeight: {
+        height: 230,
+    },
+    yesterdayHeight: {
+        height: Platform.OS === 'ios' ? 230 : 200,
     },
     list: {
         ...CommonStyles.list,

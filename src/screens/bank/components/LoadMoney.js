@@ -25,7 +25,7 @@ const LoadMoney = (props) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.form}>
                     <View style={styles.searchWrapper}>
-                        I am here
+                        <Text> I am here</Text>
                     </View>
                 </View>
             </View>

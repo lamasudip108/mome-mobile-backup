@@ -1,7 +1,8 @@
 import React from 'react';
-import {Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, Dimensions} from 'react-native';
+import {I18nManager, Platform, Text, TextInput, View, Image, ScrollView, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
@@ -42,7 +43,7 @@ const PayingToForm = (props) => {
 
                 <View style={styles.body}>
 
-                    <Text style={[styles.Text, styles.fontSize3, styles.lineHeight3]}>You are paying to:</Text>
+                    <Text style={[styles.Text, styles.fontSize3, styles.lineHeight3]}>{i18n.t('youare')}</Text>
 
                     <View style={styles.imageCircle}>
                         <Image source={require('@/assets/img/outlet.png')}/>
@@ -54,14 +55,14 @@ const PayingToForm = (props) => {
                         Emirates</Text>
 
                     <View style={styles.billWrapper}>
-                        <Text style={[styles.Text2, styles.fontSize2, styles.lineHeight2]}>BILL AMOUNT</Text>
+                        <Text style={[styles.Text2, styles.fontSize2, styles.lineHeight2]}>{i18n.t('billamount')}</Text>
                         <Text style={[styles.Text, styles.fontSize4, styles.lineHeight5]}>$ 250</Text>
                     </View>
 
                     <View style={styles.inputWrapper}>
                         <TextInput
                             style={styles.TextInput}
-                            placeholder="Purchase Note ( if Any)"
+                            placeholder={i18n.t('purchasenote')}
                             value={values.notes}
                             onChangeText={handleChange('notes')}
                             onBlur={handleBlur('notes')}
@@ -131,9 +132,12 @@ const styles = StyleSheet.create({
         color: 'rgba(20,21,30,0.40)',
         padding: 15,
         paddingTop: 10,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
     },
     TextInput: {
         maxHeight: 110,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     viewBox: {
         paddingTop: 15,

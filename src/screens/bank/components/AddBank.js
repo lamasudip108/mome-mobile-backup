@@ -3,6 +3,7 @@ import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpaci
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import FlatTextInput from '@/shared/form/FlatTextInput';
@@ -41,7 +42,7 @@ const AddBankForm = (props) => {
     } = useFormik({
         validationSchema: addBankSchema,
         initialValues: {
-            bank_name: 'Select Bank Here',
+            bank_name: i18n.t('select'),
             bank_branch: '',
             account_holder: '',
             account_number: '',
@@ -77,13 +78,13 @@ const AddBankForm = (props) => {
 
             <View style={styles.content}>
                 <View style={styles.header}>
-                    <Text style={styles.headingText1}>Add Bank</Text>
+                    <Text style={styles.headingText1}>{i18n.t('addbanktitle')}</Text>
                 </View>
 
                 <View style={styles.formSection}>
 
                     <FlatTextInput
-                        label="BANK NAME"
+                        label={i18n.t('bankname')}
                         value={values.bank_name}
                         render={renderTouchText}
                         error={errors.bank_name}
@@ -102,7 +103,7 @@ const AddBankForm = (props) => {
                     />
 
                     <FlatTextInput
-                        label="BANK BRANCH"
+                        label={i18n.t('bankbranch')}
                         value={values.bank_branch}
                         onChangeText={handleChange('bank_branch')}
                         onBlur={handleBlur('bank_branch')}
@@ -111,7 +112,7 @@ const AddBankForm = (props) => {
                     />
 
                     <FlatTextInput
-                        label="ACCOUNT HOLDER"
+                        label={i18n.t('accountholder')}
                         value={values.account_holder}
                         onChangeText={handleChange('account_holder')}
                         onBlur={handleBlur('account_holder')}
@@ -120,7 +121,7 @@ const AddBankForm = (props) => {
                     />
 
                     <FlatTextInput
-                        label="ACCOUNT NUMBER"
+                        label={i18n.t('accountnumber')}
                         value={values.account_number}
                         keyboardType="numeric"
                         onChangeText={handleChange('account_number')}
@@ -132,7 +133,7 @@ const AddBankForm = (props) => {
 
                 <View style={styles.buttonWrapper}>
                     <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>SAVE</Text>
+                        <Text style={styles.buttonText}>{i18n.t('save')}</Text>
                     </Button>
                 </View>
 

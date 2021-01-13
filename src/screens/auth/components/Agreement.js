@@ -4,6 +4,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {Button} from 'native-base';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import ToastMessage from '@/shared/toast';
@@ -18,7 +19,7 @@ const AgreementForm = (props) => {
         customerSignUp(customerData);
         if (error === null) {
             navigation.navigate('SignIn');
-            ToastMessage.show('Your account has been successfully created. We\'ve sent you verification link to your email account. Please check your email inbox and verify your email address.');
+            ToastMessage.show(i18n.t('accountcreatedinfo'));
         }
     };
 
@@ -32,7 +33,7 @@ const AgreementForm = (props) => {
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
             <View style={styles.meta}>
-                <Text style={styles.title}>TERMS OF SERVICE</Text>
+                <Text style={styles.title}>{i18n.t('terms')}</Text>
                 <TouchableOpacity>
                     <Text onPress={() => navigation.goBack()}>
                         <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
@@ -40,13 +41,13 @@ const AgreementForm = (props) => {
                 </TouchableOpacity>
             </View>
 
-            <Text style={styles.timestamp}>Last Updated: 8 OCT 2020</Text>
+            <Text style={styles.timestamp}>{i18n.t('last')}: 8 OCT 2020</Text>
 
             <ScrollView
                 style={styles.scrollContainer}
                 contentContainerStyle={styles.contentContainer}
             >
-                <Text style={styles.headingTitle}>A. INTRODUCTION TO OUR SERVICES </Text>
+                <Text style={styles.headingTitle}>{i18n.t('introduction')}</Text>
                 <Text style={styles.paragraph}>
                     This Agreement governs your use of Apple’s services (“Services”),
                     through which you can buy, get, license, rent or subscribe to content,
@@ -58,8 +59,8 @@ const AgreementForm = (props) => {
                     To use our Services, you need compatible hardware, software (latest version recommended and
                     sometimes required) and Internet access (fees may apply).
                 </Text>
-                <Text style={styles.headingTitle}>B. USING OUR SERVICES </Text>
-                <Text style={styles.headingSubTitle}>PAYMENTS, TAXES, AND REFUNDS </Text>
+                <Text style={styles.headingTitle}>{i18n.t('using')}</Text>
+                <Text style={styles.headingSubTitle}>{i18n.t('paymentstaxes')}</Text>
                 <Text style={styles.paragraph}>
                     This Agreement governs your use of Apple’s services (“Services”),
                     through which you can buy, get, license, rent or subscribe to content,
@@ -82,14 +83,14 @@ const AgreementForm = (props) => {
 
                 <View style={styles.checkboxWrapper}>
                     <Icon name="ios-checkbox" size={25} color={Colors.PRIMARY_TEXT_COLOR}/>
-                    <Text style={styles.checkboxText}>I Accept the terms of service</Text>
+                    <Text style={styles.checkboxText}>{i18n.t('termsaccept')}</Text>
                 </View>
                 <View style={styles.termsActionButton}>
                     <Button style={styles.cancelButton} onPress={() => navigation.goBack()}>
-                        <Text style={styles.cancelButtonText}>CANCEL</Text>
+                        <Text style={styles.cancelButtonText}>{i18n.t('cancel')}</Text>
                     </Button>
                     <Button style={styles.acceptButton} onPress={() => handleSubmit()}>
-                        <Text style={styles.acceptButtonText}>ACCEPT</Text>
+                        <Text style={styles.acceptButtonText}>{i18n.t('accept')}</Text>
                     </Button>
                 </View>
             </View>
