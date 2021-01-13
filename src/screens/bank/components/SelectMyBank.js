@@ -22,22 +22,22 @@ const SelectMyBank = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, loading, error, fetchBanksByCustomerIdentifier} = props;
+    const {navigation, bankOptions, loading, error, fetchBanksByCustomerIdentifier} = props;
 
     const [banks, setBanks] = useState([]);
 
-    const bankOptions = [
-        {id: '1', name: 'Qatar National Bank'},
-        {id: '2', name: 'Abu Dubai Islamic Bank'},
-        {id: '3', name: 'Arab Bank PLC'},
-        {id: '4', name: 'Bank Melli Iran'},
-        {id: '5', name: 'Abu Dubai Islamic Bank'},
-        {id: '6', name: 'Arab Bank PLC'},
-        {id: '7', name: 'Bank Melli Iran'},
-        {id: '8', name: 'Arab Bank PLC'},
-        {id: '9', name: 'Bank Melli Iran'},
-        {id: '10', name: 'Bank Melli Iran'},
-    ];
+    // const bankOptions = [
+    //     {id: '1', name: 'Qatar National Bank'},
+    //     {id: '2', name: 'Abu Dubai Islamic Bank'},
+    //     {id: '3', name: 'Arab Bank PLC'},
+    //     {id: '4', name: 'Bank Melli Iran'},
+    //     {id: '5', name: 'Abu Dubai Islamic Bank'},
+    //     {id: '6', name: 'Arab Bank PLC'},
+    //     {id: '7', name: 'Bank Melli Iran'},
+    //     {id: '8', name: 'Arab Bank PLC'},
+    //     {id: '9', name: 'Bank Melli Iran'},
+    //     {id: '10', name: 'Bank Melli Iran'},
+    // ];
 
     const bankFilter = text => {
         const newData = bankOptions.filter(item => {
@@ -102,7 +102,7 @@ const SelectMyBank = (props) => {
                     <FlatList
                         data={banks}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => `${item.id}`}
                     />
                 </View>
             </View>

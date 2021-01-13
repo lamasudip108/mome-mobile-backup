@@ -21,7 +21,6 @@ const MyBank = (props) => {
 
     }, []);
 
-    console.log('banks', banks);
     return (
         <View style={styles.container}>
 
