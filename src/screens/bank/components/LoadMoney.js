@@ -8,8 +8,10 @@ import {
     StatusBar,
     StyleSheet,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
+import {Button} from 'native-base';
+import {useFormik} from 'formik';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';
@@ -19,16 +21,83 @@ const LoadMoney = (props) => {
 
     const {direction} = useDirection();
 
+    const {navigation} = props;
+
+    const {
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        touched,
+        isValid,
+    } = useFormik({
+        initialValues: {amount: '100',},
+        onSubmit: values => {
+            navigation.navigate('Profile', {
+                screen: 'Profile',
+                params: {customer: values},
+            });
+        },
+    });
+
     return (
         <View style={styles.container}>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
             <View style={styles.content}>
-                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-                <View style={styles.form}>
-                    <View style={styles.searchWrapper}>
-                        <Text> I am here</Text>
+                <View style={styles.middleContent}>
+                    <View style={styles.itemInner}>
+                        <View style={styles.circleItem}>
+                            <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                        </View>
+                        <Text style={styles.itemName}>BANK NAME HERE</Text>
                     </View>
-                </View>
-            </View>
+                    <View style={styles.amountList}>
+                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                <Text style={styles.amountText}>$50</Text>
+                            </Button>
+                        </View>
+                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemFocus]}>
+                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                <Text style={styles.amountText}>$100</Text>
+                            </Button>
+                        </View>
+                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                <Text style={styles.amountText}>$500</Text>
+                            </Button>
+                        </View>
+                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                <Text style={styles.amountText}>$1000</Text>
+                            </Button>
+                        </View>
+                    </View>
+                    <View style={[styles.textWrapper, styles.borderBottom]}>
+                        <Text style={styles.Text3}>Tap to select or provide your desired amount</Text>
+                    </View>
+                    <View style={styles.contentBlock}>
+                       <View style={styles.textWrapper}>
+                            <Text style={styles.Text3}>ENTER AMOUNT</Text>
+                            <View style={styles.textInputWrapper}>
+                                <TextInput
+                                    style={styles.Text4}
+                                    keyboardType="numeric"
+                                    value={values.amount}
+                                    onChangeText={handleChange('amount')}
+                                    onFocus={handleBlur('amount')}
+                                    touched={touched.amount}
+                                />
+                            </View>
+                        </View>
+                    </View>  
+                    <View style={styles.buttonWrapper}>
+                        <Button style={styles.button} onPress={() => navigation.goBack()}>
+                            <Text style={styles.buttonText}>LOAD FUND</Text>
+                        </Button>
+                    </View>
+                </View>  
+            </View> 
         </View>
     );
 
@@ -37,6 +106,142 @@ const LoadMoney = (props) => {
 const styles = StyleSheet.create({
     container: {
         ...CommonStyles.container,
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
+    },
+    content: {
+        marginTop: Platform.OS === 'ios' ? 120 : 90,
+    },
+    middleContent: {
+        backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        borderColor: Colors.QUINARY_BORDER_COLOR,
+        borderWidth: 1,
+        padding: 42,
+        paddingTop: 20,
+        height: '100%',
+        width: '100%',
+        marginTop: Platform.OS === 'ios' ? 100 : 60,
+    },
+    itemInner: {
+        ...CommonStyles.listItemInner,
+        marginBottom: 15,
+        marginLeft: 15,
+        marginRight: 15,
+    },
+    circleItem: {
+        ...CommonStyles.circleListItem,
+        backgroundColor:Colors.TERTIARY_BACKGROUND_COLOR,
+        height:60,
+        width: 60,
+        borderRadius: 30,
+        borderColor: Colors.TERTIARY_BACKGROUND_COLOR,
+        marginRight: 15,
+        marginLeft: Platform.OS === 'ios' ? 0 : 15,
+    },
+    itemName: {
+        ...CommonStyles.listName,
+        fontFamily: Typography.FONT_BOLD,
+    },
+    amountList: {
+        flexDirection: 'row',
+        marginBottom: 10,
+        marginLeft: 15,
+        marginRight: 15,
+    },
+    amountListItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    amountListItemRight: {
+        marginRight: 9,
+    },
+    amountListItemFocus: {
+        borderColor: Colors.TERTIARY_BORDER_COLOR,
+        borderWidth: 2,
+        borderRadius: 6,
+    },
+    amountListItemNotFocus: {
+        borderColor: 'rgba(210,212,252,0.50)',
+        borderWidth: 2,
+        borderRadius: 6,
+    },
+    amountBtn: {
+        height: 39,
+        width: 65,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(210,212,252,0.50)',
+        padding: 5,
+    },
+    amountText: {
+        color: Colors.PRIMARY_TEXT_COLOR,
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        fontFamily: Typography.FONT_BOLD,
+    },
+    contentBlock: {
+        backgroundColor: 'rgba(255,255,255,0.80)',
+        borderRadius: 6,
+        padding: 20,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 20,
+    },
+    textInputWrapper: {
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+    textWrapper:{
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 10,
+        paddingRight: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        alignItems: 'center',
+    },
+    borderBottom: {
+        borderBottomColor: 'rgba(20,21,30,0.40)',
+        borderBottomWidth: 0.5,
+    },
+    Text: {
+        fontSize: Typography.FONT_SIZE_TINY_PLUS, 
+        fontFamily: Typography.FONT_SEMI_BOLD, 
+        color: 'rgba(20,21,30,0.40)', 
+        lineHeight: 18,
+    },
+    Text1: {
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE, 
+        fontFamily: Typography.FONT_MEDIUM, 
+        color: Colors.QUATERNARY_TEXT_COLOR, 
+        lineHeight: 27,
+    },
+    Text3: {
+        fontSize: Typography.FONT_SIZE_MEDIUM, 
+        fontFamily: Typography.FONT_NORMAL, 
+        color: Colors.TERTIARY_TEXT_COLOR, 
+        lineHeight: 27,
+    },
+    Text4: {
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS, 
+        fontFamily: Typography.FONT_BOLD, 
+        color: Colors.QUATERNARY_TEXT_COLOR, 
+        //lineHeight: 48,
+    },
+    buttonWrapper: {
+        ...CommonStyles.buttonWrapper,
+        width: 'auto',
+        marginTop: 20,
+        marginLeft: 15,
+        marginRight: 15,
+    },
+    button: {
+        ...CommonStyles.button,
+       height: 56,
+    },
+    buttonText: {
+        ...CommonStyles.buttonText,
+        fontFamily: Typography.FONT_BOLD,
     },
 });
 
