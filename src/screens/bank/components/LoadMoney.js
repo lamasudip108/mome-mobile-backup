@@ -21,7 +21,7 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 const loadMoneySchema = Yup.object().shape({
     amount: Yup
         .string()
-        .required('First name is required.'),
+        .required('Amount is required.'),
 });
 
 const LoadMoney = (props) => {
