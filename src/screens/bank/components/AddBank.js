@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -31,7 +31,6 @@ const AddBankForm = (props) => {
     const selectedItem = route?.params?.item;
 
     const {
-        setFieldValue,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -40,9 +39,10 @@ const AddBankForm = (props) => {
         touched,
         isValid,
     } = useFormik({
+        enableReinitialize: true,
         validationSchema: addBankSchema,
         initialValues: {
-            bank_name: i18n.t('selectbank'),
+            bank_name: selectedItem?.name ? selectedItem?.name : i18n.t('selectbank'),
             bank_branch: '',
             account_holder: '',
             account_number: '',
@@ -54,22 +54,6 @@ const AddBankForm = (props) => {
             }
         },
     });
-
-    const renderTouchText = ({value}) => {
-        return (
-            <TouchableOpacity onPress={() => {
-                navigation.navigate('SelectBank');
-            }}>
-                <Text style={styles.renderText}>{value}</Text>
-            </TouchableOpacity>
-        );
-    };
-
-    useEffect(() => {
-        if(selectedItem?.name){
-            setFieldValue('bank_name', selectedItem?.name)
-        }
-    }, [selectedItem]);
 
     return (
         <View style={styles.container}>
@@ -86,9 +70,13 @@ const AddBankForm = (props) => {
                     <FlatTextInput
                         label={i18n.t('bankname')}
                         value={values.bank_name}
-                        render={renderTouchText}
+                        onChangeText={handleChange('bank_name')}
+                        onBlur={handleBlur('bank_name')}
                         error={errors.bank_name}
                         touched={touched.bank_name}
+                        onPress={() => {
+                            navigation.navigate('SelectBank');
+                        }}
                     />
                     <Ionicons
                         name='chevron-down'
