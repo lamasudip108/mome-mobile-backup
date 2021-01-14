@@ -3,12 +3,14 @@ import {
     I18nManager,
     FlatList,
     Text,
+    ScrollView,
     View,
     Image,
     StatusBar,
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
@@ -17,88 +19,72 @@ import Icon from 'react-native-vector-icons/Feather';
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
 
+const screenHeight = Math.round(Dimensions.get('window').height);
+
 const LoadMoney = (props) => {
 
     const {direction} = useDirection();
 
     const {navigation} = props;
 
-    const {
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        values,
-        touched,
-        isValid,
-    } = useFormik({
-        initialValues: {amount: '100',},
-        onSubmit: values => {
-            navigation.navigate('Profile', {
-                screen: 'Profile',
-                params: {customer: values},
-            });
-        },
-    });
+    const [amount, setAmount] = useState(0);
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
-            <View style={styles.content}>
-                <View style={styles.middleContent}>
-                    <View style={styles.itemInner}>
-                        <View style={styles.circleItem}>
-                            <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
+                <View style={styles.content}>
+                    <View style={styles.middleContent}>
+                        <View style={styles.itemInner}>
+                            <View style={styles.circleItem}>
+                                <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                            </View>
+                            <Text style={styles.itemName}>BANK NAME HERE</Text>
                         </View>
-                        <Text style={styles.itemName}>BANK NAME HERE</Text>
-                    </View>
-                    <View style={styles.amountList}>
-                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
-                                <Text style={styles.amountText}>$50</Text>
-                            </Button>
-                        </View>
-                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemFocus]}>
-                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
-                                <Text style={styles.amountText}>$100</Text>
-                            </Button>
-                        </View>
-                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
-                                <Text style={styles.amountText}>$500</Text>
-                            </Button>
-                        </View>
-                        <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                            <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
-                                <Text style={styles.amountText}>$1000</Text>
-                            </Button>
-                        </View>
-                    </View>
-                    <View style={[styles.textWrapper, styles.borderBottom]}>
-                        <Text style={styles.Text3}>Tap to select or provide your desired amount</Text>
-                    </View>
-                    <View style={styles.contentBlock}>
-                       <View style={styles.textWrapper}>
-                            <Text style={styles.Text3}>ENTER AMOUNT</Text>
-                            <View style={styles.textInputWrapper}>
-                                <TextInput
-                                    style={styles.Text4}
-                                    keyboardType="numeric"
-                                    value={values.amount}
-                                    onChangeText={handleChange('amount')}
-                                    onFocus={handleBlur('amount')}
-                                    touched={touched.amount}
-                                />
+                        <View style={styles.amountList}>
+                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                    <Text style={styles.amountText}>$50</Text>
+                                </Button>
+                            </View>
+                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                    <Text style={styles.amountText}>$100</Text>
+                                </Button>
+                            </View>
+                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                    <Text style={styles.amountText}>$500</Text>
+                                </Button>
+                            </View>
+                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                                    <Text style={styles.amountText}>$1000</Text>
+                                </Button>
                             </View>
                         </View>
+                        <View style={[styles.textWrapper, styles.borderBottom]}>
+                            <Text style={styles.Text3}>Tap to select or provide your desired amount</Text>
+                        </View>
+                        
+                        <Text style={styles.Text5}>ENTER AMOUNT</Text>
+                        <View style={styles.inputWrapper}>
+                            <TextInput
+                                style={styles.Text4}
+                                keyboardType="numeric"
+                                value="100"
+                                
+                            />
+                        </View>  
+                        <View style={styles.buttonWrapper}>
+                            <Button style={styles.button} onPress={() => navigation.goBack()}>
+                                <Text style={styles.buttonText}>LOAD FUND</Text>
+                            </Button>
+                        </View>
                     </View>  
-                    <View style={styles.buttonWrapper}>
-                        <Button style={styles.button} onPress={() => navigation.goBack()}>
-                            <Text style={styles.buttonText}>LOAD FUND</Text>
-                        </Button>
-                    </View>
-                </View>  
-            </View> 
-        </View>
+                </View> 
+            </View>
+        </ScrollView>
     );
 
 };
@@ -179,17 +165,16 @@ const styles = StyleSheet.create({
         fontSize: Typography.FONT_SIZE_MEDIUM,
         fontFamily: Typography.FONT_BOLD,
     },
-    contentBlock: {
-        backgroundColor: 'rgba(255,255,255,0.80)',
-        borderRadius: 6,
-        padding: 20,
+    inputWrapper: {
+        backgroundColor: 'rgba(255,255,255,0.90)',
+        borderRadius: 25,
+        borderColor: 'rgba(20,21,30,0.40)',
+        borderWidth: 1,
+        padding: 10,
         marginLeft: 15,
         marginRight: 15,
-        marginTop: 20,
-    },
-    textInputWrapper: {
-        paddingTop: 10,
-        paddingBottom: 10,
+        marginTop: 10,
+        height: 56,
     },
     textWrapper:{
         paddingTop: 15,
@@ -225,13 +210,20 @@ const styles = StyleSheet.create({
     Text4: {
         fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS, 
         fontFamily: Typography.FONT_BOLD, 
-        color: Colors.QUATERNARY_TEXT_COLOR, 
-        //lineHeight: 48,
+        color: Colors.QUATERNARY_TEXT_COLOR,
+    },
+    Text5: {
+        fontSize: Typography.FONT_SIZE_MEDIUM, 
+        fontFamily: Typography.FONT_BOLD, 
+        color: Colors.TERTIARY_TEXT_COLOR, 
+        lineHeight: 27,
+        marginTop: 15,
+        marginLeft: 15,
     },
     buttonWrapper: {
         ...CommonStyles.buttonWrapper,
         width: 'auto',
-        marginTop: 20,
+        marginTop: 15,
         marginLeft: 15,
         marginRight: 15,
     },

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -21,6 +21,15 @@ const MyBank = (props) => {
 
     }, []);
 
+    const renderItem = ({item}) => (
+        <View style={styles.listItem}>
+            <View style={styles.circleListItem}>
+                <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+            </View>
+            <Text style={styles.listName}>{item.name}</Text>
+        </View>
+    );
+
     return (
         <View style={styles.container}>
 
@@ -28,22 +37,17 @@ const MyBank = (props) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
-                        <ScrollView style={{height: Platform.OS === 'ios' ? 385 : 385}}>
-                            {banks?.map((item, index) => (
-                                <View style={styles.listItem}>
-                                    <View style={styles.circleListItem}>
-                                        <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>{item.name}</Text>
-                                </View>
-                            ))}
-                        </ScrollView>
-                        <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
-                            <View style={styles.listItem} justifyContent="center">
-                                <Text style={styles.text}>+ {i18n.t('addbank')}</Text>
-                            </View>
-                        </TouchableOpacity>
+                        <FlatList
+                            data={banks}
+                            renderItem={renderItem}
+                            keyExtractor={item => `${item.id}`}
+                        />
                     </View>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
+                        <View style={styles.listItem} justifyContent="center">
+                            <Text style={styles.text}>+ {i18n.t('addbank')}</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
     },
     list: {
         ...CommonStyles.list,
+        height: 400,
     },
     listItem: {
         ...CommonStyles.listItem,
