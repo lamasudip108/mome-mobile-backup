@@ -6,10 +6,10 @@ import {
     Image,
     StatusBar,
     StyleSheet,
-    TextInput,
     Dimensions,
 } from 'react-native';
 import {Button} from 'native-base';
+import TextInput from '@/shared/form/TextInput';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
@@ -97,18 +97,15 @@ const LoadMoney = (props) => {
                         </View>
 
                         <Text style={styles.Text5}>ENTER AMOUNT</Text>
-                        <View style={styles.inputWrapper}>
-                            <TextInput
-                                style={styles.Text4}
-                                keyboardType="numeric"
-                                value={values.amount}
-                                onChangeText={handleChange('amount')}
-                                onBlur={handleBlur('amount')}
-                                error={errors.amount}
-                                touched={touched.amount}
+                        <TextInput
+                            keyboardType="numeric"
+                            value={values.amount}
+                            onChangeText={handleChange('amount')}
+                            onBlur={handleBlur('amount')}
+                            error={errors.amount}
+                            touched={touched.amount}
 
-                            />
-                        </View>
+                        />
                         <View style={styles.buttonWrapper}>
                             <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
                                 <Text style={styles.buttonText}>LOAD FUND</Text>
@@ -203,7 +200,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderColor: 'rgba(20,21,30,0.40)',
         borderWidth: 1,
-        padding: 10,
+        //padding: 10,
         marginLeft: 15,
         marginRight: 15,
         marginTop: 10,
@@ -244,6 +241,7 @@ const styles = StyleSheet.create({
         fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS,
         fontFamily: Typography.FONT_BOLD,
         color: Colors.QUATERNARY_TEXT_COLOR,
+        padding: 10,
     },
     Text5: {
         fontSize: Typography.FONT_SIZE_MEDIUM,

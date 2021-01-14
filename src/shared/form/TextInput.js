@@ -1,52 +1,45 @@
-import React from 'react';
-import {Text, TextInput, StyleSheet} from 'react-native';
+import React, {forwardRef} from 'react';
+import {I18nManager, StyleSheet, View} from 'react-native';
+import {TextInput as RNTextInput} from 'react-native-paper';
 
-const RNTextInput = (props) => {
-    const {
-        field: {name, onBlur, onChange, value},
-        form: {errors, touched, setFieldTouched},
-        ...inputProps
-    } = props;
+import { Colors, Typography} from '@/theme';
 
-    const hasError = errors[name] && touched[name];
+const TextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
+
+    const validationColor = !touched ? Colors.SECONDARY_BORDER_COLOR : error ? Colors.PRIMARY_ERROR_COLOR : Colors.PRIMARY_BORDER_COLOR;
 
     return (
-        <>
-            <TextInput
-                style={[
-                    styles.textInput,
-                    hasError && styles.errorInput,
-                ]}
-                value={value}
-                onChangeText={(text) => onChange(name)(text)}
-                onBlur={() => {
-                    setFieldTouched(name);
-                    onBlur(name);
-                }}
-                {...inputProps}
-            />
-            {hasError && <Text style={styles.errorText}>{errors[name]}</Text>}
-        </>
+        <View style={{
+            borderRadius: 25,
+            borderColor: validationColor,
+            borderWidth: 1,
+            height: 56,
+            overflow: 'hidden',
+            marginLeft: 15,
+            marginRight: 15,
+        }}>
+               <RNTextInput
+                    style={styles.textInput}
+                    ref={ref}
+                    {...otherProps}
+                />
+        </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     textInput: {
-        height: 40,
-        width: '100%',
-        margin: 10,
-        backgroundColor: 'white',
-        borderColor: 'gray',
-        borderWidth: StyleSheet.hairlineWidth,
-        borderRadius: 10,
-    },
-    errorText: {
-        fontSize: 10,
-        color: 'red',
-    },
-    errorInput: {
-        borderColor: 'red',
+        borderRadius: 0,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        height: 56,
+        overflow: 'hidden',
+        backgroundColor: Colors.PRIMARY_INPUT_TEXT_BACKGROUND_COLOR,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS,
+        fontFamily: Typography.FONT_BOLD,
+        color: Colors.PRIMARY_INPUT_TEXT_COLOR,
     },
 });
 
-export default RNTextInput;
+export default TextInput;
