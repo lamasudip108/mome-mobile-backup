@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {
-    I18nManager,
-    FlatList,
     Text,
     ScrollView,
     View,
@@ -9,17 +7,22 @@ import {
     StatusBar,
     StyleSheet,
     TextInput,
-    TouchableOpacity,
     Dimensions,
 } from 'react-native';
 import {Button} from 'native-base';
-import {useFormik} from 'formik';
-import Icon from 'react-native-vector-icons/Feather';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
+
+const loadMoneySchema = Yup.object().shape({
+    amount: Yup
+        .string()
+        .required('First name is required.'),
+});
 
 const LoadMoney = (props) => {
 
@@ -27,7 +30,29 @@ const LoadMoney = (props) => {
 
     const {navigation} = props;
 
-    const [amount, setAmount] = useState(0);
+    const {
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        setFieldValue,
+        values,
+        errors,
+        touched,
+        isValid,
+    } = useFormik({
+        enableReinitialize: true,
+        validationSchema: loadMoneySchema,
+        initialValues: {
+            amount: '100',
+        },
+        onSubmit: values => {
+            console.log('Values', values);
+        },
+    });
+
+    const handleAmountChange = (amount) => {
+        setFieldValue('amount', amount);
+    };
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
@@ -42,23 +67,27 @@ const LoadMoney = (props) => {
                             <Text style={styles.itemName}>BANK NAME HERE</Text>
                         </View>
                         <View style={styles.amountList}>
-                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                            <View
+                                style={[styles.amountListItem, styles.amountListItemRight, values.amount === '50' ? styles.amountListItemFocus : styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => handleAmountChange('50')}>
                                     <Text style={styles.amountText}>$50</Text>
                                 </Button>
                             </View>
-                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemFocus]}>
-                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                            <View
+                                style={[styles.amountListItem, styles.amountListItemRight, values.amount === '100' ? styles.amountListItemFocus : styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => handleAmountChange('100')}>
                                     <Text style={styles.amountText}>$100</Text>
                                 </Button>
                             </View>
-                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                            <View
+                                style={[styles.amountListItem, styles.amountListItemRight, values.amount === '500' ? styles.amountListItemFocus : styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => handleAmountChange('500')}>
                                     <Text style={styles.amountText}>$500</Text>
                                 </Button>
                             </View>
-                            <View style={[styles.amountListItem, styles.amountListItemRight, styles.amountListItemNotFocus]}>
-                                <Button style={styles.amountBtn} onPress={() => navigation.goBack()}>
+                            <View
+                                style={[styles.amountListItem, styles.amountListItemRight, values.amount === '1000' ? styles.amountListItemFocus : styles.amountListItemNotFocus]}>
+                                <Button style={styles.amountBtn} onPress={() => handleAmountChange('1000')}>
                                     <Text style={styles.amountText}>$1000</Text>
                                 </Button>
                             </View>
@@ -66,23 +95,27 @@ const LoadMoney = (props) => {
                         <View style={[styles.textWrapper, styles.borderBottom]}>
                             <Text style={styles.Text3}>Tap to select or provide your desired amount</Text>
                         </View>
-                        
+
                         <Text style={styles.Text5}>ENTER AMOUNT</Text>
                         <View style={styles.inputWrapper}>
                             <TextInput
                                 style={styles.Text4}
                                 keyboardType="numeric"
-                                value="100"
-                                
+                                value={values.amount}
+                                onChangeText={handleChange('amount')}
+                                onBlur={handleBlur('amount')}
+                                error={errors.amount}
+                                touched={touched.amount}
+
                             />
-                        </View>  
+                        </View>
                         <View style={styles.buttonWrapper}>
-                            <Button style={styles.button} onPress={() => navigation.goBack()}>
+                            <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
                                 <Text style={styles.buttonText}>LOAD FUND</Text>
                             </Button>
                         </View>
-                    </View>  
-                </View> 
+                    </View>
+                </View>
             </View>
         </ScrollView>
     );
@@ -117,8 +150,8 @@ const styles = StyleSheet.create({
     },
     circleItem: {
         ...CommonStyles.circleListItem,
-        backgroundColor:Colors.TERTIARY_BACKGROUND_COLOR,
-        height:60,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
+        height: 60,
         width: 60,
         borderRadius: 30,
         borderColor: Colors.TERTIARY_BACKGROUND_COLOR,
@@ -176,7 +209,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         height: 56,
     },
-    textWrapper:{
+    textWrapper: {
         paddingTop: 15,
         paddingBottom: 15,
         paddingLeft: 10,
@@ -190,32 +223,32 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.5,
     },
     Text: {
-        fontSize: Typography.FONT_SIZE_TINY_PLUS, 
-        fontFamily: Typography.FONT_SEMI_BOLD, 
-        color: 'rgba(20,21,30,0.40)', 
+        fontSize: Typography.FONT_SIZE_TINY_PLUS,
+        fontFamily: Typography.FONT_SEMI_BOLD,
+        color: 'rgba(20,21,30,0.40)',
         lineHeight: 18,
     },
     Text1: {
-        fontSize: Typography.FONT_SIZE_EXTRA_LARGE, 
-        fontFamily: Typography.FONT_MEDIUM, 
-        color: Colors.QUATERNARY_TEXT_COLOR, 
+        fontSize: Typography.FONT_SIZE_EXTRA_LARGE,
+        fontFamily: Typography.FONT_MEDIUM,
+        color: Colors.QUATERNARY_TEXT_COLOR,
         lineHeight: 27,
     },
     Text3: {
-        fontSize: Typography.FONT_SIZE_MEDIUM, 
-        fontFamily: Typography.FONT_NORMAL, 
-        color: Colors.TERTIARY_TEXT_COLOR, 
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        fontFamily: Typography.FONT_NORMAL,
+        color: Colors.TERTIARY_TEXT_COLOR,
         lineHeight: 27,
     },
     Text4: {
-        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS, 
-        fontFamily: Typography.FONT_BOLD, 
+        fontSize: Typography.FONT_SIZE_DOUBLE_EXTRA_LARGE_PLUS,
+        fontFamily: Typography.FONT_BOLD,
         color: Colors.QUATERNARY_TEXT_COLOR,
     },
     Text5: {
-        fontSize: Typography.FONT_SIZE_MEDIUM, 
-        fontFamily: Typography.FONT_BOLD, 
-        color: Colors.TERTIARY_TEXT_COLOR, 
+        fontSize: Typography.FONT_SIZE_MEDIUM,
+        fontFamily: Typography.FONT_BOLD,
+        color: Colors.TERTIARY_TEXT_COLOR,
         lineHeight: 27,
         marginTop: 15,
         marginLeft: 15,
@@ -229,7 +262,7 @@ const styles = StyleSheet.create({
     },
     button: {
         ...CommonStyles.button,
-       height: 56,
+        height: 56,
     },
     buttonText: {
         ...CommonStyles.buttonText,
