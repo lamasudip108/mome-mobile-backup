@@ -13,6 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
+import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
@@ -28,7 +29,6 @@ const SelectMyBank = (props) => {
 
     const [banks, setBanks] = useState([]);
 
-    console.log("loading", loading);
     const bankFilter = text => {
         const newData = bankOptions.filter(item => {
             const itemData = `${item.name.toUpperCase()}`;
@@ -85,7 +85,7 @@ const SelectMyBank = (props) => {
                     <View style={styles.searchWrapper}>
                         <TextInput style={styles.searchInput}
                                    useRef={'txtSearch'}
-                                   placeholder="Search Bank..."
+                                   placeholder={i18n.t('search')}
                                    underlineColorAndroid='transparent'
                                    onChangeText={text => bankFilter(text)}/>
                         <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{marginRight: 15}}/>

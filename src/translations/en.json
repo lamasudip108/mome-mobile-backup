@@ -78,4 +78,7 @@
   "paymentsuccess": "Payment success!",
   "youhave": "You have successfully paid your bill amount.",
   "goto": "GO TO DASHBOARD",
+  "tapselect": "Tap to select or provide your desired amount",
+  "enteramount": "ENTER AMOUNT",
+  "loadfund": "LOAD FUND",
 }

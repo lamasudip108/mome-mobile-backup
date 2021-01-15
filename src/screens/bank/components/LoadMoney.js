@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    I18nManager,
     Text,
     ScrollView,
     View,
@@ -15,6 +16,7 @@ import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import i18n from 'i18n-js';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -93,10 +95,12 @@ const LoadMoney = (props) => {
                             </View>
                         </View>
                         <View style={[styles.textWrapper, styles.borderBottom]}>
-                            <Text style={styles.Text3}>Tap to select or provide your desired amount</Text>
+                            <Text style={styles.Text3}>{i18n.t('tapselect')}</Text>
                         </View>
 
-                        <Text style={styles.Text5}>ENTER AMOUNT</Text>
+                        <View style={{alignItems: 'flex-start', justifyContent:'flex-start'}}>
+                            <Text style={styles.Text5}>{i18n.t('enteramount')}</Text>
+                        </View>
                         <TextInput
                             keyboardType="numeric"
                             value={values.amount}
@@ -108,7 +112,7 @@ const LoadMoney = (props) => {
                         />
                         <View style={styles.buttonWrapper}>
                             <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                                <Text style={styles.buttonText}>LOAD FUND</Text>
+                                <Text style={styles.buttonText}>{i18n.t('loadfund')}</Text>
                             </Button>
                         </View>
                     </View>
@@ -250,6 +254,7 @@ const styles = StyleSheet.create({
         lineHeight: 27,
         marginTop: 15,
         marginLeft: 15,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     buttonWrapper: {
         ...CommonStyles.buttonWrapper,
