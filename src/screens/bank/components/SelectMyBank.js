@@ -11,6 +11,8 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
@@ -22,10 +24,11 @@ const SelectMyBank = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, bankOptions, loading, error, fetchBanksByCustomerIdentifier} = props;
+    const {navigation, bankOptions, loading, error, fetchBanksByCustomerIdentifier, cleanCustomerBanks} = props;
 
     const [banks, setBanks] = useState([]);
 
+    console.log("loading", loading);
     const bankFilter = text => {
         const newData = bankOptions.filter(item => {
             const itemData = `${item.name.toUpperCase()}`;
@@ -42,6 +45,9 @@ const SelectMyBank = (props) => {
             fetchBanksByCustomerIdentifier(customerID);
         };
         fetchCustomerBanksAsync();
+        return () => {
+            cleanCustomerBanks();
+        };
     }, []);
 
 
@@ -52,20 +58,21 @@ const SelectMyBank = (props) => {
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
-                <View style={styles.itemInner}>
-                    <View style={styles.circleItem}>
-                        <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+
+                    <View style={styles.itemInner}>
+                        <View style={styles.circleItem}>
+                            <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                        </View>
+                        <Text style={styles.itemName}>{item.name}</Text>
                     </View>
-                    <Text style={styles.itemName}>{item.name}</Text>
-                </View>
-                <View>
-                    {direction === 'ltr' &&
-                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                    }
-                    {direction === 'rtl' &&
-                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                    }
-                </View>
+                    <View>
+                        {direction === 'ltr' &&
+                        <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                        }
+                        {direction === 'rtl' &&
+                        <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                        }
+                    </View>
             </View>
         </TouchableOpacity>
     );
@@ -86,11 +93,17 @@ const SelectMyBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
+                    <ShimmerPlaceHolder
+                        LinearGradient={LinearGradient}
+                        visible={!loading}
+                        width={350}
+                    >
                     <FlatList
                         data={banks}
                         renderItem={renderItem}
                         keyExtractor={item => `${item.id}`}
                     />
+                    </ShimmerPlaceHolder>
                 </View>
             </View>
         </View>
