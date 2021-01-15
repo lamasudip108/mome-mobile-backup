@@ -58,7 +58,6 @@ const SelectMyBank = (props) => {
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
-
                     <View style={styles.itemInner}>
                         <View style={styles.circleItem}>
                             <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
