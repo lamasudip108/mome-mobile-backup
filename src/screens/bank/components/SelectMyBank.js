@@ -4,11 +4,13 @@ import {
     FlatList,
     Text,
     View,
+    ScrollView,
     Image,
     StatusBar,
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,6 +22,8 @@ import {CommonStyles, Typography, Colors} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const SelectMyBank = (props) => {
 
@@ -56,6 +60,15 @@ const SelectMyBank = (props) => {
     }, [bankOptions]);
 
     const renderItem = ({item}) => (
+        <ShimmerPlaceHolder
+                        LinearGradient={LinearGradient}
+                        visible={!loading}
+                        style={{ 
+                            width: '100%', 
+                            height: 90,
+                            marginBottom: 10,
+                        }}
+                    >
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
                     <View style={styles.itemInner}>
@@ -74,9 +87,11 @@ const SelectMyBank = (props) => {
                     </View>
             </View>
         </TouchableOpacity>
+        </ShimmerPlaceHolder>
     );
 
     return (
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
             <View style={styles.content}>
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -92,20 +107,15 @@ const SelectMyBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
-                    <ShimmerPlaceHolder
-                        LinearGradient={LinearGradient}
-                        visible={!loading}
-                        width={350}
-                    >
                     <FlatList
                         data={banks}
                         renderItem={renderItem}
                         keyExtractor={item => `${item.id}`}
-                    />
-                    </ShimmerPlaceHolder>
+                    />                    
                 </View>
             </View>
         </View>
+        </ScrollView>
     );
 
 };
