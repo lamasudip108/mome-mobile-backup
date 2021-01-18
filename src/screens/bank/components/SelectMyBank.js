@@ -4,13 +4,17 @@ import {
     FlatList,
     Text,
     View,
+    ScrollView,
     Image,
     StatusBar,
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -19,11 +23,13 @@ import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
 
+const screenHeight = Math.round(Dimensions.get('window').height);
+
 const SelectMyBank = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, bankOptions, loading, error, fetchBanksByCustomerIdentifier} = props;
+    const {navigation, bankOptions, loading, error, fetchBanksByCustomerIdentifier, cleanCustomerBanks} = props;
 
     const [banks, setBanks] = useState([]);
 
@@ -43,6 +49,9 @@ const SelectMyBank = (props) => {
             fetchBanksByCustomerIdentifier(customerID);
         };
         fetchCustomerBanksAsync();
+        return () => {
+            cleanCustomerBanks();
+        };
     }, []);
 
 
@@ -51,27 +60,38 @@ const SelectMyBank = (props) => {
     }, [bankOptions]);
 
     const renderItem = ({item}) => (
+        <ShimmerPlaceHolder
+                        LinearGradient={LinearGradient}
+                        visible={!loading}
+                        style={{ 
+                            width: '100%', 
+                            height: 90,
+                            marginBottom: 10,
+                        }}
+                    >
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
-                <View style={styles.itemInner}>
-                    <View style={styles.circleItem}>
-                        <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                    <View style={styles.itemInner}>
+                        <View style={styles.circleItem}>
+                            <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
+                        </View>
+                        <Text style={styles.itemName}>{item.name}</Text>
                     </View>
-                    <Text style={styles.itemName}>{item.name}</Text>
-                </View>
-                <View>
-                    {direction === 'ltr' &&
-                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                    }
-                    {direction === 'rtl' &&
-                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                    }
-                </View>
+                    <View>
+                        {direction === 'ltr' &&
+                        <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                        }
+                        {direction === 'rtl' &&
+                        <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                        }
+                    </View>
             </View>
         </TouchableOpacity>
+        </ShimmerPlaceHolder>
     );
 
     return (
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
             <View style={styles.content}>
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -91,10 +111,11 @@ const SelectMyBank = (props) => {
                         data={banks}
                         renderItem={renderItem}
                         keyExtractor={item => `${item.id}`}
-                    />
+                    />                    
                 </View>
             </View>
         </View>
+        </ScrollView>
     );
 
 };
