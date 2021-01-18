@@ -240,15 +240,15 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-camera (3.40.5):
+  - react-native-camera (3.41.0):
     - React-Core
-    - react-native-camera/RCT (= 3.40.5)
-    - react-native-camera/RN (= 3.40.5)
-  - react-native-camera/RCT (3.40.5):
+    - react-native-camera/RCT (= 3.41.0)
+    - react-native-camera/RN (= 3.41.0)
+  - react-native-camera/RCT (3.41.0):
     - React-Core
-  - react-native-camera/RN (3.40.5):
+  - react-native-camera/RN (3.41.0):
     - React-Core
-  - react-native-flipper (0.69.0):
+  - react-native-flipper (0.70.0):
     - React
   - react-native-restart (0.0.20):
     - React-Core
@@ -528,8 +528,8 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-camera: 0bd2e98d3095e181642d94cda38313cc1c5ecd97
-  react-native-flipper: 9d5738fbde235d9e2c922783e0e4657e665fe8ab
+  react-native-camera: 7fb8b5dd6ba88a1847e4b2b6f2196bb88d784537
+  react-native-flipper: da8e630768f0a35153837df953d9781fa7f860ba
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336

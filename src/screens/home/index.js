@@ -16,7 +16,7 @@ const HomeScreen = ({navigation}) => {
             			<Text style={styles.name}>Fatima Abdullah!</Text>
             		</View>
             		<View style={styles.topContentLeftCol}>
-            			<Text style={styles.topContentText}>{i18n.t('wallet')}</Text>
+            			<Text style={styles.topContentText}>{i18n.t('walletamount')}</Text>
             			<Text style={styles.walletAmount}>$ 2500</Text>
             		</View>
             	</View>
@@ -37,7 +37,7 @@ const HomeScreen = ({navigation}) => {
                 </View>
             	<View style={styles.fundTransferWrapper}>
 	                <View style={styles.fundTransferInner}>
-		                <TouchableOpacity style={styles.circleFundTransfer}>
+		                <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('RequestingOptions')}>
 		                	<Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>{i18n.t('request')}</Text>
@@ -46,7 +46,7 @@ const HomeScreen = ({navigation}) => {
 	                <View style={{marginLeft:20}}></View>
 
 	                <View style={styles.fundTransferInner}>
-	                    <TouchableOpacity style={styles.circleFundTransfer}>
+	                    <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('SendingOptions')}>
 		                	<Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30} />
 		                </TouchableOpacity>
 		                <Text style={styles.fundTransferText}>{i18n.t('send')}</Text>
