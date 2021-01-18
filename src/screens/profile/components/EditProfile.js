@@ -44,7 +44,7 @@ const profileUpdateSchema = Yup.object().shape({
 
 const EditProfileForm = (props) => {
 
-    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer, cleanCustomer} = props;
+    const {navigation, profile, loading, error, fetchCustomerByIdentifier, updateCustomer} = props;
 
 
     const {
@@ -86,9 +86,6 @@ const EditProfileForm = (props) => {
         };
         fetchCustomerAsync();
 
-        return () => {
-            cleanCustomer();
-        };
     }, []);
 
     return (

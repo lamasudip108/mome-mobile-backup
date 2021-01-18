@@ -7,9 +7,11 @@ import i18n from 'i18n-js';
 import {useDirection} from '@/context/language';
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const Profile = ({navigation}) => {
+const Profile = (props) => {
 
     const { direction} = useDirection();
+
+    const {navigation, profile, loading, error} = props;
 
     return (
         <View style={styles.container}>
@@ -27,8 +29,8 @@ const Profile = ({navigation}) => {
 		                </TouchableOpacity>
 
 	                </View>
-	                <Text style={styles.name}>Fatima Abdullah</Text>
-	                <Text style={styles.amount}>$ 2500.00</Text>
+	                <Text style={styles.name}>{profile?.first_name} {profile?.last_name}</Text>
+	                <Text style={styles.amount}>$ {profile?.wallet_amount}</Text>
 	                <View>
 	                <Button style={styles.button} onPress={() => navigation.navigate('SelectMyBank')}>
 	                    <Text style={styles.buttonText}>+ {i18n.t('addfund')}</Text>
