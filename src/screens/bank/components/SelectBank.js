@@ -11,6 +11,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -42,6 +44,15 @@ const SelectBank = (props) => {
     }, [bankOptions]);
 
     const renderItem = ({item}) => (
+        <ShimmerPlaceHolder
+            LinearGradient={LinearGradient}
+            visible={!loading}
+            style={{ 
+                width: '100%', 
+                height: 90,
+                marginBottom: 10,
+            }}
+        >
         <TouchableOpacity onPress={() => navigation.navigate('AddBank', {item})}>
             <View style={styles.item}>
                 <View style={styles.itemInner}>
@@ -60,6 +71,7 @@ const SelectBank = (props) => {
                 </View>
             </View>
         </TouchableOpacity>
+        </ShimmerPlaceHolder>
     );
 
     return (
