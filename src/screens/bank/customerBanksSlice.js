@@ -14,7 +14,7 @@ const customerBanksSlice = createSlice({
     initialState: {entities: [], loading: false, error: null},
     reducers: {
         resetCustomerBanks: (state) => {
-            state.entities = {};
+            state.entities = [];
             state.loading = false;
             state.error = null;
         },

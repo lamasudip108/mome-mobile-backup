@@ -8,15 +8,14 @@ import {
     StatusBar,
     StyleSheet,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
+import Skeleton from '@/shared/skeleton';
 
 const SelectBank = (props) => {
 
@@ -44,15 +43,6 @@ const SelectBank = (props) => {
     }, [bankOptions]);
 
     const renderItem = ({item}) => (
-        <ShimmerPlaceHolder
-            LinearGradient={LinearGradient}
-            visible={!loading}
-            style={{ 
-                width: '100%', 
-                height: 90,
-                marginBottom: 10,
-            }}
-        >
         <TouchableOpacity onPress={() => navigation.navigate('AddBank', {item})}>
             <View style={styles.item}>
                 <View style={styles.itemInner}>
@@ -63,15 +53,14 @@ const SelectBank = (props) => {
                 </View>
                 <View>
                     {direction === 'ltr' &&
-                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
                     }
                     {direction === 'rtl' &&
-                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
                     }
                 </View>
             </View>
         </TouchableOpacity>
-        </ShimmerPlaceHolder>
     );
 
     return (
@@ -90,11 +79,17 @@ const SelectBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
-                    <FlatList
-                        data={banks}
-                        renderItem={renderItem}
-                        keyExtractor={item => `${item.id}`}
-                    />
+                    {loading ? (
+                        Array.from({length: 6}).map((_, index) => (
+                            <Skeleton key={index}/>
+                        ))
+                    ) : (
+                        <FlatList
+                            data={banks}
+                            renderItem={renderItem}
+                            keyExtractor={item => `${item.id}`}
+                        />
+                    )}
                 </View>
             </View>
         </View>
@@ -109,19 +104,19 @@ const styles = StyleSheet.create({
     content: {
         marginTop: Platform.OS === 'ios' ? 80 : 22,
     },
-    form:{
+    form: {
         flexDirection: 'row',
-        marginTop:30,
+        marginTop: 30,
         marginLeft: 32,
         marginRight: 32,
     },
     searchWrapper: {
         borderBottomColor: Colors.NONARY_BORDER_COLOR,
         backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
-        height:45,
+        height: 45,
         flexDirection: 'row',
-        alignItems:'center',
-        flex:1,
+        alignItems: 'center',
+        flex: 1,
         shadowColor: '#A9A9A933',
         shadowOffset: {width: 0, height: 1},
         shadowOpacity: 0.8,
@@ -141,7 +136,7 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     item: {
-         ...CommonStyles.listItem,
+        ...CommonStyles.listItem,
         borderRadius: 6,
         borderColor: Colors.SENARY_BORDER_COLOR,
         borderWidth: 1,
@@ -153,8 +148,8 @@ const styles = StyleSheet.create({
     },
     circleItem: {
         ...CommonStyles.circleListItem,
-        backgroundColor:Colors.OCTONARY_BACKGROUND_COLOR,
-        height:44,
+        backgroundColor: Colors.OCTONARY_BACKGROUND_COLOR,
+        height: 44,
         width: 44,
         borderRadius: 22,
         borderColor: Colors.SEPTENARY_BORDER_COLOR,
