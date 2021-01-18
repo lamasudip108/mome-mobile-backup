@@ -7,7 +7,7 @@ const Skeleton = () => {
         <View style={styles.skeletonWrapper}>
             <SkeletonPlaceholder>
                 <SkeletonPlaceholder.Item flexDirection="row">
-                    <SkeletonPlaceholder.Item width={50} height={50} borderRadius={6}/>
+                    <SkeletonPlaceholder.Item width={50} height={50} borderRadius={25}/>
                     <SkeletonPlaceholder.Item
                         flex={1}
                         justifyContent={'space-between'}
