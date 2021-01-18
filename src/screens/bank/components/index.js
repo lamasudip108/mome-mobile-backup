@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import {FlatList, Platform, Text, View, Image, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -22,12 +24,22 @@ const MyBank = (props) => {
     }, []);
 
     const renderItem = ({item}) => (
+        <ShimmerPlaceHolder
+            LinearGradient={LinearGradient}
+            visible={!loading}
+            style={{ 
+                width: '100%', 
+                height: 90,
+                marginBottom: 10,
+            }}
+        >
         <View style={styles.listItem}>
             <View style={styles.circleListItem}>
                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
             </View>
             <Text style={styles.listName}>{item.name}</Text>
         </View>
+        </ShimmerPlaceHolder>
     );
 
     return (

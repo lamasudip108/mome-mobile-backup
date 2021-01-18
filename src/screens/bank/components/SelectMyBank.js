@@ -10,7 +10,6 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
-    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,8 +21,6 @@ import {CommonStyles, Typography, Colors} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
-
-const screenHeight = Math.round(Dimensions.get('window').height);
 
 const SelectMyBank = (props) => {
 
@@ -61,14 +58,14 @@ const SelectMyBank = (props) => {
 
     const renderItem = ({item}) => (
         <ShimmerPlaceHolder
-                        LinearGradient={LinearGradient}
-                        visible={!loading}
-                        style={{ 
-                            width: '100%', 
-                            height: 90,
-                            marginBottom: 10,
-                        }}
-                    >
+            LinearGradient={LinearGradient}
+            visible={!loading}
+            style={{ 
+                width: '100%', 
+                height: 90,
+                marginBottom: 10,
+            }}
+        >
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
                     <View style={styles.itemInner}>
@@ -91,7 +88,6 @@ const SelectMyBank = (props) => {
     );
 
     return (
-        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
         <View style={styles.container}>
             <View style={styles.content}>
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -115,7 +111,6 @@ const SelectMyBank = (props) => {
                 </View>
             </View>
         </View>
-        </ScrollView>
     );
 
 };
