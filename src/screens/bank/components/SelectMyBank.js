@@ -46,6 +46,7 @@ const SelectMyBank = (props) => {
             fetchBanksByCustomerIdentifier(customerID);
         };
         fetchCustomerBanksAsync();
+
         return () => {
             cleanCustomerBanks();
         };
@@ -60,8 +61,8 @@ const SelectMyBank = (props) => {
         <ShimmerPlaceHolder
             LinearGradient={LinearGradient}
             visible={!loading}
-            style={{ 
-                width: '100%', 
+            style={{
+                width: '100%',
                 height: 90,
                 marginBottom: 10,
             }}
@@ -72,7 +73,7 @@ const SelectMyBank = (props) => {
                         <View style={styles.circleItem}>
                             <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                         </View>
-                        <Text style={styles.itemName}>{item.name}</Text>
+                        <Text style={styles.itemName}>{item?.bank?.name}</Text>
                     </View>
                     <View>
                         {direction === 'ltr' &&
@@ -107,7 +108,7 @@ const SelectMyBank = (props) => {
                         data={banks}
                         renderItem={renderItem}
                         keyExtractor={item => `${item.id}`}
-                    />                    
+                    />
                 </View>
             </View>
         </View>
