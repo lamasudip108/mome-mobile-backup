@@ -30,7 +30,9 @@ const LoadMoney = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation} = props;
+    const {navigation, route} = props;
+
+    const selectedItem = route?.params?.item;
 
     const {
         handleChange,
@@ -66,7 +68,7 @@ const LoadMoney = (props) => {
                             <View style={styles.circleItem}>
                                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                             </View>
-                            <Text style={styles.itemName}>BANK NAME HERE</Text>
+                            <Text style={styles.itemName}>{selectedItem?.bank?.name}</Text>
                         </View>
                         <View style={styles.amountList}>
                             <View
