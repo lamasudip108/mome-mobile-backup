@@ -1,40 +1,37 @@
 import * as React from 'react';
-import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
-import {Button, CheckBox} from 'native-base';
-import Icon from 'react-native-vector-icons/Feather';
+import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import i18n from 'i18n-js';
 
-import {CommonStyles, Colors, Typography} from '@/theme';
+import {CommonStyles, Colors} from '@/theme';
 
-const RequestingOptions = ({navigation}) => {
+const SendOptions = ({navigation}) => {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
             <View style={styles.content}>
                 <View style={styles.header}>
-                   <Text style={styles.headingText}>{i18n.t('howrequest')}</Text>
+                    <Text style={styles.headingText}>{i18n.t('howsend')}</Text>
                 </View>
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
-                        <TouchableOpacity style={styles.optionsCircle} onPress={() => navigation.navigate('SelectContact11')}>
+                        <TouchableOpacity style={styles.optionsCircle}
+                                          onPress={() => navigation.navigate('SelectContact')}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
-                        <Text style={styles.optionsText}>{i18n.t('scantorequest')}</Text>
+                        <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
                     </View>
 
-                    <View style={{marginLeft:20}}></View>
+                    <View style={{marginLeft: 20}}></View>
 
                     <View style={styles.optionsWrapper}>
-                        <TouchableOpacity style={styles.optionsCircle} onPress={() => navigation.navigate('SelectContact11')}>
+                        <TouchableOpacity style={styles.optionsCircle}
+                                          onPress={() => navigation.navigate('SelectContact')}>
                             <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
                         </TouchableOpacity>
-                        <Text style={styles.optionsText}>{i18n.t('requesttocontacts')}</Text>
+                        <Text style={styles.optionsText}>{i18n.t('sendtocontacts')}</Text>
                     </View>
                 </View>
-       
             </View>
-            
-            
         </View>
     );
 };
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
     content: {
         backgroundColor: Colors.PRIMARY_BACKGROUND_COLOR,
         padding: 32,
-        paddingTop: 20, 
+        paddingTop: 20,
         height: '100%',
         marginTop: Platform.OS === 'ios' ? 200 : 150,
         marginLeft: 32,
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     optionsText: {
         ...CommonStyles.optionsText,
     },
-    image:{},
+    image: {},
 });
 
-export default RequestingOptions;
+export default SendOptions;

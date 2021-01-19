@@ -54,7 +54,7 @@ const Home = (props) => {
                 <View style={styles.fundTransferWrapper}>
                     <View style={styles.fundTransferInner}>
                         <TouchableOpacity style={styles.circleFundTransfer}>
-                            <Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} onPress={() => navigation.navigate('RequestingOptions')}/>
+                            <Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} onPress={() => navigation.navigate('AmountToRequest')}/>
                         </TouchableOpacity>
                         <Text style={styles.fundTransferText}>{i18n.t('request')}</Text>
                     </View>
@@ -62,7 +62,7 @@ const Home = (props) => {
                     <View style={{marginLeft: 20}}></View>
 
                     <View style={styles.fundTransferInner}>
-                        <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('SendingOptions')}>
+                        <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('AmountToSend')}>
                             <Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30}/>
                         </TouchableOpacity>
                         <Text style={styles.fundTransferText}>{i18n.t('send')}</Text>

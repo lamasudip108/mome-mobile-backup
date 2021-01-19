@@ -4,7 +4,6 @@ import {
     Text,
     ScrollView,
     View,
-    Image,
     StatusBar,
     StyleSheet,
     Dimensions,
@@ -49,7 +48,7 @@ const AmountToSend = (props) => {
         },
         onSubmit: values => {
             console.log('Values', values);
-            navigation.navigate('ConfirmFundTransfer', {values: values});
+            navigation.navigate('SendOptions', {values: values});
         },
     });
 

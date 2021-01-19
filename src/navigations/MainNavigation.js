@@ -29,8 +29,8 @@ import AddBankScreen from '@/screens/bank/AddBank';
 import SelectBankScreen from '@/screens/bank/SelectBank';
 import SelectMyBankScreen from '@/screens/bank/SelectMyBank';
 import LoadMoneyScreen from '@/screens/bank/LoadMoney';
-import SendingOptionsScreen from '@/screens/bank/SendingOptions';
-import RequestingOptionsScreen from '@/screens/bank/RequestingOptions';
+import SendOptionsScreen from '@/screens/bank/SendOptions';
+import RequestOptionsScreen from '@/screens/bank/RequestOptions';
 import SelectContactScreen from '@/screens/bank/SelectContact';
 import SelectContact11Screen from '@/screens/bank/SelectContact11';
 import AmountToRequestScreen from '@/screens/bank/AmountToRequest';
@@ -229,9 +229,9 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="SendingOptions" component={SendingOptionsScreen}
+            <Stack.Screen name="SendOptions" component={SendOptionsScreen}
                           options={{
-                              title: 'Sending options',
+                              title: 'Send Options',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',
@@ -240,9 +240,9 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="RequestingOptions" component={RequestingOptionsScreen}
+            <Stack.Screen name="RequestOptions" component={RequestOptionsScreen}
                           options={{
-                              title: 'Requesting options',
+                              title: 'Request Options',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',

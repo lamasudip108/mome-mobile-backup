@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import i18n from 'i18n-js';
 
@@ -10,7 +10,7 @@ const ConfirmFundTransfer = (props) => {
     const {navigation, route} = props;
 
     const confirm  = route?.params?.values;
-    
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -36,9 +36,9 @@ const ConfirmFundTransfer = (props) => {
                     <Button style={styles.button} onPress={() => navigation.navigate('Home')}>
                         <Text style={styles.buttonText}>{i18n.t('confirmsend')}</Text>
                     </Button>
-                </View>  
-                 
-            </View> 
+                </View>
+
+            </View>
         </View>
     );
 };
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     imageContent:{
         marginRight: 15,
     },
-    
+
 });
 
 export default ConfirmFundTransfer;

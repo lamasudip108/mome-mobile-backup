@@ -4,7 +4,6 @@ import {
     Text,
     ScrollView,
     View,
-    Image,
     StatusBar,
     StyleSheet,
     Dimensions,
@@ -49,7 +48,7 @@ const AmountToRequest = (props) => {
         },
         onSubmit: values => {
             console.log('Values', values);
-            navigation.navigate('ConfirmFundRequest', {values: values});
+            navigation.navigate('RequestOptions', {values: values});
         },
     });
 

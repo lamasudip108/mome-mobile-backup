@@ -1,19 +1,19 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import RequestingOptions from './components/RequestingOptions';
+import SendOptions from './components/SendOptions';
 
-const RequestingOptionsScreen = (props) => {
+const SendOptionsScreen = (props) => {
 
     const dispatch = useDispatch();
 
 
     return (
-        <RequestingOptions
+        <SendOptions
             {...props}
         />
     );
 
 };
 
-export default RequestingOptionsScreen;
+export default SendOptionsScreen;

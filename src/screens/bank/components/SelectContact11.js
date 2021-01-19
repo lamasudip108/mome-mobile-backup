@@ -6,11 +6,8 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Alert,
-  ScrollView,
   TextInput,
   FlatList,
-  Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -20,20 +17,22 @@ import {CommonStyles, Typography, Colors} from '@/theme';
 
 export const data = [
         {id:1, icon:"https://bootdey.com/img/Content/avatar/avatar1.png", fname: "Abdul", lname: "Bari"},
-        {id:2, icon:"https://bootdey.com/img/Content/avatar/avatar2.png", fname: "Abdul", lname: "Basit"}, 
-        {id:3, icon:"https://bootdey.com/img/Content/avatar/avatar3.png", fname: "Abdul", lname: "Fattah"}, 
-        {id:4, icon:"https://bootdey.com/img/Content/avatar/avatar4.png", fname: "Abdul", lname: "Ghaffar"}, 
-        {id:5, icon:"https://bootdey.com/img/Content/avatar/avatar5.png", fname: "Abdul", lname: "Bari"}, 
-        {id:6, icon:"https://bootdey.com/img/Content/avatar/avatar6.png", fname: "Abdul", lname: "Basit"}, 
-        {id:7, icon:"https://bootdey.com/img/Content/avatar/avatar1.png", fname: "Abdul", lname: "Fattah"}, 
+        {id:2, icon:"https://bootdey.com/img/Content/avatar/avatar2.png", fname: "Abdul", lname: "Basit"},
+        {id:3, icon:"https://bootdey.com/img/Content/avatar/avatar3.png", fname: "Abdul", lname: "Fattah"},
+        {id:4, icon:"https://bootdey.com/img/Content/avatar/avatar4.png", fname: "Abdul", lname: "Ghaffar"},
+        {id:5, icon:"https://bootdey.com/img/Content/avatar/avatar5.png", fname: "Abdul", lname: "Bari"},
+        {id:6, icon:"https://bootdey.com/img/Content/avatar/avatar6.png", fname: "Abdul", lname: "Basit"},
+        {id:7, icon:"https://bootdey.com/img/Content/avatar/avatar1.png", fname: "Abdul", lname: "Fattah"},
         {id:8, icon:"https://bootdey.com/img/Content/avatar/avatar2.png", fname: "Abdul", lname: "Ghaffar"},
         {id:9, icon:"https://bootdey.com/img/Content/avatar/avatar3.png", fname: "Abdul", lname: "Bari"},
       ];
 
 const SelectContact11 = ({navigation}) => {
+
     const [text, setText] = useState('');
+
     return (
-      
+
         <View style={styles.container}>
 
             <View style={styles.form}>
@@ -48,7 +47,7 @@ const SelectContact11 = ({navigation}) => {
             </View>
 
             <View style={{ marginLeft: 32, marginRight: 32}}>
-              <FlatList 
+              <FlatList
                 horizontal
                 pagingEnabled={true}
                 style={styles.horizontalList}
@@ -58,7 +57,7 @@ const SelectContact11 = ({navigation}) => {
                 }}
                 renderItem={({item}) => {
                   return (
-                    <TouchableOpacity style={styles.horizontalItem} onPress={() => navigation.navigate('AmountToRequest')}>
+                    <TouchableOpacity style={styles.horizontalItem} onPress={() => navigation.navigate('ConfirmFundRequest')}>
                       <View style={styles.horizontalCircle}>
                       <Image style={styles.horizontalImage} source={{uri: item.icon}}/>
                       </View>
@@ -71,7 +70,7 @@ const SelectContact11 = ({navigation}) => {
             <View style={styles.header}>
                 <Text style={styles.headingText}>{i18n.t('selectcontacts')}</Text>
             </View>
-            <FlatList 
+            <FlatList
               style={styles.verticalList}
               data={data}
               keyExtractor= {(item) => {
@@ -79,7 +78,7 @@ const SelectContact11 = ({navigation}) => {
               }}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('AmountToRequest')}>
+                  <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ConfirmFundRequest')}>
                     <View style={styles.cardWrapper}>
                       <Image style={styles.cardImage} source={{uri: item.icon}}/>
                       <Text style={styles.cardName}>{item.fname} {item.lname}</Text>
@@ -89,7 +88,7 @@ const SelectContact11 = ({navigation}) => {
               }}/>
 
             <View style={styles.bottom}>
-                <TouchableOpacity style={styles.bottomWrapper} onPress={() => navigation.navigate('AmountToRequest')}>
+                <TouchableOpacity style={styles.bottomWrapper} onPress={() => navigation.navigate('ConfirmFundRequest')}>
                     <MaterialIcons name="person-add-alt" size={23} color={Colors.SECONDARY_BACKGROUND_COLOR} />
                     <Text style={styles.bottomText}>{i18n.t('invite')}</Text>
                 </TouchableOpacity>
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
     textAlign: I18nManager.isRTL ? 'right' : 'left',
   },
   horizontalList:{
-    flexDirection: 'row', 
+    flexDirection: 'row',
     marginTop: 20,
   },
   horizontalItem: {
@@ -124,18 +123,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   horizontalCircle: {
-    backgroundColor:'rgba(210,212,252,0.50)', 
-    height:56, 
+    backgroundColor:'rgba(210,212,252,0.50)',
+    height:56,
     width: 56,
     borderRadius: 28,
-    borderColor: 'rgba(210,212,252,0.50)', 
+    borderColor: 'rgba(210,212,252,0.50)',
     borderWidth: 1,
     marginBottom: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   horizontalImage:{
-    height:56, 
+    height:56,
     width: 56,
     borderRadius: 28,
   },
@@ -153,9 +152,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   headingText: {
-    fontSize: Typography.FONT_SIZE_TINY_PLUS, 
-    fontFamily: Typography.FONT_SEMI_BOLD, 
-    color: 'rgba(20,21,30,0.40)', 
+    fontSize: Typography.FONT_SIZE_TINY_PLUS,
+    fontFamily: Typography.FONT_SEMI_BOLD,
+    color: 'rgba(20,21,30,0.40)',
     lineHeight: 18,
     textAlign: I18nManager.isRTL ? 'right' : 'left',
   },
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
   },
   cardWrapper:{
     flexDirection:'row',
-    marginLeft: 15, 
+    marginLeft: 15,
   },
   cardImage:{
     width:40,
@@ -225,7 +224,7 @@ const styles = StyleSheet.create({
     fontFamily: Typography.FONT_MEDIUM,
     fontSize: Typography.FONT_SIZE_LARGE,
   },
-});  
+});
 
 export default SelectContact11;
 
