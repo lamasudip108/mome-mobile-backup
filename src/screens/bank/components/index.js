@@ -22,6 +22,10 @@ const MyBank = (props) => {
 
     }, []);
 
+    const renderSkeletonItem = () => (
+        <Skeleton />
+    );
+
     const renderItem = ({item}) => (
         <View style={styles.listItem}>
             <View style={styles.circleListItem}>
@@ -38,17 +42,11 @@ const MyBank = (props) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
-                        {loading ? (
-                            Array.from({length: 3}).map((_, index) => (
-                                <Skeleton key={index}/>
-                            ))
-                        ) : (
                             <FlatList
                                 data={banks}
-                                renderItem={renderItem}
+                                renderItem={loading ? renderSkeletonItem : renderItem}
                                 keyExtractor={item => `${item.id}`}
                             />
-                        )}
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                         <View style={styles.listItem} justifyContent="center">

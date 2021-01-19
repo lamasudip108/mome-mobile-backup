@@ -42,6 +42,10 @@ const SelectBank = (props) => {
         setBanks(bankOptions);
     }, [bankOptions]);
 
+    const renderSkeletonItem = () => (
+        <Skeleton />
+    );
+
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('AddBank', {item})}>
             <View style={styles.item}>
@@ -79,17 +83,13 @@ const SelectBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
-                    {loading ? (
-                        Array.from({length: 6}).map((_, index) => (
-                            <Skeleton key={index}/>
-                        ))
-                    ) : (
+                    
                         <FlatList
                             data={banks}
-                            renderItem={renderItem}
+                            renderItem={loading ? renderSkeletonItem : renderItem}
                             keyExtractor={item => `${item.id}`}
                         />
-                    )}
+                    
                 </View>
             </View>
         </View>

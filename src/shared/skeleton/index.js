@@ -2,22 +2,26 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
+import {Colors} from '@/theme';
+
 const Skeleton = () => {
     return (
         <View style={styles.skeletonWrapper}>
             <SkeletonPlaceholder>
                 <SkeletonPlaceholder.Item flexDirection="row">
-                    <SkeletonPlaceholder.Item width={50} height={50} borderRadius={25}/>
+                    <SkeletonPlaceholder.Item width={44} height={44} borderRadius={22}/>
                     <SkeletonPlaceholder.Item
                         flex={1}
-                        justifyContent={'space-between'}
-                        marginLeft={12}>
+                        justifyContent={'center'}
+                        marginLeft={12}
+                        >
                         <SkeletonPlaceholder.Item
-                            width="60%"
+                            width="100%"
                             height={12}
                             borderRadius={6}
+                            alignItems={'center'}
                         />
-                        <SkeletonPlaceholder.Item
+                        {/*<SkeletonPlaceholder.Item
                             width="40%"
                             height={12}
                             borderRadius={6}
@@ -26,7 +30,7 @@ const Skeleton = () => {
                             width="90%"
                             height={12}
                             borderRadius={6}
-                        />
+                        />*/}
                     </SkeletonPlaceholder.Item>
                 </SkeletonPlaceholder.Item>
             </SkeletonPlaceholder>
@@ -36,12 +40,12 @@ const Skeleton = () => {
 
 const styles = StyleSheet.create({
     skeletonWrapper: {
-        marginBottom: 12,
-        backgroundColor: '#FFF',
-        padding: 10,
+        marginBottom: 10,
+        backgroundColor: Colors.TERTIARY_BACKGROUND_COLOR,
+        padding: 20,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: '#FFFFFF',
+        borderColor: Colors.SENARY_BORDER_COLOR,
     },
 
 });
