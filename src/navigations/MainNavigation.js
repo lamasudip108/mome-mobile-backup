@@ -32,9 +32,11 @@ import LoadMoneyScreen from '@/screens/bank/LoadMoney';
 import SendingOptionsScreen from '@/screens/bank/SendingOptions';
 import RequestingOptionsScreen from '@/screens/bank/RequestingOptions';
 import SelectContactScreen from '@/screens/bank/SelectContact';
+import SelectContact11Screen from '@/screens/bank/SelectContact11';
 import AmountToRequestScreen from '@/screens/bank/AmountToRequest';
 import AmountToSendScreen from '@/screens/bank/AmountToSend';
 import ConfirmFundTransferScreen from '@/screens/bank/ConfirmFundTransfer';
+import ConfirmFundRequestScreen from '@/screens/bank/ConfirmFundRequest';
 
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
@@ -260,6 +262,17 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
+            <Stack.Screen name="SelectContact11" component={SelectContact11Screen}
+                          options={{
+                              title: 'Select Contact',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
             <Stack.Screen name="AmountToRequest" component={AmountToRequestScreen}
                           options={{
                               title: 'Amount to request',
@@ -285,6 +298,17 @@ const MainNavigation = () => {
             <Stack.Screen name="ConfirmFundTransfer" component={ConfirmFundTransferScreen}
                           options={{
                               title: 'Confirm fund transfer',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="ConfirmFundRequest" component={ConfirmFundRequestScreen}
+                          options={{
+                              title: 'Confirm fund request',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',

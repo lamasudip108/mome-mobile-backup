@@ -49,10 +49,7 @@ const AmountToRequest = (props) => {
         },
         onSubmit: values => {
             console.log('Values', values);
-            navigation.navigate('ConfirmFundTransfer', {
-                screen: 'ConfirmFundTransfer',
-                params: {amount: values},
-            });
+            navigation.navigate('ConfirmFundRequest', {values: values});
         },
     });
 

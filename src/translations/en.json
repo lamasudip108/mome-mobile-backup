@@ -98,4 +98,5 @@
   "via": "VIA",
   "wallet": "Wallet",
   "confirmsend": "CONFIRM & SEND",
+  "confirmrequest": "CONFIRM & REQUEST",
 }
