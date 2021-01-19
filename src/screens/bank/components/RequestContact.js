@@ -27,9 +27,12 @@ export const data = [
         {id:9, icon:"https://bootdey.com/img/Content/avatar/avatar3.png", fname: "Abdul", lname: "Bari"},
       ];
 
-const SelectContact = ({navigation}) => {
+const RequestContact = ({navigation}) => {
+
     const [text, setText] = useState('');
+
     return (
+
         <View style={styles.container}>
 
             <View style={styles.form}>
@@ -75,7 +78,7 @@ const SelectContact = ({navigation}) => {
               }}
               renderItem={({item}) => {
                 return (
-                  <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ConfirmFundTransfer')}>
+                  <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ConfirmFundRequest')}>
                     <View style={styles.cardWrapper}>
                       <Image style={styles.cardImage} source={{uri: item.icon}}/>
                       <Text style={styles.cardName}>{item.fname} {item.lname}</Text>
@@ -85,7 +88,7 @@ const SelectContact = ({navigation}) => {
               }}/>
 
             <View style={styles.bottom}>
-                <TouchableOpacity style={styles.bottomWrapper} onPress={() => navigation.navigate('ConfirmFundTransfer')}>
+                <TouchableOpacity style={styles.bottomWrapper} onPress={() => navigation.navigate('ConfirmFundRequest')}>
                     <MaterialIcons name="person-add-alt" size={23} color={Colors.SECONDARY_BACKGROUND_COLOR} />
                     <Text style={styles.bottomText}>{i18n.t('invite')}</Text>
                 </TouchableOpacity>
@@ -223,5 +226,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SelectContact;
+export default RequestContact;
 

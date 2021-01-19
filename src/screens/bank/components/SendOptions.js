@@ -15,7 +15,7 @@ const SendOptions = ({navigation}) => {
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SelectContact')}>
+                                          onPress={() => navigation.navigate('SendContact')}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
@@ -25,7 +25,7 @@ const SendOptions = ({navigation}) => {
 
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SelectContact')}>
+                                          onPress={() => navigation.navigate('SendContact')}>
                             <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('sendtocontacts')}</Text>

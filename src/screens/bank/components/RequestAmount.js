@@ -19,13 +19,13 @@ import i18n from 'i18n-js';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const AmountToSendSchema = Yup.object().shape({
+const AmountToRequestSchema = Yup.object().shape({
     amount: Yup
         .string()
         .required('Amount is required.'),
 });
 
-const AmountToSend = (props) => {
+const RequestAmount = (props) => {
 
     const {direction} = useDirection();
 
@@ -42,13 +42,12 @@ const AmountToSend = (props) => {
         isValid,
     } = useFormik({
         enableReinitialize: true,
-        validationSchema: AmountToSendSchema,
+        validationSchema: AmountToRequestSchema,
         initialValues: {
             amount: '100',
         },
         onSubmit: values => {
-            console.log('Values', values);
-            navigation.navigate('SendOptions', {values: values});
+            navigation.navigate('RequestOptions', {values: values});
         },
     });
 
@@ -93,7 +92,7 @@ const AmountToSend = (props) => {
                         </View>
 
                         <View style={{alignItems: 'flex-start', justifyContent:'flex-start'}}>
-                            <Text style={styles.text5}>{i18n.t('sending')}</Text>
+                            <Text style={styles.text5}>{i18n.t('requesting')}</Text>
                         </View>
                         <TextInput
                             keyboardType="numeric"
@@ -211,4 +210,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AmountToSend;
+export default RequestAmount;

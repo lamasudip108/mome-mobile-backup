@@ -1,19 +1,19 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import AmountToRequest from './components/AmountToRequest';
+import ConfirmFundSend from './components/ConfirmFundSend';
 
-const AmountToRequestScreen = (props) => {
+const ConfirmFundSendScreen = (props) => {
 
     const dispatch = useDispatch();
 
 
     return (
-        <AmountToRequest
+        <ConfirmFundSend
             {...props}
         />
     );
 
 };
 
-export default AmountToRequestScreen;
+export default ConfirmFundSendScreen;

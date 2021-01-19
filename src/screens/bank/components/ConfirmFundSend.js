@@ -5,7 +5,7 @@ import i18n from 'i18n-js';
 
 import {CommonStyles, Typography, Colors} from '@/theme';
 
-const ConfirmFundTransfer = (props) => {
+const ConfirmFundSend = (props) => {
 
     const {navigation, route} = props;
 
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default ConfirmFundTransfer;
+export default ConfirmFundSend;

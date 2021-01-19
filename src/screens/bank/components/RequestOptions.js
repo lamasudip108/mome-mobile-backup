@@ -15,7 +15,7 @@ const RequestOptions = ({navigation}) => {
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SelectContact11')}>
+                                          onPress={() => navigation.navigate('RequestContact')}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantorequest')}</Text>
@@ -25,7 +25,7 @@ const RequestOptions = ({navigation}) => {
 
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SelectContact11')}>
+                                          onPress={() => navigation.navigate('RequestContact')}>
                             <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('requesttocontacts')}</Text>
