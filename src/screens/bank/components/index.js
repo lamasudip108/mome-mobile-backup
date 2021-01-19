@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 import {FlatList, Platform, Text, View, Image, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+import Skeleton from '@/shared/skeleton';
 
 const MyBank = (props) => {
 
@@ -23,23 +22,17 @@ const MyBank = (props) => {
 
     }, []);
 
+    const renderSkeletonItem = () => (
+        <Skeleton />
+    );
+
     const renderItem = ({item}) => (
-        <ShimmerPlaceHolder
-            LinearGradient={LinearGradient}
-            visible={!loading}
-            style={{
-                width: '100%',
-                height: 90,
-                marginBottom: 10,
-            }}
-        >
         <View style={styles.listItem}>
             <View style={styles.circleListItem}>
                 <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
             </View>
             <Text style={styles.listName}>{item?.bank?.name}</Text>
         </View>
-        </ShimmerPlaceHolder>
     );
 
     return (
@@ -49,11 +42,11 @@ const MyBank = (props) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
-                        <FlatList
-                            data={banks}
-                            renderItem={renderItem}
-                            keyExtractor={item => `${item.id}`}
-                        />
+                            <FlatList
+                                data={banks}
+                                renderItem={loading ? renderSkeletonItem : renderItem}
+                                keyExtractor={item => `${item.id}`}
+                            />
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                         <View style={styles.listItem} justifyContent="center">

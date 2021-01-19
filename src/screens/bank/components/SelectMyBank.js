@@ -4,7 +4,6 @@ import {
     FlatList,
     Text,
     View,
-    ScrollView,
     Image,
     StatusBar,
     StyleSheet,
@@ -12,8 +11,6 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import LinearGradient from 'react-native-linear-gradient';
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -21,6 +18,7 @@ import {CommonStyles, Typography, Colors} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+import Skeleton from '@/shared/skeleton';
 
 const SelectMyBank = (props) => {
 
@@ -57,35 +55,29 @@ const SelectMyBank = (props) => {
         setBanks(bankOptions);
     }, [bankOptions]);
 
+    const renderSkeletonItem = () => (
+        <Skeleton />
+    );
+
     const renderItem = ({item}) => (
-        <ShimmerPlaceHolder
-            LinearGradient={LinearGradient}
-            visible={!loading}
-            style={{
-                width: '100%',
-                height: 90,
-                marginBottom: 10,
-            }}
-        >
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
             <View style={styles.item}>
-                    <View style={styles.itemInner}>
-                        <View style={styles.circleItem}>
-                            <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
-                        </View>
-                        <Text style={styles.itemName}>{item?.bank?.name}</Text>
+                <View style={styles.itemInner}>
+                    <View style={styles.circleItem}>
+                        <Image style={styles.circleImage} source={require('@/assets/img/bank.png')}/>
                     </View>
-                    <View>
-                        {direction === 'ltr' &&
-                        <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                        }
-                        {direction === 'rtl' &&
-                        <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
-                        }
-                    </View>
+                    <Text style={styles.itemName}>{item?.bank?.name}</Text>
+                </View>
+                <View>
+                    {direction === 'ltr' &&
+                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                    }
+                    {direction === 'rtl' &&
+                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR}/>
+                    }
+                </View>
             </View>
         </TouchableOpacity>
-        </ShimmerPlaceHolder>
     );
 
     return (
@@ -104,11 +96,13 @@ const SelectMyBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
+                    
                     <FlatList
                         data={banks}
-                        renderItem={renderItem}
+                        renderItem={loading ? renderSkeletonItem : renderItem}
                         keyExtractor={item => `${item.id}`}
                     />
+                    
                 </View>
             </View>
         </View>
