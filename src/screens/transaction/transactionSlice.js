@@ -5,7 +5,7 @@ import {fetch} from '@/utils/httpUtil';
 export const fetchTransactionByCustomerID = createAsyncThunk(
     'transaction/fetchByCustomerID',
     (identifier, {rejectWithValue}) => {
-        return fetch(`api/transactions/${identifier}`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return fetch(`api/customers/${identifier}/transactions`).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 

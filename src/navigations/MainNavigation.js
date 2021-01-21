@@ -17,7 +17,7 @@ import SignUpScreen from '@/screens/auth/SignUp';
 import ForgotScreen from '@/screens/auth/Forgot';
 
 import EditProfileScreen from '@/screens/profile/EditProfile';
-import MyCodeScreen from '@/screens/profile/MyCode';
+import MyQRCodeScreen from '@/screens/profile/MyQRCode';
 
 import TransactionScreen from '@/screens/transaction';
 
@@ -222,7 +222,7 @@ const MainNavigation = () => {
             />
             <Stack.Screen name="LoadMoney" component={LoadMoneyScreen}
                           options={{headerTitle: '', headerTransparent: true}}/>
-            <Stack.Screen name="MyCode" component={MyCodeScreen}
+            <Stack.Screen name="MyQRCode" component={MyQRCodeScreen}
                           options={{
                               title: 'Scan to Request',
                               headerTintColor: '#000',

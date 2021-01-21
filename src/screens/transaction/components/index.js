@@ -17,16 +17,7 @@ import {decodeUserID} from '@/utils/tokenUtil';
 
 const Transaction = (props) => {
 
-    const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction} = props;
-
-    const [transaction, setTransaction] = useState([]);
-
-    const transactionOptions = [
-        {id: '1', name: 'AI Nakheel Mall', date: '4 October 2020, 8:30 AM', amount: '250'},
-        {id: '2', name: 'The Outlet', date: '4 October 2020, 10:45 AM', amount: '1250'},
-        {id: '3', name: 'Mall of the Emirates', date: '3 October 2020, 11:45 AM', amount: '110'},
-        {id: '4', name: 'Khaadi Sharjah', date: '3 October 2020, 1:05 PM', amount: '3500'},
-    ];
+    const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction, profile} = props;
 
     useEffect(() => {
         const fetchCustomerTransactionAsync = async () => {
@@ -35,8 +26,6 @@ const Transaction = (props) => {
             fetchTransactionByCustomerIdentifier(customerID);
         };
         fetchCustomerTransactionAsync();
-
-        setTransaction(transactionOptions);
 
         return () => {
             cleanCustomerTransaction();
@@ -49,8 +38,8 @@ const Transaction = (props) => {
                 <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
             </View>
             <View style={styles.listInfo}>
-                <Text style={styles.listName}>{item.name}</Text>
-                <Text style={styles.listDate}>{item.date}</Text>
+                <Text style={styles.listName}>{item.vendor_name}</Text>
+                <Text style={styles.listDate}>{item.created_at}</Text>
             </View>
             <Text style={styles.listAmount}>-${item.amount}</Text>
         </View>
@@ -78,7 +67,7 @@ const Transaction = (props) => {
                                           onPress={() => navigation.navigate('MyTransaction')}>
                             <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
                         </TouchableOpacity>
-                        <Text style={styles.transactionsSummaryNumber}>$2550.00</Text>
+                        <Text style={styles.transactionsSummaryNumber}>${profile?.total_purchase}</Text>
                         <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
                     </View>
                 </View>
@@ -95,7 +84,7 @@ const Transaction = (props) => {
                 </View>
                 <View style={[styles.list, styles.todayHeight]}>
                     <FlatList
-                        data={transaction}
+                        data={transactions?.[0]}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                     />
@@ -107,7 +96,7 @@ const Transaction = (props) => {
                     </View>
                     <View style={[styles.list, styles.yesterdayHeight]}>
                         <FlatList
-                            data={transaction}
+                            data={transactions?.[1]}
                             renderItem={renderItem}
                             keyExtractor={item => item.id}
                         />
