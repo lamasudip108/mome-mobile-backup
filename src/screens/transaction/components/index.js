@@ -19,7 +19,7 @@ const Transaction = (props) => {
 
     const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction} = props;
 
-    const [transaction, setTransaction] = useState([]);
+   // const [transaction, setTransaction] = useState([]);
 
     const transactionOptions = [
         {id: '1', name: 'AI Nakheel Mall', date: '4 October 2020, 8:30 AM', amount: '250'},
@@ -36,7 +36,7 @@ const Transaction = (props) => {
         };
         fetchCustomerTransactionAsync();
 
-        setTransaction(transactionOptions);
+        //setTransaction(transactionOptions);
 
         return () => {
             cleanCustomerTransaction();
@@ -49,8 +49,8 @@ const Transaction = (props) => {
                 <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
             </View>
             <View style={styles.listInfo}>
-                <Text style={styles.listName}>{item.name}</Text>
-                <Text style={styles.listDate}>{item.date}</Text>
+                <Text style={styles.listName}>{item.vendor_name}</Text>
+                <Text style={styles.listDate}>{item.created_at}</Text>
             </View>
             <Text style={styles.listAmount}>-${item.amount}</Text>
         </View>
@@ -95,7 +95,7 @@ const Transaction = (props) => {
                 </View>
                 <View style={[styles.list, styles.todayHeight]}>
                     <FlatList
-                        data={transaction}
+                        data={transactions?.[0]}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                     />
@@ -107,7 +107,7 @@ const Transaction = (props) => {
                     </View>
                     <View style={[styles.list, styles.yesterdayHeight]}>
                         <FlatList
-                            data={transaction}
+                            data={transactions?.[1]}
                             renderItem={renderItem}
                             keyExtractor={item => item.id}
                         />

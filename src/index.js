@@ -13,8 +13,8 @@ import {LanguageProvider} from '@/context/language';
 import {AuthProvider} from '@/context/auth';
 import SplashScreen from '@/screens/splash';
 
-// XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
-//     GLOBAL.originalXMLHttpRequest : GLOBAL.XMLHttpRequest;
+XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
+    GLOBAL.originalXMLHttpRequest : GLOBAL.XMLHttpRequest;
 
 let fakeApiCallWithoutBadNetwork = (ms) =>
     new Promise((resolve) => setTimeout(resolve, ms));

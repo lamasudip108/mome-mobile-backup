@@ -30,7 +30,7 @@ export const AuthProvider = ({children}) => {
                         }, responseType: 'json',
                     });
                     if (response.data.success) {
-                        await setAsyncStorage(JWT_TOKEN, response.data.token);
+                        await setAsyncStorage(JWT_TOKEN, response.data.data.token);
                         navigate('Home');
                     } else {
                         setLoading(false);

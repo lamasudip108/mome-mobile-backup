@@ -34,8 +34,9 @@ const MyQRCodeForm = (props) => {
                             email: profile?.email,
                             phone: profile?.phone,
                         }]}
+                        size={257}
                         logo={require('@/assets/img/mome-logo-transparent.png')}
-                        logoSize={30}
+                        logoSize={50}
                         logoBackgroundColor='transparent'
                     />
                 </View>
