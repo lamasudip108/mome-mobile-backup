@@ -32,6 +32,12 @@ const Transaction = (props) => {
         };
     }, []);
 
+    const EmptyListMessage = ({item}) => {
+        return (
+          <Text style={styles.emptyList}>{i18n.t('nodata')}</Text>
+        );
+    };
+
     const renderItem = ({item}) => (
         <View style={styles.listItem}>
             <View style={styles.circleListItem}>
@@ -87,6 +93,7 @@ const Transaction = (props) => {
                         data={transactions?.[0]}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
+                        ListEmptyComponent={EmptyListMessage}
                     />
                 </View>
 
@@ -99,6 +106,7 @@ const Transaction = (props) => {
                             data={transactions?.[1]}
                             renderItem={renderItem}
                             keyExtractor={item => item.id}
+                            ListEmptyComponent={EmptyListMessage}
                         />
                     </View>
                 </View>
@@ -241,6 +249,9 @@ const styles = StyleSheet.create({
         fontSize: Typography.FONT_SIZE_MEDIUM,
         fontFamily: Typography.FONT_BOLD,
         lineHeight: 21,
+    },
+    emptyList: {
+        ...CommonStyles.emptyList,
     },
 
 });

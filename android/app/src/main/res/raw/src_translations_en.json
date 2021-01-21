@@ -50,7 +50,7 @@
   "paymentsetting": "PAYMENT SETTING",
   "addfund": "ADD FUND",
   "mytransactions": "My Transactions",
-  "mycode": "My Code",
+  "myqrcode": "My QR Code",
   "mybanks": "My Banks",
   "how": "How it works",
   "tc": "Terms and Conditions",
@@ -81,8 +81,6 @@
   "tapselect": "Tap to select or provide your desired amount",
   "enteramount": "ENTER AMOUNT",
   "loadfund": "LOAD FUND",
-<<<<<<< HEAD
-=======
   "searchcontact": "Search Contact",
   "selectcontacts": "SELECT CONTACTS",
   "invite": "Invite a friend",
@@ -100,5 +98,5 @@
   "via": "VIA",
   "wallet": "Wallet",
   "confirmsend": "CONFIRM & SEND",
->>>>>>> 577bb23c366b14c892d3c52a358c7323fec3abb0
+  "confirmrequest": "CONFIRM & REQUEST",
 }

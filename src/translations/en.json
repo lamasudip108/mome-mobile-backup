@@ -99,4 +99,5 @@
   "wallet": "Wallet",
   "confirmsend": "CONFIRM & SEND",
   "confirmrequest": "CONFIRM & REQUEST",
+  "nodata": "No Data Found",
 }

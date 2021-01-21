@@ -301,5 +301,10 @@ export default StyleSheet.create({
         marginTop: 15,
         marginLeft: 15,
     },
+    emptyList: {
+        padding: 10,
+        fontSize: 18,
+        textAlign: 'center',
+    },
 
 });

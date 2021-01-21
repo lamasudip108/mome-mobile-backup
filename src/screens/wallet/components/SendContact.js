@@ -71,7 +71,7 @@ const SendContact = (props) => {
                                 <View style={styles.horizontalCircle}>
                                     <Image style={styles.horizontalImage} source={{uri: item.icon}}/>
                                 </View>
-                                <Text style={styles.horizontalName}>{item.fname} {item.lname}</Text>
+                                <Text style={styles.horizontalName}>{item.first_name} {item.last_name}</Text>
                             </TouchableOpacity>
                         );
                     }}/>
@@ -100,7 +100,7 @@ const SendContact = (props) => {
                                           })}>
                             <View style={styles.cardWrapper}>
                                 <Image style={styles.cardImage} source={{uri: item.icon}}/>
-                                <Text style={styles.cardName}>{item.fname} {item.lname}</Text>
+                                <Text style={styles.cardName}>{item.first_name} {item.last_name}</Text>
                             </View>
                         </TouchableOpacity>
                     );

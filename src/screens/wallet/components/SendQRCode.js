@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     content: {
-        marginTop: Platform.OS === 'ios' ? 60 : 30,
+        marginTop: Platform.OS === 'ios' ? 90 : 40,
     },
     meta: {
         flexDirection: 'row',
