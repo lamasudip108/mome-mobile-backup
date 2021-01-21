@@ -6,7 +6,7 @@ export const updateCustomerByID = createAsyncThunk(
     'password/updateByID',
      (formData, {rejectWithValue}) => {
         const {id, ...fields} = formData;
-        return store(`api/customers/${id}/updatePassword`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
+        return store(`api/customers/${id}/update-password`, fields).then(response => response.data.data).catch(error => rejectWithValue(error?.response?.data || error));
     },
 );
 
