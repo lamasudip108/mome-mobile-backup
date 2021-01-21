@@ -24,7 +24,7 @@ const ConfirmFundRequest = (props) => {
                         <Text style={styles.text}>{i18n.t('to')}</Text>
                         <View style={styles.contact}>
                             <Image style={[styles.image, styles.imageContent]} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
-                            <Text style={styles.text1}>Robbin Gorkhali</Text>
+                            <Text style={styles.text1}>{result.first_name} {result.last_name}</Text>
                         </View>
                     </View>
                     <View style={styles.viewWrapper}>
