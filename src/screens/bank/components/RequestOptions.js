@@ -15,7 +15,7 @@ const RequestOptions = ({navigation}) => {
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('RequestContact')}>
+                                          onPress={() => navigation.navigate('RequestQRCode')}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantorequest')}</Text>
