@@ -17,16 +17,7 @@ import {decodeUserID} from '@/utils/tokenUtil';
 
 const Transaction = (props) => {
 
-    const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction} = props;
-
-   // const [transaction, setTransaction] = useState([]);
-
-    const transactionOptions = [
-        {id: '1', name: 'AI Nakheel Mall', date: '4 October 2020, 8:30 AM', amount: '250'},
-        {id: '2', name: 'The Outlet', date: '4 October 2020, 10:45 AM', amount: '1250'},
-        {id: '3', name: 'Mall of the Emirates', date: '3 October 2020, 11:45 AM', amount: '110'},
-        {id: '4', name: 'Khaadi Sharjah', date: '3 October 2020, 1:05 PM', amount: '3500'},
-    ];
+    const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction, profile} = props;
 
     useEffect(() => {
         const fetchCustomerTransactionAsync = async () => {
@@ -35,8 +26,6 @@ const Transaction = (props) => {
             fetchTransactionByCustomerIdentifier(customerID);
         };
         fetchCustomerTransactionAsync();
-
-        //setTransaction(transactionOptions);
 
         return () => {
             cleanCustomerTransaction();
@@ -78,7 +67,7 @@ const Transaction = (props) => {
                                           onPress={() => navigation.navigate('MyTransaction')}>
                             <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
                         </TouchableOpacity>
-                        <Text style={styles.transactionsSummaryNumber}>$2550.00</Text>
+                        <Text style={styles.transactionsSummaryNumber}>${profile?.total_purchase}</Text>
                         <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
                     </View>
                 </View>

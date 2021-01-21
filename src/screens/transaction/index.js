@@ -9,6 +9,7 @@ const TransactionScreen = (props) => {
     const dispatch = useDispatch();
 
     const {entities, loading, error} = useSelector(state => state.transactions);
+    const profile = useSelector((state) => state.profile.entities);
 
 
     /**
@@ -31,6 +32,7 @@ const TransactionScreen = (props) => {
     return (
         <Transaction
             {...props}
+            profile={profile}
             transactions={entities}
             loading={loading}
             error={error}
