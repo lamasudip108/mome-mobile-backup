@@ -21,7 +21,7 @@ const SendOptions = (props) => {
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
                                           onPress={() => navigation.navigate('SendQRCode', { amount: amount })}>
-                            <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
+                            <Image style={styles.image} source={require('../../../assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
                     </View>
@@ -31,7 +31,7 @@ const SendOptions = (props) => {
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
                                           onPress={() => navigation.navigate('SendContact', { amount: amount })}>
-                            <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
+                            <Image style={styles.image} source={require('../../../assets/img/contacts.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('sendtocontacts')}</Text>
                     </View>

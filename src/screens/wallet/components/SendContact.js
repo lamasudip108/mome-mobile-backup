@@ -27,15 +27,13 @@ export const data = [
     {id: 9, icon: 'https://bootdey.com/img/Content/avatar/avatar3.png', first_name: 'Abdul', last_name: 'Bari'},
 ];
 
-const RequestContact = (props) => {
+const SendContact = (props) => {
 
     const {navigation, route} = props;
     const amount = route?.params?.amount;
 
     const [text, setText] = useState('');
-
     return (
-
         <View style={styles.container}>
 
             <View style={styles.form}>
@@ -61,7 +59,7 @@ const RequestContact = (props) => {
                     renderItem={({item}) => {
                         return (
                             <TouchableOpacity style={styles.horizontalItem}
-                                              onPress={() => navigation.navigate('ConfirmFundRequest', {
+                                              onPress={() => navigation.navigate('RequestConfirmation', {
                                                   result: {
                                                       customerID: item.id,
                                                       first_name: item?.first_name,
@@ -90,15 +88,16 @@ const RequestContact = (props) => {
                 }}
                 renderItem={({item}) => {
                     return (
-                        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ConfirmFundRequest', {
-                            result: {
-                                customerID: item.id,
-                                first_name: item?.first_name,
-                                last_name: item?.last_name,
-                                email: item?.email,
-                                phone: item?.phone,
-                            }, amount,
-                        })}>
+                        <TouchableOpacity style={styles.card}
+                                          onPress={() => navigation.navigate('RequestConfirmation', {
+                                              result: {
+                                                  customerID: item.id,
+                                                  first_name: item?.first_name,
+                                                  last_name: item?.last_name,
+                                                  email: item?.email,
+                                                  phone: item?.phone,
+                                              }, amount,
+                                          })}>
                             <View style={styles.cardWrapper}>
                                 <Image style={styles.cardImage} source={{uri: item.icon}}/>
                                 <Text style={styles.cardName}>{item.fname} {item.lname}</Text>
@@ -109,7 +108,7 @@ const RequestContact = (props) => {
 
             <View style={styles.bottom}>
                 <TouchableOpacity style={styles.bottomWrapper}
-                                  onPress={() => navigation.navigate('ConfirmFundRequest')}>
+                                  onPress={() => navigation.navigate('RequestConfirmation')}>
                     <MaterialIcons name="person-add-alt" size={23} color={Colors.SECONDARY_BACKGROUND_COLOR}/>
                     <Text style={styles.bottomText}>{i18n.t('invite')}</Text>
                 </TouchableOpacity>
@@ -247,5 +246,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RequestContact;
+export default SendContact;
 

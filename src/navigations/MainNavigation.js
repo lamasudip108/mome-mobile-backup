@@ -30,17 +30,17 @@ import SelectBankScreen from '@/screens/bank/SelectBank';
 import SelectMyBankScreen from '@/screens/bank/SelectMyBank';
 import LoadMoneyScreen from '@/screens/bank/LoadMoney';
 
-import RequestAmountScreen from '@/screens/bank/RequestAmount';
-import RequestOptionsScreen from '@/screens/bank/RequestOptions';
-import RequestContactScreen from '@/screens/bank/RequestContact';
-import RequestQRCodeScreen from '@/screens/bank/RequestQRCode';
-import ConfirmFundSendScreen from '@/screens/bank/ConfirmFundSend';
+import RequestAmountScreen from '@/screens/wallet/RequestAmount';
+import RequestOptionsScreen from '@/screens/wallet/RequestOptions';
+import RequestContactScreen from '@/screens/wallet/RequestContact';
+import RequestQRCodeScreen from '@/screens/wallet/RequestQRCode';
+import RequestConfirmationScreen from '@/screens/wallet/RequestConfirmation';
 
-import SendAmountScreen from '@/screens/bank/SendAmount';
-import SendOptionsScreen from '@/screens/bank/SendOptions';
-import SendContactScreen from '@/screens/bank/SendContact';
-import SendQRCodeScreen from '@/screens/bank/SendQRCode';
-import ConfirmFundRequestScreen from '@/screens/bank/ConfirmFundRequest';
+import SendAmountScreen from '@/screens/wallet/SendAmount';
+import SendOptionsScreen from '@/screens/wallet/SendOptions';
+import SendContactScreen from '@/screens/wallet/SendContact';
+import SendQRCodeScreen from '@/screens/wallet/SendQRCode';
+import SendConfirmationScreen from '@/screens/wallet/SendConfirmation';
 
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
@@ -266,7 +266,18 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="ConfirmFundRequest" component={ConfirmFundRequestScreen}
+            <Stack.Screen name="RequestQRCode" component={RequestQRCodeScreen}
+                          options={{
+                              title: 'Scan to Request',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="RequestConfirmation" component={RequestConfirmationScreen}
                           options={{
                               title: 'Confirm fund request',
                               headerTintColor: '#000',
@@ -310,7 +321,18 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="ConfirmFundSend" component={ConfirmFundSendScreen}
+            <Stack.Screen name="SendQRCode" component={SendQRCodeScreen}
+                          options={{
+                              title: 'Scan to Request',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="SendConfirmation" component={SendConfirmationScreen}
                           options={{
                               title: 'Confirm fund transfer',
                               headerTintColor: '#000',

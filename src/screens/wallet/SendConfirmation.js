@@ -1,19 +1,19 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import ConfirmFundRequest from './components/ConfirmFundRequest';
+import SendConfirmation from './components/SendConfirmation';
 
-const ConfirmFundRequestScreen = (props) => {
+const SendConfirmationScreen = (props) => {
 
     const dispatch = useDispatch();
 
 
     return (
-        <ConfirmFundRequest
+        <SendConfirmation
             {...props}
         />
     );
 
 };
 
-export default ConfirmFundRequestScreen;
+export default SendConfirmationScreen;

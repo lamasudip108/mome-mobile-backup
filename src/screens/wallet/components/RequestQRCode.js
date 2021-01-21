@@ -17,7 +17,7 @@ const RequestQRCode = (props) => {
     const [cameraTorch, setCameraTorch] = useState(false);
 
     const onSuccess = scanEvent => {
-        navigation.navigate('ConfirmFundRequest', { result: scanEvent, amount });
+        navigation.navigate('RequestConfirmation', { result: scanEvent, amount });
     };
 
     const handleTorchToggle = () => {
@@ -33,8 +33,8 @@ const RequestQRCode = (props) => {
                 <View style={styles.meta}>
                     <TouchableOpacity onPress={() => handleTorchToggle()}>
                         {cameraTorch ?
-                            <Image source={require('@/assets/img/light-on.png')}/> :
-                            <Image source={require('@/assets/img/light-off.png')}/>
+                            <Image source={require('../../../assets/img/light-on.png')}/> :
+                            <Image source={require('../../../assets/img/light-off.png')}/>
                         }
                     </TouchableOpacity>
                     <TouchableOpacity>
