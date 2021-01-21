@@ -33,8 +33,8 @@ const SendQRCode = (props) => {
                 <View style={styles.meta}>
                     <TouchableOpacity onPress={() => handleTorchToggle()}>
                         {cameraTorch ?
-                            <Image source={require('../../../assets/img/light-on.png')}/> :
-                            <Image source={require('../../../assets/img/light-off.png')}/>
+                            <Image source={require('@/assets/img/light-on.png')}/> :
+                            <Image source={require('@/assets/img/light-off.png')}/>
                         }
                     </TouchableOpacity>
                     <TouchableOpacity>
