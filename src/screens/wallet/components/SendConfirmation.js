@@ -1,15 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Typography, Colors} from '@/theme';
 
-const ConfirmFundSend = (props) => {
+const SendConfirmation = (props) => {
 
     const {navigation, route} = props;
 
-    const confirm  = route?.params?.values;
+    const {result, amount} = route?.params;
 
     return (
         <View style={styles.container}>
@@ -18,13 +18,14 @@ const ConfirmFundSend = (props) => {
                 <View style={styles.contentWrapper}>
                     <View style={[styles.viewWrapper, styles.borderBottom]}>
                         <Text style={styles.text}>{i18n.t('amount')}</Text>
-                        <Text style={styles.text1}>${confirm.amount}</Text>
+                        <Text style={styles.text1}>${amount}</Text>
                     </View>
                     <View style={[styles.viewWrapper, styles.borderBottom]}>
                         <Text style={styles.text}>{i18n.t('to')}</Text>
                         <View style={styles.contact}>
-                            <Image style={[styles.image, styles.imageContent]} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
-                            <Text style={styles.text1}>Robbin Gorkhali</Text>
+                            <Image style={[styles.image, styles.imageContent]}
+                                   source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
+                            <Text style={styles.text1}>{result.first_name} {result.last_name}</Text>
                         </View>
                     </View>
                     <View style={styles.viewWrapper}>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         width: '70%',
     },
-    viewWrapper:{
+    viewWrapper: {
         paddingTop: 15,
         paddingBottom: 15,
         paddingLeft: 10,
@@ -98,15 +99,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 7,
     },
-    image:{
-        width:40,
-        height:40,
-        borderRadius:20,
+    image: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
     },
-    imageContent:{
+    imageContent: {
         marginRight: 15,
     },
 
 });
 
-export default ConfirmFundSend;
+export default SendConfirmation;

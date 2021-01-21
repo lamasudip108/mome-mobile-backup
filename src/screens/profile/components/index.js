@@ -68,7 +68,7 @@ const Profile = (props) => {
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.UNDENARY_BACKGROUND_COLOR}>
 			            				<Image style={{height: 18, width: 18, marginLeft: 2}} source={require('@/assets/img/my-code.png')}/>
 			            			</View>
-		            				<Text style={styles.listName}>{i18n.t('mycode')}</Text>
+		            				<Text style={styles.listName}>{i18n.t('myqrcode')}</Text>
 		            			</View>
 		            			<View>
 		            				{direction === 'ltr' &&

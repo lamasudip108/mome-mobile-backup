@@ -1,10 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors} from '@/theme';
 
-const SendOptions = ({navigation}) => {
+const SendOptions = (props) => {
+
+    const {navigation, route} = props;
+
+    const {amount} = route?.params?.values;
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -15,7 +20,7 @@ const SendOptions = ({navigation}) => {
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SendContact')}>
+                                          onPress={() => navigation.navigate('SendQRCode', { amount: amount })}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
@@ -25,7 +30,7 @@ const SendOptions = ({navigation}) => {
 
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SendContact')}>
+                                          onPress={() => navigation.navigate('SendContact', { amount: amount })}>
                             <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('sendtocontacts')}</Text>

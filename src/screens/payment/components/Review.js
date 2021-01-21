@@ -8,7 +8,7 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const PayingToForm = (props) => {
+const ReviewForm = (props) => {
 
     const {navigation, route, payment, loading, error, payBillAmount} = props;
     const QRData = route?.params?.result;
@@ -32,6 +32,9 @@ const PayingToForm = (props) => {
         onSubmit: values => {
             values.id = 1;
             payBillAmount(values);
+            if (error === null) {
+                navigation.navigate('PaymentConfirmation');
+            }
         },
     });
 
@@ -246,4 +249,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PayingToForm;
+export default ReviewForm;

@@ -7,14 +7,17 @@ import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const SendQRCode = ({navigation}) => {
+const RequestQRCode = (props) => {
+
+    const {navigation, route} = props;
+    const amount = route?.params?.amount;
 
     let scanner;
 
     const [cameraTorch, setCameraTorch] = useState(false);
 
     const onSuccess = scanEvent => {
-        navigation.navigate('ConfirmFundSend', { result: scanEvent });
+        navigation.navigate('RequestConfirmation', { result: scanEvent, amount });
     };
 
     const handleTorchToggle = () => {
@@ -117,4 +120,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SendQRCode;
+export default RequestQRCode;

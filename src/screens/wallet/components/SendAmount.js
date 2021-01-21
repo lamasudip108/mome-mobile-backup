@@ -9,13 +9,13 @@ import {
     Dimensions,
 } from 'react-native';
 import {Button} from 'native-base';
-import TextInput from '@/shared/form/TextInput';
-
-import {useDirection} from '@/context/language';
-import {CommonStyles, Typography, Colors} from '@/theme';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import i18n from 'i18n-js';
+
+import TextInput from '@/shared/form/TextInput';
+import {useDirection} from '@/context/language';
+import {CommonStyles, Typography, Colors} from '@/theme';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
