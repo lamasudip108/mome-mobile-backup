@@ -1,10 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import PayingToForm from './components/PayingTo';
+import ReviewForm from './components/Review';
 import {payAmount} from './paymentSlice';
 
-const PayingToScreen = (props) => {
+const ReviewScreen = (props) => {
 
     const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const PayingToScreen = (props) => {
 
 
     return (
-        <PayingToForm
+        <ReviewForm
             {...props}
             payment={entities}
             loading={loading}
@@ -32,4 +32,4 @@ const PayingToScreen = (props) => {
 
 };
 
-export default PayingToScreen;
+export default ReviewScreen;

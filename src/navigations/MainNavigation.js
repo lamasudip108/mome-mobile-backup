@@ -21,8 +21,8 @@ import MyQRCodeScreen from '@/screens/profile/MyQRCode';
 
 import TransactionScreen from '@/screens/transaction';
 
-import PayingToScreen from '@/screens/payment/PayingTo';
-import PayingSuccessScreen from '@/screens/payment/PayingSuccess';
+import PaymentReviewScreen from '@/screens/payment/Review';
+import PaymentConfirmationScreen from '@/screens/payment/Confirmation';
 
 import MyBankScreen from '@/screens/bank';
 import AddBankScreen from '@/screens/bank/AddBank';
@@ -371,8 +371,8 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}/>
             <Stack.Screen name="TermsConditions" component={TermsConditionsScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="PayingTo" component={PayingToScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="PayingSuccess" component={PayingSuccessScreen} options={{headerShown: false}}/>
+            <Stack.Screen name="PaymentReview" component={PaymentReviewScreen} options={{headerShown: false}}/>
+            <Stack.Screen name="PaymentConfirmation" component={PaymentConfirmationScreen} options={{headerShown: false}}/>
 
         </Stack.Navigator>
     );

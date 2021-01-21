@@ -14,7 +14,7 @@ const QRCode = ({navigation}) => {
     const [cameraTorch, setCameraTorch] = useState(false);
 
     const onSuccess = scanEvent => {
-        navigation.navigate('PayingTo', { result: scanEvent });
+        navigation.navigate('PaymentReview', { result: scanEvent });
     };
 
     const handleTorchToggle = () => {

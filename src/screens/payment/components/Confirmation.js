@@ -5,7 +5,7 @@ import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
-const PayingSuccess = ({navigation}) => {
+const Confirmation = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PayingSuccess;
+export default Confirmation;
