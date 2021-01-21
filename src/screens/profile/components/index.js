@@ -62,7 +62,7 @@ const Profile = (props) => {
 		            			</View>
 		            		</View>
 	            		</TouchableOpacity>
-	            		<TouchableOpacity onPress={() => navigation.navigate('MyCode')}>
+	            		<TouchableOpacity onPress={() => navigation.navigate('MyQRCode')}>
 		            		<View style={styles.listItem}>
 		            			<View style={styles.listItemInner}>
 			            			<View style={styles.roundedWrapper} backgroundColor={Colors.UNDENARY_BACKGROUND_COLOR}>
