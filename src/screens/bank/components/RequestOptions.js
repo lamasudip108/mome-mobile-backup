@@ -1,10 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors} from '@/theme';
 
-const RequestOptions = ({navigation}) => {
+const RequestOptions = (props) => {
+
+    const {navigation, route} = props;
+
+    const {amount} = route?.params?.values;
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
@@ -15,7 +20,7 @@ const RequestOptions = ({navigation}) => {
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('RequestQRCode')}>
+                                          onPress={() => navigation.navigate('RequestQRCode', { amount: amount })}>
                             <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantorequest')}</Text>
@@ -25,7 +30,7 @@ const RequestOptions = ({navigation}) => {
 
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('RequestContact')}>
+                                          onPress={() => navigation.navigate('RequestContact', { amount: amount })}>
                             <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('requesttocontacts')}</Text>

@@ -27,7 +27,10 @@ export const data = [
         {id:9, icon:"https://bootdey.com/img/Content/avatar/avatar3.png", fname: "Abdul", lname: "Bari"},
       ];
 
-const RequestContact = ({navigation}) => {
+const RequestContact = (props) => {
+
+    const {navigation, route} = props;
+    const amount = route?.params?.amount;
 
     const [text, setText] = useState('');
 

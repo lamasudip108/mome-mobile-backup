@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
 import {Button} from 'native-base';
 import i18n from 'i18n-js';
@@ -9,7 +9,7 @@ const ConfirmFundRequest = (props) => {
 
     const {navigation, route} = props;
 
-    const confirm  = route?.params?.values;
+    const {result, amount}  = route?.params?.values;
 
     return (
         <View style={styles.container}>
@@ -18,7 +18,7 @@ const ConfirmFundRequest = (props) => {
                 <View style={styles.contentWrapper}>
                     <View style={[styles.viewWrapper, styles.borderBottom]}>
                         <Text style={styles.text}>{i18n.t('amount')}</Text>
-                        <Text style={styles.text1}>${confirm.amount}</Text>
+                        <Text style={styles.text1}>${amount}</Text>
                     </View>
                     <View style={[styles.viewWrapper, styles.borderBottom]}>
                         <Text style={styles.text}>{i18n.t('to')}</Text>
