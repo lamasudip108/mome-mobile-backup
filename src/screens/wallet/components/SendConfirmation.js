@@ -27,7 +27,7 @@ const SendConfirmation = (props) => {
             sendMoneyToCustomer(values);
             if (error === null) {
                 navigation.navigate('Home');
-                ToastMessage.show('Request send successfully.');
+                ToastMessage.show('Request sent successfully.');
             }
         },
     });

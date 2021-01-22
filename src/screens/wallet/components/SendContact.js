@@ -115,13 +115,13 @@ const SendContact = (props) => {
                     );
                 }}/>
 
-            <View style={styles.bottom}>
-                <TouchableOpacity style={styles.bottomWrapper}
-                                  onPress={() => navigation.navigate('RequestConfirmation')}>
-                    <MaterialIcons name="person-add-alt" size={23} color={Colors.SECONDARY_BACKGROUND_COLOR}/>
-                    <Text style={styles.bottomText}>{i18n.t('invite')}</Text>
-                </TouchableOpacity>
-            </View>
+            {/*<View style={styles.bottom}>*/}
+                {/*<TouchableOpacity style={styles.bottomWrapper}*/}
+                                  {/*onPress={() => navigation.navigate('RequestConfirmation')}>*/}
+                    {/*<MaterialIcons name="person-add-alt" size={23} color={Colors.SECONDARY_BACKGROUND_COLOR}/>*/}
+                    {/*<Text style={styles.bottomText}>{i18n.t('invite')}</Text>*/}
+                {/*</TouchableOpacity>*/}
+            {/*</View>*/}
 
         </View>
     );
