@@ -22,6 +22,9 @@ import banksReducer from '@/screens/bank/banksSlice';
 import customerBankReducer from '@/screens/bank/customerBankSlice';
 import customerBanksReducer from '@/screens/bank/customerBanksSlice';
 
+import walletReducer from '@/screens/wallet/walletSlice';
+import contactsReducer from '@/screens/wallet/contactsSlice';
+
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
@@ -37,6 +40,8 @@ const reducers = combineReducers({
     banks: banksReducer,
     customerBank: customerBankReducer,
     customerBanks: customerBanksReducer,
+    wallets: walletReducer,
+    contacts: contactsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

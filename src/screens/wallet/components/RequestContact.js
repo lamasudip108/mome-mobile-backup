@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     I18nManager,
     StyleSheet,
@@ -14,6 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Typography, Colors} from '@/theme';
+import {useDirection} from '@/context/language';
 
 export const data = [
     {id: 1, icon: 'https://bootdey.com/img/Content/avatar/avatar1.png', first_name: 'Abdul', last_name: 'Bari'},
@@ -29,10 +30,16 @@ export const data = [
 
 const RequestContact = (props) => {
 
-    const {navigation, route} = props;
+    const {navigation, route, contacts, loading, error, fetchAllContacts} = props;
     const amount = route?.params?.amount;
 
+    const {direction} = useDirection();
+
     const [text, setText] = useState('');
+
+    useEffect(() => {
+        fetchAllContacts();
+    }, []);
 
     return (
 

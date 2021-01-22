@@ -1,15 +1,36 @@
 import React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
 import {Button} from 'native-base';
+import {useFormik} from 'formik';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Typography, Colors} from '@/theme';
+import ToastMessage from '@/shared/toast';
 
 const SendConfirmation = (props) => {
 
-    const {navigation, route} = props;
+    const {navigation, route, loading, error, sendMoneyToCustomer} = props;
 
     const {result, amount} = route?.params;
+
+    const {
+        handleSubmit,
+        isValid,
+    } = useFormik({
+        enableReinitialize: true,
+        initialValues: {
+            fromCustomerId: result?.id,
+            toCustomerId: result?.id,
+            amount: amount,
+        },
+        onSubmit: values => {
+            sendMoneyToCustomer(values);
+            if (error === null) {
+                navigation.navigate('Home');
+                ToastMessage.show('Request send successfully.');
+            }
+        },
+    });
 
     return (
         <View style={styles.container}>
@@ -34,7 +55,7 @@ const SendConfirmation = (props) => {
                     </View>
                 </View>
                 <View style={styles.buttonWrapper}>
-                    <Button style={styles.button} onPress={() => navigation.navigate('Home')}>
+                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
                         <Text style={styles.buttonText}>{i18n.t('confirmsend')}</Text>
                     </Button>
                 </View>
