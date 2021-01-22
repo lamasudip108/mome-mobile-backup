@@ -22,9 +22,13 @@ const MyBank = (props) => {
 
     }, []);
 
-    const renderSkeletonItem = () => (
-        <Skeleton />
-    );
+    const EmptyListMessage = ({item}) => {
+        return (
+            <View style={styles.emptyList}>
+              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
+            </View>
+        );
+    };
 
     const renderItem = ({item}) => (
         <View style={styles.listItem}>
@@ -42,11 +46,20 @@ const MyBank = (props) => {
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.contentWrapper}>
                     <View style={styles.list}>
-                            <FlatList
+                        {
+                            loading ? (
+                                Array.from({length: 3}).map((_, index) => (
+                                    <Skeleton key={index}/>
+                                ))
+                            ) 
+                            : 
+                            (<FlatList
                                 data={banks}
-                                renderItem={loading ? renderSkeletonItem : renderItem}
+                                renderItem={renderItem}
                                 keyExtractor={item => `${item.id}`}
-                            />
+                                ListEmptyComponent={EmptyListMessage}
+                            />)
+                        }
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
                         <View style={styles.listItem} justifyContent="center">
@@ -112,6 +125,13 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         color: Colors.PRIMARY_TEXT_COLOR,
         padding: 9,
+    },
+    emptyList: {
+        ...CommonStyles.emptyList,
+        height: 300,
+    },
+    emptyMessage: {
+        ...CommonStyles.emptyMessage,
     },
 
 });

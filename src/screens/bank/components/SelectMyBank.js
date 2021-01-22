@@ -9,6 +9,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import i18n from 'i18n-js';
@@ -19,6 +20,8 @@ import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
 import Skeleton from '@/shared/skeleton';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const SelectMyBank = (props) => {
 
@@ -55,9 +58,13 @@ const SelectMyBank = (props) => {
         setBanks(bankOptions);
     }, [bankOptions]);
 
-    const renderSkeletonItem = () => (
-        <Skeleton />
-    );
+    const EmptyListMessage = ({item}) => {
+        return (
+            <View style={styles.emptyList}>
+              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
+            </View>
+        );
+    };
 
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={() => navigation.navigate('LoadMoney', {item})}>
@@ -96,13 +103,20 @@ const SelectMyBank = (props) => {
                 </View>
 
                 <View style={styles.listWrapper}>
-                    
-                    <FlatList
-                        data={banks}
-                        renderItem={loading ? renderSkeletonItem : renderItem}
-                        keyExtractor={item => `${item.id}`}
-                    />
-                    
+                    {
+                        loading ? (
+                            Array.from({length: 9}).map((_, index) => (
+                                <Skeleton key={index}/>
+                            ))
+                        ) 
+                        :
+                        (<FlatList
+                            data={banks}
+                            renderItem={loading ? renderSkeletonItem : renderItem}
+                            keyExtractor={item => `${item.id}`}
+                            ListEmptyComponent={EmptyListMessage}
+                        />)
+                    }
                 </View>
             </View>
         </View>
@@ -157,6 +171,13 @@ const styles = StyleSheet.create({
     itemName: {
         ...CommonStyles.listName,
         fontFamily: Typography.FONT_NORMAL,
+    },
+    emptyList: {
+        ...CommonStyles.emptyList,
+        height: screenHeight/2,
+    },
+    emptyMessage: {
+        ...CommonStyles.emptyMessage,
     },
 });
 

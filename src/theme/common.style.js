@@ -302,8 +302,10 @@ export default StyleSheet.create({
         marginLeft: 15,
     },
     emptyList: {
-        padding: 10,
-        fontSize: 18,
+        flex: 1,
+        justifyContent: 'center',
+    },
+    emptyMessage: {
         textAlign: 'center',
     },
 

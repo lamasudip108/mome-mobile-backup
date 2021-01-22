@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import {
+    I18nManager,
     FlatList,
     Platform,
     Text,
     View,
     Image,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Dimensions,
 } from 'react-native';
 import i18n from 'i18n-js';
 
@@ -14,6 +16,7 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+import SkeletonThreeColumn from '@/shared/skeleton/SkeletonThreeColumn';
 
 const Transaction = (props) => {
 
@@ -34,7 +37,9 @@ const Transaction = (props) => {
 
     const EmptyListMessage = ({item}) => {
         return (
-          <Text style={styles.emptyList}>{i18n.t('nodata')}</Text>
+            <View style={styles.emptyList}>
+              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
+            </View>
         );
     };
 
@@ -89,12 +94,21 @@ const Transaction = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.list, styles.todayHeight]}>
-                    <FlatList
-                        data={transactions?.[0]}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                        ListEmptyComponent={EmptyListMessage}
-                    />
+                    {
+                        loading ? (
+                            Array.from({length: 2}).map((_, index) => (
+                                <SkeletonThreeColumn key={index}/>
+                            ))
+                        ) 
+                        : 
+                        (<FlatList
+                            data={transactions?.[0]}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                            ListEmptyComponent={EmptyListMessage}
+                        />) 
+
+                    }   
                 </View>
 
                 <View style={{paddingTop: 5}}>
@@ -102,12 +116,21 @@ const Transaction = (props) => {
                         <Text style={styles.middleContentText}>{i18n.t('yesterday')}</Text>
                     </View>
                     <View style={[styles.list, styles.yesterdayHeight]}>
-                        <FlatList
-                            data={transactions?.[1]}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                            ListEmptyComponent={EmptyListMessage}
-                        />
+                        {
+                            loading ? (
+                                Array.from({length: 2}).map((_, index) => (
+                                    <SkeletonThreeColumn key={index}/>
+                                ))
+                            ) 
+                            : 
+                            (<FlatList
+                                data={transactions?.[1]}
+                                renderItem={renderItem}
+                                keyExtractor={item => item.id}
+                                ListEmptyComponent={EmptyListMessage}
+                            />) 
+
+                        }
                     </View>
                 </View>
 
@@ -224,6 +247,9 @@ const styles = StyleSheet.create({
         padding: 20,
         marginBottom: 10,
     },
+    itemInner: {
+        ...CommonStyles.listItemInner,
+    },
     circleListItem: {
         ...CommonStyles.circleListItem,
         backgroundColor: Colors.OCTONARY_BACKGROUND_COLOR,
@@ -233,16 +259,22 @@ const styles = StyleSheet.create({
         width: 60,
         borderRadius: 30,
     },
-    listInfo: {},
+    listInfo: {
+        alignItems:'flex-start',
+        justifyContent:'flex-start',
+    },
     listName: {
         ...CommonStyles.listName,
-        marginLeft: 0,
+        marginLeft: 20,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     listDate: {
         color: 'rgba(20,21,30,0.60)',
         fontSize: Typography.FONT_SIZE_TINY_PLUS,
         lineHeight: 18,
         fontFamily: Typography.FONT_NORMAL,
+        marginLeft: 20,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
     },
     listAmount: {
         color: Colors.OCTONARY_TEXT_COLOR,
@@ -252,6 +284,10 @@ const styles = StyleSheet.create({
     },
     emptyList: {
         ...CommonStyles.emptyList,
+        height: 200,
+    },
+    emptyMessage: {
+        ...CommonStyles.emptyMessage,
     },
 
 });
