@@ -57,7 +57,8 @@ const SendContact = (props) => {
 
             <View style={{marginLeft: 32, marginRight: 32}}>
                 <FlatList
-                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    horizontal={true}
                     pagingEnabled={true}
                     style={styles.horizontalList}
                     data={data}
@@ -129,7 +130,7 @@ const SendContact = (props) => {
 const styles = StyleSheet.create({
     container: {
         ...CommonStyles.container,
-        paddingTop: 90,
+        paddingTop: Platform.OS === 'ios' ? 90 : 40,
     },
     form: {
         ...CommonStyles.form,
@@ -215,6 +216,8 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
+        backgroundColor: 'rgba(210,212,252,0.50)',
+        borderColor: 'rgba(210,212,252,0.50)',
     },
     cardName: {
         fontFamily: Typography.FONT_MEDIUM,

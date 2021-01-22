@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {
     I18nManager,
+    Platform,
     FlatList,
     Text,
     View,

@@ -37,7 +37,7 @@ const Transaction = (props) => {
 
     const EmptyListMessage = ({item}) => {
         return (
-            <View style={styles.emptyList}>
+            <View style={[styles.emptyList, transactions?.[0] ? styles.todayEmptyListHeight : styles.yesterdayEmptyListHeight]}>
               <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
             </View>
         );
@@ -284,10 +284,15 @@ const styles = StyleSheet.create({
     },
     emptyList: {
         ...CommonStyles.emptyList,
-        height: 200,
     },
     emptyMessage: {
         ...CommonStyles.emptyMessage,
+    },
+    todayEmptyListHeight: {
+        height: 230,
+    },
+    yesterdayEmptyListHeight: {
+        height: Platform.OS === 'ios' ? 200 : 120,
     },
 
 });
