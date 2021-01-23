@@ -5,10 +5,12 @@ import {
     Platform,
     Text,
     View,
+    ScrollView,
     Image,
     StyleSheet,
     TouchableOpacity,
     Dimensions,
+    YellowBox,
 } from 'react-native';
 import i18n from 'i18n-js';
 
@@ -17,6 +19,10 @@ import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
 import SkeletonThreeColumn from '@/shared/skeleton/SkeletonThreeColumn';
+
+YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const Transaction = (props) => {
 
@@ -57,65 +63,44 @@ const Transaction = (props) => {
      );
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <View style={styles.topContent}>
+                <View style={styles.topContent}>
 
-                <View style={styles.transactionsSummary}>
-                    <View style={styles.transactionsSummaryWrapper}>
-                        <TouchableOpacity style={styles.circleTransactionsSummary}
-                                          onPress={() => navigation.navigate('ContactUs')}>
-                            <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
-                        </TouchableOpacity>
-                        <Text style={styles.transactionsSummaryNumber}>250</Text>
-                        <Text style={styles.transactionsSummaryText}>{i18n.t('transaction')}</Text>
+                    <View style={styles.transactionsSummary}>
+                        <View style={styles.transactionsSummaryWrapper}>
+                            <TouchableOpacity style={styles.circleTransactionsSummary}
+                                              onPress={() => navigation.navigate('ContactUs')}>
+                                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
+                            </TouchableOpacity>
+                            <Text style={styles.transactionsSummaryNumber}>250</Text>
+                            <Text style={styles.transactionsSummaryText}>{i18n.t('transaction')}</Text>
+                        </View>
+
+                        <View style={{marginLeft: 20}}></View>
+
+                        <View style={styles.transactionsSummaryWrapper}>
+                            <TouchableOpacity style={styles.circleTransactionsSummary}
+                                              onPress={() => navigation.navigate('MyTransaction')}>
+                                <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
+                            </TouchableOpacity>
+                            <Text style={styles.transactionsSummaryNumber}>${profile?.total_purchase}</Text>
+                            <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
+                        </View>
                     </View>
 
-                    <View style={{marginLeft: 20}}></View>
-
-                    <View style={styles.transactionsSummaryWrapper}>
-                        <TouchableOpacity style={styles.circleTransactionsSummary}
-                                          onPress={() => navigation.navigate('MyTransaction')}>
-                            <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
-                        </TouchableOpacity>
-                        <Text style={styles.transactionsSummaryNumber}>${profile?.total_purchase}</Text>
-                        <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
-                    </View>
                 </View>
 
-            </View>
-
-            <View style={styles.middleContent}>
-                <View style={styles.middleContentHeading}>
-                    <Text style={styles.middleContentText}>{i18n.t('today')}</Text>
-                    <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text style={styles.filter}>{i18n.t('filter')}</Text>
-                        <Image style={{height: 9, width: 9}} source={require('@/assets/img/filter.png')}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={[styles.list, styles.todayHeight]}>
-                    {
-                        loading ? (
-                            Array.from({length: 2}).map((_, index) => (
-                                <SkeletonThreeColumn key={index}/>
-                            ))
-                        ) 
-                        : 
-                        (<FlatList
-                            data={transactions?.[0]}
-                            renderItem={renderItem}
-                            keyExtractor={item => item.id}
-                            ListEmptyComponent={EmptyListMessage}
-                        />) 
-
-                    }   
-                </View>
-
-                <View style={{paddingTop: 5}}>
+                <View style={styles.middleContent}>
                     <View style={styles.middleContentHeading}>
-                        <Text style={styles.middleContentText}>{i18n.t('yesterday')}</Text>
+                        <Text style={styles.middleContentText}>{i18n.t('today')}</Text>
+                        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Text style={styles.filter}>{i18n.t('filter')}</Text>
+                            <Image style={{height: 9, width: 9}} source={require('@/assets/img/filter.png')}/>
+                        </TouchableOpacity>
                     </View>
-                    <View style={[styles.list, styles.yesterdayHeight]}>
+                    <View style={[styles.list, styles.todayHeight]}>
                         {
                             loading ? (
                                 Array.from({length: 2}).map((_, index) => (
@@ -124,20 +109,43 @@ const Transaction = (props) => {
                             ) 
                             : 
                             (<FlatList
-                                data={transactions?.[1]}
+                                data={transactions?.[0]}
                                 renderItem={renderItem}
                                 keyExtractor={item => item.id}
                                 ListEmptyComponent={EmptyListMessage}
                             />) 
 
-                        }
+                        }   
                     </View>
+
+                    <View style={{paddingTop: 5}}>
+                        <View style={styles.middleContentHeading}>
+                            <Text style={styles.middleContentText}>{i18n.t('yesterday')}</Text>
+                        </View>
+                        <View style={[styles.list, styles.yesterdayHeight]}>
+                            {
+                                loading ? (
+                                    Array.from({length: 2}).map((_, index) => (
+                                        <SkeletonThreeColumn key={index}/>
+                                    ))
+                                ) 
+                                : 
+                                (<FlatList
+                                    data={transactions?.[1]}
+                                    renderItem={renderItem}
+                                    keyExtractor={item => item.id}
+                                    ListEmptyComponent={EmptyListMessage}
+                                />) 
+
+                            }
+                        </View>
+                    </View>
+
                 </View>
 
+
             </View>
-
-
-        </View>
+        </ScrollView>
     );
 
 };

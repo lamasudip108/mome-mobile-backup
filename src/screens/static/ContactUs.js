@@ -1,5 +1,14 @@
 import  React from 'react';
-import {I18nManager, Platform, Text, View, Image, ScrollView, StyleSheet} from 'react-native';
+import {
+    I18nManager, 
+    Platform, 
+    Text, 
+    View, 
+    Image, 
+    ScrollView, 
+    StyleSheet, 
+    Dimensions
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -7,60 +16,64 @@ import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
+const screenHeight = Math.round(Dimensions.get('window').height);
+
 const ContactUsScreen = ({navigation}) => {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <View style={styles.topContent}>
-                <Image style={styles.momeLogo} source={require('@/assets/img/mome-logo-transparent.png')}/>
-            </View>
+                <View style={styles.topContent}>
+                    <Image style={styles.momeLogo} source={require('@/assets/img/mome-logo-transparent.png')}/>
+                </View>
 
-            <View style={styles.middleContent}>
-                <View style={styles.middleCircleWrapper}>
-                    <View style={styles.circleEnvelope}>
-                        <Icon name="envelope" size={20} color={Colors.UNDENARY_TEXT_COLOR} />
+                <View style={styles.middleContent}>
+                    <View style={styles.middleCircleWrapper}>
+                        <View style={styles.circleEnvelope}>
+                            <Icon name="envelope" size={20} color={Colors.UNDENARY_TEXT_COLOR} />
+                        </View>
+                        <View style={{ marginRight: 60}} />
+                        <View style={styles.circleMessage}>
+                            <MaterialCommunityIcons name="message-text" color={Colors.DUODENARY_TEXT_COLOR} size={20} />
+                        </View>
+                        <View style={{ marginRight: 60}} />
+                        <View style={styles.circlePhone}>
+                            <MaterialCommunityIcons name="phone" color={Colors.THRIODENARY_TEXT_COLOR} size={20}  />
+                        </View>
                     </View>
-                    <View style={{ marginRight: 60}} />
-                    <View style={styles.circleMessage}>
-                        <MaterialCommunityIcons name="message-text" color={Colors.DUODENARY_TEXT_COLOR} size={20} />
-                    </View>
-                    <View style={{ marginRight: 60}} />
-                    <View style={styles.circlePhone}>
-                        <MaterialCommunityIcons name="phone" color={Colors.THRIODENARY_TEXT_COLOR} size={20}  />
+
+                    <View style={styles.contentWrapper}>
+                	   <Text style={styles.headingText1}>{i18n.t('aboutus')}</Text>
+                       <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
+                           <Text style={styles.paragraph}>
+                            is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged.is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            It has survived not only five centuries, but also the leap into electronic typesetting,
+                            remaining essentially unchanged.
+                           </Text>
+                       </ScrollView>
                     </View>
                 </View>
 
-                <View style={styles.contentWrapper}>
-            	   <Text style={styles.headingText1}>{i18n.t('aboutus')}</Text>
-                   <ScrollView style={{ height: Platform.OS === 'ios' ? 260 : 200,}}>
-                       <Text style={styles.paragraph}>
-                        is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged.is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged.
-                       </Text>
-                   </ScrollView>
+                <View style={styles.bottomContent}>
+                    <View style={styles.circleLocation}>
+                        <Ionicons name="location-outline" size={25} color={Colors.PRIMARY_TEXT_COLOR} />
+                    </View>
+                    <Text style={styles.locationText}>
+                        Financial Center Street,
+                        Along Sheikh Zayed Road,
+                        Next to Burj Khalifa - United Arab Emirates
+                    </Text>
                 </View>
+
+
             </View>
-
-            <View style={styles.bottomContent}>
-                <View style={styles.circleLocation}>
-                    <Ionicons name="location-outline" size={25} color={Colors.PRIMARY_TEXT_COLOR} />
-                </View>
-                <Text style={styles.locationText}>
-                    Financial Center Street,
-                    Along Sheikh Zayed Road,
-                    Next to Burj Khalifa - United Arab Emirates
-                </Text>
-            </View>
-
-
-        </View>
+        </ScrollView>
     );
 };
 
@@ -165,6 +178,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         color: Colors.TERTIARY_TEXT_COLOR,
         fontFamily: Typography.FONT_MEDIUM,
+        alignItems:'center',
     },
 });
 

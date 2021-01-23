@@ -1,11 +1,22 @@
 import React, {useState} from 'react';
-import {TouchableOpacity, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
+import {
+    TouchableOpacity, 
+    Text, 
+    ScrollView, 
+    View, 
+    Image, 
+    StyleSheet, 
+    StatusBar, 
+    Dimensions
+} from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const QRCode = ({navigation}) => {
 
@@ -22,57 +33,59 @@ const QRCode = ({navigation}) => {
     };
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.TERTIARY_BACKGROUND_COLOR}/>
 
-            <View style={styles.content}>
+                <View style={styles.content}>
 
-                <View style={styles.meta}>
-                    <TouchableOpacity onPress={() => handleTorchToggle()}>
-                        {cameraTorch ?
-                            <Image source={require('@/assets/img/light-on.png')}/> :
-                            <Image source={require('@/assets/img/light-off.png')}/>
-                        }
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text onPress={() => navigation.goBack()}>
-                            <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
+                    <View style={styles.meta}>
+                        <TouchableOpacity onPress={() => handleTorchToggle()}>
+                            {cameraTorch ?
+                                <Image source={require('@/assets/img/light-on.png')}/> :
+                                <Image source={require('@/assets/img/light-off.png')}/>
+                            }
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text onPress={() => navigation.goBack()}>
+                                <AntIcon name="close" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.topContent}>
+                        <Text style={styles.topText}>
+                            {i18n.t('placeqr')}
                         </Text>
-                    </TouchableOpacity>
-                </View>
+                    </View>
 
-                <View style={styles.topContent}>
-                    <Text style={styles.topText}>
-                        {i18n.t('placeqr')}
-                    </Text>
-                </View>
+                    <View style={{ flex: 1, alignItems:'center', width: '100%'}}>
+                        <QRCodeScanner
+                            reactivate={true}
+                            ref={(camera) => scanner = camera}
+                            showMarker={true}
+                            onRead={onSuccess}
+                            flashMode={cameraTorch ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
+                            topContent={
+                                <Text style={styles.centerText} textAlign="center"></Text>
+                            }
+                            bottomContent={
+                                <TouchableOpacity>
+                                    <Text style={styles.bottomText}>{i18n.t('okgot')}</Text>
+                                </TouchableOpacity>
+                            }
+                            markerStyle={{
+                                position: 'absolute',
+                                top: '20%',
+                                borderColor: Colors.DENARY_BORDER_COLOR,
+                            }}
+                        />
+                    </View>
 
-                <View style={{ flex: 1, alignItems:'center'}}>
-                    <QRCodeScanner
-                        reactivate={true}
-                        ref={(camera) => scanner = camera}
-                        showMarker={true}
-                        onRead={onSuccess}
-                        flashMode={cameraTorch ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
-                        topContent={
-                            <Text style={styles.centerText} textAlign="center"></Text>
-                        }
-                        bottomContent={
-                            <TouchableOpacity>
-                                <Text style={styles.bottomText}>{i18n.t('okgot')}</Text>
-                            </TouchableOpacity>
-                        }
-                        markerStyle={{
-                            position: 'absolute',
-                            top: '20%',
-                            borderColor: Colors.DENARY_BORDER_COLOR,
-                        }}
-                    />
                 </View>
 
             </View>
-
-        </View>
+        </ScrollView>
     );
 };
 
@@ -85,6 +98,7 @@ const styles = StyleSheet.create({
     },
     content: {
         marginTop: Platform.OS === 'ios' ? 60 : 30,
+        width: '100%',
     },
     meta: {
         flexDirection: 'row',

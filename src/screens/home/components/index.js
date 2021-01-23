@@ -1,5 +1,16 @@
 import React, {useEffect} from 'react';
-import {I18nManager, Image, Platform, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+    I18nManager, 
+    Image, 
+    Platform, 
+    StatusBar, 
+    StyleSheet, 
+    Text, 
+    TouchableOpacity, 
+    View,
+    ScrollView,
+    Dimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import i18n from 'i18n-js';
 
@@ -7,6 +18,8 @@ import {CommonStyles, Colors, Typography} from '@/theme';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const Home = (props) => {
 
@@ -23,61 +36,63 @@ const Home = (props) => {
     }, []);
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
-            <View style={styles.topContent}>
-                <View style={styles.topContentLeft}>
-                    <View style={styles.topContentLeftCol}>
-                        <Text style={styles.topContentText}>{i18n.t('welcomeback')},</Text>
-                        <Text style={styles.name}>{profile?.first_name} {profile?.last_name}!</Text>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
+                <View style={styles.topContent}>
+                    <View style={styles.topContentLeft}>
+                        <View style={styles.topContentLeftCol}>
+                            <Text style={styles.topContentText}>{i18n.t('welcomeback')},</Text>
+                            <Text style={styles.name}>{profile?.first_name} {profile?.last_name}!</Text>
+                        </View>
+                        {/*<View style={styles.topContentLeftCol}>*/}
+                        {/*<Text style={styles.topContentText}>{i18n.t('wallet')}</Text>*/}
+                        {/*<Text style={styles.walletAmount}>$ 2500</Text>*/}
+                        {/*</View>*/}
                     </View>
-                    {/*<View style={styles.topContentLeftCol}>*/}
-                    {/*<Text style={styles.topContentText}>{i18n.t('wallet')}</Text>*/}
-                    {/*<Text style={styles.walletAmount}>$ 2500</Text>*/}
+                    {/*<View style={styles.topContentRight}>*/}
+
+                    {/*<View style={styles.circle}>*/}
+                    {/*<Image style={styles.shoppingcart} source={require('@/assets/img/cart.png')}/>*/}
                     {/*</View>*/}
-                </View>
-                {/*<View style={styles.topContentRight}>*/}
+                    {/*<Text style={styles.purchaseAmount}>$2550.00</Text>*/}
+                    {/*<Text style={styles.purchaseText}>{i18n.t('total')}</Text>*/}
+                    {/*</View>*/}
 
-                {/*<View style={styles.circle}>*/}
-                {/*<Image style={styles.shoppingcart} source={require('@/assets/img/cart.png')}/>*/}
-                {/*</View>*/}
-                {/*<Text style={styles.purchaseAmount}>$2550.00</Text>*/}
-                {/*<Text style={styles.purchaseText}>{i18n.t('total')}</Text>*/}
-                {/*</View>*/}
-
-            </View>
-
-            <View style={styles.middleContent}>
-                <View style={styles.middleContentHeading}>
-                    <Text style={styles.middleContentText}>{i18n.t('fund')}</Text>
-                </View>
-                <View style={styles.fundTransferWrapper}>
-                    <View style={styles.fundTransferInner}>
-                        <TouchableOpacity style={styles.circleFundTransfer}>
-                            <Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} onPress={() => navigation.navigate('RequestAmount')}/>
-                        </TouchableOpacity>
-                        <Text style={styles.fundTransferText}>{i18n.t('request')}</Text>
-                    </View>
-
-                    <View style={{marginLeft: 20}}></View>
-
-                    <View style={styles.fundTransferInner}>
-                        <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('SendAmount')}>
-                            <Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30}/>
-                        </TouchableOpacity>
-                        <Text style={styles.fundTransferText}>{i18n.t('send')}</Text>
-                    </View>
                 </View>
 
-                <View style={styles.referEarnWrapper}>
+                <View style={styles.middleContent}>
                     <View style={styles.middleContentHeading}>
-                        <Text style={styles.middleContentText}>{i18n.t('refer')}</Text>
+                        <Text style={styles.middleContentText}>{i18n.t('fund')}</Text>
                     </View>
-                    <Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
-                </View>
-            </View>
+                    <View style={styles.fundTransferWrapper}>
+                        <View style={styles.fundTransferInner}>
+                            <TouchableOpacity style={styles.circleFundTransfer}>
+                                <Icon name="arrow-down-left" color={Colors.PRIMARY_TEXT_COLOR} size={30} onPress={() => navigation.navigate('RequestAmount')}/>
+                            </TouchableOpacity>
+                            <Text style={styles.fundTransferText}>{i18n.t('request')}</Text>
+                        </View>
 
-        </View>
+                        <View style={{marginLeft: 20}}></View>
+
+                        <View style={styles.fundTransferInner}>
+                            <TouchableOpacity style={styles.circleFundTransfer} onPress={() => navigation.navigate('SendAmount')}>
+                                <Icon name="arrow-up-right" color={Colors.PRIMARY_TEXT_COLOR} size={30}/>
+                            </TouchableOpacity>
+                            <Text style={styles.fundTransferText}>{i18n.t('send')}</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.referEarnWrapper}>
+                        <View style={styles.middleContentHeading}>
+                            <Text style={styles.middleContentText}>{i18n.t('refer')}</Text>
+                        </View>
+                        <Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
+                    </View>
+                </View>
+
+            </View>
+        </ScrollView>
     );
 };
 
