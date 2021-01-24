@@ -59,7 +59,7 @@ const QRCode = ({navigation}) => {
                         </Text>
                     </View>
 
-                    <View style={{ flex: 1, alignItems:'center', width: '100%'}}>
+                    <View style={{ flex: 1, alignItems:'center', width: '100%', height: '100%'}}>
                         <QRCodeScanner
                             reactivate={true}
                             ref={(camera) => scanner = camera}

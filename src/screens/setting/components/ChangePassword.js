@@ -1,5 +1,5 @@
 import React from 'react';
-import {I18nManager, Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {I18nManager, Platform, StyleSheet, Text, ScrollView, View, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -12,6 +12,8 @@ import Spinner from '../../../shared/spinner';
 import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const passwordSchema = Yup.object().shape({
     old_password: Yup.string()
@@ -54,68 +56,70 @@ const ChangePasswordForm = (props) => {
     });
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <StatusBar style="auto"/>
-            <View style={styles.content}>
-                <View style={styles.header}>
-                    <Text style={styles.headingText1}>{i18n.t('change')}</Text>
+                <StatusBar style="auto"/>
+                <View style={styles.content}>
+                    <View style={styles.header}>
+                        <Text style={styles.headingText1}>{i18n.t('change')}</Text>
+                    </View>
+
+                    <View style={styles.message}>
+                        {error && <Text style={styles.errorText}>{error}</Text>}
+                    </View>
+
+                    {loading && <Spinner/>}
+
+                    <View style={styles.body}>
+                        <FlatTextInput
+                            label={i18n.t('old')}
+                            value={values.old_password}
+                            isPassword={true}
+                            secureTextEntry={true}
+                            onChangeText={handleChange('old_password')}
+                            onBlur={handleBlur('old_password')}
+                            onFocus={handleBlur('old_password')}
+                            error={errors.old_password}
+                            touched={touched.old_password}
+                        />
+
+                        <FlatTextInput
+                            label={i18n.t('new')}
+                            value={values.new_password}
+                            isPassword={true}
+                            secureTextEntry={true}
+                            onChangeText={handleChange('new_password')}
+                            onBlur={handleBlur('new_password')}
+                            onFocus={handleBlur('new_password')}
+                            error={errors.new_password}
+                            touched={touched.new_password}
+                        />
+
+                        <FlatTextInput
+                            label={i18n.t('confirm')}
+                            value={values.confirm_password}
+                            isPassword={true}
+                            secureTextEntry={true}
+                            onChangeText={handleChange('confirm_password')}
+                            onBlur={handleBlur('confirm_password')}
+                            onFocus={handleBlur('confirm_password')}
+                            error={errors.confirm_password}
+                            touched={touched.confirm_password}
+                        />
+                    </View>
+
+                    <View style={styles.buttonWrapper}>
+                        <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                            <Text style={styles.buttonText}>{i18n.t('update')}</Text>
+                        </Button>
+                    </View>
+
                 </View>
 
-                <View style={styles.message}>
-                    {error && <Text style={styles.errorText}>{error}</Text>}
-                </View>
-
-                {loading && <Spinner/>}
-
-                <View style={styles.body}>
-                    <FlatTextInput
-                        label={i18n.t('old')}
-                        value={values.old_password}
-                        isPassword={true}
-                        secureTextEntry={true}
-                        onChangeText={handleChange('old_password')}
-                        onBlur={handleBlur('old_password')}
-                        onFocus={handleBlur('old_password')}
-                        error={errors.old_password}
-                        touched={touched.old_password}
-                    />
-
-                    <FlatTextInput
-                        label={i18n.t('new')}
-                        value={values.new_password}
-                        isPassword={true}
-                        secureTextEntry={true}
-                        onChangeText={handleChange('new_password')}
-                        onBlur={handleBlur('new_password')}
-                        onFocus={handleBlur('new_password')}
-                        error={errors.new_password}
-                        touched={touched.new_password}
-                    />
-
-                    <FlatTextInput
-                        label={i18n.t('confirm')}
-                        value={values.confirm_password}
-                        isPassword={true}
-                        secureTextEntry={true}
-                        onChangeText={handleChange('confirm_password')}
-                        onBlur={handleBlur('confirm_password')}
-                        onFocus={handleBlur('confirm_password')}
-                        error={errors.confirm_password}
-                        touched={touched.confirm_password}
-                    />
-                </View>
-
-                <View style={styles.buttonWrapper}>
-                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>{i18n.t('update')}</Text>
-                    </Button>
-                </View>
 
             </View>
-
-
-        </View>
+        </ScrollView>
     );
 };
 

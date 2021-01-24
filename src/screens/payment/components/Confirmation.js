@@ -1,27 +1,31 @@
 import React from 'react';
-import {Text, View, Image, StatusBar, StyleSheet} from 'react-native';
+import {Text, View, ScrollView, Image, StatusBar, StyleSheet, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
 
+const screenHeight = Math.round(Dimensions.get('window').height);
+
 const Confirmation = ({navigation}) => {
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-            <Image source={require('@/assets/img/success.png')}/>
-            <Text style={styles.successText1}>{i18n.t('paymentsuccess')}</Text>
-            <View style={{width:'60%'}}>
-                <Text style={styles.successText2}>{i18n.t('youhave')}</Text>
-            </View>
-            <View style={styles.buttonWrapper}>
-                <Button style={styles.button} onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.buttonText}>{i18n.t('goto')}</Text>
-                </Button>
-            </View>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+                <Image source={require('@/assets/img/success.png')}/>
+                <Text style={styles.successText1}>{i18n.t('paymentsuccess')}</Text>
+                <View style={{width:'60%'}}>
+                    <Text style={styles.successText2}>{i18n.t('youhave')}</Text>
+                </View>
+                <View style={styles.buttonWrapper}>
+                    <Button style={styles.button} onPress={() => navigation.navigate('Home')}>
+                        <Text style={styles.buttonText}>{i18n.t('goto')}</Text>
+                    </Button>
+                </View>
 
-        </View>
+            </View>
+        </ScrollView>
     );
 
 };

@@ -1,11 +1,13 @@
 import  React from 'react';
-import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar} from 'react-native';
+import {I18nManager, Platform, Text, View, ScrollView, Image, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
 import {useFormik} from 'formik';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Typography, Colors} from '@/theme';
 import ToastMessage from '@/shared/toast';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const RequestConfirmation = (props) => {
 
@@ -27,40 +29,42 @@ const RequestConfirmation = (props) => {
             requestCustomerForMoney(values);
             if (error === null) {
                 navigation.navigate('Home');
-                ToastMessage.show('Request sent successfully.');
+                ToastMessage.show(i18n.t('requestsent'));
             }
         },
     });
 
     return (
-        <View style={styles.container}>
-            <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-            <View style={styles.content}>
-                <View style={styles.contentWrapper}>
-                    <View style={[styles.viewWrapper, styles.borderBottom]}>
-                        <Text style={styles.text}>{i18n.t('amount')}</Text>
-                        <Text style={styles.text1}>${amount}</Text>
-                    </View>
-                    <View style={[styles.viewWrapper, styles.borderBottom]}>
-                        <Text style={styles.text}>{i18n.t('to')}</Text>
-                        <View style={styles.contact}>
-                            <Image style={[styles.image, styles.imageContent]} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
-                            <Text style={styles.text1}>{result.first_name} {result.last_name}</Text>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
+                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+                <View style={styles.content}>
+                    <View style={styles.contentWrapper}>
+                        <View style={[styles.viewWrapper, styles.borderBottom]}>
+                            <Text style={styles.text}>{i18n.t('amount')}</Text>
+                            <Text style={styles.text1}>${amount}</Text>
+                        </View>
+                        <View style={[styles.viewWrapper, styles.borderBottom]}>
+                            <Text style={styles.text}>{i18n.t('to')}</Text>
+                            <View style={styles.contact}>
+                                <Image style={[styles.image, styles.imageContent]} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
+                                <Text style={styles.text1}>{result.first_name} {result.last_name}</Text>
+                            </View>
+                        </View>
+                        <View style={styles.viewWrapper}>
+                            <Text style={styles.text}>{i18n.t('via')}</Text>
+                            <Text style={styles.text1}>{i18n.t('wallet')}</Text>
                         </View>
                     </View>
-                    <View style={styles.viewWrapper}>
-                        <Text style={styles.text}>{i18n.t('via')}</Text>
-                        <Text style={styles.text1}>{i18n.t('wallet')}</Text>
+                    <View style={styles.buttonWrapper}>
+                        <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
+                            <Text style={styles.buttonText}>{i18n.t('confirmrequest')}</Text>
+                        </Button>
                     </View>
-                </View>
-                <View style={styles.buttonWrapper}>
-                    <Button style={styles.button} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>{i18n.t('confirmrequest')}</Text>
-                    </Button>
-                </View>
 
+                </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 

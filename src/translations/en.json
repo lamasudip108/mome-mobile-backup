@@ -100,4 +100,6 @@
   "confirmsend": "CONFIRM & SEND",
   "confirmrequest": "CONFIRM & REQUEST",
   "nodata": "No data found",
+  "requestsent": "Request sent successfully.",
+  "amountsent": "Amount sent successfully.",
 }

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {FlatList, Platform, Text, View, Image, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, Platform, Text, View, ScrollView, Image, StatusBar, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -7,6 +7,8 @@ import {getAsyncStorage} from '@/utils/storageUtil';
 import {JWT_TOKEN} from '@/constants';
 import {decodeUserID} from '@/utils/tokenUtil';
 import Skeleton from '@/shared/skeleton';
+
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 const MyBank = (props) => {
 
@@ -40,37 +42,39 @@ const MyBank = (props) => {
     );
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+            <View style={styles.container}>
 
-            <View style={styles.content}>
-                <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
-                <View style={styles.contentWrapper}>
-                    <View style={styles.list}>
-                        {
-                            loading ? (
-                                Array.from({length: 3}).map((_, index) => (
-                                    <Skeleton key={index}/>
-                                ))
-                            ) 
-                            : 
-                            (<FlatList
-                                data={banks}
-                                renderItem={renderItem}
-                                keyExtractor={item => `${item.id}`}
-                                ListEmptyComponent={EmptyListMessage}
-                            />)
-                        }
-                    </View>
-                    <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
-                        <View style={styles.listItem} justifyContent="center">
-                            <Text style={styles.text}>+ {i18n.t('addbank')}</Text>
+                <View style={styles.content}>
+                    <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
+                    <View style={styles.contentWrapper}>
+                        <View style={styles.list}>
+                            {
+                                loading ? (
+                                    Array.from({length: 3}).map((_, index) => (
+                                        <Skeleton key={index}/>
+                                    ))
+                                ) 
+                                : 
+                                (<FlatList
+                                    data={banks}
+                                    renderItem={renderItem}
+                                    keyExtractor={item => `${item.id}`}
+                                    ListEmptyComponent={EmptyListMessage}
+                                />)
+                            }
                         </View>
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('AddBank')}>
+                            <View style={styles.listItem} justifyContent="center">
+                                <Text style={styles.text}>+ {i18n.t('addbank')}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+
                 </View>
 
             </View>
-
-        </View>
+        </ScrollView>
     );
 
 };
