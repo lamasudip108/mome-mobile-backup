@@ -102,4 +102,8 @@
   "nodata": "لاتوجد بيانات",
   "requestsent": "تم إرسال الطلب بنجاح.",
   "amountsent": "تم إرسال المبلغ بنجاح.",
+  "history": "التاريخ",
+  "searchhistory": "سجل البحث",
+  "type": "نوع",
+  "amountlower": "كمية",
 }

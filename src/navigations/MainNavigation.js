@@ -42,6 +42,8 @@ import SendContactScreen from '@/screens/wallet/SendContact';
 import SendQRCodeScreen from '@/screens/wallet/SendQRCode';
 import SendConfirmationScreen from '@/screens/wallet/SendConfirmation';
 
+import HistoryScreen from '@/screens/wallet/History';
+
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
 import TermsConditionsScreen from '@/screens/static/TermsConditions';
@@ -225,6 +227,17 @@ const MainNavigation = () => {
             <Stack.Screen name="MyQRCode" component={MyQRCodeScreen}
                           options={{
                               title: 'Scan to Request',
+                              headerTintColor: '#000',
+                              headerTitleStyle: {
+                                  fontWeight: '700',
+                                  fontSize: 16,
+                              },
+                              headerTransparent: true,
+                          }}
+            />
+            <Stack.Screen name="History" component={HistoryScreen}
+                          options={{
+                              title: 'History',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',

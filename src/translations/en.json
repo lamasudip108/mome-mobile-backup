@@ -102,4 +102,8 @@
   "nodata": "No data found",
   "requestsent": "Request sent successfully.",
   "amountsent": "Amount sent successfully.",
+  "history": "History",
+  "searchhistory": "Search History",
+  "type": "type",
+  "amountlower": "amount",
 }

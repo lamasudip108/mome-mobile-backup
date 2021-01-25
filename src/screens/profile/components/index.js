@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Button} from 'native-base';
 import Icon from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -110,6 +111,24 @@ const Profile = (props) => {
     		            			</View>
     		            		</View>
     	            		</TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate('History')}>
+                                <View style={styles.listItem}>
+                                    <View style={styles.listItemInner}>
+                                        <View style={styles.roundedWrapper} backgroundColor={Colors.THRIODENARY_BACKGROUND_COLOR}>
+                                            <MaterialCommunityIcons name="history" size={24} color={Colors.SEPTENARY_TEXT_COLOR} />
+                                        </View>
+                                        <Text style={styles.listName}>{i18n.t('history')}</Text>
+                                    </View>
+                                    <View>
+                                        {direction === 'ltr' &&
+                                        <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                        }
+                                        {direction === 'rtl' &&
+                                        <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                        }
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
     	            		<TouchableOpacity onPress={() => navigation.navigate('HowItWorks')}>
     		            		<View style={styles.listItem}>
     		            			<View style={styles.listItemInner}>
