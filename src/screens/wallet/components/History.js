@@ -47,6 +47,7 @@ const History = (props) => {
             last_name: 'Bari',
             type: 'request',
             amount: '100',
+            status: 'completed',
         },
         {
             id: 2,
@@ -55,6 +56,7 @@ const History = (props) => {
             last_name: 'Basit',
             type: 'request',
             amount: '1000',
+            status: 'cancelled',
         },
         {
             id: 3,
@@ -63,6 +65,7 @@ const History = (props) => {
             last_name: 'Fattah',
             type: 'send',
             amount: '500',
+            status: 'cancelled',
         },
         {
             id: 4,
@@ -71,6 +74,7 @@ const History = (props) => {
             last_name: 'Ghaffar',
             type: 'request',
             amount: '50',
+            status: 'completed',
         },
         {
             id: 5,
@@ -79,6 +83,7 @@ const History = (props) => {
             last_name: 'Bari',
             type: 'send',
             amount: '100',
+            status: 'cancelled',
         },
         {
             id: 6,
@@ -87,6 +92,7 @@ const History = (props) => {
             last_name: 'Basit',
             type: 'send',
             amount: '1000',
+            status: 'completed',
         },
         {
             id: 7,
@@ -95,6 +101,7 @@ const History = (props) => {
             last_name: 'Fattah',
             type: 'request',
             amount: '500',
+            status: 'completed',
         },
         {
             id: 8,
@@ -103,6 +110,7 @@ const History = (props) => {
             last_name: 'Ghaffar',
             type: 'send',
             amount: '50',
+            status: 'completed',
         },
         {
             id: 9,
@@ -111,6 +119,7 @@ const History = (props) => {
             last_name: 'Bari',
             type: 'send',
             amount: '100',
+            status: 'completed',
         },
     ];
 
@@ -143,18 +152,29 @@ const History = (props) => {
                 </View>
                 <View style={{justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                     <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
-                    <Text style={styles.itemText}>$ {item.amount} <Chip>Send</Chip></Text>
+                    <View style={{flexDirection:'row', alignItems: 'center'}}>
+                        <Text style={styles.itemText}>$ {item.amount}</Text>
+                        {   
+                            item.type === 'request' &&
+                            <Chip style={styles.chip}>Request</Chip>
+                        }
+                        {   
+                            item.type === 'send' &&
+                            <Chip style={styles.chip}>Send</Chip>
+                        }
+                    </View>
                     <Text style={styles.itemDate}>3 October 2020, 10:45 AM</Text>
+                    <Text style={styles.itemStatus}>{item.status}</Text>
                 </View>
             </View>
             <View>
                 {item.type === 'request' &&
                 <View style={{flexDirection: 'row'}}>
                     <TouchableOpacity onPress={() => showCancelDialog()}>
-                        <MaterialCommunityIcons name="close-circle-outline" size={25} color={Colors.QUATERNARY_TEXT_COLOR}/>
+                        <MaterialCommunityIcons name="close-circle-outline" size={30} color={Colors.QUATERNARY_TEXT_COLOR}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => showPayDialog()}>
-                        <MaterialCommunityIcons name="check-circle-outline" size={25} color={Colors.PRIMARY_TEXT_COLOR}/>
+                        <MaterialCommunityIcons name="check-circle-outline" size={30} color={Colors.PRIMARY_TEXT_COLOR}/>
                     </TouchableOpacity>
 
                     <Portal>
@@ -306,6 +326,14 @@ const styles = StyleSheet.create({
         fontFamily: Typography.FONT_NORMAL,
         marginLeft: 16,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
+    },
+    itemStatus: {
+        marginLeft: 16,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
+    },
+    chip: {
+        margin: 5,
+        backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR,
     },
     emptyList: {
         ...CommonStyles.emptyList,
