@@ -5,6 +5,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 import {Root as NativeBaseProvider} from 'native-base';
 import RNBootSplash from 'react-native-bootsplash';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 import {store, persistor} from '@/store';
 import {MainNavigation} from '@/navigations';
@@ -44,11 +45,13 @@ const App = () => {
         <LanguageProvider>
             <PersistGate loading={<SplashScreen/>} onBeforeLift={onBeforeLift} persistor={persistor}>
                 <NativeBaseProvider>
-                    <AuthProvider>
-                        <NavigationContainer ref={navigationRef}>
-                            <MainNavigation/>
-                        </NavigationContainer>
-                    </AuthProvider>
+                    <PaperProvider>
+                        <AuthProvider>
+                            <NavigationContainer ref={navigationRef}>
+                                <MainNavigation/>
+                            </NavigationContainer>
+                        </AuthProvider>
+                    </PaperProvider>
                 </NativeBaseProvider>
             </PersistGate>
         </LanguageProvider>

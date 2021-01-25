@@ -19,9 +19,6 @@ const Spinner = () => {
             transparent={true}
             animationType={'none'}
             visible={animating}
-            onRequestClose={() => {
-                console.log('close modal');
-            }}
         >
             <View style={styles.modalBackground}>
                 <View style={styles.activityIndicatorWrapper}>

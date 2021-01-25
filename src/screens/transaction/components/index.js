@@ -44,7 +44,7 @@ const Transaction = (props) => {
     const EmptyListMessage = ({item}) => {
         return (
             <View style={[styles.emptyList, transactions?.[0] ? styles.todayEmptyListHeight : styles.yesterdayEmptyListHeight]}>
-              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
+              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>
             </View>
         );
     };
@@ -58,7 +58,7 @@ const Transaction = (props) => {
                 <Text style={styles.listName}>{item.vendor_name}</Text>
                 <Text style={styles.listDate}>{item.created_at}</Text>
             </View>
-            <Text style={styles.listAmount}>-${item.amount}</Text>
+            <Text style={styles.listAmount}>${item.amount}</Text>
         </View>
      );
 
@@ -106,16 +106,16 @@ const Transaction = (props) => {
                                 Array.from({length: 2}).map((_, index) => (
                                     <SkeletonThreeColumn key={index}/>
                                 ))
-                            ) 
-                            : 
+                            )
+                            :
                             (<FlatList
                                 data={transactions?.[0]}
                                 renderItem={renderItem}
                                 keyExtractor={item => item.id}
                                 ListEmptyComponent={EmptyListMessage}
-                            />) 
+                            />)
 
-                        }   
+                        }
                     </View>
 
                     <View style={{paddingTop: 5}}>
@@ -128,14 +128,14 @@ const Transaction = (props) => {
                                     Array.from({length: 2}).map((_, index) => (
                                         <SkeletonThreeColumn key={index}/>
                                     ))
-                                ) 
-                                : 
+                                )
+                                :
                                 (<FlatList
                                     data={transactions?.[1]}
                                     renderItem={renderItem}
                                     keyExtractor={item => item.id}
                                     ListEmptyComponent={EmptyListMessage}
-                                />) 
+                                />)
 
                             }
                         </View>
