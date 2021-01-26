@@ -26,7 +26,7 @@ const Profile = (props) => {
     const {navigation, profile, loading, error} = props;
 
     return (
-        <ScrollView contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
+        <ScrollView nestedScrollEnabled={true} contentContainerStyle={{flexGrow: 1, height: screenHeight}}>
             <View style={styles.container}>
 
                 <View style={styles.topContent}>
@@ -56,7 +56,7 @@ const Profile = (props) => {
                 <View style={styles.middleContent}>
 
                 	<View style={styles.List}>
-    	            	<ScrollView style={{ height: Platform.OS === 'ios' ? 520 : 400 }}>
+    	            	<ScrollView nestedScrollEnabled={true} style={{ height: Platform.OS === 'ios' ? 520 : 450 }}>
     	            		<TouchableOpacity onPress={() => navigation.navigate('Transaction')}>
     		            		<View style={styles.listItem}>
     		            			<View style={styles.listItemInner}>
