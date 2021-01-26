@@ -63,11 +63,6 @@ const RequestQRCode = (props) => {
                             topContent={
                                 <Text style={styles.centerText} textAlign="center"></Text>
                             }
-                            bottomContent={
-                                <TouchableOpacity>
-                                    <Text style={styles.bottomText}>{i18n.t('okgot')}</Text>
-                                </TouchableOpacity>
-                            }
                             markerStyle={{
                                 position: 'absolute',
                                 top: '20%',

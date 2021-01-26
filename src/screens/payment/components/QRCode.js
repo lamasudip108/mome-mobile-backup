@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {
-    TouchableOpacity, 
-    Text, 
-    ScrollView, 
-    View, 
-    Image, 
-    StyleSheet, 
-    StatusBar, 
+    TouchableOpacity,
+    Text,
+    ScrollView,
+    View,
+    Image,
+    StyleSheet,
+    StatusBar,
     Dimensions
 } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
@@ -68,11 +68,6 @@ const QRCode = ({navigation}) => {
                             flashMode={cameraTorch ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
                             topContent={
                                 <Text style={styles.centerText} textAlign="center"></Text>
-                            }
-                            bottomContent={
-                                <TouchableOpacity>
-                                    <Text style={styles.bottomText}>{i18n.t('okgot')}</Text>
-                                </TouchableOpacity>
                             }
                             markerStyle={{
                                 position: 'absolute',
