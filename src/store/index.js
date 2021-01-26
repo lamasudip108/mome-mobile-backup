@@ -24,6 +24,7 @@ import customerBanksReducer from '@/screens/bank/customerBanksSlice';
 
 import walletReducer from '@/screens/wallet/walletSlice';
 import contactsReducer from '@/screens/wallet/contactsSlice';
+import walletHistoryReducer from '@/screens/wallet/walletHistorySlice';
 
 const persistConfig = {
     key: 'root',
@@ -42,6 +43,7 @@ const reducers = combineReducers({
     customerBanks: customerBanksReducer,
     wallets: walletReducer,
     contacts: contactsReducer,
+    walletHistory: walletHistoryReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

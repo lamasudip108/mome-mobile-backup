@@ -1,18 +1,18 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import HistoryDetails from './components/HistoryDetails';
+import HistoryDetail from './components/HistoryDetail';
 
-const HistoryDetailsScreen = (props) => {
+const HistoryDetailScreen = (props) => {
 
     const dispatch = useDispatch();
 
     return (
-        <HistoryDetails
+        <HistoryDetail
             {...props}
         />
     );
 
 };
 
-export default HistoryDetailsScreen;
+export default HistoryDetailScreen;

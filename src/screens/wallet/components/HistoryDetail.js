@@ -2,20 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {
     I18nManager,
     Platform,
-    FlatList,
     Text,
     View,
     ScrollView,
-    Image,
     StatusBar,
     StyleSheet,
-    TextInput,
-    TouchableOpacity,
     Dimensions,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Button, Chip, Paragraph, Portal, Dialog} from 'react-native-paper';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -23,7 +16,7 @@ import {CommonStyles, Typography, Colors} from '@/theme';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const HistoryDetails = (props) => {
+const HistoryDetail = (props) => {
 
     const {direction} = useDirection();
 
@@ -36,7 +29,7 @@ const HistoryDetails = (props) => {
 
                 <View style={styles.List}>
                     <ScrollView style={{ height: Platform.OS === 'ios' ? 550 : 450 }}>
-                        
+
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
                                 <Text style={styles.listTitle}>Receiver or Requester :</Text>
@@ -78,7 +71,7 @@ const HistoryDetails = (props) => {
                                 <Text style={styles.listName}>Completed</Text>
                             </View>
                         </View>
-                        
+
                     </ScrollView>
                 </View>
             </View>
@@ -124,4 +117,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HistoryDetails;
+export default HistoryDetail;

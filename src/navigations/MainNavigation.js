@@ -43,7 +43,7 @@ import SendQRCodeScreen from '@/screens/wallet/SendQRCode';
 import SendConfirmationScreen from '@/screens/wallet/SendConfirmation';
 
 import HistoryScreen from '@/screens/wallet/History';
-import HistoryDetailsScreen from '@/screens/wallet/HistoryDetails';
+import HistoryDetailScreen from '@/screens/wallet/HistoryDetail';
 
 import ContactUsScreen from '@/screens/static/ContactUs';
 import HowItWorksScreen from '@/screens/static/HowItWorks';
@@ -247,9 +247,9 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="HistoryDetails" component={HistoryDetailsScreen}
+            <Stack.Screen name="HistoryDetail" component={HistoryDetailScreen}
                           options={{
-                              title: 'History Details',
+                              title: 'History Detail',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',

@@ -20,6 +20,9 @@ import i18n from 'i18n-js';
 import {useDirection} from '@/context/language';
 import {CommonStyles, Typography, Colors} from '@/theme';
 import SkeletonThreeColumn from '@/shared/skeleton/SkeletonThreeColumn';
+import {getAsyncStorage} from '@/utils/storageUtil';
+import {JWT_TOKEN} from '@/constants';
+import {decodeUserID} from '@/utils/tokenUtil';
 
 const screenHeight = Math.round(Dimensions.get('window').height);
 
@@ -27,7 +30,7 @@ const History = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, loading, error} = props;
+    const {navigation, walletHistory, loading, error, fetchWalletHistoryByCustomerIdentifier, cleanCustomerWalletHistory} = props;
 
     const [history, setHistory] = useState([]);
     const [cancelDialogVisible, setCancelDialogVisible] = useState(false);
@@ -39,92 +42,8 @@ const History = (props) => {
     const showPayDialog = () => setPayDialogVisible(true);
     const hidePayDialog = () => setPayDialogVisible(false);
 
-    const historyOptions = [
-        {
-            id: 1,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-            first_name: 'Abdul',
-            last_name: 'Bari',
-            type: 'request',
-            amount: '100',
-            status: 'completed',
-        },
-        {
-            id: 2,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar2.png',
-            first_name: 'Abdul',
-            last_name: 'Basit',
-            type: 'request',
-            amount: '1000',
-            status: 'cancelled',
-        },
-        {
-            id: 3,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar3.png',
-            first_name: 'Abdul',
-            last_name: 'Fattah',
-            type: 'send',
-            amount: '500',
-            status: 'failed',
-        },
-        {
-            id: 4,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar4.png',
-            first_name: 'Abdul',
-            last_name: 'Ghaffar',
-            type: 'request',
-            amount: '50',
-            status: 'completed',
-        },
-        {
-            id: 5,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar5.png',
-            first_name: 'Abdul',
-            last_name: 'Bari',
-            type: 'send',
-            amount: '100',
-            status: 'cancelled',
-        },
-        {
-            id: 6,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar6.png',
-            first_name: 'Abdul',
-            last_name: 'Basit',
-            type: 'send',
-            amount: '1000',
-            status: 'completed',
-        },
-        {
-            id: 7,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar1.png',
-            first_name: 'Abdul',
-            last_name: 'Fattah',
-            type: 'request',
-            amount: '500',
-            status: 'completed',
-        },
-        {
-            id: 8,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar2.png',
-            first_name: 'Abdul',
-            last_name: 'Ghaffar',
-            type: 'send',
-            amount: '50',
-            status: 'completed',
-        },
-        {
-            id: 9,
-            icon: 'https://bootdey.com/img/Content/avatar/avatar3.png',
-            first_name: 'Abdul',
-            last_name: 'Bari',
-            type: 'send',
-            amount: '100',
-            status: 'completed',
-        },
-    ];
-
     const historyFilter = text => {
-        const newData = historyOptions.filter(item => {
+        const newData = walletHistory.filter(item => {
             const itemData = `${item.first_name.toUpperCase()}`;
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
@@ -133,10 +52,23 @@ const History = (props) => {
     };
 
     useEffect(() => {
-        setHistory(historyOptions);
+        const fetchCustomerWalletHistoryAsync = async () => {
+            let token = await getAsyncStorage(JWT_TOKEN);
+            let customerID = decodeUserID(token);
+            fetchWalletHistoryByCustomerIdentifier(customerID);
+        };
+        fetchCustomerWalletHistoryAsync();
+
+        return () => {
+            cleanCustomerWalletHistory();
+        };
     }, []);
 
-    const EmptyListMessage = ({item}) => {
+    useEffect(() => {
+        setHistory(walletHistory);
+    }, [walletHistory]);
+
+    const EmptyListMessage = () => {
         return (
             <View style={styles.emptyList}>
                 <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>
@@ -154,19 +86,19 @@ const History = (props) => {
                     <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
                     <View style={{flexDirection:'row', alignItems: 'center'}}>
                         <Text style={styles.itemText}>$ {item.amount}</Text>
-                        {   
+                        {
                             item.type === 'request' &&
                             <Chip style={styles.chipRequest} height={22}>Request</Chip>
                         }
-                        {   
+                        {
                             item.type === 'send' &&
                             <Chip style={styles.chipSend} height={22}>Send</Chip>
                         }
                     </View>
                     <Text style={styles.itemDate}>3 October 2020, 10:45 AM</Text>
                     <Text style={[styles.itemStatus,item.status === 'completed' ? styles.itemComplete : styles.itemStatusBg]}>{item.status}</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('HistoryDetails')}>
-                        <Text style={styles.itemDetails}>Details</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('HistoryDetail')}>
+                        <Text style={styles.itemDetails}>DETAIL</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -220,7 +152,7 @@ const History = (props) => {
                                    useRef={'txtSearch'}
                                    placeholder={i18n.t('searchhistory')}
                                    underlineColorAndroid='transparent'
-                                   onChangeText={text => setHistory(text)}/>
+                                   onChangeText={text => historyFilter(text)}/>
                         <Icon name="search" size={14} color={Colors.QUADENARY_TEXT_COLOR} style={{marginRight: 15}}/>
                     </View>
                 </View>
@@ -237,7 +169,7 @@ const History = (props) => {
                                 data={history}
                                 renderItem={renderItem}
                                 keyExtractor={item => `${item.id}`}
-                                //ListEmptyComponent={EmptyListMessage}
+                                ListEmptyComponent={EmptyListMessage}
                             />)
                     }
                 </View>
