@@ -11,7 +11,7 @@ const HistoryScreen = (props) => {
     const {entities, loading, error} = useSelector(state => state.walletHistory);
 
     /**
-     * Fetch customer transaction data.
+     * Fetch customer wallet history data.
      * @param {string} identifier
      *
      */
