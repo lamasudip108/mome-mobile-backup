@@ -65,7 +65,7 @@ const History = (props) => {
             last_name: 'Fattah',
             type: 'send',
             amount: '500',
-            status: 'cancelled',
+            status: 'failed',
         },
         {
             id: 4,
@@ -156,25 +156,25 @@ const History = (props) => {
                         <Text style={styles.itemText}>$ {item.amount}</Text>
                         {   
                             item.type === 'request' &&
-                            <Chip style={styles.chip}>Request</Chip>
+                            <Chip style={styles.chipRequest} height={22}>Request</Chip>
                         }
                         {   
                             item.type === 'send' &&
-                            <Chip style={styles.chip}>Send</Chip>
+                            <Chip style={styles.chipSend} height={22}>Send</Chip>
                         }
                     </View>
                     <Text style={styles.itemDate}>3 October 2020, 10:45 AM</Text>
-                    <Text style={styles.itemStatus}>{item.status}</Text>
+                    <Text style={[styles.itemStatus,item.status === 'completed' ? styles.itemComplete : styles.itemStatusBg]}>{item.status}</Text>
                 </View>
             </View>
             <View>
                 {item.type === 'request' &&
                 <View style={{flexDirection: 'row'}}>
                     <TouchableOpacity onPress={() => showCancelDialog()}>
-                        <MaterialCommunityIcons name="close-circle-outline" size={30} color={Colors.QUATERNARY_TEXT_COLOR}/>
+                        <MaterialCommunityIcons name="close-circle-outline" size={35} color={Colors.QUATERNARY_TEXT_COLOR}/>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => showPayDialog()}>
-                        <MaterialCommunityIcons name="check-circle-outline" size={30} color={Colors.PRIMARY_TEXT_COLOR}/>
+                        <MaterialCommunityIcons name="check-circle-outline" size={35} color={Colors.PRIMARY_TEXT_COLOR}/>
                     </TouchableOpacity>
 
                     <Portal>
@@ -330,10 +330,27 @@ const styles = StyleSheet.create({
     itemStatus: {
         marginLeft: 16,
         textAlign: I18nManager.isRTL ? 'right' : 'left',
+        borderRadius: 3,
+        padding: 3,
     },
-    chip: {
-        margin: 5,
+    itemStatusBg: {
+        borderWidth: 1,
+        borderColor: Colors.OCTONARY_BORDER_COLOR,
+        color: 'rgba(20,21,30,0.60)',
+    },
+    chipRequest: {
+        margin: 3,
         backgroundColor: Colors.QUATERNARY_BACKGROUND_COLOR,
+        alignItems: 'center',
+    },
+    chipSend: {
+        margin: 3,
+        backgroundColor: Colors.NONARY_BACKGROUND_COLOR,
+        alignItems: 'center',
+    },
+    itemComplete:{
+        backgroundColor:'rgba(25,96,2,0.20)',
+        color: Colors.PRIMARY_SUCCESS_COLOR,
     },
     emptyList: {
         ...CommonStyles.emptyList,
