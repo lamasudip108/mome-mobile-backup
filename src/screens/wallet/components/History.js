@@ -165,6 +165,9 @@ const History = (props) => {
                     </View>
                     <Text style={styles.itemDate}>3 October 2020, 10:45 AM</Text>
                     <Text style={[styles.itemStatus,item.status === 'completed' ? styles.itemComplete : styles.itemStatusBg]}>{item.status}</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('HistoryDetails')}>
+                        <Text style={styles.itemDetails}>Details</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View>
@@ -351,6 +354,12 @@ const styles = StyleSheet.create({
     itemComplete:{
         backgroundColor:'rgba(25,96,2,0.20)',
         color: Colors.PRIMARY_SUCCESS_COLOR,
+    },
+    itemDetails: {
+        marginLeft: 16,
+        textAlign: I18nManager.isRTL ? 'right' : 'left',
+        marginTop: 5,
+        textDecorationLine: 'underline',
     },
     emptyList: {
         ...CommonStyles.emptyList,
