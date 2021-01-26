@@ -247,9 +247,9 @@ const MainNavigation = () => {
                               headerTransparent: true,
                           }}
             />
-            <Stack.Screen name="HistoryDetails" component={HistoryDetailsScreen}
+            <Stack.Screen name="HistoryDetail" component={HistoryDetailsScreen}
                           options={{
-                              title: 'History Details',
+                              title: 'History Detail',
                               headerTintColor: '#000',
                               headerTitleStyle: {
                                   fontWeight: '700',

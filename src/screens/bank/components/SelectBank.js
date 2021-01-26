@@ -46,10 +46,10 @@ const SelectBank = (props) => {
         setBanks(bankOptions);
     }, [bankOptions]);
 
-    const EmptyListMessage = ({item}) => {
+    const EmptyListMessage = () => {
         return (
             <View style={styles.emptyList}>
-              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>  
+              <Text style={styles.emptyMessage}>{i18n.t('nodata')}</Text>
             </View>
         );
     };
@@ -96,8 +96,8 @@ const SelectBank = (props) => {
                             Array.from({length: 9}).map((_, index) => (
                                 <Skeleton key={index}/>
                             ))
-                        ) 
-                        : 
+                        )
+                        :
                         (<FlatList
                             data={banks}
                             renderItem={renderItem}
