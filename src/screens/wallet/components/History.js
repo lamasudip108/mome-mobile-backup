@@ -27,7 +27,7 @@ const History = (props) => {
 
     const {direction} = useDirection();
 
-    const {navigation, loading, error} = props;
+    const {navigation, walletHistory, loading, error, fetchWalletHistoryByCustomerIdentifier, cleanCustomerWalletHistory} = props;
 
     const [history, setHistory] = useState([]);
     const [cancelDialogVisible, setCancelDialogVisible] = useState(false);
@@ -154,11 +154,11 @@ const History = (props) => {
                     <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
                     <View style={{flexDirection:'row', alignItems: 'center'}}>
                         <Text style={styles.itemText}>$ {item.amount}</Text>
-                        {   
+                        {
                             item.type === 'request' &&
                             <Chip style={styles.chip}>Request</Chip>
                         }
-                        {   
+                        {
                             item.type === 'send' &&
                             <Chip style={styles.chip}>Send</Chip>
                         }
