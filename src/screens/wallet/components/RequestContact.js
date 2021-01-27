@@ -80,7 +80,7 @@ const RequestContact = (props) => {
                                                   }, amount,
                                               })}>
                                 <View style={styles.horizontalCircle}>
-                                    <Image style={styles.horizontalImage} source={{uri: item.icon}}/>
+                                    <MaterialIcons name="person" size={50} color={Colors.SEPTENARY_TEXT_COLOR} />
                                 </View>
                                 <Text style={styles.horizontalName}>{item.first_name} {item.last_name}</Text>
                             </TouchableOpacity>
@@ -109,7 +109,9 @@ const RequestContact = (props) => {
                             }, amount,
                         })}>
                             <View style={styles.cardWrapper}>
-                                <Image style={styles.cardImage} source={{uri: item.icon}}/>
+                                <View style={styles.cardImage}>
+                                    <MaterialIcons name="person" size={30} color={Colors.SEPTENARY_TEXT_COLOR} />
+                                </View>
                                 <Text style={styles.cardName}>{item.first_name} {item.last_name}</Text>
                             </View>
                         </TouchableOpacity>
@@ -219,6 +221,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: 'rgba(210,212,252,0.50)',
         borderColor: 'rgba(210,212,252,0.50)',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     cardName: {
         fontFamily: Typography.FONT_MEDIUM,
