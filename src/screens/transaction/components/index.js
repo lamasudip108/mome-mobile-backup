@@ -26,7 +26,7 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const Transaction = (props) => {
 
-    const {navigation, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction, profile} = props;
+    const {navigation, profile, transactions, loading, error, fetchTransactionByCustomerIdentifier, cleanCustomerTransaction} = props;
 
     useEffect(() => {
         const fetchCustomerTransactionAsync = async () => {

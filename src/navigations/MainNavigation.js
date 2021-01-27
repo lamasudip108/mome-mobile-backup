@@ -83,7 +83,7 @@ const MainNavigation = () => {
             case 'Profile':
                 return 'Profile';
             case 'Setting':
-                return '';
+                return 'Settings';
             default:
                 return '';
         }

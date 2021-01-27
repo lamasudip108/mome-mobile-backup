@@ -15,9 +15,9 @@ const addBankSchema = Yup.object().shape({
     bank_name: Yup
         .string()
         .required('Bank name is required.'),
-    bank_branch: Yup
+    branch_name: Yup
         .string()
-        .required('Bank branch is required.'),
+        .required('Branch name is required.'),
     account_holder: Yup
         .string()
         .required('Account holder is required.'),
@@ -28,7 +28,7 @@ const addBankSchema = Yup.object().shape({
 
 const AddBankForm = (props) => {
 
-    const {navigation, route, banks, loading, error, addBankByCustomerIdentifier, cleanCustomerBank} = props;
+    const {navigation, route, profile, banks, loading, error, addBankByCustomerIdentifier, cleanCustomerBank} = props;
 
     const selectedItem = route?.params?.item;
 
@@ -44,12 +44,14 @@ const AddBankForm = (props) => {
         enableReinitialize: true,
         validationSchema: addBankSchema,
         initialValues: {
+            bank_id: selectedItem?.id,
             bank_name: selectedItem?.name ? selectedItem?.name : i18n.t('selectbank'),
-            bank_branch: '',
+            branch_name: '',
             account_holder: '',
             account_number: '',
         },
         onSubmit: values => {
+            values.id = profile?.id;
             addBankByCustomerIdentifier(values);
             if (error === null) {
                 navigation.navigate('MyBanks');
@@ -94,12 +96,12 @@ const AddBankForm = (props) => {
                         />
 
                         <FlatTextInput
-                            label={i18n.t('bankbranch')}
-                            value={values.bank_branch}
-                            onChangeText={handleChange('bank_branch')}
-                            onBlur={handleBlur('bank_branch')}
-                            error={errors.bank_branch}
-                            touched={touched.bank_branch}
+                            label={i18n.t('branchname')}
+                            value={values.branch_name}
+                            onChangeText={handleChange('branch_name')}
+                            onBlur={handleBlur('branch_name')}
+                            error={errors.branch_name}
+                            touched={touched.branch_name}
                         />
 
                         <FlatTextInput

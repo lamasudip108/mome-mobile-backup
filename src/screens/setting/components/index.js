@@ -1,13 +1,13 @@
 import  React from 'react';
 import {
-    I18nManager, 
-    Platform, 
-    Text, 
-    View, 
-    Image, 
-    ScrollView, 
-    StatusBar, 
-    StyleSheet, 
+    I18nManager,
+    Platform,
+    Text,
+    View,
+    Image,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
     TouchableOpacity,
     Dimensions
 } from 'react-native';
@@ -28,8 +28,7 @@ const Setting = ({navigation}) => {
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content" backgroundColor={Colors.PRIMARY_BACKGROUND_COLOR}/>
                 <View style={styles.header}>
-                    <Text style={styles.headingText1}>{i18n.t('setting')}</Text>
-                    <Text style={styles.headingText2}>{i18n.t('accountsetting')}</Text>
+                    <Text style={styles.headingText}>{i18n.t('accountsetting')}</Text>
                 </View>
 
                 <View style={styles.List}>
@@ -98,7 +97,7 @@ const Setting = ({navigation}) => {
                     alignItems: 'flex-start',
                     justifyContent: 'flex-start',
                 }}>
-                    <Text style={styles.headingText2}>{i18n.t('paymentsetting')}</Text>
+                    <Text style={styles.headingText}>{i18n.t('paymentsetting')}</Text>
                 </View>
 
                 <View style={styles.List}>
@@ -176,13 +175,7 @@ const styles = StyleSheet.create({
         marginLeft: 32,
         marginRight: 32,
     },
-    headingText1: {
-        ...CommonStyles.headingText1,
-        fontFamily: Typography.FONT_SEMI_BOLD,
-        lineHeight: 36,
-        textAlign: I18nManager.isRTL ? 'right' : 'left',
-    },
-    headingText2: {
+    headingText: {
         ...CommonStyles.headingText2,
         fontSize: Typography.FONT_SIZE_TINY_PLUS,
         fontFamily: Typography.FONT_SEMI_BOLD,

@@ -11,7 +11,7 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 
 const SendConfirmation = (props) => {
 
-    const {navigation, route, loading, error, sendMoneyToCustomer} = props;
+    const {navigation, route, profile, loading, error, sendMoneyToCustomer} = props;
 
     const {result, amount} = route?.params;
 
@@ -21,9 +21,11 @@ const SendConfirmation = (props) => {
     } = useFormik({
         enableReinitialize: true,
         initialValues: {
-            fromCustomerId: result?.id,
-            toCustomerId: result?.id,
+            id: profile?.id,
+            receiver_customer_id: result?.id,
             amount: amount,
+            type:'send',
+            notes:'Test'
         },
         onSubmit: values => {
             sendMoneyToCustomer(values);

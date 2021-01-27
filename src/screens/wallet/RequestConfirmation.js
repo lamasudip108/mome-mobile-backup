@@ -9,6 +9,7 @@ const RequestConfirmationScreen = (props) => {
     const dispatch = useDispatch();
 
     const {entities, loading, error} = useSelector(state => state.wallets);
+    const profile = useSelector((state) => state.profile.entities);
 
     /**
      * Request customer[friend] for money data.
@@ -30,6 +31,7 @@ const RequestConfirmationScreen = (props) => {
     return (
         <RequestConfirmation
             {...props}
+            profile={profile}
             wallets={entities}
             loading={loading}
             error={error}

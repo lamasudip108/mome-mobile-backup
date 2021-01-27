@@ -9,6 +9,7 @@ const AddBankScreen = (props) => {
     const dispatch = useDispatch();
 
     const {entities, loading, error} = useSelector(state => state.customerBanks);
+    const profile = useSelector((state) => state.profile.entities);
 
     /**
      * Fetch customer banks data.
@@ -30,6 +31,7 @@ const AddBankScreen = (props) => {
     return (
         <AddBankForm
             {...props}
+            profile={profile}
             banks={entities}
             loading={loading}
             error={error}

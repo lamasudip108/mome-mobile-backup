@@ -64,7 +64,7 @@
   "addbanktitle": "إضافة بنك",
   "selectbank": "حدد البنك هنا",
   "bankname": "اسم البنك",
-  "bankbranch": "فرع بنك",
+  "branchname": "فرع بنك",
   "accountholder": "مالك الحساب",
   "accountnumber": "رقم حساب",
   "save": "حفظ",
