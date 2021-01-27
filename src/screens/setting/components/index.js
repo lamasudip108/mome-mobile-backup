@@ -12,6 +12,7 @@ import {
     Dimensions
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import i18n from 'i18n-js';
 
 import {useDirection} from '@/context/language';
@@ -32,65 +33,64 @@ const Setting = ({navigation}) => {
                 </View>
 
                 <View style={styles.List}>
-                    <ScrollView style={{ height: Platform.OS === 'ios' ? 250 : 240 }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
-                            <View style={styles.listItem}>
-                                <View style={styles.listItemInner}>
-                                    <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
-                                        <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>{i18n.t('change')}</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ChangePassword')}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemInner}>
+                                <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
+                                    <MaterialIcons name="lock" size={20} color={Colors.SEPTENARY_TEXT_COLOR} />
                                 </View>
-                                <View>
-                                    {direction === 'ltr' &&
-                                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                    {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                </View>
+                                <Text style={styles.listName}>{i18n.t('change')}</Text>
                             </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <View style={styles.listItem}>
-                                <View style={styles.listItemInner}>
-                                    <View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
-                                        <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>{i18n.t('appnotification')}</Text>
-                                </View>
-                                <View>
-                                    {direction === 'ltr' &&
-                                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                    {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                </View>
+                            <View>
+                                {direction === 'ltr' &&
+                                <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                                {direction === 'rtl' &&
+                                <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
                             </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <View style={styles.listItem}>
-                                <View style={styles.listItemInner}>
-                                    <View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
-                                        <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>Device Management</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemInner}>
+                                <View style={styles.roundedWrapper} backgroundColor={Colors.SENARY_BACKGROUND_COLOR}>
+                                    <MaterialIcons name="notifications" size={20} color={Colors.SEPTENARY_TEXT_COLOR} />
                                 </View>
-                                <View>
-                                    {direction === 'ltr' &&
-                                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                    {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                </View>
+                                <Text style={styles.listName}>{i18n.t('appnotification')}</Text>
                             </View>
-                        </TouchableOpacity>
-                    </ScrollView>
+                            <View>
+                                {direction === 'ltr' &&
+                                <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                                {direction === 'rtl' &&
+                                <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemInner}>
+                                <View style={styles.roundedWrapper} backgroundColor={Colors.SEPTENARY_BACKGROUND_COLOR}>
+                                    <MaterialIcons name="important-devices" size={20} color={Colors.SEPTENARY_TEXT_COLOR} />
+                                </View>
+                                <Text style={styles.listName}>Device Management</Text>
+                            </View>
+                            <View>
+                                {direction === 'ltr' &&
+                                <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                                {direction === 'rtl' &&
+                                <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                            </View>
+                        </View>
+                    </TouchableOpacity>  
                 </View>
 
                 <View style={{
+                    marginTop: 15,
                     marginLeft: 32,
                     marginRight: 32,
                     paddingBottom: 10,
@@ -101,29 +101,28 @@ const Setting = ({navigation}) => {
                 </View>
 
                 <View style={styles.List}>
-                    <ScrollView style={{ height: Platform.OS === 'ios' ? 350 : 300 }}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <View style={styles.listItem}>
-                                <View style={styles.listItemInner}>
-                                    <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
-                                        <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>Fingerprint Login</Text>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemInner}>
+                                <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
+                                    <MaterialIcons name="fingerprint" size={22} color={Colors.SEPTENARY_TEXT_COLOR} />
                                 </View>
-                                <View>
-                                    {direction === 'ltr' &&
-                                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                    {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                </View>
+                                <Text style={styles.listName}>Fingerprint Login</Text>
                             </View>
-                        </TouchableOpacity>
-                    </ScrollView>
+                            <View>
+                                {direction === 'ltr' &&
+                                <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                                {direction === 'rtl' &&
+                                <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                            </View>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={{
+                    marginTop: 15,
                     marginLeft: 32,
                     marginRight: 32,
                     paddingBottom: 10,
@@ -134,26 +133,24 @@ const Setting = ({navigation}) => {
                 </View>
 
                 <View style={styles.List}>
-                    <ScrollView style={{ height: Platform.OS === 'ios' ? 350 : 300 }}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <View style={styles.listItem}>
-                                <View style={styles.listItemInner}>
-                                    <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
-                                        <Image style={{height: 19, width: 21}} source={require('@/assets/img/star.png')}/>
-                                    </View>
-                                    <Text style={styles.listName}>Check for update</Text>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <View style={styles.listItem}>
+                            <View style={styles.listItemInner}>
+                                <View style={styles.roundedWrapper} backgroundColor={Colors.QUINARY_BACKGROUND_COLOR}>
+                                    <MaterialIcons name="system-update-alt" size={20} color={Colors.SEPTENARY_TEXT_COLOR} />
                                 </View>
-                                <View>
-                                    {direction === 'ltr' &&
-                                    <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                    {direction === 'rtl' &&
-                                    <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
-                                    }
-                                </View>
+                                <Text style={styles.listName}>Check for update</Text>
                             </View>
-                        </TouchableOpacity>
-                    </ScrollView>
+                            <View>
+                                {direction === 'ltr' &&
+                                <Icon name="chevron-right" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                                {direction === 'rtl' &&
+                                <Icon name="chevron-left" size={22} color={Colors.SENARY_TEXT_COLOR} />
+                                }
+                            </View>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>
@@ -167,7 +164,7 @@ const styles = StyleSheet.create({
     },
     header: {
         ...CommonStyles.header,
-        marginTop: Platform.OS === 'ios' ? 120 : 62,
+        marginTop: Platform.OS === 'ios' ? 100 : 42,
         width: '100%',
         marginLeft: 32,
         marginRight: 32,
