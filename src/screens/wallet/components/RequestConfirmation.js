@@ -1,6 +1,7 @@
 import  React from 'react';
 import {I18nManager, Platform, Text, View, ScrollView, Image, StyleSheet, StatusBar, Dimensions} from 'react-native';
 import {Button} from 'native-base';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useFormik} from 'formik';
 import i18n from 'i18n-js';
 
@@ -49,7 +50,9 @@ const RequestConfirmation = (props) => {
                         <View style={[styles.viewWrapper, styles.borderBottom]}>
                             <Text style={styles.text}>{i18n.t('to')}</Text>
                             <View style={styles.contact}>
-                                <Image style={[styles.image, styles.imageContent]} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar1.png'}}/>
+                                <View style={[styles.image, styles.imageContent]}>
+                                    <MaterialIcons name="person" size={30} color={Colors.SEPTENARY_TEXT_COLOR} />
+                                </View>
                                 <Text style={styles.text1}>{result.first_name} {result.last_name}</Text>
                             </View>
                         </View>
@@ -129,6 +132,10 @@ const styles = StyleSheet.create({
         width:40,
         height:40,
         borderRadius:20,
+        backgroundColor: 'rgba(210,212,252,0.50)',
+        borderColor: 'rgba(210,212,252,0.50)',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     imageContent:{
         marginRight: 15,
