@@ -85,7 +85,12 @@ const Home = (props) => {
 
                     <View style={styles.referEarnWrapper}>
                         <View style={styles.middleContentHeading}>
-                            <Text style={styles.middleContentText}>{i18n.t('refer')}</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('History')}>
+                                <Text style={styles.middleContentText}>{i18n.t('mywallet')}</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text style={styles.middleContentText}>{i18n.t('market')}</Text>
+                            </TouchableOpacity>
                         </View>
                         <Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
                     </View>
@@ -174,7 +179,8 @@ const styles = StyleSheet.create({
     },
     middleContentHeading: {
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
     },
     middleContentText: {
         fontSize: Typography.FONT_SIZE_TINY_PLUS,

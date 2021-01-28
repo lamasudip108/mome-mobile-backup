@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Button, Chip, Paragraph, Portal, Dialog} from 'react-native-paper';
 import i18n from 'i18n-js';
 
@@ -80,7 +81,7 @@ const History = (props) => {
         <View style={styles.item}>
             <View style={styles.itemInner}>
                 <View style={styles.circleItem}>
-                    <Image style={styles.circleImage} source={{uri: item.icon}}/>
+                    <MaterialIcons name="person" size={50} color={Colors.SEPTENARY_TEXT_COLOR} />
                 </View>
                 <View style={{justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                     <Text style={styles.itemName}>{item.first_name} {item.last_name}</Text>
@@ -98,7 +99,7 @@ const History = (props) => {
                     <Text style={styles.itemDate}>3 October 2020, 10:45 AM</Text>
                     <Text style={[styles.itemStatus,item.status === 'completed' ? styles.itemComplete : styles.itemStatusBg]}>{item.status}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('HistoryDetail')}>
-                        <Text style={styles.itemDetails}>DETAIL</Text>
+                        <Text style={styles.itemDetails}>{i18n.t('detail')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     },
     header: {
         ...CommonStyles.header,
-        marginTop: Platform.OS === 'ios' ? 100 : 42,
+        marginTop: Platform.OS === 'ios' ? 100 : 52,
         width: '100%',
         marginLeft: 32,
         marginRight: 32,

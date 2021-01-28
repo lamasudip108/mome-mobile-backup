@@ -32,42 +32,48 @@ const HistoryDetail = (props) => {
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Receiver or Requester :</Text>
+                                <Text style={styles.listTitle}>Receiver or Requester</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>Abdul Bari</Text>
                             </View>
                         </View>
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Type :</Text>
+                                <Text style={styles.listTitle}>Type</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>Request</Text>
                             </View>
                         </View>
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Amount :</Text>
+                                <Text style={styles.listTitle}>Amount</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>$ 100</Text>
                             </View>
                         </View>
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Processed by :</Text>
+                                <Text style={styles.listTitle}>Processed by</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>Wallet</Text>
                             </View>
                         </View>
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Date :</Text>
+                                <Text style={styles.listTitle}>Date</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>3 October 2020, 10:45 AM</Text>
                             </View>
                         </View>
 
                         <View style={styles.listItem}>
                             <View style={styles.listItemInner}>
-                                <Text style={styles.listTitle}>Status :</Text>
+                                <Text style={styles.listTitle}>Status</Text>
+                                <Text style={styles.listTitle}>:</Text>
                                 <Text style={styles.listName}>Completed</Text>
                             </View>
                         </View>
