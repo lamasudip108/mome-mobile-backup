@@ -17,6 +17,8 @@ const TextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
             overflow: 'hidden',
             marginLeft: 15,
             marginRight: 15,
+            backgroundColor: Colors.PRIMARY_INPUT_TEXT_BACKGROUND_COLOR,
+            color: Colors.PRIMARY_INPUT_TEXT_COLOR,
         }}>
                <RNTextInput
                     style={styles.textInput}
