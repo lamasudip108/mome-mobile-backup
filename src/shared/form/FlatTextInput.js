@@ -17,6 +17,8 @@ const FlatTextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
             height: 56,
             overflow: 'hidden',
             marginBottom: 15,
+            color: Colors.PRIMARY_INPUT_TEXT_COLOR,
+            backgroundColor: Colors.PRIMARY_INPUT_TEXT_BACKGROUND_COLOR,
         }}>
                <FLTextInput
                     style={styles.textInput}
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
         textAlign: I18nManager.isRTL ? 'right' : 'left',
         fontSize: Typography.FONT_SIZE_MEDIUM,
         color: Colors.PRIMARY_INPUT_TEXT_COLOR,
+        lineHeight: 14,
     },
 });
 
