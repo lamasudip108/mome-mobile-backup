@@ -12,6 +12,7 @@ import {
     Dimensions,
     YellowBox,
 } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -52,7 +53,7 @@ const Transaction = (props) => {
     const renderItem = ({item}) => (
         <View style={styles.listItem}>
             <View style={styles.circleListItem}>
-                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
+                <Ionicons name={'receipt-outline'} size={25} color={Colors.PRIMARY_TEXT_COLOR} />
             </View>
             <View style={styles.listInfo}>
                 <Text style={styles.listName}>{item.vendor_name}</Text>
@@ -71,8 +72,8 @@ const Transaction = (props) => {
                     <View style={styles.transactionsSummary}>
                         <View style={styles.transactionsSummaryWrapper}>
                             <TouchableOpacity style={styles.circleTransactionsSummary}
-                                              onPress={() => navigation.navigate('ContactUs')}>
-                                <Image style={styles.circleImage} source={require('@/assets/img/transactions.png')}/>
+                                              onPress={() => navigation.navigate('Transaction')}>
+                                <Ionicons name={'receipt-outline'} size={25} color={Colors.PRIMARY_TEXT_COLOR} />
                             </TouchableOpacity>
                             <Text style={styles.transactionsSummaryNumber}>250</Text>
                             <Text style={styles.transactionsSummaryText}>{i18n.t('transaction')}</Text>
@@ -82,8 +83,8 @@ const Transaction = (props) => {
 
                         <View style={styles.transactionsSummaryWrapper}>
                             <TouchableOpacity style={styles.circleTransactionsSummary}
-                                              onPress={() => navigation.navigate('MyTransaction')}>
-                                <Image style={styles.circleImage} source={require('@/assets/img/cart.png')}/>
+                                              onPress={() => navigation.navigate('Transaction')}>
+                                <Ionicons name={'cart-outline'} size={30} color={Colors.PRIMARY_TEXT_COLOR} />
                             </TouchableOpacity>
                             <Text style={styles.transactionsSummaryNumber}>${profile?.total_purchase}</Text>
                             <Text style={styles.transactionsSummaryText}>{i18n.t('total')}</Text>
@@ -97,7 +98,7 @@ const Transaction = (props) => {
                         <Text style={styles.middleContentText}>{i18n.t('today')}</Text>
                         <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.filter}>{i18n.t('filter')}</Text>
-                            <Image style={{height: 9, width: 9}} source={require('@/assets/img/filter.png')}/>
+                            <Ionicons name={'filter-outline'} size={15} color={Colors.PRIMARY_TEXT_COLOR} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.list, styles.todayHeight]}>
