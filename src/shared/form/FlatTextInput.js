@@ -28,6 +28,7 @@ const FlatTextInput = forwardRef(({error, touched, ...otherProps}, ref) => {
                         colors: {
                             primary: Colors.SECONDARY_INPUT_TEXT_COLOR,
                             placeholder: Colors.SECONDARY_INPUT_TEXT_COLOR,
+                            text: Colors.PRIMARY_INPUT_TEXT_COLOR,
                         },
                     }}
                     ref={ref}

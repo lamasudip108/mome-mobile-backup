@@ -12,6 +12,7 @@ import {
     Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors, Typography} from '@/theme';
@@ -83,15 +84,33 @@ const Home = (props) => {
                         </View>
                     </View>
 
+                    <View style={styles.fundTransferWrapper}>
+                        <View style={styles.fundTransferInner}>
+                            <TouchableOpacity style={styles.circleFundTransfer}>
+                                <Ionicons name="ios-wallet" color={Colors.PRIMARY_TEXT_COLOR} size={25} onPress={() => navigation.navigate('History')} style={{paddingLeft: 5}}/>
+                            </TouchableOpacity>
+                            <Text style={styles.fundTransferText}>{i18n.t('mywallet')}</Text>
+                        </View>
+
+                        <View style={{marginLeft: 20}}></View>
+
+                        <View style={styles.fundTransferInner}>
+                            <TouchableOpacity style={styles.circleFundTransfer}>
+                                <Ionicons name="ios-stats-chart" color={Colors.PRIMARY_TEXT_COLOR} size={25} style={{paddingLeft: 4}}/>
+                            </TouchableOpacity>
+                            <Text style={styles.fundTransferText}>{i18n.t('market')}</Text>
+                        </View>
+                    </View>
+
                     <View style={styles.referEarnWrapper}>
-                        <View style={styles.middleContentHeading}>
+                        {/*<View style={styles.middleContentHeading}>
                             <TouchableOpacity onPress={() => navigation.navigate('History')}>
                                 <Text style={styles.middleContentText}>{i18n.t('mywallet')}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <Text style={styles.middleContentText}>{i18n.t('market')}</Text>
                             </TouchableOpacity>
-                        </View>
+                        </View>*/}
                         <Image style={styles.referEarnImage} source={require('@/assets/img/referandearn.png')}/>
                     </View>
                 </View>

@@ -23,7 +23,7 @@ const SendOptions = (props) => {
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity   style={styles.optionsCircle} 
                                             onPress={() => navigation.navigate('SendQRCode', { amount: amount })}>
-                           <Ionicons name={'scan-outline'} size={25} color={Colors.PRIMARY_TEXT_COLOR} />
+                           <Ionicons name={'scan-outline'} size={25} color={Colors.PRIMARY_TEXT_COLOR} style={{paddingLeft: 4}} />
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
                     </View>

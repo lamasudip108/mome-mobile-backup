@@ -98,7 +98,7 @@ const Transaction = (props) => {
                         <Text style={styles.middleContentText}>{i18n.t('today')}</Text>
                         <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text style={styles.filter}>{i18n.t('filter')}</Text>
-                            <Ionicons name={'filter-outline'} size={15} color={Colors.PRIMARY_TEXT_COLOR} />
+                            <Ionicons name={'ios-options'} size={10} color={Colors.PRIMARY_TEXT_COLOR} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.list, styles.todayHeight]}>
