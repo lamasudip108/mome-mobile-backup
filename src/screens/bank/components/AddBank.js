@@ -52,6 +52,7 @@ const AddBankForm = (props) => {
         },
         onSubmit: values => {
             values.id = profile?.id;
+            delete values.bank_name;
             addBankByCustomerIdentifier(values);
             if (error === null) {
                 navigation.navigate('MyBanks');

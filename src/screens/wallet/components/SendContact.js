@@ -91,7 +91,7 @@ const SendContact = (props) => {
             </View>
             <FlatList
                 style={styles.verticalList}
-                data={data}
+                data={contacts}
                 keyExtractor={(item) => {
                     return item.id;
                 }}
