@@ -2,10 +2,12 @@ import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const CircleIcon = () => {
     return (
         <Text style={styles.checkCircle}>
-            <AntIcon name="checkcircle" size={25} color="#0000FF"/>
+            <AntIcon name="checkcircle" size={25} color={Colors.SECONDARY_BACKGROUND_COLOR}/>
         </Text>
     );
 };

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, StatusBar, StyleSheet, View} from 'react-native';
 
+import {CommonStyles, Colors, Typography} from '@/theme';
+
 const SplashScreen = () => {
 
     const [animation, _] = useState(new Animated.Value(0));
@@ -31,7 +33,7 @@ const SplashScreen = () => {
     return (
         <View style={styles.container}>
 
-            <StatusBar barStyle="dark-content" backgroundColor="#0000FF"/>
+            <StatusBar barStyle="dark-content" backgroundColor={Colors.SECONDARY_BACKGROUND_COLOR}/>
 
             <Animated.Image
                 style={[animatedStyles]}
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        backgroundColor: '#0000FF',
+        backgroundColor: Colors.SECONDARY_BACKGROUND_COLOR,
     },
 });
 

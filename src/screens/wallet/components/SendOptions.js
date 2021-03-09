@@ -1,5 +1,7 @@
 import React from 'react';
 import {I18nManager, Platform, Text, View, Image, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icons from 'react-native-vector-icons/FontAwesome5';
 import i18n from 'i18n-js';
 
 import {CommonStyles, Colors} from '@/theme';
@@ -19,9 +21,9 @@ const SendOptions = (props) => {
                 </View>
                 <View style={styles.options}>
                     <View style={styles.optionsWrapper}>
-                        <TouchableOpacity style={styles.optionsCircle}
-                                          onPress={() => navigation.navigate('SendQRCode', { amount: amount })}>
-                            <Image style={styles.image} source={require('@/assets/img/scan.png')}/>
+                        <TouchableOpacity   style={styles.optionsCircle} 
+                                            onPress={() => navigation.navigate('SendQRCode', { amount: amount })}>
+                           <Ionicons name={'scan-outline'} size={25} color={Colors.PRIMARY_TEXT_COLOR} style={{paddingLeft: 4}} />
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('scantosend')}</Text>
                     </View>
@@ -31,7 +33,7 @@ const SendOptions = (props) => {
                     <View style={styles.optionsWrapper}>
                         <TouchableOpacity style={styles.optionsCircle}
                                           onPress={() => navigation.navigate('SendContact', { amount: amount })}>
-                            <Image style={styles.image} source={require('@/assets/img/contacts.png')}/>
+                            <Icons name={'address-book'} size={25} color={Colors.PRIMARY_TEXT_COLOR} />
                         </TouchableOpacity>
                         <Text style={styles.optionsText}>{i18n.t('sendtocontacts')}</Text>
                     </View>

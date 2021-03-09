@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         height: 110,
         marginBottom: 20,
-        borderColor: '#0000FF5C',
+        borderColor: Colors.QUIDENARY_BORDER_COLOR,
         borderWidth: 2,
     },
     passive: {
