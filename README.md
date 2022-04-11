@@ -16,7 +16,7 @@ On the command prompt run the following commands:
 ``` 
  $ git clone https://github.com/Bikranshu/mome-mobile-app.git
  $ cd mome-mobile-app
- $ npm install
+ $ npm install / npm install --force
  ```
  Finally, start and build the application:
  
