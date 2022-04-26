@@ -24,7 +24,7 @@ const LanguageScreen = ({navigation}) => {
                 <TouchableOpacity
                     style={[styles.languageBtn, direction === 'rtl' ? styles.active : styles.passive]}
                     onPress={() => {
-                        direction == 'ltr' ? toggleDirection('rtl') :   navigation.navigate('SignIn');
+                        direction === 'ltr' ? toggleDirection('rtl') :   navigation.navigate('SignIn');
                     }}>
                     {direction === 'rtl' &&
                     <CircleIcon/>
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.QUIDENARY_BORDER_COLOR,
         borderWidth: 2,
     },
+
     passive: {
         alignItems: 'center',
         justifyContent: 'center',

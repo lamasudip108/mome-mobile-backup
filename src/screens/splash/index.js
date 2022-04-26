@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, StatusBar, StyleSheet, View} from 'react-native';
 
-import {CommonStyles, Colors, Typography} from '@/theme';
+import {Colors} from '@/theme';
 
 const SplashScreen = () => {
 

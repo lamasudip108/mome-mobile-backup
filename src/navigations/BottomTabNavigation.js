@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {CommonStyles, Colors, Typography} from '@/theme';
+import { Colors} from '@/theme';
 
 import HomeScreen from '@/screens/home';
 import SettingScreen from '@/screens/setting';

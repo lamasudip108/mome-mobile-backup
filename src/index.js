@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Root as NativeBaseProvider} from 'native-base';
+import {NativeBaseProvider} from 'native-base';
 import RNBootSplash from 'react-native-bootsplash';
 import {Provider as PaperProvider} from 'react-native-paper';
 

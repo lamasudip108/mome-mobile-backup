@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     createStackNavigator,
-    HeaderBackButton,
     TransitionPresets,
 } from '@react-navigation/stack';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
@@ -112,7 +111,7 @@ const MainNavigation = () => {
     return (
         <Stack.Navigator screenOptions={({route}) => ({
             headerTitleAlign: 'center',
-            headerTintColor: headerTintColor(route),
+           // headerTintColor: headerTintColor(route),
         })}>
             {isLanguageChanged === null ? (
                 <Stack.Screen name="Language" component={LanguageScreen} options={{
@@ -139,13 +138,13 @@ const MainNavigation = () => {
             <Stack.Screen name="SignIn" component={SignInScreen} options={({route, navigation}) => ({
                 headerTitle: '',
                 headerTransparent: true,
-                headerLeft: (props) => (
-                    <HeaderBackButton
-                        {...props}
-                        onPress={() => {
-                            navigation.replace('Language');
-                        }}
-                    />),
+                // headerLeft: (props) => (
+                //     <HeaderBackButton
+                //         {...props}
+                //         onPress={() => {
+                //             navigation.replace('Language');
+                //         }}
+                //     />),
                 ...TransitionPresets.SlideFromRightIOS,
                 gestureDirection: 'horizontal-inverted',
             })}/>
@@ -163,18 +162,18 @@ const MainNavigation = () => {
             }}/>
             <Stack.Screen name="Model" component={ModelNavigation} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={BottomTabNavigation} options={({route, navigation}) => ({
-                headerShown: isHeaderShown(route),
+               // headerShown: isHeaderShown(route),
                 headerTitleStyle: {alignSelf: 'center'},
-                headerTitle: headerTitle(route),
+                //headerTitle: headerTitle(route),
                 headerTransparent: true,
-                headerLeft: (props) => (
-                    <HeaderBackButton
-                        {...props}
-                        onPress={() => {
-                            navigation.replace('Home');
-                        }}
-                    />
-                ),
+                // headerLeft: (props) => (
+                //     <HeaderBackButton
+                //         {...props}
+                //         onPress={() => {
+                //             navigation.replace('Home');
+                //         }}
+                //     />
+                // ),
                 ...TransitionPresets.SlideFromRightIOS,
                 gestureDirection: 'horizontal-inverted',
             })}/>
